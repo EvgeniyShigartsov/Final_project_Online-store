@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Carousel } from 'antd'
 import 'antd/dist/antd.css'
 import styled from 'styled-components'
@@ -13,7 +13,7 @@ const StyledImg = styled.img`
 width: 100%;
 height: 100%;
 `
-const StyledDiv = styled.div`
+const ImageBox = styled.div`
   height: 100px;
   color: #fff;
   text-align: center;
@@ -25,23 +25,36 @@ const StyledDiv = styled.div`
     height: 328px;
   }
 `
-export const BannerSlider = () => (
-  <Container>
-    <Carousel autoplay>
-      <StyledDiv>
-        <StyledImg src={firstImg} alt="some img" />
-      </StyledDiv>
-      <StyledDiv>
-        <StyledImg src={secondImg} alt="some img" />
-      </StyledDiv>
-      <StyledDiv>
-        <StyledImg src={thirdImg} alt="some img" />
-      </StyledDiv>
-      <StyledDiv>
-        <StyledImg src={fourthImg} alt="some img" />
-      </StyledDiv>
-    </Carousel>
-  </Container>
-)
+export const BannerSlider = () => {
+  const ref = useRef()
+  const [handlers, setHandlers] = useState({next: () => null, prev: () => null})
+
+  useEffect(() => {
+    if (ref.current) {
+      setHandlers(() => ({next: ref.current.next, prev: ref.current.prev}))
+    }
+  }, [])
+
+  return (
+    <Container>
+      <Carousel autoplay dots={false} ref={ref}>
+        <ImageBox>
+          <StyledImg src={firstImg} alt="some img" />
+        </ImageBox>
+        <ImageBox>
+          <StyledImg src={secondImg} alt="some img" />
+        </ImageBox>
+        <ImageBox>
+          <StyledImg src={thirdImg} alt="some img" />
+        </ImageBox>
+        <ImageBox>
+          <StyledImg src={fourthImg} alt="some img" />
+        </ImageBox>
+      </Carousel>
+      <button onClick={handlers.prev} type="button">Prev slide</button>
+      <button onClick={handlers.next} type="button">Next slide</button>
+    </Container>
+  )
+}
 
 export default BannerSlider
