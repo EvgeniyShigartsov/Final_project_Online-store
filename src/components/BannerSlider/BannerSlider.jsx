@@ -8,6 +8,8 @@ import secondImg from '../../images/banner-slider/second.png'
 import thirdImg from '../../images/banner-slider/third.png'
 import fourthImg from '../../images/banner-slider/fourth.png'
 import { forTablet, forDesktop } from '../../styles/mediaBrakepoints'
+import { SliderArrowLeft } from '../../styles/styled-components/SliderArrowLeft'
+import { SliderArrowRight } from '../../styles/styled-components/SliderArrowRight'
 
 export const BannerSlider = () => {
   const ref = useRef()
@@ -37,16 +39,8 @@ export const BannerSlider = () => {
             <Img src={fourthImg} alt="some img" />
           </ImageBox>
         </Carousel>
-        <ArrowLeft onClick={handlers.prev}>
-          <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px'}}>
-            <path d="M7 1L2 6L7 11" stroke="white" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </ArrowLeft>
-        <ArrowRight onClick={handlers.next}>
-          <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '8px'}}>
-            <path d="M1 11L6 6L1 1" stroke="white" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </ArrowRight>
+        <SliderArrowLeft onClick={handlers.prev} />
+        <SliderArrowRight onClick={handlers.next} />
       </Wrapper>
     </Container>
   )
@@ -55,33 +49,6 @@ export default BannerSlider
 
 const Wrapper = styled.div`
   position: relative;
-`
-const Arrow = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 28px;
-  height: 37px;
-  background-color: rgba(37, 41, 49, 0.5);
-  border: none;
-  transition: 0.2s;
-
-  &:hover {
-    background-color: rgba(37, 41, 49, 1);
-  }
-
-  @media(min-width: ${forDesktop.minWidth}px) {
-    width: 36px;
-    height: 48px;
-  }
-`
-const ArrowRight = styled(Arrow)`
-  right: 0;
-  border-radius: 30px 0px 0px 30px;
-`
-const ArrowLeft = styled(Arrow)`
-  left: 0;
-  border-radius: 0px 30px 30px 0px;
 `
 const Img = styled.img`
 width: 100%;
