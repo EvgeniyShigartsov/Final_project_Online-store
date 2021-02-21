@@ -1,11 +1,14 @@
 import React from 'react'
 
+import Header from './components/Header'
+
 function App() {
   return (
-    <div>
-      <h1 style={{ fontSize: '30px', margin: '50px' }}>Hello everyone)</h1>
-    </div>
-  )
+    <>
+      <Header />
+    </>
+
+  );
 }
 
 export default App
