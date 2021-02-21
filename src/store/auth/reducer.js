@@ -1,15 +1,20 @@
-import { GET_PRODUCTS } from './actionType';
+import { LOG_IN, LOG_OUT } from './actionType';
 
 const initialState = {
-  products: []
+  isLogin: false
 }
 
-const reducer = (state = initialState, {type, payload}) => {
+export const reducer = (state = initialState, {type}) => {
   switch (type) {
-    case GET_PRODUCTS:
+    case LOG_IN:
       return {
         ...state,
-        products: payload
+        isLogin: true
+      }
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogin: false
       }
     
     default:

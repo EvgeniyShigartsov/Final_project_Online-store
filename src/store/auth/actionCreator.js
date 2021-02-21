@@ -1,11 +1,9 @@
-import { GET_PRODUCTS, SET_PRODUCTS } from './actionType';
+import { LOG_IN, LOG_OUT } from './actionType';
 
-export const getProducts = (payload) => ({
-  type: GET_PRODUCTS,
-  payload
+export const logIn = () => ({
+  type: LOG_IN,
 })
 
-export const setProducts = (payload) => ({
-  type: SET_PRODUCTS,
-  payload
+export const logOut = () => ({
+  type: LOG_OUT,
 })
