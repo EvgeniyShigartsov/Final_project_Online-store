@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 // Ant design
 import {
@@ -16,64 +16,60 @@ import { motion } from 'framer-motion';
 import vector from '../Vector.png';
 
 // media-brak-points
-import {forTablet} from '../styles/mediaBrakepoints';
+import {forTablet, forDesktop} from '../styles/mediaBrakepoints';
 
 const PopUpList = ({
 
   // eslint-disable-next-line react/prop-types
-  openSlide, isOpen, openModal
-}) => {
-  // eslint-disable-next-line no-unused-vars
-  const [test, setTest] = useState(true);
-  return (
+  openSlide, isOpen, openModal, setIsOpen
+}) => (
 
-    <PopUpContainer test={test} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
-      <HeaderOfPopUp>
+  <PopUpContainer setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
+    <HeaderOfPopUp>
 
-        <div>
-          <Logo
-            src={vector}
-            alt="icon"
-          />
-        </div>
+      <div>
+        <Logo
+          src={vector}
+          alt="icon"
+        />
+      </div>
           
-        <CloseOutlinedStyled onClick={(e) => { openModal(e) }} />
-        <Line />
-      </HeaderOfPopUp>
-      <ul>
-        <li>
-          <h5>Laptops</h5>
-          <RightOutlinedStyled />
-        </li>
-        <li>
-          <h5>Desktop PCs</h5>
-          <RightOutlinedStyled />
-        </li>
-        <li>
-          <h5>Networking</h5>
-          <RightOutlinedStyled />
-        </li>
-        <li>
-          <h5>Printers & Scanners</h5>
-          <RightOutlinedStyled />
-        </li>
-        <li>
-          <h5>PC Parts</h5>
-          <RightOutlinedStyled />
-        </li>
-        <li>
-          <h5>All Other Products</h5>
-          <RightOutlinedStyled />
-        </li>
-        <li>
-          <h5>Repairs</h5>
-          <RightOutlinedStyled />
-        </li>
-      </ul>
-      <button type="submit" onClick={() => setTest((prev) => !prev)}>Our Deals</button>
-    </PopUpContainer>
-  );
-}
+      <CloseOutlinedStyled onClick={(e) => { openModal(e) }} />
+      <Line />
+    </HeaderOfPopUp>
+    <ul>
+      <li>
+        <h5>Laptops</h5>
+        <RightOutlinedStyled />
+      </li>
+      <li>
+        <h5>Desktop PCs</h5>
+        <RightOutlinedStyled />
+      </li>
+      <li>
+        <h5>Networking</h5>
+        <RightOutlinedStyled />
+      </li>
+      <li>
+        <h5>Printers & Scanners</h5>
+        <RightOutlinedStyled />
+      </li>
+      <li>
+        <h5>PC Parts</h5>
+        <RightOutlinedStyled />
+      </li>
+      <li>
+        <h5>All Other Products</h5>
+        <RightOutlinedStyled />
+      </li>
+      <li>
+        <h5>Repairs</h5>
+        <RightOutlinedStyled />
+      </li>
+    </ul>
+    <button type="submit">Our Deals</button>
+  </PopUpContainer>
+)
 
 export default PopUpList;
 
@@ -98,6 +94,15 @@ const PopUpContainer = styled(motion.div)`
         font-size: 20px;
       }
     }
+    @media(min-width: ${forDesktop.minWidth}px) {
+     
+      top: 0;
+      left: 300px;
+      opacity: 1;
+      /* clip-path: circle(2200px at 40px 40px) !important; */
+      background-color: red;
+      clip-path: ${(props) => console.log(props.animate)}
+  }
     
   }
   button{

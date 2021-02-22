@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components'
+// eslint-disable-next-line no-unused-vars
+import React, {useState, useRef, useEffect} from 'react';
+import styled, {css} from 'styled-components'
 
 // ant design
 import {
@@ -16,7 +17,7 @@ import vector from '../Vector.png';
 
 // mediabreakPoint
 // eslint-disable-next-line no-unused-vars
-import {forTablet, forDesktop} from '../styles/mediaBrakepoints';
+import {forTablet, forDesktop, forMobile} from '../styles/mediaBrakepoints';
 
 // components
 import PopUpList from './PopUpList';
@@ -34,16 +35,20 @@ const Header = () => {
 
   // UserNavMenu
   const [isOpenUser, setIsOpenUser] = useCycle(false, true);
+
+  // diplayForm
+  // eslint-disable-next-line no-unused-vars
+  const [hideInput, setHideInput] = useState(true);
   
   const openSlide = {
-    show: () => ({
+    show: {
       clipPath: `circle(${1000 * 2 + 200}px at 40px 40px)`,
       transition: {
         type: 'spring',
         stiffness: 20,
         restDelta: 2
       }
-    }),
+    },
     hidden: {
       clipPath: 'circle(0.1px at 0.1px 0.1px)',
       transition: {
@@ -70,6 +75,11 @@ const Header = () => {
     e.preventDefault();
     setIsOpenUser((prev) => (!prev));
   }
+  const inputRef = React.useRef();
+
+  useEffect(() => {
+    console.log(inputRef.current);
+  }, [])
 
   return (
     <HeaderContainer>
@@ -102,19 +112,25 @@ const Header = () => {
       </ShaduleContainer>
 
       <SearchAndItemsBlock>
-        <MenuOutlinedStyled onClick={(e) => { openModal(e) }} />
+        <MenuOutlinedStyled onClick={(e) => { openModal(e) }} ref={inputRef} />
         <PopUpList
+          setIsOpen={setIsOpen}
           openSlide={openSlide}
           isOpen={isOpen}
           openModal={openModal}
           isOpenUserWindow={isOpenUserWindow}
         />
-        <FormContainer action="submit">
+        <FormContainer action="submit" hideInput={hideInput}>
           <SearchInputBlock>
             <SearchOutlinedStyled />
             <Input type="text" placeholder="Serch for goods" />
           </SearchInputBlock>
         </FormContainer>
+
+        {/* mediaSearch */}
+        <SearchOutlinedStyledMedia onClick={() => setHideInput((prev) => !prev)} />
+        {/* mediaSearch */}
+
         <ShoppingCartOutlinedStyled />
         <RelativePosUserPopUp onClick={(e) => isOpenUserWindow(e)}>
           <UserOutlinedStyled />
@@ -170,20 +186,7 @@ const ShaduleContainer = styled.div`
     border-bottom: 1px solid white;
   }
 `;
-const Circle = styled.div`
-  position: relative;
-  margin-top: 15px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #0156FF;
-  @media(min-width: ${forTablet.minWidth}px) {
-    flex: 1;
-  }
-  @media(min-width: ${forDesktop.minWidth}px) {
-    display: none;
-  }
-`;
+
 const ContactUsCall = styled.div`
   padding-left: 10px;
   @media(min-width: ${forTablet.minWidth}px) {
@@ -199,12 +202,23 @@ const SearchAndItemsBlock = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    /* background: #FFFFFF; */
+    border-bottom: 1px solid #CCCCCC;
+    padding-right: 150px;
+  }
 `;
 
 const FormContainer = styled.form`
   flex: 8;
   @media(min-width: ${forTablet.minWidth}px) {
     flex: 12;
+  }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    padding-left: 200px;
+    ${(props) => props.hideInput && css`
+        display: none;
+    `}
   }
 `;
 const SearchInputBlock = styled.div`
@@ -226,31 +240,56 @@ const Input = styled.input`
 `;
 const RelativePosUserPopUp = styled.div`
   position: relative;
+  
 `;
 // ICONS
 const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
   filter: brightness(0) invert(1);
   font-size: 25px;
   flex: 1;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    filter: invert(0%) sepia(7%) saturate(0%) hue-rotate(39deg) brightness(102%) contrast(106%);
+  }
 `;
 const UserOutlinedStyled = styled(UserOutlined)`
   color: white;
   padding-right: 10px;
   font-size: 20px;
-  flex:1;
+  flex: 1;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    color: black;
+  }
+`;
+const Circle = styled.div`
+  position: relative;
+  margin-top: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #0156FF;
+  @media(min-width: ${forTablet.minWidth}px) {
+    flex: 1;
+  }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    background-color: white;
+    position: absolute;
+    top: 37px;
+    left: 130px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
 `;
 const Logo = styled.img`
   color: white; 
   position: absolute; 
   top: 50%; 
   left: 50%; 
+  width: 30px;
+  height: 35px;
   transform: Translate(-50%, -55%);
   @media(min-width: ${forDesktop.minWidth}px) {
-    position: relative;
-    display: block;
-    color: blue;
-    transform: Translate(0%, 0%);
-
+    filter: invert(78%) sepia(90%) saturate(6818%) hue-rotate(246deg) brightness(112%) contrast(145%);
   }
 `;
 
@@ -265,4 +304,17 @@ const MenuOutlinedStyled = styled(MenuOutlined)`
 const SearchOutlinedStyled = styled(SearchOutlined)`
   color: '#CCCCCC';
   flex: 1;
+`;
+const SearchOutlinedStyledMedia = styled(SearchOutlinedStyled)`
+  @media(min-width: ${forMobile.minWidth}px) {
+    display: none;
+  }
+  @media(min-width: ${forTablet.minWidth}px) {
+    display: none;
+  }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    display: block;
+    flex: 0;
+    padding-left: 23px;
+  }
 `;
