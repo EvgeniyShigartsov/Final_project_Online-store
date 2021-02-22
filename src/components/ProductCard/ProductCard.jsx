@@ -13,6 +13,7 @@ function ProductCard({
   title,
   img,
   reviews,
+  rating,
   lastPrice,
   nowPrice
 }) {
@@ -27,7 +28,7 @@ function ProductCard({
     <StyledCardItem>
       <StyledCardImg src={img} />
       <div>
-        <StarRating />
+        <StarRating rating={rating} />
         <StyledCardReviews>
           Reviews (
           {reviews}
@@ -49,6 +50,7 @@ ProductCard.propTypes = {
   title: PropTypes.string,
   img: PropTypes.string,
   reviews: PropTypes.string,
+  rating: PropTypes.number,
   lastPrice: PropTypes.string,
   nowPrice: PropTypes.string,
 }
@@ -57,6 +59,7 @@ ProductCard.defaultProps = {
   title: 'Apple MacBook Air 13" 256Gb Space Gray (MWTJ2) 2020',
   img: 'https://i.citrus.ua/imgcache/size_500/uploads/shop/9/9/9908770da61d5c79571f58b6be08a924.jpg',
   reviews: '4',
+  rating: 4,
   lastPrice: '$599.00',
   nowPrice: '$499.00'
 }

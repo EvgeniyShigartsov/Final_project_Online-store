@@ -1,10 +1,19 @@
 import React from 'react'
-import { StarOutlined } from '@ant-design/icons';
+import { StarFilled } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
-function Star() {
+function Star({ color }) {
   return (
-    <StarOutlined style={{ fontSize: '10px'}} />
+    <StarFilled style={{ fontSize: '10px', color: `${color}`}} />
   )
+}
+
+Star.propTypes = {
+  color: PropTypes.string
+}
+
+Star.defaultProps = {
+  color: '#C4C4C4'
 }
 
 export default Star;
