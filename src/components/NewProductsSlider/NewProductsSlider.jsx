@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Carousel } from 'antd'
 import { Container } from '../../styles/styled-components/Container'
@@ -8,17 +9,25 @@ import { SliderArrowLeft } from '../../styles/styled-components/SliderArrowLeft'
 import { SliderArrowRight } from '../../styles/styled-components/SliderArrowRight'
 import { forMobile, forTablet } from '../../styles/mediaBrakepoints'
 import { ProductCard } from '../ProductCard/ProductCard'
+import { getNewProducts } from '../../store/getNewProducts/middleware'
 
-export const NewProductsSlider = () => {
+const mapStateToProps = (state) => ({newProducts: state.newProductsModule.newProducts})
+
+export const NewProductsSlider = connect(mapStateToProps, { getNewProducts })(({
+  getNewProducts,
+  newProducts
+}) => {
   const ref = useRef()
   const [handlers, setHandlers] = useState({next: () => null, prev: () => null})
-  
+
   useEffect(() => {
     if (ref.current) {
       setHandlers(() => ({next: ref.current.next, prev: ref.current.prev}))
     }
+    getNewProducts()
     // при первом рендере ref.current === undefined потому используется useEffect & useState
-  }, [])
+    // next и prev это методы слайдера для стрелок
+  }, [getNewProducts])
 
   const carouselStentings = {
     slidesToShow: 6,
@@ -45,78 +54,27 @@ export const NewProductsSlider = () => {
     <Container>
       <Wrapper>
         <Carousel ref={ref} {...carouselStentings}>
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={2}
-            isGoodsInStock
-          />
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={2}
-            isGoodsInStock={false}
-          />
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={2}
-            isGoodsInStock={false}
-          />
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={4}
-            isGoodsInStock
-          />
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={2}
-            isGoodsInStock
-          />
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={2}
-            isGoodsInStock={false}
-          />
-          <ProductCard
-            title="Apple MacBook Air 13 256Gb Space Gray (MWTJ2) 2020"
-            img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-            lastPrice="544"
-            nowPrice="644"
-            reviews="999"
-            rating={2}
-            isGoodsInStock={false}
-          />
+          {newProducts.map((el) => (
+            <ProductCard
+              key={el.itemNo}
+              title={el.name}
+              img={el.imageUrls[0]}
+              previousPrice={el.previousPrice}
+              currentPrice={el.currentPrice}
+              reviews={100}
+              isGoodsInStock={el.quantity > 0}
+              rating={4}
+            />
+          ))}
         </Carousel>
         <SliderArrowLeft onClick={handlers.prev} />
         <SliderArrowRight onClick={handlers.next} />
       </Wrapper>
     </Container>
   )
-}
+})
 export default NewProductsSlider
 
 const Wrapper = styled.div`
-    position: relative;
+  position: relative;
 `
