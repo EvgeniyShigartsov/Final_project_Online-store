@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import StarRating from '../StarRating/StarRating'
+import { StarRating } from '../StarRating/StarRating'
 import StyledCardItem, {
   StyledCardImg,
   StyledCardLastPrice,
@@ -8,10 +8,10 @@ import StyledCardItem, {
   StyledCardReviews,
   StyledCardTitle
 } from './StyledProductCard';
-import InStocke from './InStocke/InStocke';
-import CheckAvailability from './CheckAvailability/CheckAvailability';
+import { InStocke } from './InStocke/InStocke';
+import { CheckAvailability } from './CheckAvailability/CheckAvailability';
 
-function ProductCard({
+export const ProductCard = ({
   title,
   img,
   reviews,
@@ -19,7 +19,7 @@ function ProductCard({
   lastPrice,
   nowPrice,
   isGoodsInStock
-}) {
+}) => {
   let verifiedTitle = title;
 
   if (verifiedTitle.length > 59) {
@@ -51,23 +51,13 @@ function ProductCard({
 }
 
 ProductCard.propTypes = {
-  title: PropTypes.string,
-  img: PropTypes.string,
-  reviews: PropTypes.string,
-  rating: PropTypes.number,
-  lastPrice: PropTypes.string,
-  nowPrice: PropTypes.string,
-  isGoodsInStock: PropTypes.bool
-}
-
-ProductCard.defaultProps = {
-  title: 'Apple MacBook Air 13" 256Gb Space Gray (MWTJ2) 2020',
-  img: 'https://i.citrus.ua/imgcache/size_500/uploads/shop/9/9/9908770da61d5c79571f58b6be08a924.jpg',
-  reviews: '103',
-  rating: 4,
-  lastPrice: '$699.00',
-  nowPrice: '$599.00',
-  isGoodsInStock: true
+  title: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  reviews: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  lastPrice: PropTypes.string.isRequired,
+  nowPrice: PropTypes.string.isRequired,
+  isGoodsInStock: PropTypes.bool.isRequired,
 }
 
 export default ProductCard;

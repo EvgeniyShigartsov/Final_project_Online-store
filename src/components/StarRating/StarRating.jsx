@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Star from './Star/Star';
+import { Star } from './Star/Star';
 
-function StarRating({ rating }) {
+export const StarRating = ({ rating }) => {
   const yellowColor = '#E9A426';
   const greyColor = '#C4C4C4';
 
-  const stars = [1, 2, 3, 4, 5]
+  const stars = [1, 2, 3, 4, 5];
 
   return (
     <span>
@@ -24,11 +24,7 @@ function StarRating({ rating }) {
 }
 
 StarRating.propTypes = {
-  rating: PropTypes.number
-}
-
-StarRating.defaultProps = {
-  rating: 0
+  rating: PropTypes.number.isRequired
 }
 
 export default StarRating;

@@ -3,7 +3,7 @@ import { forDesktop } from '../../styles/mediaBrakepoints'
 
 const StyledCardItem = styled.li`
   list-style: none;
-  width: 160px;
+  width: 165px;
   padding: 5px 13px;
 
   @media(min-width: ${forDesktop.minWidth}px){

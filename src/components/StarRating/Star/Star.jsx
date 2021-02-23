@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledStarFilledIcon from '../StyledStarRating';
+import { StyledStarFilledIcon } from '../StyledStarRating';
 
-function Star({ color }) {
-  return (
-    <StyledStarFilledIcon color={color} />
-  )
-}
+export const Star = ({ color }) => (
+  <StyledStarFilledIcon color={color} />
+)
 
 Star.propTypes = {
-  color: PropTypes.string
-}
-
-Star.defaultProps = {
-  color: '#C4C4C4'
+  color: PropTypes.string.isRequired
 }
 
 export default Star;

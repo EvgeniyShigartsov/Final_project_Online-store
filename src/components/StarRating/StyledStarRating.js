@@ -2,7 +2,7 @@ import { StarFilled } from '@ant-design/icons';
 import styled from 'styled-components';
 import { forDesktop } from '../../styles/mediaBrakepoints'
 
-const StyledStarFilledIcon = styled(StarFilled)`
+export const StyledStarFilledIcon = styled(StarFilled)`
   color: ${(props) => props.color};
   font-size: 9px;
 
