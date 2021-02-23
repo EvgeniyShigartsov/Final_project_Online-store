@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import React, { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Carousel } from 'antd'
-import React, { useRef, useEffect, useState } from 'react'
 import { Container } from '../../styles/styled-components/Container'
 import { FakeCard } from './FakeCard'
 import 'antd/dist/antd.css'
