@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 import { Carousel } from 'antd'
 import { Container } from '../../styles/styled-components/Container'
 import 'antd/dist/antd.css'
 import { SliderArrowLeft } from '../../styles/styled-components/SliderArrowLeft'
 import { SliderArrowRight } from '../../styles/styled-components/SliderArrowRight'
-import { forMobile, forTablet } from '../../styles/mediaBrakepoints'
+import { forMobile, forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { getNewProducts } from '../../store/getNewProducts/middleware'
+import { Wrapper } from '../../styles/styled-components/Wrapper'
 
 const mapStateToProps = (state) => ({newProducts: state.newProductsModule.newProducts})
 
@@ -74,7 +74,3 @@ export const NewProductsSlider = connect(mapStateToProps, { getNewProducts })(({
   )
 })
 export default NewProductsSlider
-
-const Wrapper = styled.div`
-  position: relative;
-`
