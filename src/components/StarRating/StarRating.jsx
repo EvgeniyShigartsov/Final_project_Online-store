@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Star from './Star';
+import Star from './Star/Star';
 
 function StarRating({ rating }) {
+  const yellowColor = '#E9A426';
+  const greyColor = '#C4C4C4';
+
+  const start = [1, 2, 3, 4, 5]
+
   return (
     <span>
       {
-        [...Array(5)].map((star, indx) => {
+        start.map((star, indx) => {
           const ratingValue = indx + 1;
 
           return (
-            <Star color={ratingValue <= rating ? '#E9A426' : '#C4C4C4'} key={star} />
+            <Star color={ratingValue <= rating ? yellowColor : greyColor} key={star} />
           )
         })
       }
@@ -18,12 +23,12 @@ function StarRating({ rating }) {
   )
 }
 
-StarRating.defaultProps = {
-  rating: 0
-}
-
 StarRating.propTypes = {
   rating: PropTypes.number
+}
+
+StarRating.defaultProps = {
+  rating: 0
 }
 
 export default StarRating;

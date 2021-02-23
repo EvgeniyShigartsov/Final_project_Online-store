@@ -1,10 +1,10 @@
-import React from 'react'
-import { StarFilled } from '@ant-design/icons';
+import React from 'react';
 import PropTypes from 'prop-types';
+import StyledStarFilledIcon from '../StyledStarRating';
 
 function Star({ color }) {
   return (
-    <StarFilled style={{ fontSize: '10px', color: `${color}`}} />
+    <StyledStarFilledIcon color={color} />
   )
 }
 

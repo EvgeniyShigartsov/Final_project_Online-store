@@ -3,23 +3,27 @@ import { forDesktop } from '../../styles/mediaBrakepoints'
 
 const StyledCardItem = styled.li`
   list-style: none;
-  width: 147px;
+  width: 160px;
   padding: 5px 13px;
 
   @media(min-width: ${forDesktop.minWidth}px){
-    padding: 5px 24px;
+    padding: 10px 24px;
   }
 `
 
-export const StyledCardImg = styled.img`
-  width: 100px;
+export const StyledCardImg = styled.div`
+  width: 100%;
   height: 100px;
+
+  background-image: url(${(props) => props.url});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
   margin-bottom: 5px;
 
   @media(min-width: ${forDesktop.minWidth}px){
-    width: 150px;
-    hight: 150px;
-    margin-bottom: 10px;
+    height: 150px;
   }
 
 `
@@ -31,7 +35,7 @@ export const StyledCardReviews = styled.span`
   margin-left: 10px;
 
   @media(min-width: ${forDesktop.minWidth}px){
-    font-size: 12px;
+    font-size: 13px;
   }
 `
 
