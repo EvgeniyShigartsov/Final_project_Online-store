@@ -1,0 +1,16 @@
+{
+    "editor.mouseWheelZoom": false,
+    "files.autoSave": "onFocusChange",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "liveServer.settings.donotVerifyTags": true,
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "workbench.editor.showIcons": false,
+    "editor.wordWrap": "on",
+    "importCost.mediumPackageSize": 140,
+    "editor.defaultFormatter": "EditorConfig.EditorConfig",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    }
+}

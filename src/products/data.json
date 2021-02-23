@@ -1,0 +1,291 @@
+{
+    "products": [
+        {
+  "name": "Комп`ютер Everest Home 4090 (4090_9104)",
+  "enabled": true,
+  "currentPrice": 27999.00,
+  "previousPrice": 29999.00,
+  "categories": "Custome builds",
+  "imageUrls": [
+    "https://i8.rozetka.ua/goods/20237547/copy_everest_4090_9102_5f7f661659049_images_20237547581.jpg",
+    "https://i2.rozetka.ua/goods/20237547/copy_everest_4090_9102_5f7f661659049_images_20237547711.jpg",
+    "https://i8.rozetka.ua/goods/20237547/copy_everest_4090_9102_5f7f661659049_images_20237547776.jpg"
+  ],
+  "quantity": 100,
+  "date": "",
+  "color": "black",
+  "brand": "Everest",
+  "processor": "Шестиядерный Intel Core i5-10400F (2.9 - 4.3 ГГц)"
+        },
+        {
+  "name": "Комп'ютер Artline Gaming X43 v04 (X43v04)",
+  "enabled": true,
+  "currentPrice": 18900.00,
+  "previousPrice": 20000.00,
+  "categories": "Custome builds",
+  "imageUrls": [
+    "https://i2.rozetka.ua/goods/14573871/artline_x43v04_images_14573871904.jpg",
+    "https://i8.rozetka.ua/goods/14573872/artline_x43v04_images_14573872422.jpg",
+    "https://i2.rozetka.ua/goods/14573874/artline_x43v04_images_14573874543.jpg"
+  ],
+  "quantity": 12,
+  "date": "",
+  "color": "grey",
+  "brand": "Artline",
+  "processor": "Шестиядерний AMD Ryzen 5 3500 (3.6 — 4.1 ГГц)"
+        },
+        {
+    "name": "Комп'ютер Dell OptiPlex 3080 MFF (N020O3080MFF_UBU-08)",
+    "enabled": true,
+    "currentPrice": 16599.00,
+    "previousPrice": 17599.00,
+    "categories": "Custome builds",
+    "imageUrls": [
+      "https://i8.rozetka.ua/goods/21567361/copy_dell_n011o3080mffem_ubu_08_6019180e7fbd3_images_21567361253.jpg",
+      "https://i2.rozetka.ua/goods/21567361/copy_dell_n011o3080mffem_ubu_08_6019180e7fbd3_images_21567361468.jpg",
+      "https://i2.rozetka.ua/goods/21567361/copy_dell_n011o3080mffem_ubu_08_6019180e7fbd3_images_21567361778.jpg"],
+            "quantity": 35,
+            "date": "",
+            "color": "black",
+            "brand": "Dell",
+            "processor": "Шестиядерний Intel Core i5-10500T (2.3 — 3.8 ГГц)"
+        },
+        {
+            "name": "Комп'ютер QUBE i7 9700F GTX 1660 SUPER 6GB 1641 (QB0073)",
+            "enabled": true,
+            "currentPrice": 33800.00,
+            "previousPrice": 35000.00,
+            "categories": "Custome builds",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/21014390/copy_qube_qb0072_5fcd2a4a1f64e_images_21014390551.jpg",
+              "https://i2.rozetka.ua/goods/21014392/copy_qube_qb0072_5fcd2a4a1f64e_images_21014392216.jpg",
+              "https://i8.rozetka.ua/goods/21014393/copy_qube_qb0072_5fcd2a4a1f64e_images_21014393786.jpg"
+            ],
+            "quantity": 10,
+            "date": "",
+            "color": "black",
+            "brand": "QUBE",
+            "processor": "Восьмиядерний Intel Core i7-9700F (3.0 — 4.7 ГГц)"
+        },
+        {
+            "name": "Комп'ютер Everest Smart 5010 (5010_0401) ",
+            "enabled": "true",
+            "currentPrice": 30000.00,
+            "previousPrice": 36000.00,
+            "categories": "Custome builds",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/21661819/everest_5010_0401_images_21661819843.jpg",
+              "https://i8.rozetka.ua/goods/21661820/everest_5010_0401_images_21661820243.jpg",
+              "https://i8.rozetka.ua/goods/21661820/everest_5010_0401_images_21661820488.jpg"
+            ],
+            "quantity": 5,
+            "date": "",
+            "color": "white",
+            "brand": "Everest",
+            "processor": "Шестиядерный Intel Core i5-10400F (2.9 - 4.3 ГГц)"
+        },
+        {
+            "name": "Ноутбук MSI GF75 Thin 10SDR (GF7510SDR-293XUA) Black",
+            "enabled": "true",
+            "currentPrice": 37000.00,
+            "previousPrice": 40500.00,
+            "categories": "MSI Laptops",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/19181645/msi_gf7510sdr_293xua_images_19181645215.jpg",
+              "https://i8.rozetka.ua/goods/19181645/msi_gf7510sdr_293xua_images_19181645317.jpg",
+              "https://i2.rozetka.ua/goods/19181645/msi_gf7510sdr_293xua_images_19181645431.jpg"
+            ],
+            "quantity": 3,
+            "date": "",
+            "color": "black",
+            "brand": "MSI",
+            "processor": "Шестиядерний Intel Core i7-10750H (2.6 — 5.0 ГГц)"
+        },
+        {
+            "name": "Ноутбук MSI GL65 Leopard 10SDR (GL6510SDR-408XUA) Black",
+            "enabled": "true",
+            "currentPrice": 40000.00,
+            "previousPrice": 46000.00,
+            "categories": "MSI Laptops",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/19160000/copy_msi_gl6510scxr_057xua_5f0efdbdd43aa_images_19160000197.jpg",
+              "https://i2.rozetka.ua/goods/19160004/copy_msi_gl6510scxr_057xua_5f0efdbdd43aa_images_19160004607.jpg",
+              "https://i2.rozetka.ua/goods/19160007/copy_msi_gl6510scxr_057xua_5f0efdbdd43aa_images_19160007367.jpg"
+            ],
+            "quantity": 6,
+            "date": "Date.now()",
+            "color": "black",
+            "brand": "MSI",
+            "processor": "Шестиядерний Intel Core i7-10750H (2.6 — 5.0 ГГц)"
+        },
+        {
+            "name": "Ноутбук MSI GE75 Raider 10SF (GE7510SF-409UA)",
+            "enabled": "true",
+            "currentPrice": 65000.00,
+            "previousPrice": 74000.00,
+            "categories": "MSI Laptops",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/19181109/copy_msi_ge7510sf_025ua_5f101e80d5778_images_19181109655.jpg",
+              "https://i2.rozetka.ua/goods/19181110/copy_msi_ge7510sf_025ua_5f101e80d5778_images_19181110057.jpg",
+              "https://i8.rozetka.ua/goods/19181110/copy_msi_ge7510sf_025ua_5f101e80d5778_images_19181110351.jpg"
+            ],
+            "quantity": 7,
+            "date": "",
+            "color": "black",
+            "brand": "MSI",
+            "processor": "Bосьмиядерний Intel Core i7-10875H (2.3 — 5.1 ГГц)"
+        },
+        {
+            "name": "Ноутбук MSI GF75 Thin 10SCXR (GF7510SCXR-267XUA) Black",
+            "enabled": "true",
+            "currentPrice": 65000.00,
+            "previousPrice": 74000.00,
+            "categories": "MSI Laptops",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/19182096/copy_msi_gf7510sdr_293xua_5f10309367077_images_19182096511.jpg",
+              "https://i2.rozetka.ua/goods/19182097/copy_msi_gf7510sdr_293xua_5f10309367077_images_19182097267.jpg",
+              "https://i8.rozetka.ua/goods/19182098/copy_msi_gf7510sdr_293xua_5f10309367077_images_19182098089.jpg"
+            ],
+            "quantity":8,
+            "date": "",
+            "color": "black",
+            "brand": "MSI",
+            "processor": "Шестиядерний Intel Core i7-10750H (2.6 — 5.0 ГГц)"
+        },
+        {
+            "name": "Ноутбук MSI Alpha 15 A3DD-256XUA Black",
+            "enabled": "true",
+            "currentPrice": 25000.00,
+            "previousPrice": 33000.00,
+            "categories": "MSI Laptops",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/19756254/msi_alpha_15_a3dd_256xua_images_19756254331.jpg",
+              "https://i8.rozetka.ua/goods/19756255/msi_alpha_15_a3dd_256xua_images_19756255615.png",
+              "https://i8.rozetka.ua/goods/19756255/msi_alpha_15_a3dd_256xua_images_19756255081.png"
+            ],
+            "quantity":8,
+            "date": "",
+            "color": "black",
+            "brand": "MSI",
+            "processor": "Чотириядерний AMD Ryzen 7 3750H (2.3 — 4.0 ГГц)"
+        },
+        {
+            "name": "Персональный компьютер Expert PC Ultimate ",
+            "enabled": "true",
+            "currentPrice": 26000.00,
+            "previousPrice": 29000.00,
+            "categories": "Desktops",
+            "imageUrls": [
+              "https://i2.rozetka.ua/goods/15816809/160606958_images_15816809177.jpg",
+              "https://i2.rozetka.ua/goods/15816809/160606958_images_15816809177.jpg"
+            ],
+            "quantity":2,
+            "date": "",
+            "color": "red",
+            "brand": "Expert",
+            "processor": "Чотириядерний AMD Ryzen 7 3750H (2.3 — 4.0 ГГц)"
+        },
+        {
+            "name": "Персональный компьютер ETE GAME BERLION",
+            "enabled": "true",
+            "currentPrice": 26000.00,
+            "previousPrice": 29000.00,
+            "categories": "Desktops",
+            "imageUrls": [
+              "https://i2.rozetka.ua/goods/20256968/254422556_images_20256968351.jpg",
+              "https://i2.rozetka.ua/goods/20256968/254422556_images_20256968856.jpg",
+              "https://i2.rozetka.ua/goods/20256969/254422556_images_20256969956.jpg"
+            ],
+            "quantity":11,
+            "date": "",
+            "color": "blue",
+            "brand": "ETE",
+            "processor": "Шестиядерний Intel Core i5-9400F (2.9 - 4.1 ГГц)"
+        },
+        {
+            "name": "Персональный компьютер Lenovo Ideacentre 300 (90DA00SGUL)",
+            "enabled": "true",
+            "currentPrice": 10700.00,
+            "previousPrice": 12000.00,
+            "categories": "Desktops",
+            "imageUrls": [
+              "https://i2.rozetka.ua/goods/21549084/262106796_images_21549084963.jpg",
+              "https://i2.rozetka.ua/goods/21549085/262106796_images_21549085278.jpg",
+              "https://i2.rozetka.ua/goods/21549085/262106796_images_21549085853.jpg"
+            ],
+            "quantity": 9,
+            "date": "",
+            "color": "black",
+            "brand": "Lenovo",
+            "processor": "Двоядерний Intel Pentium G4400 (3.3 ГГц)"
+        },
+        {
+            "name": "Персональный компьютер Expert PC Balance (I9400.16.S4.INT.C1154)",
+            "enabled": true,
+            "currentPrice": 10700.00,
+            "previousPrice": 12000.00,
+            "categories": "Desktops",
+            "imageUrls": [
+              "https://i2.rozetka.ua/goods/21298007/271768931_images_21298007596.jpg",
+              "https://i8.rozetka.ua/goods/21298008/271768931_images_21298008016.jpg"
+            ],
+            "quantity": 15,
+            "date": "",
+            "color": "black",
+            "brand": "Expert",
+            "processor": "Шестиядерний Intel Core i5-9400 (2.9-4.1 ГГц)"
+        },
+        {
+            "name": "Монітор 27 Philips E Line 4K Ultra HD 278E1A /00/01",
+            "enabled": true,
+            "currentPrice": 8000.00,
+            "previousPrice": 9000.00,
+            "categories": "Gaming Monitors",
+            "imageUrls": [
+              "https://i8.rozetka.ua/goods/16536344/philips_278e1a_00_images_16536344133.jpg",
+              "https://i2.rozetka.ua/goods/16536344/philips_278e1a_00_images_16536344959.jpg",
+              "https://i2.rozetka.ua/goods/16536345/philips_278e1a_00_images_16536345799.jpg"
+            ],
+            "quantity": 10,
+            "date": "",
+            "color": "silver",
+            "brand": "Philips",
+            "frequency": "60Гц"
+        },
+        {
+            "name": "Монітор 27 Dell S2721DGFA (210-AXRQ)",
+            "enabled": true,
+            "currentPrice": 14500.00,
+            "previousPrice": 19000.00,
+            "categories": "Gaming Monitors",
+            "imageUrls": [
+              "https://i2.rozetka.ua/goods/21449623/dell_210_axrq_images_21449623533.jpg",
+              "https://i8.rozetka.ua/goods/21449604/dell_210_axrq_images_21449604053.jpg",
+              "https://i2.rozetka.ua/goods/21449606/dell_210_axrq_images_21449606998.jpg"
+            ],
+            "quantity": 12,
+            "date": "",
+            "color": "silver",
+            "brand": "Philips",
+            "frequency": "60Гц"
+        },
+        {
+          "name": "Монітор 27 Dell S2721DGFA (210-AXRQ)",
+          "enabled": true,
+          "currentPrice": 14500.00,
+          "previousPrice": 19000.00,
+          "categories": "Gaming Monitors",
+          "imageUrls": [
+            "https://i2.rozetka.ua/goods/21449623/dell_210_axrq_images_21449623533.jpg",
+            "https://i8.rozetka.ua/goods/21449604/dell_210_axrq_images_21449604053.jpg",
+            "https://i2.rozetka.ua/goods/21449606/dell_210_axrq_images_21449606998.jpg"
+          ],
+          "quantity": 12,
+          "date": "",
+          "color": "silver",
+          "brand": "Philips",
+          "frequency": "60Гц"
+      }
+
+    ]
+}
