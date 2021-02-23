@@ -8,7 +8,7 @@ import StyledCardItem, {
   StyledCardReviews,
   StyledCardTitle
 } from './StyledProductCard';
-import { InStock } from './InStocke/InStock';
+import { InStock } from './InStock/InStock';
 import { CheckAvailability } from './CheckAvailability/CheckAvailability';
 
 export const ProductCard = ({
