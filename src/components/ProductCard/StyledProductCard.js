@@ -66,7 +66,7 @@ export const StyledCardLastPrice = styled.p`
   }
 `
 
-export const StyledCardNowPryce = styled.p`
+export const StyledCardNowPrice = styled.p`
   font-size: 14px;
   font-weight: 600;
 

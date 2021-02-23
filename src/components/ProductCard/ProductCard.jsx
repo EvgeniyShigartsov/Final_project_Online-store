@@ -4,7 +4,7 @@ import { StarRating } from '../StarRating/StarRating'
 import StyledCardItem, {
   StyledCardImg,
   StyledCardLastPrice,
-  StyledCardNowPryce,
+  StyledCardNowPrice,
   StyledCardReviews,
   StyledCardTitle
 } from './StyledProductCard';
@@ -44,7 +44,7 @@ export const ProductCard = ({
 
       <div>
         <StyledCardLastPrice>{lastPrice}</StyledCardLastPrice>
-        <StyledCardNowPryce>{nowPrice}</StyledCardNowPryce>
+        <StyledCardNowPrice>{nowPrice}</StyledCardNowPrice>
       </div>
     </StyledCardItem>
   )
