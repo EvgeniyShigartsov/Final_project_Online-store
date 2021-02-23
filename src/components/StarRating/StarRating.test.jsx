@@ -5,6 +5,6 @@ import { StarRating } from './StarRating';
 
 test('ProductCard render test', () => {
   render(
-    <StarRating />
+    <StarRating rating={4} />
   )
 })
