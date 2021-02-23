@@ -6,12 +6,12 @@ function StarRating({ rating }) {
   const yellowColor = '#E9A426';
   const greyColor = '#C4C4C4';
 
-  const start = [1, 2, 3, 4, 5]
+  const stars = [1, 2, 3, 4, 5]
 
   return (
     <span>
       {
-        start.map((star, indx) => {
+        stars.map((star, indx) => {
           const ratingValue = indx + 1;
 
           return (
