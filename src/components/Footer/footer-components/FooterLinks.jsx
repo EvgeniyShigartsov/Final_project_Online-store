@@ -8,7 +8,7 @@ const FooterLinks = ({ title, links }) => (
   <FooterLinksContainer>
     <FooterLinksTitle>{title}</FooterLinksTitle>
     {links.map((link) => (
-      <FooterLinkItem to={link.to}>
+      <FooterLinkItem key={link.text} to={link.to}>
         {link.text}
       </FooterLinkItem>
     ))}

@@ -12,5 +12,8 @@ const FooterSocialNetwork = () => (
 export default FooterSocialNetwork
 
 const Wrapper = styled.div`
-display: flex
+display: flex;
+font-size: 22px;
+justify-content: space-between;
+padding: 0.5em, 1em, 0.5em, 0;
 `

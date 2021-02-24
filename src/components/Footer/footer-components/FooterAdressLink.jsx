@@ -1,14 +1,14 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const FooterLinkContacts = styled.a`
+const FooterLinkContacts = styled(Link)`
 font-family: Poppins;
 font-style: normal;
-font-weight: bold;
 font-size: 14px;
-line-height: 100%;
-display: flex;
+// display: flex;
 align-items: center;
 color: 00008B;
+// padding-bottom: 2px;
 `
 
 export default FooterLinkContacts
