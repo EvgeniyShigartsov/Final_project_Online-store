@@ -12,8 +12,8 @@ import FooterSocialNetwork from './footer-components/FooterSocialNetwork'
 import FooterPayment from './footer-components/FooterPayment'
 import FooterLine from './footer-components/FooterLine'
 
-export const Footers = () => (
-  <Footer>
+export const Footer = () => (
+  <StyledFooter>
     <Container>
       <Section>
         <FooterHeader />
@@ -31,12 +31,12 @@ export const Footers = () => (
         </Wrapper>
       </Section>
     </Container>
-  </Footer>
+  </StyledFooter>
 )
 
-export default Footers
+export default Footer
 
-const Footer = styled.footer`
+const StyledFooter = styled.footer`
     position: relative;
     clear: both;
     color: hsla(0,0%,100%,.4);
