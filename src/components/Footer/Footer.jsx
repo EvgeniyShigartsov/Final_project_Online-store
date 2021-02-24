@@ -1,7 +1,7 @@
 import React from 'react'
 import 'antd/dist/antd.css'
 import styled from 'styled-components'
-import { Container } from '../../styles/styled-components/Container'
+import { Container } from '../common/Container'
 // import { forTablet, forDesktop } from '../../styles/mediaBrakepoints'
 import { FooterHeader } from './footer-components/FooterHeader'
 import footerConfig from './footer-components/footerConfig'
