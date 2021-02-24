@@ -43,3 +43,18 @@ export const getOneProduct = (itemNo) => async () => {
     .catch((error) => error)
   return res
 }
+
+export const getFilteredProducts = (param, actionCreator) => async (dispatch) => {
+  let paramStr = ''
+  Object.keys(param).forEach((key, index) => {
+    if (index === 0) {
+      return paramStr += `${key}=${param[key]}`
+    }
+    return paramStr += `&${key}=${param[key]}`
+  })
+
+  const res = await axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+    .then((data) => data)
+    .catch((error) => error)
+  dispatch(actionCreator(res.data))
+}
