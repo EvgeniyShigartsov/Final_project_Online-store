@@ -20,4 +20,5 @@ export default FooterHeader
 
 const Wrapper = styled.div`
 display: flex;
+margin-bottom: 4.5em;
 `

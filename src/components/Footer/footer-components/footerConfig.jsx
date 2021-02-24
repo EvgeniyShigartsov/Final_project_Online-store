@@ -14,17 +14,6 @@ const footerConfig = [
     ],
   },
   {
-    title: 'Desktop PCs',
-    links: [
-      { to: '/', text: 'Custom PCs' },
-      { to: '/', text: 'Servers' },
-      { to: '/', text: 'MSI All-In-One PCs' },
-      { to: '/', text: 'HP/Compaq PCs' },
-      { to: '/', text: 'ASUS PCs' },
-      { to: '/', text: 'Tecs PCs' },
-    ],
-  },
-  {
     title: 'PC Parts',
     links: [
       { to: '/', text: 'CPUS' },
@@ -40,9 +29,20 @@ const footerConfig = [
     ],
   },
   {
+    title: 'Desktop PCs',
+    links: [
+      { to: '/', text: 'Custom PCs' },
+      { to: '/', text: 'Servers' },
+      { to: '/', text: 'MSI All-In-One PCs' },
+      { to: '/', text: 'HP/Compaq PCs' },
+      { to: '/', text: 'ASUS PCs' },
+      { to: '/', text: 'Tecs PCs' },
+    ],
+  },
+  {
     title: 'Laptops',
     links: [
-      { to: '/', text: 'Evryday Use Notebooks' },
+      { to: '/', text: 'Everyday Use Notebooks' },
       { to: '/', text: 'MSI Workstation Series' },
       { to: '/', text: 'MSI All-In-One PCs' },
       { to: '/', text: 'MSI Prestige Series' },
