@@ -1,6 +1,6 @@
 import React from 'react'
 import data from './ContentForAboutUs'
-import { Container } from '../../styles/styled-components/Container'
+import { Container } from '../../components/common/Container'
 import {
   TitleBox, Flex, Section, ContentContainer, SectionTitle, SectionContent, SectionImg, Img, Break,
   Image

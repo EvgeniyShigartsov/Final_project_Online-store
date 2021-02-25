@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { forTablet, forDesktop } from '../../styles/mediaBrakepoints'
+import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
 const TitleBox = styled.div`
   display: flex;
@@ -162,6 +162,7 @@ const Break = styled.div`
   height: 20px;
 }
 `
+
 export {
   Img, Image, SectionImg, ContentContainer, SectionContent, SectionTitle, Section, Flex, TitleBox,
   Break
