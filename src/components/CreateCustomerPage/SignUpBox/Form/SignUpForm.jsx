@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
@@ -8,7 +9,18 @@ import 'antd/dist/antd.css'
 
 const SignUpForm = () => {
   const onSubmit = (values) => {
-    console.log(values);
+    const credentials = Object.entries(values).reduce((acc, [key, value]) => {
+      if (key !== 'confrimPassword' && value !== undefined) {
+        console.log(key)
+        console.log('////////////////')
+        console.log(value)
+        console.log('////////////////')
+        console.log(acc)
+        return acc[key] = value
+      }
+      return acc
+    }, {})
+    console.log(credentials)
     // const res  createCustomer()
   };
   
@@ -49,7 +61,7 @@ const SignUpForm = () => {
     >
 
       <StyledFrom.Item
-        label="First Name"
+        label="First name"
         name="firstName"
         rules={[
           {
@@ -62,7 +74,7 @@ const SignUpForm = () => {
       </StyledFrom.Item>
 
       <StyledFrom.Item
-        label="Last Name"
+        label="Last name"
         name="lastName"
         rules={[
           {
