@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { LinkWrapper, StyledDiv} from './StylesLoginPageLink'
-import Button from '../../common/Buttons/Button'
+import { LinkWrapper, StyledDiv } from '../StylesSignUpBox'
+import Button from '../../../common/Buttons/Button'
 
 const LoginPageLink = () => (
   <LinkWrapper>

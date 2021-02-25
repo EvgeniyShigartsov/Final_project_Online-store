@@ -1,5 +1,6 @@
 import React from 'react'
 import SignUpForm from './Form/SignUpForm';
+import LoginPageLink from './LoginPageLink/LoginPageLink';
 import { StyledSignUpBox, StyledFormTitle, StyledFormText } from './StylesSignUpBox'
 
 const SignUpBox = () => (
@@ -10,6 +11,7 @@ const SignUpBox = () => (
       adress or phone number.
     </StyledFormText>
     <SignUpForm />
+    <LoginPageLink />
   </StyledSignUpBox>
 )
 export default SignUpBox
