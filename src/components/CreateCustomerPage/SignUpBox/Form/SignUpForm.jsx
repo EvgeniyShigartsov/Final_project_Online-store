@@ -4,10 +4,12 @@ import React from 'react'
 import { Input, Button} from 'antd';
 import StyledFrom from './StylesSignUpForm'
 import 'antd/dist/antd.css'
+// import { createCustomer } from '../../../../store/customer/middleware'
 
 const SignUpForm = () => {
-  const onFinish = (values) => {
+  const onSubmit = (values) => {
     console.log(values);
+    // const res  createCustomer()
   };
   
   const formLayout = {
@@ -21,7 +23,7 @@ const SignUpForm = () => {
     
   }
   const tailLayout = {
-    wrapperCol: { offset: 10},
+    wrapperCol: { offset: 10 },
   };
   
   const passwordMatchValidator = ({ getFieldValue }) => {
@@ -43,12 +45,12 @@ const SignUpForm = () => {
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
+      onFinish={onSubmit}
     >
 
       <StyledFrom.Item
-        label="Name"
-        name="name"
+        label="First Name"
+        name="firstName"
         rules={[
           {
             required: true,
@@ -60,8 +62,8 @@ const SignUpForm = () => {
       </StyledFrom.Item>
 
       <StyledFrom.Item
-        label="Surename"
-        name="surename"
+        label="Last Name"
+        name="lastName"
         rules={[
           {
             required: true,
@@ -93,6 +95,10 @@ const SignUpForm = () => {
             required: true,
             message: 'Please input your email.',
           },
+          {
+            type: 'email',
+            message: 'Entered data is not an email.',
+          },
         ]}
       >
         <Input />
@@ -117,7 +123,7 @@ const SignUpForm = () => {
 
       <StyledFrom.Item
         label="Confrim password"
-        name="confrim-password"
+        name="confrimPassword"
         rules={[
           {
             required: true,
@@ -131,6 +137,19 @@ const SignUpForm = () => {
         ]}
       >
         <Input.Password />
+      </StyledFrom.Item>
+
+      <StyledFrom.Item
+        label="Avatar url"
+        name="avatarUrl"
+        rules={[
+          {
+            type: 'url',
+            message: 'Entered data is not an url.'
+          }
+        ]}
+      >
+        <Input />
       </StyledFrom.Item>
 
       <StyledFrom.Item {...tailLayout}>
