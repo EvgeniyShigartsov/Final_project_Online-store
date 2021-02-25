@@ -6,9 +6,9 @@ export const StyledPageHeader = styled.h2`
     font-weight: 600;
 `
 export const FormContainer = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 `

@@ -8,6 +8,7 @@ export const StyledSignUpBox = styled.div`
     width: 100%;
     padding: 20px 20px 32px 20px;
     background-color: #F5F9FF;
+    /* margin-bottom: 16px; */
 `
 export const StyledFormTitle = styled.h4`
     font-size: 14px;
