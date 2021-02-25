@@ -1,27 +1,25 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
-import { Input, Button} from 'antd';
+import { useHistory } from 'react-router-dom';
+import { Input, Button } from 'antd';
 import StyledFrom from './StylesSignUpForm'
 import 'antd/dist/antd.css'
-// import { createCustomer } from '../../../../store/customer/middleware'
+import { createCustomer } from '../../../../store/customer/middleware'
 
 const SignUpForm = () => {
+  const history = useHistory()
   const onSubmit = (values) => {
     const credentials = Object.entries(values).reduce((acc, [key, value]) => {
       if (key !== 'confrimPassword' && value !== undefined) {
-        console.log(key)
-        console.log('////////////////')
-        console.log(value)
-        console.log('////////////////')
-        console.log(acc)
-        return acc[key] = value
+        acc[key] = value
+        return acc
       }
       return acc
     }, {})
-    console.log(credentials)
-    // const res  createCustomer()
+    credentials.isAdmin = true
+
+    createCustomer(credentials, history)
   };
   
   const formLayout = {
