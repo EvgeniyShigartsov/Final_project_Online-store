@@ -3,6 +3,7 @@ import { BannerSlider } from './components/BannerSlider/BannerSlider'
 import { Footer } from './components/Footer/Footer'
 import Button from './components/common/Buttons/Button'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+import {Cart} from './components/Cart/Cart'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <BannerSlider />
       <NewProductsSlider />
       <Footer />
+      <Cart />
     </div>
   )
 }
