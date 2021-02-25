@@ -13,11 +13,10 @@ const FooterCopyRight = () => (
 export default FooterCopyRight
 
 const Text = styled.p`
-font-family: Poppins;
 font-style: normal;
 font-weight: 500;
 font-size: 12px;
-line-height: 132.5%;
+// line-height: 132.5%;
 align-items: center;
 text-align: right;
 color: #FFFFFF;

@@ -2,9 +2,10 @@ import React from 'react'
 import 'antd/dist/antd.css'
 import styled from 'styled-components'
 import { Container } from '../common/Container'
+import { forDesktop } from '../../styles/mediaBreakPoints'
 // import { forTablet, forDesktop } from '../../styles/mediaBrakepoints'
 import { FooterHeader } from './footer-components/FooterHeader'
-import footerConfig from './footer-components/footerConfig'
+import footerConfig from './footer-components/footer-config/footerConfig'
 import FooterLinks from './footer-components/FooterLinks'
 import FooterAdress from './footer-components/FooterAdress'
 import FooterCopyRight from './footer-components/FooterCopyRight'
@@ -51,6 +52,11 @@ padding-top: 4.5em;
 
 const Wrapper = styled.div`
 display: flex;
+flex-direction: column;
+
+@media(min-width: ${forDesktop.minWidth}px){
+flex-direction: row;
 justify-content: space-between;
 margin: 3.5em 0 3.5em 0;
+}
 `

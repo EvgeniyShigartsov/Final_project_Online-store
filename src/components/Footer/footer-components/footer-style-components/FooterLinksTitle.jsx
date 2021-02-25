@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const FooterLinksTitle = styled.h4`
-font-family: Poppins;
 font-style: normal;
 font-weight: bold;
 font-size: 14px;

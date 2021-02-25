@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import FooterTitle from './FooterTitle'
-import FooterTitleText from './FooterTitleText'
+import FooterTitle from './footer-style-components/FooterTitle'
+import FooterTitleText from './footer-style-components/FooterTitleText'
 import FooterSignature from './FooterSignature'
 
 export const FooterHeader = () => (

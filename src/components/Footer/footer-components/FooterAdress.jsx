@@ -1,7 +1,7 @@
 import React from 'react'
-import FooterLinksTitle from './FooterLinksTitle'
-import FooterAdressLink from './FooterAdressLink'
-import FooterAdressText from './FooterAdressText'
+import FooterLinksTitle from './footer-style-components/FooterLinksTitle'
+import FooterAdressLink from './footer-style-components/FooterAdressLink'
+import FooterAdressText from './footer-style-components/FooterAdressText'
 
 const FooterDesctops = () => (
   <div>

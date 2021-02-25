@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FooterLinksTitle from './FooterLinksTitle'
-import FooterLinkItem from './FooterLinkItem'
+import FooterLinksTitle from './footer-style-components/FooterLinksTitle'
+import FooterLinkItem from './footer-style-components/FooterLinkItem'
 import FooterLinksContainer from './FooterLinkContainer'
 
 const FooterLinks = ({ title, links }) => (

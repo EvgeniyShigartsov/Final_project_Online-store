@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const FooterTextContacts = styled.p`
-font-family: Poppins;
 font-style: normal;
 font-size: 14px;
 display: flex;
