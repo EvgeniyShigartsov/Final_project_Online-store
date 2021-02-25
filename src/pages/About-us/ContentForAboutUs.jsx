@@ -67,5 +67,5 @@ data.propTypes = {
   icon: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   biggerSize: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired
 }
