@@ -19,7 +19,7 @@ const SignUpForm = () => {
     }, {})
     credentials.isAdmin = true
 
-    createCustomer(credentials, history)
+    createCustomer(credentials, history) // так як зараз треба
   };
   
   const formLayout = {
