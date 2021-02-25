@@ -23,7 +23,7 @@ export const LinkWrapper = styled.div`
     align-items: center;
     padding: 20px;
     background-color: #F5F9FF;
-`
+    `
 export const StyledDiv = styled.div`
     font-size: 16px;
     font-weight: 600;
