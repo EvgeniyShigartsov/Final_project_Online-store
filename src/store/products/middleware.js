@@ -8,8 +8,8 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-export const getProducts = () => async (dispatch) => {
-  const res = await axios.get('/products')
+export const getProducts = () => (dispatch) => {
+  const res = axios.get('/products')
     .then((data) => data)
     .catch((error) => error.response)
   if (res.status === 200) {
@@ -17,8 +17,8 @@ export const getProducts = () => async (dispatch) => {
   }
 }
 
-export const addOneProduct = (newProduct) => async (dispatch) => {
-  const res = await axios.post(BASE_ENDPOINT, newProduct, {headers})
+export const addOneProduct = (newProduct) => (dispatch) => {
+  const res = axios.post(BASE_ENDPOINT, newProduct, {headers})
     .then((data) => data)
     .catch((error) => error.response)
   if (res.status === 200) {
@@ -27,8 +27,8 @@ export const addOneProduct = (newProduct) => async (dispatch) => {
   return res
 }
 
-export const updatedOneProduct = (id, newProduct) => async (dispatch) => {
-  const res = await axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, {headers})
+export const updatedOneProduct = (id, newProduct) => (dispatch) => {
+  const res = axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, {headers})
     .then((data) => data)
     .catch((error) => error)
   if (res.status === 200) {
@@ -37,14 +37,14 @@ export const updatedOneProduct = (id, newProduct) => async (dispatch) => {
   return res
 }
 
-export const getOneProduct = (itemNo) => async () => {
-  const res = await axios.get(`${BASE_ENDPOINT}/${itemNo}`)
+export const getOneProduct = (itemNo) => () => {
+  const res = axios.get(`${BASE_ENDPOINT}/${itemNo}`)
     .then((data) => data)
     .catch((error) => error)
   return res
 }
 
-export const getFilteredProducts = (param, actionCreator) => async (dispatch) => {
+export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
   let paramStr = ''
   Object.keys(param).forEach((key, index) => {
     if (index === 0) {
@@ -53,8 +53,8 @@ export const getFilteredProducts = (param, actionCreator) => async (dispatch) =>
     return paramStr += `&${key}=${param[key]}`
   })
 
-  const res = await axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((data) => data)
     .catch((error) => error)
-  dispatch(actionCreator(res.data))
+  if (res.status === 200) dispatch(actionCreator(res.data))
 }
