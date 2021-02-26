@@ -10,7 +10,7 @@ import {
 export function AboutUsPage() {
   return (
     <Container key={10}>
-      <TitleBox key={11}><p>About As</p></TitleBox>
+      <TitleBox key={11}><p>About Us</p></TitleBox>
       <Flex key={12} className="container">
         {data.map((item, i) => {
           const section = item;
