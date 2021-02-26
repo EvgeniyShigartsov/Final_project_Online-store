@@ -2,10 +2,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import StyledFrom from './StylesSignUpForm'
 import 'antd/dist/antd.css'
 import { createCustomer } from '../../../../store/customer/middleware'
+import StyledButton from '../../../common/Buttons/StyledButton'
 
 const SignUpForm = () => {
   const history = useHistory()
@@ -19,7 +20,7 @@ const SignUpForm = () => {
     }, {})
     credentials.isAdmin = true
 
-    createCustomer(credentials, history) // так як зараз треба
+    createCustomer(credentials, history)
   };
   
   const formLayout = {
@@ -163,7 +164,7 @@ const SignUpForm = () => {
       </StyledFrom.Item>
 
       <StyledFrom.Item {...tailLayout}>
-        <Button size="large" type="primary" shape="round" htmlType="submit" style={{ width: 150 }}>Sign Up</Button>
+        <StyledButton size="lg" shape="round" htmlType="submit">Submit</StyledButton>
       </StyledFrom.Item>
 
     </StyledFrom>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { LinkWrapper, StyledDiv } from '../StylesSignUpBox'
-import Button from '../../../common/Buttons/Button'
+import StyledButton from '../../../common/Buttons/StyledButton'
 
 const LoginPageLink = () => (
   <LinkWrapper>
@@ -9,7 +9,7 @@ const LoginPageLink = () => (
       Already registered ?
     </StyledDiv>
     <Link to="/signin">
-      <Button type="borderBlue" width={120} height={30}>Sign in</Button>
+      <StyledButton size="xs" shape="round" color="borderBlue">Sign In</StyledButton>
     </Link>
   </LinkWrapper>
 )

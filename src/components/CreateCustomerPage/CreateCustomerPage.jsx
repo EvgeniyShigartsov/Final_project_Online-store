@@ -1,11 +1,12 @@
 import React from 'react'
 import { Container } from '../common/Container'
-import { FormContainer, StyledPageHeader } from './StylesCreateCustomer'
+import FormContainer from './StylesCreateCustomer'
 import SignUpBox from './SignUpBox/SignUpBox'
+import Heading from '../common/Heading/Heading'
 
 const CreateCustomerPage = () => (
   <Container>
-    <StyledPageHeader>Customer Registration</StyledPageHeader>
+    <Heading>Customer Registration</Heading>
     <FormContainer>
       <SignUpBox />
     </FormContainer>
