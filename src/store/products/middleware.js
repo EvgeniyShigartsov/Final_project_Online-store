@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import { setProducts, addProduct, updateProduct } from './actionCreator';
 
@@ -52,9 +53,11 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
+  console.log(paramStr);
 
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
-    .then((data) => data)
-    .catch((error) => error)
-  if (res.status === 200) dispatch(actionCreator(res.data))
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error.response))
+  
+  // if (res.status === 200) dispatch(actionCreator(res.data))
 }

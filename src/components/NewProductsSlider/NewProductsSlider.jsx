@@ -7,13 +7,12 @@ import { SliderArrowLeft } from '../common/SliderArrowLeft'
 import { SliderArrowRight } from '../common/SliderArrowRight'
 import { forMobile, forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
-import { getNewProducts } from '../../store/getNewProducts/middleware'
 import { Wrapper } from '../common/Wrapper'
 import { Container } from '../common/Container'
 
-const mapStateToProps = (state) => ({ newProducts: state.newProductsModule.newProducts })
+const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
-export const NewProductsSlider = connect(mapStateToProps, { getNewProducts })(({
+export const NewProductsSlider = connect(mapStateToProps, null)(({
   getNewProducts,
   newProducts
 }) => {
