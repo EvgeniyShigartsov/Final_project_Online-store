@@ -6,6 +6,7 @@ import { AboutUsPage } from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
 import StyledButton from './components/common/Buttons/StyledButton'
 import { Cart } from './components/CartPage/Cart/Cart'
+import ProductPage from './components/ProductPage/ProductPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <NavLink to="/signup">Sign Up</NavLink>
       <NavLink to="/aboutus">About Us</NavLink>
       <NavLink to="/cart">Cart</NavLink>
+      <NavLink to="/products/720373" style={{ margin: '0 15px', color: 'tomato' }}>Products</NavLink>
       <NavLink to="/buttons">Buttons</NavLink>
       
       <Switch>
@@ -29,6 +31,9 @@ function App() {
         </Route>
         <Route exact path="/cart">
           <Cart />
+        </Route>
+        <Route exact path="/products/:productID">
+          <ProductPage />
         </Route>
         <Route exact path="/buttons">
           <StyledButton shape="round">Submit</StyledButton>
