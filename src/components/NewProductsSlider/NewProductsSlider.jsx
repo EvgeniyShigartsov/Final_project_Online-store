@@ -31,6 +31,8 @@ export const NewProductsSlider = connect(
     if (ref.current) {
       setHandlers(() => ({ next: ref.current.next, prev: ref.current.prev }))
     }
+    // при первом рендере ref.current === undefined потому используется useEffect & useState
+    // next и prev это методы слайдера для стрелок
   }, [])
 
   useEffect(() => {
