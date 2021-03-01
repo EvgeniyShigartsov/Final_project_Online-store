@@ -9,10 +9,10 @@ const headers = {
 }
 
 export const getProducts = () => (dispatch) => {
-  const res = axios.get('/products')
+  axios.get('/products')
     .then((data) => {
       if (data.status === 200) {
-        dispatch(setProducts(res.data))
+        dispatch(setProducts(data.data))
       }
     })
     .catch((error) => error.response)
@@ -34,7 +34,7 @@ export const updatedOneProduct = (id, newProduct) => (dispatch) => {
   const res = axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, {headers})
     .then((data) => {
       if (data.status === 200) {
-        dispatch(updateProduct(res.data))
+        dispatch(updateProduct(data.data))
       }
       return data
     })
@@ -58,10 +58,10 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     return paramStr += `&${key}=${param[key]}`
   })
 
-  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+  axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((data) => {
       if (data.status === 200) {
-        dispatch(actionCreator(res.data))
+        dispatch(actionCreator(data.data))
       }
       return data
     })

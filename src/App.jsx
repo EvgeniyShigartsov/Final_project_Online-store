@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
 import {Cart} from './components/CartPage/Cart/Cart'
@@ -7,8 +8,9 @@ import StyledButton from './components/common/Buttons/StyledButton'
 import {AboutUsPage} from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
 import LogIn from './components/LogIn/LogIn'
+import { getFilteredProducts } from './store/products/middleware'
 
-const App = () => (
+const App = connect(null, {getFilteredProducts})((props) => (
   <div>
     <NavLink to="/">Homepage</NavLink>
     <NavLink to="/signup">Sign Up</NavLink>
@@ -29,7 +31,16 @@ const App = () => (
         <AboutUsPage />
       </Route>
     </Switch>
-    <StyledButton shape="round">Submit</StyledButton>
+    <StyledButton
+      onClick={async () => {
+        const res = await props.getFilteredProducts({newProduct: true})
+        console.log(res)
+      }}
+      shape="round"
+    >
+      Submit
+
+    </StyledButton>
     <StyledButton size="sm" shape="round">Submit</StyledButton>
     <StyledButton size="xl" shape="round" color="black">Submit</StyledButton>
     <StyledButton size="lg" shape="round">Submit</StyledButton>
@@ -38,6 +49,6 @@ const App = () => (
     <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
     <Cart />
   </div>
-)
+))
 
 export default App
