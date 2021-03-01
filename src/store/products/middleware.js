@@ -20,8 +20,8 @@ export const getProducts = () => (dispatch) => {
 
 export const addOneProduct = (newProduct) => (dispatch) => {
   const res = axios.post(BASE_ENDPOINT, newProduct, {headers})
-    .then((data) => data)
-    .catch((error) => error.response)
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error.response))
   if (res.status === 200) {
     dispatch(addProduct(newProduct))
   }
@@ -40,21 +40,21 @@ export const updatedOneProduct = (id, newProduct) => (dispatch) => {
 
 export const getOneProduct = (itemNo) => () => {
   const res = axios.get(`${BASE_ENDPOINT}/${itemNo}`)
-    .then((data) => data)
-    .catch((error) => error)
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error.response))
   return res
 }
 
-export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
-  let paramStr = ''
-  Object.keys(param).forEach((key, index) => {
-    if (index === 0) {
-      return paramStr += `${key}=${param[key]}`
-    }
-    return paramStr += `&${key}=${param[key]}`
-  })
-  console.log(paramStr);
-
+export const getFilteredProducts = (paramStr, actionCreator) => (dispatch) => {
+  // let paramStr = ''
+  // Object.keys(param).forEach((key, index) => {
+  //   if (index === 0) {
+  //     return paramStr += `${key}=${param[key]}`
+  //   }
+  //   return paramStr += `&${key}=${param[key]}`
+  // })
+  // console.log(paramStr);
+  
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((data) => console.log(data))
     .catch((error) => console.log(error.response))

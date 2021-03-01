@@ -3,7 +3,7 @@ import { NavLink, Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
 import {AboutUsPage} from './pages/About-us/AboutUs'
-// import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <BannerSlider />
-          {/* <NewProductsSlider /> */}
+          <NewProductsSlider />
         </Route>
         <Route exact path="/signup">
           <CreateCustomerPage />

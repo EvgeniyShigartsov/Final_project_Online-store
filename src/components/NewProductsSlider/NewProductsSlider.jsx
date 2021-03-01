@@ -1,19 +1,28 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Carousel } from 'antd'
 import 'antd/dist/antd.css'
+import axios from 'axios'
 import { SliderArrowLeft } from '../common/SliderArrowLeft'
 import { SliderArrowRight } from '../common/SliderArrowRight'
 import { forMobile, forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
-import { Wrapper } from '../common/Wrapper'
 import { Container } from '../common/Container'
+import { Wrapper } from '../common/Wrapper'
+
+import { getNewProductsCreator } from '../../store/products/actionCreator'
+import { getFilteredProducts } from '../../store/products/middleware'
 
 const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
-export const NewProductsSlider = connect(mapStateToProps, null)(({
-  getNewProducts,
+export const NewProductsSlider = connect(
+  mapStateToProps,
+  { getNewProductsCreator, getFilteredProducts }
+)(({
+  getNewProductsCreator,
+  getFilteredProducts,
   newProducts
 }) => {
   const ref = useRef()
@@ -23,10 +32,20 @@ export const NewProductsSlider = connect(mapStateToProps, null)(({
     if (ref.current) {
       setHandlers(() => ({ next: ref.current.next, prev: ref.current.prev }))
     }
-    getNewProducts()
+   
+    const newFilter = {
+      type: 'newProduct',
+      name: 'getNewProducts'
+    }
+    // axios.post('/filters', newFilter, { headers })
+    // .then((res) => console.log(res))
+    // .catch((err) => console.log(err.response))
+    const paramStr = 'newProduct=true&perPage=1&startPage=1'
+
+    getFilteredProducts(paramStr, getNewProductsCreator)
     // при первом рендере ref.current === undefined потому используется useEffect & useState
     // next и prev это методы слайдера для стрелок
-  }, [getNewProducts])
+  }, [getFilteredProducts, getNewProductsCreator])
 
   const carouselStentings = {
     slidesToShow: 6,
@@ -49,6 +68,7 @@ export const NewProductsSlider = connect(mapStateToProps, null)(({
       }
     ]
   }
+  if (newProducts.length < 1) return null
   return (
     <Container>
       <Wrapper>
