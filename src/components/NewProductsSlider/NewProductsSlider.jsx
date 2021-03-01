@@ -1,19 +1,18 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Carousel } from 'antd'
 import 'antd/dist/antd.css'
-import axios from 'axios'
 import { SliderArrowLeft } from '../common/SliderArrowLeft'
 import { SliderArrowRight } from '../common/SliderArrowRight'
 import { forMobile, forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { Container } from '../common/Container'
 import { Wrapper } from '../common/Wrapper'
-
 import { getNewProductsCreator } from '../../store/products/actionCreator'
 import { getFilteredProducts } from '../../store/products/middleware'
+import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
+import rateCalculator from '../../utils/rateCalculator'
 
 const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
@@ -32,19 +31,14 @@ export const NewProductsSlider = connect(
     if (ref.current) {
       setHandlers(() => ({ next: ref.current.next, prev: ref.current.prev }))
     }
-   
-    const newFilter = {
-      type: 'newProduct',
-      name: 'getNewProducts'
-    }
-    // axios.post('/filters', newFilter, { headers })
-    // .then((res) => console.log(res))
-    // .catch((err) => console.log(err.response))
-    const paramStr = 'newProduct=true&perPage=1&startPage=1'
+  }, [])
 
-    getFilteredProducts(paramStr, getNewProductsCreator)
-    // при первом рендере ref.current === undefined потому используется useEffect & useState
-    // next и prev это методы слайдера для стрелок
+  useEffect(() => {
+    const paramObj = {
+      newProduct: 'yes'
+    }
+
+    getFilteredProducts(paramObj, getNewProductsCreator)
   }, [getFilteredProducts, getNewProductsCreator])
 
   const carouselStentings = {
@@ -68,7 +62,6 @@ export const NewProductsSlider = connect(
       }
     ]
   }
-  if (newProducts.length < 1) return null
   return (
     <Container>
       <Wrapper>
@@ -76,13 +69,12 @@ export const NewProductsSlider = connect(
           {newProducts.map((el) => (
             <ProductCard
               key={el.itemNo}
-              title={el.name}
+              title={upperCaseFirstLetter(el.name)}
               img={el.imageUrls[0]}
               previousPrice={el.previousPrice}
               currentPrice={el.currentPrice}
-              reviews={100}
               isGoodsInStock={el.quantity > 0}
-              rating={4}
+              {...rateCalculator(el.reviews)}
             />
           ))}
         </Carousel>

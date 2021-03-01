@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import { setProducts, addProduct, updateProduct } from './actionCreator';
 
@@ -45,19 +44,20 @@ export const getOneProduct = (itemNo) => () => {
   return res
 }
 
-export const getFilteredProducts = (paramStr, actionCreator) => (dispatch) => {
-  // let paramStr = ''
-  // Object.keys(param).forEach((key, index) => {
-  //   if (index === 0) {
-  //     return paramStr += `${key}=${param[key]}`
-  //   }
-  //   return paramStr += `&${key}=${param[key]}`
-  // })
-  // console.log(paramStr);
+export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
+  let paramStr = ''
+  Object.keys(param).forEach((key, index) => {
+    if (index === 0) {
+      return paramStr += `${key}=${param[key]}`
+    }
+    return paramStr += `&${key}=${param[key]}`
+  })
   
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
-    .then((data) => console.log(data))
+    .then((res) => {
+      if (res.status === 200) dispatch(actionCreator(res.data.products))
+    })
     .catch((error) => console.log(error.response))
-  
-  // if (res.status === 200) dispatch(actionCreator(res.data))
+
+  return res
 }

@@ -1,4 +1,4 @@
-const newProducts = [
+const newProduct = [
   {
     name: 'Монитор 31.5" AOC CQ32G1',
     enabled: true,
@@ -15,7 +15,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/gamingMonitors',
     brand: 'AOC',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 2, 3, 5, 4, 5, 3, 4, 3, 5, 5, 4, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -41,7 +41,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/gamingMonitors',
     brand: 'MSI',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [1, 5, 3, 5, 3, 5, 2, 4, 5, 5, 5, 4, 5],
     params: {
       updateFrequency: '75 ГГц',
@@ -65,7 +65,7 @@ const newProducts = [
     quantity: 65,
     color: 'black',
     productUrl: '/gamingMonitors',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [5, 2, 5, 4, 3, 5, 2, 4, 5, 5, 5, 4, 5],
     params: {
       updateFrequency: '165 ГГц',
@@ -91,7 +91,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/gamingMonitors',
     brand: 'Iiyama',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [5, 2, 5, 4, 3, 5, 2, 4, 5, 5, 5, 4, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -117,7 +117,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/gamingMonitors',
     brand: 'LG',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 5, 5, 4, 3, 5, 4, 4, 5, 5, 5, 3, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -141,7 +141,7 @@ const newProducts = [
     color: 'silver-black',
     productUrl: '/gamingMonitors',
     brand: 'Samsung',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 5, 3, 4, 3, 5, 4, 4, 5, 2, 5, 3, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -167,7 +167,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/gamingMonitors',
     brand: 'Philips',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [4, 3, 5, 4, 5, 5, 4, 4, 5, 2, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -193,7 +193,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/tablets',
     brand: 'Apple',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [4, 5, 5, 4, 5, 5, 4, 4, 5, 5, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -220,7 +220,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/tablets',
     brand: ' Lenovo',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 5, 3, 4, 5, 5, 4, 4, 5, 5, 3, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -247,7 +247,7 @@ const newProducts = [
     color: 'blue',
     productUrl: '/tablets',
     brand: 'Samsung',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 5, 5, 4, 5, 5, 4, 4, 5, 5, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -273,7 +273,7 @@ const newProducts = [
     quantity: 22,
     color: 'grey',
     productUrl: '/tablets',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 5, 5, 4, 5, 5, 4, 4, 5, 5, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -300,7 +300,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/tablets',
     brand: 'Lenovo',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 3, 5, 4, 5, 5, 4, 4, 5, 3, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -327,7 +327,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/tablets',
     brand: 'Lenovo',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [4, 4, 5, 4, 5, 5, 3, 4, 5, 4, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -354,7 +354,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/tablets',
     brand: 'Huawei',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [5, 4, 5, 4, 3, 5, 5, 4, 5, 4, 5, 4, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -381,7 +381,7 @@ const newProducts = [
     color: 'blue',
     productUrl: '/laptops',
     brand: 'Asus',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [5, 4, 5, 4, 5, 5, 5, 4, 5, 4, 5, 5, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -408,7 +408,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/laptops',
     brand: 'HP',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [3, 4, 5, 4, 5, 5, 2, 4, 5, 4, 5, 5, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -435,7 +435,7 @@ const newProducts = [
     color: 'grey',
     productUrl: '/laptops',
     brand: 'Lenovo',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 4, 5, 5, 5, 5, 4, 4, 5, 4, 5, 5, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -462,7 +462,7 @@ const newProducts = [
     color: 'silver',
     productUrl: '/laptops',
     brand: 'HP',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 4, 5, 4, 5, 5, 4, 4, 5, 4, 5, 3, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -489,7 +489,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/laptops',
     brand: 'MSI',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [5, 5, 5, 4, 5, 5, 4, 4, 5, 4, 5, 5, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -516,7 +516,7 @@ const newProducts = [
     color: 'silver',
     productUrl: '/laptops',
     brand: 'Huawei',
-    newProduct: true,
+    newProduct: 'yes',
     reviews: [5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5],
     params: {
       updateFrequency: '60 ГГц',
@@ -543,7 +543,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/laptops',
     brand: 'MSI',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 2, 5, 4, 3, 5, 4, 3, 5, 4, 5, 3, 5],
     params: {
       updateFrequency: '144 ГГц',
@@ -569,7 +569,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/desctops',
     brand: 'Dell',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 3, 5, 4, 3, 5, 4, 3, 4, 4, 5, 3, 4],
     params: {
       videoCard: 'Intel HD Graphics 630',
@@ -595,7 +595,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/desctops',
     brand: 'Artline',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 3, 5, 4, 3, 5, 4, 3, 5, 4, 5, 3, 5],
     params: {
       videoCard: 'GeForce GTX 1050 Ti',
@@ -621,7 +621,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/desctops',
     brand: 'Everest',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 3, 5, 4, 3, 5, 4, 3, 5, 4, 5, 3, 5],
     params: {
       videoCard: 'GeForce GTX 1050 Ti',
@@ -647,7 +647,7 @@ const newProducts = [
     color: 'black',
     productUrl: '/desctops',
     brand: 'HP',
-    newProduct: false,
+    newProduct: 'no',
     reviews: [5, 3, 4, 4, 3, 5, 4, 3, 5, 4, 5, 5, 5],
     params: {
       videoCard: 'Intel HD Graphics 630',
@@ -658,5 +658,4 @@ const newProducts = [
     description: 'Высокопродуктивное решение, оборудованное всем необходнимым для выполнения ежедневных заданий.'
   }
 ];
-
-export default newProducts
+export default newProduct
