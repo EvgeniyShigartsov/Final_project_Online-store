@@ -34,10 +34,7 @@ export const NewProductsSlider = connect(
   }, [])
 
   useEffect(() => {
-    const paramObj = {
-      newProduct: 'yes'
-    }
-
+    const paramObj = { newProduct: 'yes' }
     getFilteredProducts(paramObj, getNewProductsCreator)
   }, [getFilteredProducts, getNewProductsCreator])
 
@@ -51,6 +48,13 @@ export const NewProductsSlider = connect(
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
         }
       },
       {
@@ -78,8 +82,8 @@ export const NewProductsSlider = connect(
             />
           ))}
         </Carousel>
-        <SliderArrowLeft onClick={handlers.prev} />
-        <SliderArrowRight onClick={handlers.next} />
+        {newProducts.length > 1 && <SliderArrowRight onClick={handlers.next} /> }
+        {newProducts.length > 1 && <SliderArrowLeft onClick={handlers.prev} /> }
       </Wrapper>
     </Container>
   )
