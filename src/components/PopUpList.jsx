@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons';
 
 // styled-compoents
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // framer-motion
 import { motion } from 'framer-motion';
@@ -26,14 +26,10 @@ const PopUpList = ({
 
   <PopUpContainer setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
     <HeaderOfPopUp>
-
-      <div>
-        <Logo
-          src={vector}
-          alt="icon"
-        />
-      </div>
-          
+      <Logo
+        src={vector}
+        alt="icon"
+      />
       <CloseOutlinedStyled onClick={(e) => { openModal(e) }} />
       <Line />
     </HeaderOfPopUp>
@@ -84,26 +80,30 @@ const PopUpContainer = styled(motion.div)`
   background-color: white;
    ul{
     display: flex;
+    width: 100%;
     flex-direction: column;
+    @media(min-width: ${forDesktop.minWidth}px) {
+      flex-direction: row;
+  }
     li{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       padding: 25px 20px 10px 25px;
+      @media(min-width: ${forDesktop.minWidth}px) {
+        padding: 5px 10px 10px 5px;
+      }
       h5{
         font-size: 20px;
       }
     }
-    @media(min-width: ${forDesktop.minWidth}px) {
-     
-      top: 0;
-      left: 300px;
-      opacity: 1;
-      /* clip-path: circle(2200px at 40px 40px) !important; */
-      background-color: red;
-      clip-path: ${(props) => console.log(props.animate)}
   }
-    
+   @media(min-width: ${forDesktop.minWidth}px) {
+      position: static;
+      background-color: red;
+      ${(props) => !props.isOpen && css`
+        clip-path: circle(2200px at 40px 40px) !important;
+      `}
   }
   button{
       margin: 20px 0px 0px 25px;
@@ -119,6 +119,9 @@ const PopUpContainer = styled(motion.div)`
     @media(min-width: ${forTablet.minWidth}px) {
       width: 50%;
     }
+    @media(min-width: ${forDesktop.minWidth}px) {
+      min-width: 80%;
+    }
 `;
 
 const HeaderOfPopUp = styled.div`
@@ -129,6 +132,10 @@ const HeaderOfPopUp = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+
+  ${(props) => !props.isOpen && css`
+        display: none;
+      `}
 `;
 
 const Line = styled.span`
@@ -149,6 +156,9 @@ const RightOutlinedStyled = styled(RightOutlined)`
     font-weight: bold;
     font-size: 15px;
     padding-right: 5px;
+    @media(min-width: ${forDesktop.minWidth}px) {
+      display: none;
+    }
 `;
 
 const Logo = styled.img`
