@@ -5,7 +5,7 @@ import { Carousel } from 'antd'
 import 'antd/dist/antd.css'
 import { SliderArrowLeft } from '../common/SliderArrowLeft'
 import { SliderArrowRight } from '../common/SliderArrowRight'
-import { forMobile, forTablet } from '../../styles/mediaBreakPoints'
+import { forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { Container } from '../common/Container'
 import { Wrapper } from '../common/Wrapper'
@@ -44,13 +44,6 @@ export const NewProductsSlider = connect(
     dots: false,
     responsive: [
       {
-        breakpoint: forTablet.maxWidth,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        }
-      },
-      {
         breakpoint: 1200,
         settings: {
           slidesToShow: 5,
@@ -58,7 +51,21 @@ export const NewProductsSlider = connect(
         }
       },
       {
-        breakpoint: forMobile.maxWidth,
+        breakpoint: forTablet.maxWidth,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        }
+      },
+      {
+        breakpoint: 820,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 570,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,

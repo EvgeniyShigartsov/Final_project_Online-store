@@ -7,6 +7,7 @@ export const MODULE_NAME = 'products'
 const initialState = {
   products: [],
   newProducts: [],
+  pageProduct: {}
 }
 
 export const reducer = (state = initialState, {type, payload}) => {
