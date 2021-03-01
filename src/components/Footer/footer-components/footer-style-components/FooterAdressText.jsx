@@ -1,11 +1,16 @@
 import styled from 'styled-components'
+import { forDesktop } from '../../../../styles/mediaBreakPoints'
 
 const FooterTextContacts = styled.p`
+font-size: 12px;
+font-weight: 300;
 font-style: normal;
-font-size: 14px;
-display: flex;
 align-items: center;
-color: #FFFFFF;
+padding-top: 5px;
+
+@media(min-width: ${forDesktop.minWidth}px){
+font-size: 13px;
+}
 `
 
 export default FooterTextContacts

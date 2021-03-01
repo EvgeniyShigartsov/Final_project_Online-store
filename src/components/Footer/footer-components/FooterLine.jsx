@@ -10,11 +10,11 @@ export default FooterLine
 const Line = styled.div`
 content: "";
 position: absolute;
-width: 77%;
+width: 78%;
 height: 2px;
 display: block;
 left: calc(50%);
-bottom: 4em;
+bottom: 45px;
 transform: translateX(-50%);
 background: #FFFFFF;
 opacity: 0.2;

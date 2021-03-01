@@ -11,8 +11,8 @@ function App() {
       <Button width={120} height={37} type="borderBlue">Submit</Button>
       <BannerSlider />
       <NewProductsSlider />
-      <Footer />
       <Cart />
+      <Footer />
     </div>
   )
 }

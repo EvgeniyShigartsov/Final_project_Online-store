@@ -38,16 +38,22 @@ export const Footer = () => (
 export default Footer
 
 const StyledFooter = styled.footer`
-    position: relative;
-    clear: both;
-    color: hsla(0,0%,100%,.4);
-    font-size: 14px;
-    line-height: 1.5;
-    background-color: #000;
+font-size: 12px;
+line-height: 1.5;
+background-color: #000000;
+color: #FFFFFF;
+
+@media(min-width: ${forDesktop.minWidth}px){    
+font-size: 13px;
+}
 `
 
 const Section = styled.section`
-padding-top: 4.5em;
+padding-top: 35px;
+
+@media(min-width: ${forDesktop.minWidth}px){
+padding-top: 45px;
+}
 `
 
 const Wrapper = styled.div`
@@ -57,6 +63,6 @@ flex-direction: column;
 @media(min-width: ${forDesktop.minWidth}px){
 flex-direction: row;
 justify-content: space-between;
-margin: 3.5em 0 3.5em 0;
+margin: 35px 0 35px 0;
 }
 `

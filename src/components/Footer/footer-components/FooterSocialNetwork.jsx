@@ -5,10 +5,10 @@ import styled from 'styled-components'
 
 const FooterSocialNetwork = () => (
   <Wrapper>
-    <SocialNetwotkLink href="https://www.facebook.com/jv.russia/">
+    <SocialNetwotkLink to="https://www.facebook.com/jv.russia/">
       <FacebookFilled />
     </SocialNetwotkLink>
-    <SocialNetwotkLink href="https://www.instagram.com/?hl=ru">
+    <SocialNetwotkLink to="https://www.instagram.com/?hl=ru">
       <InstagramFilled />
     </SocialNetwotkLink>
   </Wrapper>

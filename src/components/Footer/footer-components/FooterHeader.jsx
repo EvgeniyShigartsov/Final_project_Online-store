@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import FooterTitle from './footer-style-components/FooterTitle'
 import FooterTitleText from './footer-style-components/FooterTitleText'
-import FooterSignature from './FooterSignature'
+import FooterSubscribe from './FooterSubscribe'
 
 export const FooterHeader = () => (
   <Wrapper>
@@ -11,7 +11,7 @@ export const FooterHeader = () => (
       <FooterTitleText>Be the first to hear about the latest offers.</FooterTitleText>
     </div>
     <div>
-      <FooterSignature />
+      <FooterSubscribe />
     </div>
   </Wrapper>
 )
@@ -20,5 +20,5 @@ export default FooterHeader
 
 const Wrapper = styled.div`
 display: flex;
-margin-bottom: 4.5em;
+margin-bottom: 45px;
 `

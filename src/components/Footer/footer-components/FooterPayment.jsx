@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 
 const FooterPayment = () => (
-  <Wrapper>
+  <div>
     <svg width="210" height="22" viewBox="0 0 210 22" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0)">
         <path d="M45.0293 2.76611C45.0293 1.2503 46.2722 0.0214844 47.8055 0.0214844H75.5672C77.1005 0.0214844 78.3434 1.2503 78.3434 2.76611V19.2339C78.3434 20.7497 77.1005 21.9785 75.5672 21.9785H47.8055C46.2722 21.9785 45.0293 20.7497 45.0293 19.2339V2.76611Z" fill="#D8E3F3" />
@@ -60,12 +59,7 @@ const FooterPayment = () => (
         </clipPath>
       </defs>
     </svg>
-
-  </Wrapper>
+  </div>
 )
 
 export default FooterPayment
-
-const Wrapper = styled.div`
-
-`
