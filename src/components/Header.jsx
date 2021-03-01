@@ -1,43 +1,22 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useState, useRef, useEffect} from 'react';
 import styled, {css} from 'styled-components'
-
-// ant design
 import {
   MenuOutlined, UserOutlined, ShoppingCartOutlined, SearchOutlined, DownOutlined
 
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-
-// framer-motion
 import { useCycle } from 'framer-motion';
-
-// img
 import vector from '../Vector.png';
-
-// mediabreakPoint
-// eslint-disable-next-line no-unused-vars
-import {forTablet, forDesktop, forMobile} from '../styles/mediaBrakepoints';
-
-// components
+import {forTablet, forDesktop, forMobile} from '../styles/mediaBreakPoints';
 import PopUpList from './PopUpList';
 import PopUpShedulteContainer from './PopUpShedulteContainer';
 import UserPopUp from './UserPopUp';
 
 const Header = () => {
-  // eslint-disable-next-line no-unused-vars
-  // sideBarMenuList
   const [isOpen, setIsOpen] = useCycle(false, true);
-
-  // SheduleMenu
-  // eslint-disable-next-line no-unused-vars
   const [isOpenSheduleMenu, setisOpenSheduleMenu] = useCycle(false, true);
-
-  // UserNavMenu
   const [isOpenUser, setIsOpenUser] = useCycle(false, true);
-
-  // diplayForm
-  // eslint-disable-next-line no-unused-vars
   const [hideInput, setHideInput] = useState(true);
   
   const openSlide = {

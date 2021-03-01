@@ -16,7 +16,7 @@ import { motion } from 'framer-motion';
 import vector from '../Vector.png';
 
 // media-brak-points
-import {forTablet, forDesktop} from '../styles/mediaBrakepoints';
+import {forTablet, forDesktop} from '../styles/mediaBreakPoints';
 
 const PopUpList = ({
 
