@@ -5,6 +5,11 @@ import ContentWrapper from './ContentWrapper'
 
 test('ContentWrapper render test', () => {
   render(
-    <ContentWrapper />
+    <ContentWrapper
+      title="Registered Customers"
+      subTitle="If you have an account, sign in with your email address."
+    >
+      <div>ContentWrapper</div>
+    </ContentWrapper>
   )
 })
