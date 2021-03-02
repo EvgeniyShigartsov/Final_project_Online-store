@@ -4,13 +4,10 @@ import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPa
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
 import { AboutUsPage } from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
-<<<<<<< HEAD
 import LogIn from './components/LogIn/LogIn'
-=======
 import StyledButton from './components/common/Buttons/StyledButton'
 import { Cart } from './components/CartPage/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
->>>>>>> afb5900ab2417c9b6a49ea1bf8d73f3388449511
 
 function App() {
   return (
