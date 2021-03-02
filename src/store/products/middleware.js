@@ -44,8 +44,8 @@ export const updatedOneProduct = (id, newProduct) => (dispatch) => {
 
 export const getOneProduct = (itemNo) => () => {
   const res = axios.get(`${BASE_ENDPOINT}/${itemNo}`)
-    .then((data) => data)
-    .catch((error) => error)
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error.response))
   return res
 }
 
@@ -57,13 +57,12 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
-
-  axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
-    .then((data) => {
-      if (data.status === 200) {
-        dispatch(actionCreator(data.data))
-      }
-      return data
+  
+  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+    .then((res) => {
+      if (res.status === 200) dispatch(actionCreator(res.data.products))
     })
-    .catch((error) => error)
+    .catch((error) => console.log(error.response))
+
+  return res
 }
