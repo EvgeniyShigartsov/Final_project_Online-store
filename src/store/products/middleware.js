@@ -42,7 +42,7 @@ export const updatedOneProduct = (id, newProduct) => (dispatch) => {
   return res
 }
 
-export const getOneProduct = (itemNo) => () => {
+export const getOneProduct = (itemNo) => {
   const res = axios.get(`${BASE_ENDPOINT}/${itemNo}`)
     .then((data) => console.log(data))
     .catch((error) => console.log(error.response))
