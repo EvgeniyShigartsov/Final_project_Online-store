@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/prop-types */
 
 // framer-motion
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+
+import PropTypes from 'prop-types';
 
 // ant-designIcons
 import {
@@ -14,7 +15,7 @@ import {
 
 const openSlide = {
   hidden: {
-    y: -250,
+    y: 10,
     opacity: 0,
     transition: {
       delay: 0.15,
@@ -25,7 +26,7 @@ const openSlide = {
 
   },
   show: {
-    y: 0,
+    y: 30,
     opacity: 1,
     transition: {
       type: 'spring',
@@ -110,6 +111,10 @@ const PopUpShedulteContainer = ({isOpenSheduleMenu, popUpShaduleWindow}) => (
 
   </PopUpBlock>
 )
+PopUpShedulteContainer.propTypes = {
+  isOpenSheduleMenu: PropTypes.bool.isRequired,
+  popUpShaduleWindow: PropTypes.func.isRequired,
+}
 
 const PopUpBlock = styled(motion.div)`
     position: absolute;
@@ -120,6 +125,7 @@ const PopUpBlock = styled(motion.div)`
     background-color: white;
     z-index: 2;
     border-radius: 5px;
+    z-index: 2;
     box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
               0 2px 2px rgba(0,0,0,0.12), 
               0 4px 4px rgba(0,0,0,0.12), 

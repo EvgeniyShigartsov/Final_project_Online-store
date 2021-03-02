@@ -1,30 +1,27 @@
 import React from 'react';
 
-// Ant design
 import {
   RightOutlined,
   CloseOutlined
 } from '@ant-design/icons';
 
-// styled-compoents
 import styled, { css } from 'styled-components';
 
-// framer-motion
 import { motion } from 'framer-motion';
 
-// img
-import vector from '../Vector.png';
+import PropTypes from 'prop-types';
 
-// media-brak-points
-import {forTablet, forDesktop} from '../styles/mediaBreakPoints';
+import vector from '../../images/header/Vector.png';
+
+import {forDesktop} from '../../styles/mediaBreakPoints';
 
 const PopUpList = ({
 
   // eslint-disable-next-line react/prop-types
-  openSlide, isOpen, openModal, setIsOpen
+  openSlide, isOpen, openModal, setIsOpen, hideList
 }) => (
 
-  <PopUpContainer setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
+  <PopUpContainer hideList={hideList} setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
     <HeaderOfPopUp>
       <Logo
         src={vector}
@@ -62,11 +59,18 @@ const PopUpList = ({
         <h5>Repairs</h5>
         <RightOutlinedStyled />
       </li>
+      <li>
+        <button type="submit">Our Deals</button>
+      </li>
     </ul>
-    <button type="submit">Our Deals</button>
   </PopUpContainer>
 )
-
+PopUpList.propTypes = {
+  hideList: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  // openSlide: PropTypes.instanceOf(PropTypes.object()).isRequired,
+}
 export default PopUpList;
 
 // popup container
@@ -78,50 +82,66 @@ const PopUpContainer = styled(motion.div)`
   width: 100%;
   height: 70%;
   background-color: white;
+  z-index: 20;
+  
    ul{
     display: flex;
     width: 100%;
     flex-direction: column;
     @media(min-width: ${forDesktop.minWidth}px) {
+      min-width: 80%;
       flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
   }
+
     li{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       padding: 25px 20px 10px 25px;
+        button{
+          margin: 20px 0px 0px 25px;
+          padding: 10px 45px;
+          border: none;
+          background-color:transparent;
+          border: 3px solid #0156FF;
+          border-radius: 30px;
+          font-size: 20px;
+          color: #0156FF;
+          font-weight: bold;
+           @media(min-width: ${forDesktop.minWidth}px) {
+             margin: 0px;
+             padding: 0px 10px;
+             font-size: 8px;
+           }
+          
+        }
+    
       @media(min-width: ${forDesktop.minWidth}px) {
-        padding: 5px 10px 10px 5px;
+        padding: 0px 5px 0px 5px;
       }
+      
       h5{
         font-size: 20px;
+        @media(min-width: ${forDesktop.minWidth}px) {
+          font-size: 11px;
+        }
       }
     }
   }
    @media(min-width: ${forDesktop.minWidth}px) {
       position: static;
-      background-color: red;
+      width: 100%;
+      display: flex;
+      align-items: center;
       ${(props) => !props.isOpen && css`
         clip-path: circle(2200px at 40px 40px) !important;
       `}
+      ${(props) => props.hideList && css`
+        display: none;
+    `}
   }
-  button{
-      margin: 20px 0px 0px 25px;
-      padding: 10px 45px;
-      border: none;
-      background-color:transparent;
-      border: 3px solid #0156FF;
-      border-radius: 30px;
-      font-size: 20px;
-      color: #0156FF;
-      font-weight: bold;
-    }
-    @media(min-width: ${forTablet.minWidth}px) {
-      width: 50%;
-    }
-    @media(min-width: ${forDesktop.minWidth}px) {
-      min-width: 80%;
-    }
 `;
 
 const HeaderOfPopUp = styled.div`
@@ -133,9 +153,9 @@ const HeaderOfPopUp = styled.div`
   align-items: center;
   padding: 10px;
 
-  ${(props) => !props.isOpen && css`
+  @media(min-width: ${forDesktop.minWidth}px) {
         display: none;
-      `}
+  }
 `;
 
 const Line = styled.span`
@@ -163,7 +183,8 @@ const RightOutlinedStyled = styled(RightOutlined)`
 
 const Logo = styled.img`
     padding-left: 20px;
-    filter: invert(96%) sepia(27%) saturate(843%) hue-rotate(320deg) brightness(114%) contrast(109%);
+    filter: invert(78%) sepia(90%) saturate(6818%) hue-rotate(576deg) brightness(112%) contrast(145%);
+
 `;
 
 const CloseOutlinedStyled = styled(CloseOutlined)`

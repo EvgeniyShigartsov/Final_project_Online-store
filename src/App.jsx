@@ -7,7 +7,7 @@ import StyledButton from './components/common/Buttons/StyledButton'
 import {AboutUsPage} from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
 
-import Header from './components/Header'
+import Header from './components/Header/Header'
 
 function App() {
   return (
