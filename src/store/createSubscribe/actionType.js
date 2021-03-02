@@ -1,0 +1,2 @@
+export const POST_SUBSCRIBE = 'POST_SUBSCRIBE'
+export default POST_SUBSCRIBE

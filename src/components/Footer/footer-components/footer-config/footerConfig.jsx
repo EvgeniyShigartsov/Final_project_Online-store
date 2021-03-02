@@ -1,6 +1,7 @@
 const footerConfig = [
   {
     title: 'Information',
+    id: 1,
     links: [
       { to: '/', text: 'About Us' },
       { to: '/', text: 'About Zip' },
@@ -15,6 +16,7 @@ const footerConfig = [
   },
   {
     title: 'PC Parts',
+    id: 2,
     links: [
       { to: '/', text: 'CPUS' },
       { to: '/', text: 'Add On Cards' },
@@ -30,6 +32,7 @@ const footerConfig = [
   },
   {
     title: 'Desktop PCs',
+    id: 3,
     links: [
       { to: '/', text: 'Custom PCs' },
       { to: '/', text: 'Servers' },
@@ -41,6 +44,7 @@ const footerConfig = [
   },
   {
     title: 'Laptops',
+    id: 4,
     links: [
       { to: '/', text: 'Everyday Use Notebooks' },
       { to: '/', text: 'MSI Workstation Series' },
