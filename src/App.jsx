@@ -1,6 +1,4 @@
 import React from 'react'
-import { HomepageBrands } from './components/BrandsAndFollow/HomePageBrands'
-import { HomepageFollowUs } from './components/BrandsAndFollow/FollowUsInstagram'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
@@ -10,6 +8,8 @@ import LogIn from './components/LogIn/LogIn'
 import StyledButton from './components/common/Buttons/StyledButton'
 import { Cart } from './components/CartPage/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
+import { HomepageBrands } from './components/BrandsAndFollow/HomePageBrands'
+import { HomepageFollowUs } from './components/BrandsAndFollow/FollowUsInstagram'
 
 function App() {
   return (
@@ -61,7 +61,7 @@ function App() {
       <StyledButton size="md" shape="round" color="borderGrey">Submit</StyledButton>
       <StyledButton size="xs" shape="round" color="borderBlue">Submit</StyledButton>
       <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
-      <Cart /> 
+      <Cart />
     </div>
   )
 }
