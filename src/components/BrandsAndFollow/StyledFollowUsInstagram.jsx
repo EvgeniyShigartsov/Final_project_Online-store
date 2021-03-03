@@ -1,10 +1,18 @@
 import styled from 'styled-components';
-// import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
+import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
 const Flex = styled.div`
+display: none;
+// Tablet
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+display: none;
+  }
+// Desktop
+  @media(min-width: ${forDesktop.minWidth}px){
 display: flex;
 flex-wrap: wrap;
-margin-bottom: 58px;
+margin-bottom: 38px;
+}
 `
 const BlockTitle = styled.p`
 display: flex;
@@ -14,29 +22,29 @@ font-style: normal;
 font-weight: 600;
 font-size: 22px;
 line-height: 33px;
-margin-bottom: 21px;
 `
 const Posts = styled.div`
-// max-width: 1200px;
+max-width: 1200px;
 display: flex;
 flex-wrap: wrap;
-// flex-grow: 1
+margin-top: 21px;
 `
 const PostBox = styled.div`
-display: flex;
+
+display: inline-flex;
+align-items: center;
 flex-wrap: wrap;
 flex-direction: coloumn;
 justify-content: center;
 width: calc(100% / 6.5 );
 margin-left: 1%;
-margin-bottom: 4%;
+margin-bottom: 5%;
 `
 
 const Image = styled.img`
 display: flex;
 overflow:hidden;
 height: 45%;
-margin-bottom: 10px;
 margin-left: 5 px;
 `
 const PostContent = styled.p`
@@ -45,10 +53,9 @@ font-family: Poppins;
 font-style: normal;
 font-weight: normal;
 font-size: 12px;
-line-height: 18px;
+line-height: 15px;
 text-align: center;
-margin-bottom: 10px;
-padding: 10px 25px;
+padding: 10px 15px;
 color: #000000;
 `
 const PostDate = styled.p`

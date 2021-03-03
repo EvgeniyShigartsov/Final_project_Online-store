@@ -30,7 +30,7 @@ const now = new Date().toLocaleDateString();
 export function HomepageFollowUs() {
   const content = {
     title: 'Follow us on Instagram for News, Offers & More',
-    text: 'If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...',
+    text: 'If you’ve recently made a desktop PC or laptop, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...',
   }
 
   return (
