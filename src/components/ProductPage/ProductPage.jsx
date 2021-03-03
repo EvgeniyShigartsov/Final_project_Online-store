@@ -9,6 +9,7 @@ import CartGroup from './CartGroup/CartGroup'
 import {
   PageContainer,
   ImageBox,
+  InformationBox,
   StyledImg,
   Description,
   ProductHeading,
@@ -17,9 +18,11 @@ import {
   AboutProduct,
   PriceBox
 } from './StylesProductPage'
+import rateCalculator from '../../utils/rateCalculator'
+import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 
 const ProductPage = () => {
-  const [product, setProduct] = useState({})
+  const [product, setProduct] = useState()
 
   const { productID } = useParams()
   useEffect(() => {
@@ -28,42 +31,54 @@ const ProductPage = () => {
     //   console.log(test)
     // }
 
-    // axios.get(`/products/${productID}`)
-    //   .then((res) => {
-    //     if (res.status === 200) {
-    //       console.log(res)
-    //       setProduct(() => res.data)
-    //     }
-    //   })
-    //   .catch((err) => console.log(err.response))
+    axios.get(`/products/${productID}`)
+      .then((res) => (res.status === 200 ? setProduct(() => res.data) : null))
+      .catch((err) => console.log(err.response))
   }, [productID])
+
+  if (!product) return null
+  const { reviews, rating } = rateCalculator(product.reviews)
+ 
   return (
     <Container>
       <PageContainer>
         <ImageBox>
-          <StyledImg src="https://i2.rozetka.ua/goods/20202650/acer_nx_a1heu_00k_images_20202650421.jpg" alt="product image" />
+          <StyledImg src={product.imageUrls[0]} alt="product image" />
         </ImageBox>
-        <Description>About product</Description>
-        <ProductHeading>MSI MPG Trident 3</ProductHeading>
-        <ReviewsBox>
-          <ReviewsCount>Reviews (13)</ReviewsCount>
-          <StarRating rating={4} />
-        </ReviewsBox>
-        <AboutProduct>
-          <li>Prop 1</li>
-          <li>Prop 2</li>
-          <li>Prop 3</li>
-          <li>Prop 4</li>
-          <li>Prop 5</li>
-          <li>Prop 6</li>
-          <li>Prop 7</li>
-          <li>Prop 8</li>
-        </AboutProduct>
-        <CartGroup avilableQuantity={20} />
-        <PriceBox>
-          On Sale from
-          <b> ₴ 16 500</b>
-        </PriceBox>
+        <InformationBox>
+          <Description>About product</Description>
+          <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
+          <ReviewsBox>
+            <ReviewsCount>
+              Reviews (
+              {reviews}
+              )
+            </ReviewsCount>
+            <StarRating rating={rating} />
+          </ReviewsBox>
+          <AboutProduct>
+            {Object.entries(product.params).map(([key, value]) => (
+              <li key={key}>
+                {key}
+                :
+                {' '}
+                <b>
+                  {value}
+                </b>
+              </li>
+            ))}
+          </AboutProduct>
+          <CartGroup avilableQuantity={product.quantity} />
+          <PriceBox>
+            On Sale from
+            <b>
+              {' '}
+              ₴
+              {' '}
+              {product.currentPrice}
+            </b>
+          </PriceBox>
+        </InformationBox>
         <div style={{ height: '50vh'}} />
       </PageContainer>
     </Container>

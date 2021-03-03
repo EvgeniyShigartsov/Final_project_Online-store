@@ -5,7 +5,7 @@ import {
 } from './StylesInputGroup'
 
 const InputGroup = ({ avilableQuantity }) => {
-  const [quantity, setQuanity] = useState(1)
+  const [quantity, setQuanity] = useState(avilableQuantity > 0 ? 1 : 0)
 
   const checkValue = (value) => {
     if (Number.isNaN(value) || value > avilableQuantity || value < 0) return false

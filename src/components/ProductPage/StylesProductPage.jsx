@@ -1,14 +1,44 @@
+/* eslint-disable no-unused-vars */
 import styled from 'styled-components'
+import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
 export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+
+    @media(min-width: 721px){
+        flex-direction: row;
+    }
 `
 export const ImageBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    border: 1px solid #F5F7FF;
+    @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
+        width: 55%;
+    }
+    @media(min-width: ${forDesktop.minWidth}px){
+        width: 50%;
+    }
+`
+export const InformationBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
+        width: 50%;
+        padding: 12px 20px;
+        background-color: #F5F7FF;
+    }
+    @media(min-width: ${forDesktop.minWidth}px){
+        width: 60%;
+        padding: 12px 20px;
+        background-color: #F5F7FF;
+    }
 `
 export const StyledImg = styled.img`
     width: 100%;
@@ -46,6 +76,9 @@ export const AboutProduct = styled.ul`
         font-size: 12px;
         line-height: 20px;
         font-weight: 300;
+        b {
+            font-weight: 500;
+        }
     }
 `
 export const PriceBox = styled.div`
