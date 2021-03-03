@@ -70,7 +70,6 @@ const Header = () => {
               alt="icon"
             />
           </CircleMobile>
-        
           <ShaduleArrowContainer id="shadule">
             <p>
               Mon - Thu:
