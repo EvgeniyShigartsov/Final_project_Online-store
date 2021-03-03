@@ -49,6 +49,7 @@ line-height: 18px;
 text-align: center;
 margin-bottom: 10px;
 padding: 10px 25px;
+color: #000000;
 `
 const PostDate = styled.p`
 display: flex;
