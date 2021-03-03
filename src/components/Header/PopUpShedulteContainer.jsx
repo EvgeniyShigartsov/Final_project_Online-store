@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/react-in-jsx-scope */
-
+import React from 'react';
 // framer-motion
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
@@ -110,6 +108,7 @@ const PopUpShedulteContainer = ({isOpenSheduleMenu, popUpShaduleWindow}) => (
     </ContactsContainer>
 
   </PopUpBlock>
+
 )
 PopUpShedulteContainer.propTypes = {
   isOpenSheduleMenu: PropTypes.bool.isRequired,
@@ -123,9 +122,8 @@ const PopUpBlock = styled(motion.div)`
     width: 350px;
     transform: translateX(-50%);
     background-color: white;
-    z-index: 2;
+    z-index: 25;
     border-radius: 5px;
-    z-index: 2;
     box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
               0 2px 2px rgba(0,0,0,0.12), 
               0 4px 4px rgba(0,0,0,0.12), 

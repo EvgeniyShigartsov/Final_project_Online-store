@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 
-// styled-components
 import styled from 'styled-components'
 
-// framer-motion
 import { motion } from 'framer-motion';
+
+import PropTypes from 'prop-types';
 
 const openSlideUser = {
   hidden: {
@@ -46,6 +44,9 @@ const UserPopUp = ({isOpenUser}) => (
   </NavUserContainer>
 
 )
+UserPopUp.propTypes = {
+  isOpenUser: PropTypes.bool.isRequired,
+}
 
 const NavUserContainer = styled(motion.div)`
     background-color: white;

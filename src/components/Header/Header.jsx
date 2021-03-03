@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, {useState} from 'react';
 import styled, {css} from 'styled-components'
 import {
@@ -20,12 +19,11 @@ const Header = () => {
   const [isOpenSheduleMenu, setisOpenSheduleMenu] = useCycle(false, true);
   const [isOpenUser, setIsOpenUser] = useCycle(false, true);
   const [hideInput, setHideInput] = useState(true);
-  // eslint-disable-next-line no-unused-vars
   const [hideList, setHideList] = useState(false);
   
   const openSlide = {
     show: {
-      clipPath: `circle(${1000 * 2 + 200}px at 40px 40px)`,
+      clipPath: 'circle(2200px at 40px 40px)',
       transition: {
         type: 'spring',
         stiffness: 20,

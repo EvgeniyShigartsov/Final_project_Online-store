@@ -17,7 +17,6 @@ import {forDesktop} from '../../styles/mediaBreakPoints';
 
 const PopUpList = ({
 
-  // eslint-disable-next-line react/prop-types
   openSlide, isOpen, openModal, setIsOpen, hideList
 }) => (
 
@@ -69,7 +68,26 @@ PopUpList.propTypes = {
   hideList: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  // openSlide: PropTypes.instanceOf(PropTypes.object()).isRequired,
+  openModal: PropTypes.func.isRequired,
+  openSlide: PropTypes.shape({
+    show: PropTypes.shape({
+      clipPath: PropTypes.string.isRequired,
+      transition: PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        stiffness: PropTypes.number.isRequired,
+        restDelta: PropTypes.number.isRequired
+      })
+    }),
+    hidden: PropTypes.shape({
+      clipPath: PropTypes.string.isRequired,
+      transition: PropTypes.shape({
+        delay: PropTypes.number.isRequired,
+        type: PropTypes.string.isRequired,
+        stiffness: PropTypes.number.isRequired,
+        damping: PropTypes.number.isRequired
+      })
+    })
+  }).isRequired,
 }
 export default PopUpList;
 
