@@ -5,6 +5,7 @@ import {
   persistStore,
   persistReducer
 } from 'redux-persist'
+// import storage from 'redux-persist/lib/storage'
 import storage from 'redux-persist/lib/storage'
 import {reducer as authReducer} from './auth/reducer';
 import { reducer as productsReducer } from './products/reducer';

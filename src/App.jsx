@@ -1,16 +1,18 @@
 import React from 'react'
-import { NavLink, Route, Switch } from 'react-router-dom'
-import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
-import { BannerSlider } from './components/BannerSlider/BannerSlider'
-import {Cart} from './components/CartPage/Cart/Cart'
-import StyledButton from './components/common/Buttons/StyledButton'
-import {AboutUsPage} from './pages/About-us/AboutUs'
-import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+// import { NavLink, Route, Switch } from 'react-router-dom'
+// import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
+// import { BannerSlider } from './components/BannerSlider/BannerSlider'
+// import {Cart} from './components/CartPage/Cart/Cart'
+// import StyledButton from './components/common/Buttons/StyledButton'
+// import {AboutUsPage} from './pages/About-us/AboutUs'
+// import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+import { HomepageBrands } from './components/BrandsAndFollow/HomePageBrands'
+import { HomepageFollowUs } from './components/BrandsAndFollow/FollowUsInstagram'
 
 function App() {
   return (
     <div>
-      <NavLink to="/">Homepage</NavLink>
+      {/* <NavLink to="/">Homepage</NavLink>
       <NavLink to="/signup">Sign Up</NavLink>
       <NavLink to="/aboutus">About Us</NavLink>
       <Switch>
@@ -32,7 +34,9 @@ function App() {
       <StyledButton size="md" shape="round" color="borderGrey">Submit</StyledButton>
       <StyledButton size="xs" shape="round" color="borderBlue">Submit</StyledButton>
       <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
-      <Cart />
+      <Cart /> */}
+      <HomepageBrands />
+      <HomepageFollowUs />
     </div>
   )
 }
