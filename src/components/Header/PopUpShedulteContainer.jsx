@@ -13,7 +13,7 @@ import {
 
 const openSlide = {
   hidden: {
-    y: 10,
+    y: -250,
     opacity: 0,
     transition: {
       delay: 0.15,
@@ -24,7 +24,7 @@ const openSlide = {
 
   },
   show: {
-    y: 30,
+    y: 0,
     opacity: 1,
     transition: {
       type: 'spring',
