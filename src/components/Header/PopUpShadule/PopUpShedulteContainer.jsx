@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import close from '../../images/header/Close.svg'
+import close from '../../../images/header/Close.svg'
 
 // styled
 import {
   PopUpBlock, FieldTimeOutlinedStyled, TimeContainer, CloseShedule,
   PositionTimeIcon, SmoothLine, ListsTime, AdressContainer, PositionAdressIcon,
   EnvironmentOutlinedStyled, ContactsContainer, BlackEP
-} from '../../styles/styled-components/Header/PopUpShedulteContainerStyled';
+} from './PopUpShedulteContainerStyled';
 
 const PopUpShedulteContainer = ({isOpenSheduleMenu, setisOpenSheduleMenu}) => {
   const openSlide = {

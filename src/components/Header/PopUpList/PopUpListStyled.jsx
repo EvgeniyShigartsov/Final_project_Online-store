@@ -4,7 +4,7 @@ import {
 } from '@ant-design/icons';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import {forDesktop} from '../../mediaBreakPoints';
+import {forDesktop} from '../../../styles/mediaBreakPoints';
 
 export const PopUpContainer = styled(motion.div)`
   position: absolute;
@@ -25,7 +25,6 @@ export const PopUpContainer = styled(motion.div)`
       justify-content: space-between;
       align-items: center;
   }
-
     li{
       display: flex;
       flex-direction: row;

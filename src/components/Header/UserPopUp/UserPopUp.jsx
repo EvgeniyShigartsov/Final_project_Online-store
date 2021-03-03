@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import NavUserContainer
-  from '../../styles/styled-components/Header/UserPopUpStyled';
+  from './UserPopUpStyled';
 
 const UserPopUp = ({isOpenUser}) => {
   const openSlideUser = {

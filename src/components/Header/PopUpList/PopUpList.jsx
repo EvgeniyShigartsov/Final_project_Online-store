@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import vector from '../../images/header/Vector.png';
+import vector from '../../../images/header/Vector.png';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
   RightOutlinedStyled, Logo, CloseOutlinedStyled
-} from '../../styles/styled-components/Header/PopUpListStyled';
+} from './PopUpListStyled';
 
-import StyledButton from '../common/Buttons/StyledButton';
+import StyledButton from '../../common/Buttons/StyledButton';
 
 const PopUpList = ({
 

@@ -7,9 +7,9 @@ import {
 import vector from '../../images/header/Vector.png';
 import FaceBook from '../../images/header/FaceBook.png';
 import Inst from '../../images/header/Inst.png';
-import PopUpList from './PopUpList';
-import PopUpShedulteContainer from './PopUpShedulteContainer';
-import UserPopUp from './UserPopUp';
+import PopUpList from './PopUpList/PopUpList';
+import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
+import UserPopUp from './UserPopUp/UserPopUp';
 
 // styled
 import {
@@ -19,7 +19,7 @@ import {
   ShaduleArrowContainer, LogoDesktop, ShoppingCartOutlinedStyled,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
   CircleMobile, Logo, MenuOutlinedStyled, SearchOutlinedStyled
-} from '../../styles/styled-components/Header/HeaderStyled';
+} from './HeaderStyled';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);

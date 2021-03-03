@@ -3,7 +3,7 @@ import {
   MenuOutlined, UserOutlined, ShoppingCartOutlined, SearchOutlined
 
 } from '@ant-design/icons';
-import {forTablet, forDesktop, forMobile} from '../../mediaBreakPoints';
+import {forTablet, forDesktop, forMobile} from '../../styles/mediaBreakPoints';
 
 export const HeaderContainer = styled.header`
   width: 100%;
