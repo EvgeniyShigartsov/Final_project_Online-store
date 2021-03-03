@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import 'antd/dist/antd.css';
-import { Form, Input } from 'antd';
+import { Form } from 'antd';
 // import axios from 'axios';
-import Button from '../../common/Buttons/Button'
+import StyledButton from '../../common/Buttons/StyledButton'
+import StyledInput from './footer-style-components/StyledInput'
 
 // const layout = {
 //   labelCol: {
@@ -59,9 +60,9 @@ const FormSubscribe = () => (
     >
       <StyledInput placeholder="email" />
     </Form.Item>
-    <Button type="primary" htmlType="submit">
+    <StyledButton type="primary" htmlType="submit">
       Subscribe
-    </Button>
+    </StyledButton>
   </StyledForm>
 )
 
@@ -69,12 +70,4 @@ export default FormSubscribe
 
 const StyledForm = styled(Form)`
 display: flex;
-`
-
-const StyledInput = styled(Input)`
-background-color: #000000;
-border: 1px solid #FFFFFF;
-width: 391px;
-height: 50px;
-margin-right: 23px;
 `

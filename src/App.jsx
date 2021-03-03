@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from './components/Footer/Footer'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
@@ -7,14 +6,14 @@ import {Cart} from './components/CartPage/Cart/Cart'
 import StyledButton from './components/common/Buttons/StyledButton'
 import {AboutUsPage} from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
     <div>
-      <Button width={120} height={37} type="borderBlue">Submit</Button>
+      <StyledButton width={120} height={37} type="borderBlue">Submit</StyledButton>
       <BannerSlider />
       <NewProductsSlider />
-      <Footer />
       <NavLink to="/">Homepage</NavLink>
       <NavLink to="/signup">Sign Up</NavLink>
       <NavLink to="/aboutus">About Us</NavLink>
@@ -45,7 +44,7 @@ function App() {
           <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
         </Route>
       </Switch>
-      
+      <Footer />
     </div>
   )
 }
