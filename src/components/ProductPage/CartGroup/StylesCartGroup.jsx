@@ -2,8 +2,11 @@ import styled from 'styled-components'
 
 export const CartGroupBox = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin: 12px 0 9px 0;
+`
+export const FlexBox = styled.div`
+    display: flex;
 `
 
 export const ArrowsBox = styled.div``
