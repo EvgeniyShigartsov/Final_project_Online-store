@@ -2,7 +2,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Carousel } from 'antd'
 import { getOneProduct } from '../../store/products/middleware'
 import { Container } from '../common/Container'
 import { StarRating } from '../StarRating/StarRating'
@@ -19,6 +18,7 @@ import {
   AboutProduct,
   PriceBox,
 } from './StylesProductPage'
+import Carousel from '../Carousel/Carousel'
 import rateCalculator from '../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 
@@ -44,10 +44,8 @@ const ProductPage = () => {
     <Container>
       <PageContainer>
         <ProductImagesCarouselBox>
-          <Carousel dots={false} autoplay>
-            {product.imageUrls.map((src) => (
-              <StyledImg src={src} alt="product image" key={src} />
-            ))}
+          <Carousel carouselSettings={{ dots: false }}>
+            {product.imageUrls.map((url) => <StyledImg src={url} key={url} alt="Product image" />)}
           </Carousel>
         </ProductImagesCarouselBox>
         <InformationBox>

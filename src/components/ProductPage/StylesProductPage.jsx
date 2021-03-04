@@ -12,6 +12,7 @@ export const PageContainer = styled.div`
 `
 export const ProductImagesCarouselBox = styled.div`
     width: 100%;
+    border: 3px solid #F5F7FF;
     @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
         width: 55%;
     }
