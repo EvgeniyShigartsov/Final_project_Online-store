@@ -21,6 +21,7 @@ import {
 import Carousel from '../Carousel/Carousel'
 import rateCalculator from '../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
+import SpinAnimation from '../SpinAnimation/SpinAnimation'
 
 const ProductPage = () => {
   const [product, setProduct] = useState()
@@ -37,7 +38,7 @@ const ProductPage = () => {
       .catch((err) => console.log(err.response))
   }, [productID])
 
-  if (!product) return null
+  if (!product) return <SpinAnimation width="100vw" height="80vh" />
   const { reviews, rating } = rateCalculator(product.reviews)
 
   return (
