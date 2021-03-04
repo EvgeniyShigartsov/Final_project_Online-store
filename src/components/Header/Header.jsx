@@ -47,12 +47,8 @@ const Header = () => {
       }
     }
   };
-  const openModal = () => {
+  const openCloseMenu = () => {
     setIsOpen((prev) => (!prev))
-  }
-
-  const isOpenUserWindow = () => {
-    setIsOpenUser((prev) => (!prev));
   }
 
   const toggleShow = () => {
@@ -102,7 +98,7 @@ const Header = () => {
       </ShaduleContainer>
 
       <SearchAndItemsBlock>
-        <MenuOutlinedStyled onClick={openModal} />
+        <MenuOutlinedStyled onClick={openCloseMenu} />
         <CircleDesktop>
           <LogoDesktop
             src={vector}
@@ -114,8 +110,7 @@ const Header = () => {
           setIsOpen={setIsOpen}
           openSlide={openSlide}
           isOpen={isOpen}
-          openModal={openModal}
-          isOpenUserWindow={isOpenUserWindow}
+          openCloseMenu={openCloseMenu}
         />
         <FormContainer action="submit" hideInput={hideInput}>
           <SearchInputBlock>
@@ -129,8 +124,8 @@ const Header = () => {
         {/* mediaSearch */}
 
         <ShoppingCartOutlinedStyled />
-        <RelativePosUserPopUp onClick={(e) => isOpenUserWindow(e)}>
-          <UserOutlinedStyled />
+        <RelativePosUserPopUp>
+          <UserOutlinedStyled id="userBtn" />
           <UserPopUp
             isOpenUser={isOpenUser}
             setIsOpenUser={setIsOpenUser}

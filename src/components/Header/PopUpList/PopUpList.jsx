@@ -10,7 +10,7 @@ import StyledButton from '../../common/Buttons/StyledButton';
 
 const PopUpList = ({
 
-  openSlide, isOpen, openModal, setIsOpen, hideList
+  openSlide, isOpen, openCloseMenu, setIsOpen, hideList
 }) => (
 
   <PopUpContainer hideList={hideList} setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
@@ -19,7 +19,7 @@ const PopUpList = ({
         src={vector}
         alt="icon"
       />
-      <CloseOutlinedStyled onClick={(e) => { openModal(e) }} />
+      <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
       <Line />
     </HeaderOfPopUp>
     <ul>
@@ -61,7 +61,7 @@ PopUpList.propTypes = {
   hideList: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  openModal: PropTypes.func.isRequired,
+  openCloseMenu: PropTypes.func.isRequired,
   openSlide: PropTypes.shape({
     show: PropTypes.shape({
       clipPath: PropTypes.string.isRequired,

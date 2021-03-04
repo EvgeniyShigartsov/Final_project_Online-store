@@ -206,6 +206,7 @@ export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
   }
 `;
 export const UserOutlinedStyled = styled(UserOutlined)`
+  cursor: pointer;
   color: white;
   padding-right: 10px;
   font-size: 20px;

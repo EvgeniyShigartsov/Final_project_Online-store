@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const NavUserContainer = styled(motion.div)`
+export const Close = styled.div`
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+`;
+
+export const NavUserContainer = styled(motion.div)`
     background-color: white;
     position: absolute;
     top: 25px;
@@ -9,6 +16,7 @@ const NavUserContainer = styled(motion.div)`
     width: 200px;
     height: 150px;
     ul{
+        position: relative;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -24,4 +32,3 @@ const NavUserContainer = styled(motion.div)`
         }
     }
 `;
-export default NavUserContainer;

@@ -36,12 +36,12 @@ const PopUpShedulteContainer = ({isOpenSheduleMenu, setisOpenSheduleMenu}) => {
   useEffect(() => {
     window.addEventListener('click', (e) => {
       if (e.target.closest('#arrowDownShedule') !== null) {
-        setisOpenSheduleMenu((prev) => (!prev));
+        setisOpenSheduleMenu(() => true);
         return
       }
       if (isOpenSheduleMenu) {
         if (e.target.closest('#popUpShedule') === null) {
-          setisOpenSheduleMenu((prev) => !prev)
+          setisOpenSheduleMenu(() => false)
         }
       }
     })
