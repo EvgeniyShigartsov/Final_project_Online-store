@@ -6,17 +6,12 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-
     @media(min-width: 721px){
         flex-direction: row;
     }
 `
-export const ImageBox = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+export const ProductImagesCarouselBox = styled.div`
     width: 100%;
-    border: 1px solid #F5F7FF;
     @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
         width: 55%;
     }

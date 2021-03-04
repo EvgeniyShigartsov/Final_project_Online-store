@@ -2,13 +2,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Carousel } from 'antd'
 import { getOneProduct } from '../../store/products/middleware'
 import { Container } from '../common/Container'
 import { StarRating } from '../StarRating/StarRating'
 import CartGroup from './CartGroup/CartGroup'
 import {
   PageContainer,
-  ImageBox,
+  ProductImagesCarouselBox,
   InformationBox,
   StyledImg,
   Description,
@@ -16,7 +17,7 @@ import {
   ReviewsBox,
   ReviewsCount,
   AboutProduct,
-  PriceBox
+  PriceBox,
 } from './StylesProductPage'
 import rateCalculator from '../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
@@ -42,9 +43,13 @@ const ProductPage = () => {
   return (
     <Container>
       <PageContainer>
-        <ImageBox>
-          <StyledImg src={product.imageUrls[0]} alt="product image" />
-        </ImageBox>
+        <ProductImagesCarouselBox>
+          <Carousel dots={false} autoplay>
+            {product.imageUrls.map((src) => (
+              <StyledImg src={src} alt="product image" key={src} />
+            ))}
+          </Carousel>
+        </ProductImagesCarouselBox>
         <InformationBox>
           <Description>About product</Description>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
