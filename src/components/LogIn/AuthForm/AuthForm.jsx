@@ -8,6 +8,7 @@ import {
 import { useHistory } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
+import jwt_decode from 'jwt-decode';
 import {authLogIn} from '../../../store/auth/middleware';
 
 const AuthForm = connect(null, {authLogIn})(({authLogIn}) => {
@@ -21,6 +22,9 @@ const AuthForm = connect(null, {authLogIn})(({authLogIn}) => {
 
     if (status === 200) {
       localStorage.setItem('token', data.token)
+      const token = localStorage.getItem('token')
+      const decode = jwt_decode(token)
+      console.log(decode)
       history.push('/')
     }
 

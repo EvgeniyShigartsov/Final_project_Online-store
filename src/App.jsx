@@ -8,6 +8,7 @@ import LogIn from './components/LogIn/LogIn'
 import StyledButton from './components/common/Buttons/StyledButton'
 import { Cart } from './components/CartPage/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
+import CatalogPage from './components/CatalogPage/CatalogPage'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <NavLink to="/signin">Sign In</NavLink>
       <NavLink to="/aboutus">About Us</NavLink>
       <NavLink to="/cart">Cart</NavLink>
+      <NavLink to="/catalog">Catalog</NavLink>
       <NavLink to="/products/720373" style={{ margin: '0 15px', color: 'tomato' }}>Products</NavLink>
       <NavLink to="/buttons">Buttons</NavLink>
       
@@ -39,6 +41,9 @@ function App() {
         </Route>
         <Route exact path="/products/:productID">
           <ProductPage />
+        </Route>
+        <Route path="/catalog">
+          <CatalogPage />
         </Route>
         <Route exact path="/buttons">
           <StyledButton shape="round">Submit</StyledButton>
