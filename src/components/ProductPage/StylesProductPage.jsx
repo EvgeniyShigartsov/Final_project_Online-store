@@ -73,7 +73,7 @@ export const AboutProduct = styled.ul`
     list-style: disc;
     margin-left: 14px;
     li {
-        font-size: 12px;
+        font-size: 15px;
         line-height: 20px;
         font-weight: 300;
         b {

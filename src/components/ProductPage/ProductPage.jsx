@@ -38,7 +38,7 @@ const ProductPage = () => {
 
   if (!product) return null
   const { reviews, rating } = rateCalculator(product.reviews)
- 
+
   return (
     <Container>
       <PageContainer>
@@ -57,6 +57,16 @@ const ProductPage = () => {
             <StarRating rating={rating} />
           </ReviewsBox>
           <AboutProduct>
+            <li>
+              Brand:
+              {' '}
+              <b>{product.brand}</b>
+            </li>
+            <li>
+              Color:
+              {' '}
+              <b>{product.color}</b>
+            </li>
             {Object.entries(product.params).map(([key, value]) => (
               <li key={key}>
                 {key}
@@ -67,6 +77,11 @@ const ProductPage = () => {
                 </b>
               </li>
             ))}
+            <li>
+              Особенности:
+              {' '}
+              <b>{product.description}</b>
+            </li>
           </AboutProduct>
           <CartGroup avilableQuantity={product.quantity} />
           <PriceBox>
