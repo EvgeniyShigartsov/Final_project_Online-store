@@ -5,13 +5,15 @@ import { Form, Select } from 'antd'
 import PropTypes from 'prop-types';
 import React from 'react'
 import styled from 'styled-components'
+import {forMobile, forDesktop, forTablet} from '../../../styles/mediaBreakPoints';
 
-const CatalogSort = ({inPage, setInPage}) => {
+const CatalogSort = ({inPage, setInPage, setShowFilter}) => {
   const onChange = (value) => {
     setInPage(value)
   }
   return (
     <Wrapper>
+      <FilterBtn type="submit" onClick={() => setShowFilter((prev) => !prev)}>Filter</FilterBtn>
       <Form.Item>
         <StyledSelect clearIcon={<span>Sort By</span>} onChange={onChange} defaultValue="position">
           <Select.Option value="position">Position</Select.Option>
@@ -41,10 +43,28 @@ const Wrapper = styled.div`
 const StyledSelect = styled(Select)`
     border: none;
 `
+const FilterBtn = styled.button`
+  @media(max-width: ${forMobile.maxWidth}px) {
+    display: block;
+    padding: 5px 30px;
+    border: none;
+    border: 2px solid #CCCCCC;
+    border-radius: 2px;
+    background-color:#FFFFFF;
+    color: black;
+  }
+  @media(min-width: ${forTablet.minWidth}px) {
+    display: none;
+  }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    display: none;
+  }
+`;
 
 CatalogSort.propTypes = {
   inPage: PropTypes.string.isRequired,
-  setInPage: PropTypes.func.isRequired
+  setInPage: PropTypes.func.isRequired,
+  setShowFilter: PropTypes.func.isRequired
 }
 
 export default CatalogSort
