@@ -6,21 +6,34 @@ import PropTypes from 'prop-types';
 import React from 'react'
 import styled from 'styled-components'
 
-const CatalogSort = ({inPage, setInPage}) => {
+const CatalogSort = ({filterSettings, setFilterSettings}) => {
+  const {perPage} = filterSettings
+  
   const onChange = (value) => {
-    setInPage(value)
+    setFilterSettings((prev) => ({...prev, perPage: value}))
+  }
+
+  const onChangePosition = (value) => {
+    if (value === 'default') {
+      setFilterSettings((prev) => {
+        const {sort, ...current} = prev
+        return current
+      })
+    } else {
+      setFilterSettings((prev) => ({...prev, sort: value}))
+    }
   }
   return (
     <Wrapper>
       <Form.Item>
-        <StyledSelect clearIcon={<span>Sort By</span>} onChange={onChange} defaultValue="position">
-          <Select.Option value="position">Position</Select.Option>
-          <Select.Option value="priceMin">Price min</Select.Option>
-          <Select.Option value="priceMax">Price max</Select.Option>
+        <StyledSelect clearIcon={<span>Sort By</span>} onChange={onChangePosition} defaultValue="default">
+          <Select.Option value="default">Position</Select.Option>
+          <Select.Option value="+currentPrice">From min price</Select.Option>
+          <Select.Option value="-currentPrice">From max price</Select.Option>
         </StyledSelect>
       </Form.Item>
       <Form.Item label="Show">
-        <StyledSelect onChange={onChange} defaultValue={inPage}>
+        <StyledSelect onChange={onChange} defaultValue={perPage}>
           <Select.Option value="15">15 per page</Select.Option>
           <Select.Option value="30">30 per page</Select.Option>
           <Select.Option value="45">45 per page</Select.Option>
@@ -43,8 +56,8 @@ const StyledSelect = styled(Select)`
 `
 
 CatalogSort.propTypes = {
-  inPage: PropTypes.string.isRequired,
-  setInPage: PropTypes.func.isRequired
+  filterSettings: PropTypes.instanceOf(Object).isRequired,
+  setFilterSettings: PropTypes.func.isRequired
 }
 
 export default CatalogSort

@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { setProducts, addProduct, updateProduct } from './actionCreator';
+import {
+  setProducts,
+  addProduct,
+  updateProduct,
+  setProductsToCatalog,
+  setCatalogProductsQuantity
+} from './actionCreator';
 
 const BASE_ENDPOINT = '/products'
 
@@ -61,8 +67,29 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) dispatch(actionCreator(res.data.products))
+      return res
     })
-    .catch((error) => console.log(error.response))
+    .catch((error) => error)
+  return res
+}
 
+export const getFilteredProductsToCatalog = (param) => (dispatch) => {
+  let paramStr = ''
+  Object.keys(param).forEach((key, index) => {
+    if (index === 0) {
+      return paramStr += `${key}=${param[key]}`
+    }
+    return paramStr += `&${key}=${param[key]}`
+  })
+  
+  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch(setProductsToCatalog(res.data.products))
+        dispatch(setCatalogProductsQuantity(res.data.productsQuantity))
+      }
+      return res
+    })
+    .catch((error) => error)
   return res
 }

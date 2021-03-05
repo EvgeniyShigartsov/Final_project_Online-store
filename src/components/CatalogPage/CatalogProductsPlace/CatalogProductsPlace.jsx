@@ -1,39 +1,46 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { getFilteredProducts, getProducts } from '../../../store/products/middleware'
+import { Pagination } from 'antd'
+import { setProductsToCatalog } from '../../../store/products/actionCreator'
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 import rateCalculator from '../../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../../utils/upperCaseFirstLetter'
 import {ProductCard} from '../../ProductCard/ProductCard'
+import { getFilteredProductsToCatalog } from '../../../store/products/middleware'
 
 const mapStateToProps = (state) => ({
-  products: state.products.products
+  catalogProducts: state.products.catalog.catalogProducts,
+  productsQuantity: state.products.catalog.productsQuantity
 })
 
-const CatalogProductsPlace = connect(mapStateToProps, {getProducts, getFilteredProducts})((
+const CatalogProductsPlace = connect(mapStateToProps, {
+  setProductsToCatalog,
+  getFilteredProductsToCatalog
+})((
   {
-    products,
-    getProducts,
-    getFilteredProducts
+    filterSettings,
+    setFilterSettings,
+    catalogProducts,
+    productsQuantity,
+    getFilteredProductsToCatalog
   }
 ) => {
-  const filter = async () => {
-    const res = await getFilteredProducts({perPage: '23'})
-    console.log(res)
+  const onChangePage = (page) => {
+    setFilterSettings((prev) => ({...prev, startPage: page}))
   }
 
-  filter()
-
   useEffect(() => {
-    getProducts()
-  }, [getProducts])
+    getFilteredProductsToCatalog(filterSettings)
+  }, [filterSettings, getFilteredProductsToCatalog])
+
   return (
     <Wrapper>
       <h3>Catalog Products Place</h3>
       <ProductsWrapper>
-        {products.map((el) => (
+        {catalogProducts.map((el) => (
           <ProductCard
             key={el.itemNo}
             title={upperCaseFirstLetter(el.name)}
@@ -45,6 +52,11 @@ const CatalogProductsPlace = connect(mapStateToProps, {getProducts, getFilteredP
           />
         ))}
       </ProductsWrapper>
+      <Pagination
+        onChange={onChangePage}
+        defaultPageSize={+filterSettings.perPage}
+        total={+productsQuantity}
+      />
     </Wrapper>
   )
 })
@@ -69,5 +81,10 @@ const ProductsWrapper = styled.div`
     }
 
 `
+
+CatalogProductsPlace.propTypes = {
+  filterSettings: PropTypes.instanceOf(Object).isRequired,
+  setFilterSettings: PropTypes.func.isRequired
+}
 
 export default CatalogProductsPlace

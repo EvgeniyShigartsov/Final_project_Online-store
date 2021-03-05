@@ -6,16 +6,21 @@ import CatalogProductsPlace from './CatalogProductsPlace/CatalogProductsPlace'
 import CatalogSort from './CatalogSort/CatalogSort'
 
 const CatalogPage = () => {
-  const [productsInPage, setProductsInPage] = useState('30')
-  console.log(productsInPage)
+  const [filterSettings, setFilterSettings] = useState({perPage: '15'})
   return (
     <Container>
       <Heading>Catalog Page</Heading>
       <div style={{display: 'flex' }}>
         <CatalogFilter />
         <div style={{display: 'flex', flexDirection: 'column', width: '100%'}}>
-          <CatalogSort inPage={productsInPage} setInPage={setProductsInPage} />
-          <CatalogProductsPlace inPage={productsInPage} />
+          <CatalogSort
+            filterSettings={filterSettings}
+            setFilterSettings={setFilterSettings}
+          />
+          <CatalogProductsPlace
+            filterSettings={filterSettings}
+            setFilterSettings={setFilterSettings}
+          />
         </div>
       </div>
     </Container>
