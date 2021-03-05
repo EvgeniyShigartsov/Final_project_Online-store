@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import {
   FieldTimeOutlined,
   EnvironmentOutlined
 } from '@ant-design/icons';
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 
 export const PopUpBlock = styled(motion.div)`
     position: absolute;

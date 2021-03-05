@@ -51,7 +51,7 @@ const PopUpList = ({
         <h5>Repairs</h5>
         <RightOutlinedStyled />
       </li>
-      <li>
+      <li style={{marginBottom: '20px'}}>
         <StyledButton color="borderBlue" size="xs" shape="round">Our Deals</StyledButton>
       </li>
     </ul>

@@ -3,7 +3,7 @@ import {
   CloseOutlined
 } from '@ant-design/icons';
 import styled, { css } from 'styled-components';
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import {forDesktop} from '../../../styles/mediaBreakPoints';
 
 export const PopUpContainer = styled(motion.div)`

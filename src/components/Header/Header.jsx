@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-import { useCycle } from 'framer-motion';
+import {useCycle} from 'framer-motion';
 import {
   DownOutlined
 } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import vector from '../../images/header/Vector.png';
 import FaceBook from '../../images/header/FaceBook.png';
 import Inst from '../../images/header/Inst.png';
@@ -60,12 +61,14 @@ const Header = () => {
     <HeaderContainer>
       <ShaduleContainer>
         <ContainerAlign>
-          <CircleMobile>
-            <Logo
-              src={vector}
-              alt="icon"
-            />
-          </CircleMobile>
+          <Link to="/" style={{outline: 'none'}}>
+            <CircleMobile>
+              <Logo
+                src={vector}
+                alt="icon"
+              />
+            </CircleMobile>
+          </Link>
           <ShaduleArrowContainer id="shadule">
             <p>
               Mon - Thu:
@@ -75,9 +78,9 @@ const Header = () => {
           </ShaduleArrowContainer>
           <ContactUsCall>
             <p>
-              Visit our showroom in 1234 Street Adress City Address, 1234  Contact Us
+              Visit our showroom in 1234 Street Adress City Address, 1234
             </p>
-            <h3>Contact Us</h3>
+            <h3 style={{cursor: 'pointer'}}>Contact Us</h3>
           </ContactUsCall>
           <CallBackAsk>
             <h5>
@@ -99,12 +102,14 @@ const Header = () => {
 
       <SearchAndItemsBlock>
         <MenuOutlinedStyled onClick={openCloseMenu} />
-        <CircleDesktop>
-          <LogoDesktop
-            src={vector}
-            alt="icon2"
-          />
-        </CircleDesktop>
+        <Link to="/" style={{outline: 'none'}}>
+          <CircleDesktop>
+            <LogoDesktop
+              src={vector}
+              alt="icon2"
+            />
+          </CircleDesktop>
+        </Link>
         <PopUpList
           hideList={hideList}
           setIsOpen={setIsOpen}
