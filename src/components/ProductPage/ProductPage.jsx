@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getOneProduct } from '../../store/products/middleware'
+import { useParams, useHistory } from 'react-router-dom'
+import { message } from 'antd'
 import { Container } from '../common/Container'
 import { StarRating } from '../StarRating/StarRating'
 import CartGroup from './CartGroup/CartGroup'
@@ -27,16 +27,17 @@ const ProductPage = () => {
   const [product, setProduct] = useState()
 
   const { productID } = useParams()
-  useEffect(() => {
-    // const getProduct = async () => {
-    //   const test = await getOneProduct(productID)
-    //   console.log(test)
-    // }
+  const history = useHistory()
 
+  useEffect(() => {
     axios.get(`/products/${productID}`)
       .then((res) => (res.status === 200 ? setProduct(() => res.data) : null))
-      .catch((err) => console.log(err.response))
-  }, [productID])
+      .catch((err) => {
+        console.log(err.response)
+        message.error('Something went wrong')
+        history.push('/')
+      })
+  }, [history, productID])
 
   if (!product) return <SpinAnimation width="100vw" height="80vh" />
   const { reviews, rating } = rateCalculator(product.reviews)
