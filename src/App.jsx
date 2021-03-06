@@ -6,6 +6,7 @@ import {Cart} from './components/CartPage/Cart/Cart'
 import StyledButton from './components/common/Buttons/StyledButton'
 import {AboutUsPage} from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+import { InstaSection } from './components/InstaSection/InstaSection'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/">
           <BannerSlider />
           <NewProductsSlider />
+          <InstaSection />
         </Route>
         <Route exact path="/signup">
           <CreateCustomerPage />

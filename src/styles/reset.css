@@ -124,6 +124,10 @@ html {
  * Address `outline` inconsistency between Chrome and other browsers.
  */
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
 a:focus {
     outline: thin dotted;
 }
@@ -135,6 +139,8 @@ a:focus {
 a:active,
 a:hover {
     outline: 0;
+    text-decoration: none;
+    color: inherit;
 }
 
 /**
