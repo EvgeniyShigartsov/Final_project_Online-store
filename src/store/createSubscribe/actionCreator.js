@@ -1,4 +1,5 @@
-import { POST_SUBSCRIBE } from './actionType'
+import { SET_SUBSCRIBER, SET_SUBSCRIBER_SUCCESS, SET_SUBSCRIBER_ERROR } from './actionType'
 
-export const createSubscribe = (payload) => ({type: POST_SUBSCRIBE, payload})
-export default createSubscribe
+export const createSubscribe = () => ({type: SET_SUBSCRIBER})
+export const createSubscribeSuccess = (payload) => ({type: SET_SUBSCRIBER_SUCCESS, payload})
+export const createSubscribeError = (payload) => ({type: SET_SUBSCRIBER_ERROR, payload})

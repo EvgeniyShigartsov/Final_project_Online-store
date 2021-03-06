@@ -5,10 +5,11 @@ import FooterAdressText from './footer-style-components/FooterAdressText'
 import Accordion from './footer-style-components/Accordion'
 import Input from './footer-style-components/Input'
 import Content from './footer-style-components/Content'
+import FooterLineMobile from './FooterLineMobile'
 
 const FooterDesctops = () => (
   <Accordion>
-    <Input type="radio" id={5} />
+    <Input type="checkbox" id={5} />
     <FooterLinksTitle htmlFor={5}>Address</FooterLinksTitle>
     <Content>
       <FooterAdressText>Address: 1234 Street Adress City Address, 1234</FooterAdressText>
@@ -24,6 +25,7 @@ const FooterDesctops = () => (
         <FooterAdressLink> shop@email.com</FooterAdressLink>
       </FooterAdressText>
     </Content>
+    <FooterLineMobile />
   </Accordion>
 )
 

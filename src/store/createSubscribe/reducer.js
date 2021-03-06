@@ -1,14 +1,27 @@
-import { POST_SUBSCRIBE } from './actionType'
+import { SET_SUBSCRIBER, SET_SUBSCRIBER_SUCCESS, SET_SUBSCRIBER_ERROR } from './actionType'
 
 export const MODULE_NAME = 'createSubscribeModule'
 
 const initialState = {
-  
-  error: true
+  isLoading: false,
+  error: null,
 }
-export const reducer = (state = initialState, {type, payload}) => {
+export const subscribersReducer = (state = initialState, {type, payload}) => {
   switch (type) {
-    case POST_SUBSCRIBE: {
+    case SET_SUBSCRIBER: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case SET_SUBSCRIBER_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+      }
+    }
+    case SET_SUBSCRIBER_ERROR: {
       return {
         ...state,
         error: payload
@@ -19,4 +32,3 @@ export const reducer = (state = initialState, {type, payload}) => {
     }
   }
 }
-export default reducer

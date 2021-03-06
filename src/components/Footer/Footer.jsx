@@ -12,6 +12,7 @@ import FooterLine from './footer-components/FooterLine'
 import StyledFooter from './footer-components/footer-style-components/StyledFooter'
 import StyledSection from './footer-components/footer-style-components/StyledSection'
 import StyledWrapper from './footer-components/footer-style-components/StyledWrapper'
+import StyledWrapperFooter from './footer-components/footer-style-components/StyledWrapperFooter'
 
 const Footer = () => (
   <StyledFooter>
@@ -25,11 +26,11 @@ const Footer = () => (
           <FooterAdress />
         </StyledWrapper>
         <FooterLine />
-        <StyledWrapper>
+        <StyledWrapperFooter>
           <FooterSocialNetwork />
           <FooterPayment />
           <FooterCopyRight />
-        </StyledWrapper>
+        </StyledWrapperFooter>
       </StyledSection>
     </Container>
   </StyledFooter>

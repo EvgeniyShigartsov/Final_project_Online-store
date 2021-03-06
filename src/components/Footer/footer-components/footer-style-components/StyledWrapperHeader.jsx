@@ -9,6 +9,7 @@ margin-bottom: 16px;
 
 @media(min-width: ${forDesktop.minWidth}px){
 flex-direction: row;
+justify-content: space-between;
 margin-bottom: 45px;
 }
 `

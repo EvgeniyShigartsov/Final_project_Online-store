@@ -10,7 +10,6 @@ text-decoration: none;
 color: #ffffff;
 display: block;
 padding-top: 5px;
-padding-left: 10px;
 
 @media(min-width: ${forDesktop.minWidth}px){
 font-size: 13px;

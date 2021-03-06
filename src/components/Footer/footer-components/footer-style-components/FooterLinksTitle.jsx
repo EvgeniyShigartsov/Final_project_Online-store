@@ -7,7 +7,6 @@ font-style: normal;
 font-weight: bold;
 align-items: center;
 color: rgba(255, 255, 255, 0.5);
-margin-bottom: 12px;
 padding: 14px 0;  
 display: block;
 cursor: pointer;
@@ -34,7 +33,6 @@ transition: background 0.1s;
 
 @media(min-width: ${forDesktop.minWidth}px){
 font-size: 16px;
-margin-bottom: 30px;
 
 &::after{
     display: none;

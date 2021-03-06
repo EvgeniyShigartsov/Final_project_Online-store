@@ -1,22 +1,19 @@
 import styled from 'styled-components'
 import { Input } from 'antd';
-import { forDesktop, forTablet } from '../../../../styles/mediaBreakPoints'
+import { forDesktop } from '../../../../styles/mediaBreakPoints'
 
 const StyledInput = styled(Input)`
 background-color: #000000;
 border: 1px solid #FFFFFF;
-width: 186px;
-height: 38px;
-margin-right: 23px;
-
-@media(min-width: ${forTablet.minWidth}px){
-    
-}
+width: 140px;
+height: auto;
+margin: 20px 10px 0 0;
+font-size: 10px;
 
 @media(min-width: ${forDesktop.minWidth}px){
 width: 391px;
-height: 50px;
-margin-right: 23px;
+height: auto;
+margin: 28px 23px 0 0;
 }
 `
 export default StyledInput

@@ -3,7 +3,7 @@ const footerConfig = [
     title: 'Information',
     id: 1,
     links: [
-      { to: '/', text: 'About Us' },
+      { to: '/aboutus', text: 'About Us' },
       { to: '/', text: 'About Zip' },
       { to: '/', text: 'Privacy Policy' },
       { to: '/', text: 'Search' },

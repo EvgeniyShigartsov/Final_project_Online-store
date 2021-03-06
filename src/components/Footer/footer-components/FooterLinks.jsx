@@ -2,25 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FooterLinksTitle from './footer-style-components/FooterLinksTitle'
 import FooterLinkItem from './footer-style-components/FooterLinkItem'
-import FooterLinksContainer from './FooterLinkContainer'
 import Content from './footer-style-components/Content'
 import Accordion from './footer-style-components/Accordion'
 import Input from './footer-style-components/Input'
+import FooterLineMobile from './FooterLineMobile'
 
 const FooterLinks = ({ title, links, id }) => (
-  <FooterLinksContainer>
-    <Accordion>
-      <Input type="radio" id={id} />
-      <FooterLinksTitle htmlFor={id}>{title}</FooterLinksTitle>
-      <Content>
-        {links.map((link) => (
-          <FooterLinkItem key={link.text} to={link.to}>
-            {link.text}
-          </FooterLinkItem>
-        ))}
-      </Content>
-    </Accordion>
-  </FooterLinksContainer>
+  <Accordion>
+    <Input type="checkbox" id={id} />
+    <FooterLinksTitle htmlFor={id}>{title}</FooterLinksTitle>
+    <Content>
+      {links.map((link) => (
+        <FooterLinkItem key={link.text} to={link.to}>
+          {link.text}
+        </FooterLinkItem>
+      ))}
+    </Content>
+    <FooterLineMobile />
+  </Accordion>
 )
 
 FooterLinks.propTypes = {
