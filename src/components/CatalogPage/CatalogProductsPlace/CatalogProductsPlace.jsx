@@ -3,17 +3,17 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Pagination } from 'antd'
+import { Spin } from 'antd'
 import { setProductsToCatalog } from '../../../store/products/actionCreator'
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 import rateCalculator from '../../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../../utils/upperCaseFirstLetter'
 import {ProductCard} from '../../ProductCard/ProductCard'
 import { getFilteredProductsToCatalog } from '../../../store/products/middleware'
+import CatalogPagination from '../CatalogPagination/CatalogPagination'
 
 const mapStateToProps = (state) => ({
-  catalogProducts: state.products.catalog.catalogProducts,
-  productsQuantity: state.products.catalog.productsQuantity
+  catalogProducts: state.products.catalog.catalogProducts
 })
 
 const CatalogProductsPlace = connect(mapStateToProps, {
@@ -21,69 +21,72 @@ const CatalogProductsPlace = connect(mapStateToProps, {
   getFilteredProductsToCatalog
 })((
   {
-    filterSettings,
+    config,
     setFilterSettings,
     catalogProducts,
-    productsQuantity,
     getFilteredProductsToCatalog
   }
 ) => {
-  const onChangePage = (page) => {
-    setFilterSettings((prev) => ({...prev, startPage: page}))
-  }
-
   useEffect(() => {
-    getFilteredProductsToCatalog(filterSettings)
-  }, [filterSettings, getFilteredProductsToCatalog])
+    getFilteredProductsToCatalog(config)
+  }, [config, getFilteredProductsToCatalog])
 
   return (
-    <Wrapper>
-      <h3>Catalog Products Place</h3>
-      <ProductsWrapper>
-        {catalogProducts.map((el) => (
-          <ProductCard
-            key={el.itemNo}
-            title={upperCaseFirstLetter(el.name)}
-            img={el.imageUrls[0]}
-            previousPrice={el.previousPrice}
-            currentPrice={el.currentPrice}
-            isGoodsInStock={el.quantity > 0}
-            {...rateCalculator(el.reviews)}
+    catalogProducts.length === 0
+      ? <StyledSpin size="large" tip="Loading..." />
+      : (
+        <Wrapper>
+          <ProductsWrapper>
+            {catalogProducts.map((el) => (
+              <ProductCard
+                key={el.itemNo}
+                title={upperCaseFirstLetter(el.name)}
+                img={el.imageUrls[0]}
+                previousPrice={el.previousPrice}
+                currentPrice={el.currentPrice}
+                isGoodsInStock={el.quantity > 0}
+                {...rateCalculator(el.reviews)}
+              />
+            ))}
+          </ProductsWrapper>
+          <CatalogPagination
+            config={config}
+            setFilterSettings={setFilterSettings}
           />
-        ))}
-      </ProductsWrapper>
-      <Pagination
-        onChange={onChangePage}
-        defaultPageSize={+filterSettings.perPage}
-        total={+productsQuantity}
-      />
-    </Wrapper>
+        </Wrapper>
+      )
   )
 })
 
 const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  min-height: 100%;
+  text-align: center;
+ `
+    
+const ProductsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  
+  @media (min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
+      grid-gap: 15px;
+      grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: ${forDesktop.minWidth}px){
+      grid-gap: 15px;
+      grid-template-columns: repeat(5, 1fr);
+  }
+
 `
 
-const ProductsWrapper = styled.div`
-    display: grid;
-    justify-items: center;
-    
-    @media (min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
-        grid-gap: 15px;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (min-width: ${forDesktop.minWidth}px){
-        grid-gap: 15px;
-        grid-template-columns: repeat(5, 1fr);
-    }
-
+const StyledSpin = styled(Spin)`
+    margin: 50px auto;
 `
 
 CatalogProductsPlace.propTypes = {
-  filterSettings: PropTypes.instanceOf(Object).isRequired,
+  config: PropTypes.instanceOf(Object).isRequired,
   setFilterSettings: PropTypes.func.isRequired
 }
 

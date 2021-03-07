@@ -8,9 +8,9 @@ const CatalogFilter = () => (
 )
 
 const Wrapper = styled.aside`
-    min-width: 20%;
-    min-height: 100%;
-    background-color: gray;
+  min-width: 20%;
+  height: 200px;
+  background-color: gray;
 `
 
 export default CatalogFilter
