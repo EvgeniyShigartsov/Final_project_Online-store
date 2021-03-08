@@ -15,6 +15,7 @@ const CartGroup = connect(null, { addToCart })(({productID, avilableQuantity, ad
     if (!checkValue(value, avilableQuantity)) return
     setQuanity(() => value)
   }
+  
   const increaseHandler = () => {
     const isValid = checkValue(quantity + 1, avilableQuantity)
     return isValid ? setQuanity((prevValue) => prevValue + 1) : null

@@ -8,5 +8,3 @@ export const CartGroupBox = styled.div`
 export const FlexBox = styled.div`
     display: flex;
 `
-
-export const ArrowsBox = styled.div``

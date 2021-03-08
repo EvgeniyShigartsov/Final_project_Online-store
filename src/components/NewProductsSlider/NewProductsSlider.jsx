@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Carousel from '../Carousel/Carousel'
 import { forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
@@ -64,15 +65,17 @@ export const NewProductsSlider = connect(
     <Container>
       <Carousel carouselSettings={carouselSettings}>
         {newProducts.map((el) => (
-          <ProductCard
-            key={el.itemNo}
-            title={upperCaseFirstLetter(el.name)}
-            img={el.imageUrls[0]}
-            previousPrice={el.previousPrice}
-            currentPrice={el.currentPrice}
-            isGoodsInStock={el.quantity > 0}
-            {...rateCalculator(el.reviews)}
-          />
+          <Link to={`products/${el.itemNo}`} key={el.itemNo}>
+            <ProductCard
+              key={el.itemNo}
+              title={upperCaseFirstLetter(el.name)}
+              img={el.imageUrls[0]}
+              previousPrice={el.previousPrice}
+              currentPrice={el.currentPrice}
+              isGoodsInStock={el.quantity > 0}
+              {...rateCalculator(el.reviews)}
+            />
+          </Link>
         ))}
       </Carousel>
     </Container>
