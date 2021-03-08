@@ -1,5 +1,10 @@
 import {
-  ADD_PRODUCT, SET_PRODUCTS, UPDATE_PRODUCT, GET_NEW_PRODUCTS
+  ADD_PRODUCT,
+  SET_PRODUCTS,
+  UPDATE_PRODUCT,
+  GET_NEW_PRODUCTS,
+  SET_TO_CATALOG,
+  SET_CATALOG_PRODUCTS_QUANTITY
 } from './actionType';
 
 export const setProducts = (payload) => ({
@@ -18,5 +23,13 @@ export const updateProduct = (payload) => ({
 })
 export const getNewProductsCreator = (payload) => ({
   type: GET_NEW_PRODUCTS,
+  payload
+})
+export const setProductsToCatalog = (payload) => ({
+  type: SET_TO_CATALOG,
+  payload
+})
+export const setCatalogProductsQuantity = (payload) => ({
+  type: SET_CATALOG_PRODUCTS_QUANTITY,
   payload
 })
