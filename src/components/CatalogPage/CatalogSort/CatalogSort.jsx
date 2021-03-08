@@ -1,32 +1,30 @@
-import { Select } from 'antd'
-import 'antd/dist/antd.css'
-import PropTypes from 'prop-types';
 import React from 'react'
+import PropTypes from 'prop-types';
 import styled from 'styled-components'
+import 'antd/dist/antd.css'
+import { Select } from 'antd'
 import { forDesktop, forMobile, forTablet } from '../../../styles/mediaBreakPoints';
 
-const CatalogSort = ({config, setFilterSettings}) => {
+const CatalogSort = ({config, setSortAndPagination}) => {
   const {perPage} = config
   
-  const onChange = (value) => {
-    setFilterSettings((prev) => ({...prev, perPage: value}))
-  }
-
-  const onChangePosition = (value) => {
-    if (value === 'default') {
-      setFilterSettings((prev) => {
-        const {sort, ...current} = prev
-        return current
-      })
+  const onChange = (value, key) => {
+    if (value !== 'default') {
+      if (key === 'perPage') setSortAndPagination((prev) => ({...prev, perPage: value}))
+      if (key === 'sort') setSortAndPagination((prev) => ({...prev, sort: value}))
     } else {
-      setFilterSettings((prev) => ({...prev, sort: value}))
+      setSortAndPagination((prev) => {
+        const {sort, ...result} = prev
+        return result
+      })
     }
   }
+
   return (
     <Wrapper>
       <SelectWrapper>
         <span className="title-select">Sort By:</span>
-        <StyledSelect bordered={false} onChange={onChangePosition} defaultValue="default">
+        <StyledSelect bordered={false} onChange={(value) => onChange(value, 'sort')} defaultValue="default">
           <Select.Option value="default">Position</Select.Option>
           <Select.Option value="+currentPrice">From min price</Select.Option>
           <Select.Option value="-currentPrice">From max price</Select.Option>
@@ -34,7 +32,7 @@ const CatalogSort = ({config, setFilterSettings}) => {
       </SelectWrapper>
       <SelectWrapper>
         <span className="title-select">Show:</span>
-        <StyledSelect bordered={false} onChange={onChange} defaultValue={perPage}>
+        <StyledSelect bordered={false} onChange={(value) => onChange(value, 'perPage')} defaultValue={perPage}>
           <Select.Option value="15">15 per page</Select.Option>
           <Select.Option value="30">30 per page</Select.Option>
           <Select.Option value="45">45 per page</Select.Option>
@@ -102,7 +100,7 @@ const StyledSelect = styled(Select)`
 
 CatalogSort.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,
-  setFilterSettings: PropTypes.func.isRequired
+  setSortAndPagination: PropTypes.func.isRequired
 }
 
 export default CatalogSort

@@ -4,7 +4,8 @@ import {
   UPDATE_PRODUCT,
   GET_NEW_PRODUCTS,
   SET_TO_CATALOG,
-  SET_CATALOG_PRODUCTS_QUANTITY
+  SET_CATALOG_PRODUCTS_QUANTITY,
+  CLEAN_CATALOG_PRODUCTS
 } from './actionType';
 
 export const setProducts = (payload) => ({
@@ -32,4 +33,8 @@ export const setProductsToCatalog = (payload) => ({
 export const setCatalogProductsQuantity = (payload) => ({
   type: SET_CATALOG_PRODUCTS_QUANTITY,
   payload
+})
+
+export const cleanCatalogProducts = () => ({
+  type: CLEAN_CATALOG_PRODUCTS
 })

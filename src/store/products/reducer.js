@@ -4,7 +4,8 @@ import {
   UPDATE_PRODUCT,
   GET_NEW_PRODUCTS,
   SET_TO_CATALOG,
-  SET_CATALOG_PRODUCTS_QUANTITY
+  SET_CATALOG_PRODUCTS_QUANTITY,
+  CLEAN_CATALOG_PRODUCTS
 } from './actionType';
 
 export const MODULE_NAME = 'products'
@@ -58,6 +59,14 @@ export const reducer = (state = initialState, {type, payload}) => {
         catalog: {
           ...state.catalog,
           productsQuantity: payload
+        }
+      }
+    case CLEAN_CATALOG_PRODUCTS:
+      return {
+        ...state,
+        catalog: {
+          ...state.catalog,
+          catalogProducts: []
         }
       }
     default:

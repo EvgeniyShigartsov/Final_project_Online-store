@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const CatalogPagination = connect(mapStateToProps)(({
   config,
-  setFilterSettings,
+  setSortAndPagination,
   productsQuantity
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -20,7 +20,7 @@ const CatalogPagination = connect(mapStateToProps)(({
       top: 0,
       behavior: 'smooth'
     })
-    setFilterSettings((prev) => ({
+    setSortAndPagination((prev) => ({
       ...prev,
       startPage: page
     }))
@@ -51,7 +51,7 @@ const StyledPagination = styled(Pagination)`
 
 CatalogPagination.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,
-  setFilterSettings: PropTypes.func.isRequired
+  setSortAndPagination: PropTypes.func.isRequired
 }
 
 export default CatalogPagination

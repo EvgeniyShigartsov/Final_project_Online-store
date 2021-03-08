@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Spin } from 'antd'
-import { setProductsToCatalog } from '../../../store/products/actionCreator'
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 import rateCalculator from '../../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../../utils/upperCaseFirstLetter'
@@ -17,12 +16,11 @@ const mapStateToProps = (state) => ({
 })
 
 const CatalogProductsPlace = connect(mapStateToProps, {
-  setProductsToCatalog,
   getFilteredProductsToCatalog
 })((
   {
     config,
-    setFilterSettings,
+    setSortAndPagination,
     catalogProducts,
     getFilteredProductsToCatalog
   }
@@ -51,7 +49,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
           </ProductsWrapper>
           <CatalogPagination
             config={config}
-            setFilterSettings={setFilterSettings}
+            setSortAndPagination={setSortAndPagination}
           />
         </Wrapper>
       )
@@ -87,7 +85,7 @@ const StyledSpin = styled(Spin)`
 
 CatalogProductsPlace.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,
-  setFilterSettings: PropTypes.func.isRequired
+  setSortAndPagination: PropTypes.func.isRequired
 }
 
 export default CatalogProductsPlace

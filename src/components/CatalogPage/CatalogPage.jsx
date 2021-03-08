@@ -3,26 +3,26 @@ import styled from 'styled-components'
 import {Container} from '../common/Container'
 import Heading from '../common/Heading/Heading'
 import CatalogFilter from './CatalogFilter/CatalogFilter'
-// import CatalogPagination from './CatalogPagination/CatalogPagination'
 import CatalogProductsPlace from './CatalogProductsPlace/CatalogProductsPlace'
 import CatalogSort from './CatalogSort/CatalogSort'
 
 const CatalogPage = () => {
-  const [filterSettings, setFilterSettings] = useState({perPage: '15'})
-  const config = {...filterSettings}
+  const [sortAndPagination, setSortAndPagination] = useState({perPage: '15'})
+  const config = {...sortAndPagination}
+
   return (
     <Container>
-      <Heading>Catalog Page</Heading>
+      <Heading>Products</Heading>
       <Flex>
         <CatalogFilter />
         <CatalogProducts>
           <CatalogSort
             config={config}
-            setFilterSettings={setFilterSettings}
+            setSortAndPagination={setSortAndPagination}
           />
           <CatalogProductsPlace
             config={config}
-            setFilterSettings={setFilterSettings}
+            setSortAndPagination={setSortAndPagination}
           />
         </CatalogProducts>
       </Flex>
