@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
@@ -88,7 +89,7 @@ const ProductPage = () => {
               <b>{product.description}</b>
             </li>
           </AboutProduct>
-          <CartGroup avilableQuantity={product.quantity} />
+          <CartGroup productID={product._id} avilableQuantity={product.quantity} />
           <PriceBox>
             On Sale from
             <b>

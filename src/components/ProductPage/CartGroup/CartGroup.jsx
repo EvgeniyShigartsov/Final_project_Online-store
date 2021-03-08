@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { CartGroupBox, FlexBox } from './StylesCartGroup'
 import InputGroup from './InputGroup/InputGroup'
 import StyledButton from '../../common/Buttons/StyledButton'
 import checkValue from '../../../utils/checkValue'
+import { addToCart } from '../../../store/cart/middleware'
 
-const CartGroup = ({ avilableQuantity }) => {
+const CartGroup = connect(null, { addToCart })(({productID, avilableQuantity, addToCart }) => {
   const [quantity, setQuanity] = useState(avilableQuantity > 0 ? 1 : 0)
-  
   const inputHandler = (e) => {
     const value = +e.target.value.trim()
     if (!checkValue(value, avilableQuantity)) return
@@ -36,13 +37,14 @@ const CartGroup = ({ avilableQuantity }) => {
           inputHandler={inputHandler}
           quantity={quantity}
         />
-        <StyledButton size="lg" shape="round" disabled={!isAvilable}>Add to cart</StyledButton>
+        <StyledButton size="lg" shape="round" disabled={!isAvilable} onClick={() => addToCart(productID, quantity)}>Add to cart</StyledButton>
       </FlexBox>
     </CartGroupBox>
   )
-}
+})
 
 CartGroup.propTypes = {
+  productID: PropTypes.string.isRequired,
   avilableQuantity: PropTypes.number.isRequired
 }
 
