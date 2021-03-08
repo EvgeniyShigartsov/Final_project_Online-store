@@ -43,7 +43,6 @@ const ProductPage = () => {
 
   if (!product) return <SpinAnimation width="100vw" height="80vh" />
   const { reviews, rating } = rateCalculator(product.reviews)
-
   return (
     <Container>
       <PageContainer>
@@ -59,6 +58,11 @@ const ProductPage = () => {
         <InformationBox>
           <Description>About product</Description>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
+          <div>
+            Код товара:
+            {' '}
+            {product.itemNo}
+          </div>
           <ReviewsBox>
             <ReviewsCount>
               Reviews (

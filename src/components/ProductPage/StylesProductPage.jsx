@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components'
 import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
@@ -12,7 +11,6 @@ export const PageContainer = styled.div`
 `
 export const ProductImagesCarouselBox = styled.div`
     width: 100%;
-    /* align-self: stretch; */
     border: 3px solid #F5F7FF;
     @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
         width: 55%;
@@ -20,9 +18,10 @@ export const ProductImagesCarouselBox = styled.div`
     @media(min-width: ${forDesktop.minWidth}px){
         width: 50%;
     }
-`
+    `
 export const InformationBox = styled.div`
     display: flex;
+    align-self: stretch;
     flex-direction: column;
     width: 100%;
     

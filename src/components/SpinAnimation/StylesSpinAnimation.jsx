@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const AnimationWrapper = styled.div`
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: ${(props) => css` ${props.width} `};
-    height: ${(props) => css` ${props.height} `};
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
 `
 export const Spin = styled.div`
 @keyframes spin {
