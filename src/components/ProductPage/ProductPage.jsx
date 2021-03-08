@@ -18,6 +18,7 @@ import {
   ReviewsCount,
   AboutProduct,
   PriceBox,
+  ImageBox,
 } from './StylesProductPage'
 import Carousel from '../Carousel/Carousel'
 import rateCalculator from '../../utils/rateCalculator'
@@ -34,9 +35,9 @@ const ProductPage = () => {
     axios.get(`/products/${productID}`)
       .then((res) => (res.status === 200 ? setProduct(() => res.data) : null))
       .catch((err) => {
-        console.log(err.response)
         message.error('Something went wrong')
         history.push('/')
+        return err.response
       })
   }, [history, productID])
 
@@ -48,7 +49,11 @@ const ProductPage = () => {
       <PageContainer>
         <ProductImagesCarouselBox>
           <Carousel carouselSettings={{ dots: false }}>
-            {product.imageUrls.map((url) => <StyledImg src={url} key={url} alt="Product image" />)}
+            {product.imageUrls.map((url) => (
+              <ImageBox key={url}>
+                <StyledImg src={url} key={url} alt="Product image" />
+              </ImageBox>
+            ))}
           </Carousel>
         </ProductImagesCarouselBox>
         <InformationBox>

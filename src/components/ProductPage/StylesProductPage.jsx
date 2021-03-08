@@ -12,6 +12,7 @@ export const PageContainer = styled.div`
 `
 export const ProductImagesCarouselBox = styled.div`
     width: 100%;
+    /* align-self: stretch; */
     border: 3px solid #F5F7FF;
     @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
         width: 55%;
@@ -36,7 +37,11 @@ export const InformationBox = styled.div`
         background-color: #F5F7FF;
     }
 `
+export const ImageBox = styled.div`
+    height: 60vh;
+    `
 export const StyledImg = styled.img`
+    object-fit: contain;
     width: 100%;
     height: 100%;
 `
