@@ -13,7 +13,6 @@ import {
 
 export const addToCart = (productId, quantity) => (dispatch, getStore) => {
   const { cart: { products } } = getStore()
-  console.log(products)
 
   let updatedCart = []
   const isExistInCart = products ? products.find((el) => el.product._id === productId) : null

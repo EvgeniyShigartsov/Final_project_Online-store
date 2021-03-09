@@ -18,7 +18,7 @@ export const ProductImagesCarouselBox = styled.div`
     @media(min-width: ${forDesktop.minWidth}px){
         width: 50%;
     }
-    `
+`
 export const InformationBox = styled.div`
     display: flex;
     align-self: stretch;
@@ -38,7 +38,7 @@ export const InformationBox = styled.div`
 `
 export const ImageBox = styled.div`
     height: 60vh;
-    `
+`
 export const StyledImg = styled.img`
     object-fit: contain;
     width: 100%;
