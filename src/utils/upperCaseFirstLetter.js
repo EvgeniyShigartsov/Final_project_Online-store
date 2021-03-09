@@ -3,4 +3,5 @@ const upperCaseFirstLetter = (string) => {
   const cuted = string.slice(1, string.length)
   return `${firstLetter}${cuted}`
 }
+
 export default upperCaseFirstLetter

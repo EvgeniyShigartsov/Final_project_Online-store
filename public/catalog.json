@@ -1,0 +1,129 @@
+{
+   "catalog":[
+      {
+         "catalogNo": 1,
+         "billboard": {
+            "title": "Razer",
+            "bgImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxHPvJ9i-KXYLfYAtO6TL73pt2-MhFscPdGA&usqp=CAU",
+            "urlToAllProducts": "google.com",
+            "itemNo": 1
+         },
+         "category":[
+            {
+                  "productSubcategory": "Razer Blade",
+                  "productItem": [
+                     {
+                        "name":  "Ноутбук Razer Blade 15 SE",
+                        "imageUrls":["https://i8.rozetka.ua/goods/20522114/razer_rz09_0330qem3_r3u1_images_20522114716.jpg"],
+                        "reviews": [5, 5, 3, 3, 3, 3],
+                        "previousPrice": 103590,
+                        "currentPrice": 91999,
+                        "quantity": 100,
+                        "itemNo": "RZ09-0330QEM3-R3U1"
+                     },
+                     {
+                        "name":  "Ноутбук Razer Blade 15 Advanced Edition",
+                        "imageUrls":["https://i8.rozetka.ua/goods/20073024/razer_rz09_03304e42_r3u1_images_20073024641.png"],
+                        "reviews": [5, 5, 4, 4, 4, 3],
+                        "previousPrice": 0,
+                        "currentPrice":  63999,
+                        "quantity": 120,
+                        "itemNo": "RZ09-03304E42-R3U1"
+                     },
+                     {
+                        "name":  "Ноутбук Razer Blade 15",
+                        "imageUrls":   ["https://i2.rozetka.ua/goods/20521879/copy_razer_rz09_03287e22_r3u1_5f9aab599ce87_images_20521879301.png"],
+                        "reviews": [5],
+                        "previousPrice": 0,
+                        "currentPrice": 54299,
+                        "quantity": 0,
+                        "itemNo": "RZ09-03287E72-R3U1"
+                     },
+                     {
+                        "name": "Ноутбук Razer Blade 15 Quartz Pink",
+                        "imageUrls": ["https://i8.rozetka.ua/goods/16788490/razer_rz09_03006eq2_r3u1_images_16788490342.jpg"],
+                        "reviews": [5],
+                        "previousPrice": 0,
+                        "currentPrice": 55699,
+                        "quantity": 10,
+                        "itemNo": "RZ09-03006EQ2-R3U1"
+                     }
+                  ]
+            },
+            {
+               "productSubcategory": "Razer Blade Stealth",
+               "productItem": [
+                     {
+                        "name": "Ноутбук Razer Blade Stealth 13 Black",
+                        "imageUrls": ["https://i2.rozetka.ua/goods/19503721/copy_razer_rz09_03101e72_r3u1_5f339a6616a85_images_19503721423.jpg"],
+                        "reviews": [5, 5, 5, 5, 3, 3],
+                        "previousPrice": 0,
+                        "currentPrice": 46399,
+                        "quantity": 123,
+                        "itemNo": "RZ09-03102E02-R3U1"
+                     },
+                     {
+                        "name":  "Ноутбук Razer Blade Stealth 13 QUARTZ",
+                        "imageUrls":  ["https://i2.rozetka.ua/goods/15289474/razer_rz09_02812eq1_r3u1_images_15289474327.jpg"],
+                        "reviews": [5, 5, 4, 3, 3, 3],
+                        "previousPrice": 0,
+                        "currentPrice": 30799,
+                        "quantity": 123,
+                        "itemNo": "RZ09-02812EQ1-R3U1"
+                     },
+                     {
+                        "name": "Ноутбук Razer Blade Stealth 13 Black ",
+                        "imageUrls": ["https://i8.rozetka.ua/goods/18429487/razer_rz09_03101e72_r3u1_images_18429487525.jpg"],
+                        "reviews": [5, 5, 3, 3, 3, 3],
+                        "previousPrice": 0,
+                        "currentPrice": 43499,
+                        "quantity": 123,
+                        "itemNo": "RZ09-03101E72-R3U1"
+                     },
+                     {
+                        "name":  "Ноутбук Razer Blade Stealth 13 Mercury",
+                        "imageUrls": ["https://i2.rozetka.ua/goods/15405519/razer_rz09_03100em1_r3u1_images_15405519235.jpg"],
+                        "reviews": [5, 5, 3, 3, 3, 3],
+                        "previousPrice": 0,
+                        "currentPrice": 33199,
+                        "quantity": 0,
+                        "itemNo": "RZ09-03100EM1-R3U1"
+                     }
+                  ]
+            },
+            {
+               "productSubcategory": "Razer Blade Pro",
+               "productItem": [
+                     {
+                        "name":  "Ноутбук Razer Blade Pro 17",
+                        "imageUrls":  ["https://i8.rozetka.ua/goods/15289943/razer_rz09_02877e92_r3u1_images_15289943173.jpg"],
+                        "reviews": [1, 2, 2, 2, 3, 3],
+                        "previousPrice": 0,
+                        "currentPrice": 70299,
+                        "quantity": 123,
+                        "itemNo": "RZ09-02877E92-R3U1"
+                     },
+                     {
+                        "name": "Ноутбук Razer Blade Pro 17",
+                        "imageUrls": ["https://i8.rozetka.ua/goods/16534054/copy_razer_rz09_02877e92_r3u1_5e2abacab4cc6_images_16534054006.jpg"],
+                        "reviews": [5, 5, 3, 3, 3, 3],
+                        "previousPrice":  0,
+                        "currentPrice": 91299,
+                        "quantity": 123,
+                        "itemNo": "RZ09-03148E02-R3U1"
+                     },
+                     {
+                        "name":  "Ноутбук Razer Blade Pro 17",
+                        "imageUrls":   ["https://i.citrus.ua/imgcache/size_180/uploads/shop/e/a/ea6b95a297ddcfaf250e757330879795.jpg"],
+                        "reviews": [5, 5, 3, 3, 1, 1, 4],
+                        "previousPrice":  0,
+                        "currentPrice":   58299,
+                        "quantity": 123,
+                        "itemNo": "RZ09-02876E92-R3U1"
+                     }
+                  ]
+               }
+         ]
+      }
+   ]
+}

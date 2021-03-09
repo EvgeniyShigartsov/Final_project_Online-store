@@ -8,6 +8,7 @@ import LogIn from './components/LogIn/LogIn'
 import StyledButton from './components/common/Buttons/StyledButton'
 import { Cart } from './components/CartPage/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
+import { MainCatalog } from './components/MainCatalog/MainCatalog'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/">
           <BannerSlider />
           <NewProductsSlider />
+          <MainCatalog />
         </Route>
         <Route exact path="/signin">
           <LogIn />

@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import { forDesktop } from '../../styles/mediaBreakPoints'
 
 const StyledCardItem = styled.li`
-  list-style: none;
-  width: 215px;
+  position: relative;
+  max-width: 234px;
+  height: 240px;
+
   padding: 5px 13px;
 
   @media(min-width: ${forDesktop.minWidth}px){
+    height: 320px;
     padding: 10px 24px;
   }
 `
@@ -53,12 +56,22 @@ export const StyledCardTitle = styled.h2`
   }
 `
 
+export const StyledCardPriceBlock = styled.div`
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: auto;
+
+    display: flex;
+    align-items: center;
+`
+
 export const StyledCardLastPrice = styled.p`
   color: #666666;
   text-decoration-line: line-through;
   font-size: 12px;
 
-  margin-top: 5px;
+  margin-left: 10px;
 
   @media(min-width: ${forDesktop.minWidth}px){
     font-size: 14px;
@@ -67,10 +80,8 @@ export const StyledCardLastPrice = styled.p`
 `
 
 export const StyledCardNowPrice = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-
-  margin-top: 3px;
 
   @media(min-width: ${forDesktop.minWidth}px){
     font-size: 18px;

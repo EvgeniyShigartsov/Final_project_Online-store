@@ -11,8 +11,6 @@ import { Container } from '../common/Container'
 import { Wrapper } from '../common/Wrapper'
 import { getNewProductsCreator } from '../../store/products/actionCreator'
 import { getFilteredProducts } from '../../store/products/middleware'
-import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
-import rateCalculator from '../../utils/rateCalculator'
 
 const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
@@ -80,15 +78,12 @@ export const NewProductsSlider = connect(
       <Wrapper>
         <Carousel ref={ref} {...carouselStentings}>
           {newProducts.map((el) => (
-            <ProductCard
-              key={el.itemNo}
-              title={upperCaseFirstLetter(el.name)}
-              img={el.imageUrls[0]}
-              previousPrice={el.previousPrice}
-              currentPrice={el.currentPrice}
-              isGoodsInStock={el.quantity > 0}
-              {...rateCalculator(el.reviews)}
-            />
+            <div>
+              <ProductCard
+                key={el.itemNo}
+                productInfo={el}
+              />
+            </div>
           ))}
         </Carousel>
         {newProducts.length > 1 && <SliderArrowRight onClick={handlers.next} /> }

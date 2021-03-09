@@ -8,10 +8,12 @@ import {
 import storage from 'redux-persist/lib/storage'
 import {reducer as authReducer} from './auth/reducer';
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
+import { reducer as catalogProduct } from './catalogProducts/reducer';
+// catalogProductReducer
 
 const persistConfig = {
   key: 'authLS',
-  storage,
+  storage
 }
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer)
@@ -19,6 +21,7 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer)
 const rootReducer = combineReducers({
   auth: persistedAuthReducer,
   [productsModule]: productsReducer,
+  catalogProduct
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
