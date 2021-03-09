@@ -25,7 +25,7 @@ import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
 
 const ProductPage = () => {
-  const [product, setProduct] = useState()
+  const [product, setProduct] = useState(null)
 
   const { productID } = useParams()
   const history = useHistory()
