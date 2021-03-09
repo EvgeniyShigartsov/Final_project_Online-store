@@ -7,6 +7,7 @@ import StyledButton from './components/common/Buttons/StyledButton'
 import {AboutUsPage} from './pages/About-us/AboutUs'
 import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
 import Footer from './components/Footer/Footer'
+import ContactUsPage from './pages/Contact-us/ContactUs'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <NavLink to="/aboutus">About Us</NavLink>
       <NavLink to="/cart">Cart</NavLink>
       <NavLink to="/buttons">Buttons</NavLink>
+      <NavLink to="/contactus">ContactUs</NavLink>
       
       <Switch>
         <Route exact path="/">
@@ -30,6 +32,9 @@ function App() {
         </Route>
         <Route exact path="/aboutus">
           <AboutUsPage />
+        </Route>
+        <Route exact path="/contactus">
+          <ContactUsPage />
         </Route>
         <Route exact path="/cart">
           <Cart />
