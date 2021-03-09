@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Rate } from 'antd'
@@ -53,5 +52,13 @@ const ProductRate = connect(null, { updateOneProduct })(({
     </RateBox>
   )
 })
+
+ProductRate.propTypes = {
+  rating: PropTypes.number.isRequired,
+  reviews: PropTypes.number.isRequired,
+  productID: PropTypes.string.isRequired,
+  itemNo: PropTypes.string.isRequired,
+  updateOneProduct: PropTypes.func.isRequired
+}
 
 export default ProductRate
