@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { message } from 'antd'
 import { Container } from '../common/Container'
-import { StarRating } from '../StarRating/StarRating'
 import CartGroup from './CartGroup/CartGroup'
 import {
   PageContainer,
@@ -13,8 +12,6 @@ import {
   StyledImg,
   Description,
   ProductHeading,
-  ReviewsBox,
-  ReviewsCount,
   AboutProduct,
   PriceBox,
   ImageBox,
@@ -23,10 +20,10 @@ import Carousel from '../Carousel/Carousel'
 import rateCalculator from '../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
+import ProductRate from './ProductRate/ProductRate'
 
 const ProductPage = () => {
   const [product, setProduct] = useState(null)
-
   const { productID } = useParams()
   const history = useHistory()
 
@@ -42,6 +39,7 @@ const ProductPage = () => {
 
   if (!product) return <SpinAnimation width="100vw" height="80vh" />
   const { reviews, rating } = rateCalculator(product.reviews)
+
   return (
     <Container>
       <PageContainer>
@@ -62,14 +60,7 @@ const ProductPage = () => {
             {' '}
             {product.itemNo}
           </div>
-          <ReviewsBox>
-            <ReviewsCount>
-              Reviews (
-              {reviews}
-              )
-            </ReviewsCount>
-            <StarRating rating={rating} />
-          </ReviewsBox>
+          <ProductRate rating={rating} reviews={reviews} />
           <AboutProduct>
             <li>
               Brand:

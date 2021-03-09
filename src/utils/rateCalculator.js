@@ -7,7 +7,7 @@ const rateCalculator = (reviewsArray) => {
   
   return {
     reviews: reviewsQuantiny,
-    rating: Math.round(reviewsSum / reviewsQuantiny)
+    rating: Math.round(reviewsSum / reviewsQuantiny) || 0
   }
 }
 export default rateCalculator
