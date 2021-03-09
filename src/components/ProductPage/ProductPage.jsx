@@ -60,7 +60,12 @@ const ProductPage = () => {
             {' '}
             {product.itemNo}
           </div>
-          <ProductRate rating={rating} reviews={reviews} />
+          <ProductRate
+            rating={rating}
+            reviews={reviews}
+            productID={product._id}
+            itemNo={product.itemNo}
+          />
           <AboutProduct>
             <li>
               Brand:
