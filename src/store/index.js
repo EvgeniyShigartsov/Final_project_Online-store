@@ -7,8 +7,8 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import {reducer as authReducer} from './auth/reducer';
-import { reducer as productsReducer } from './products/reducer';
-import { MODULE_NAME as getNewProductsModule, reducer as getNewProductsReducer } from './getNewProducts/reducer'
+import {MODULE_NAME as cart, cartReducer} from './cart/reducer'
+import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'
 
 const persistConfig = {
@@ -20,8 +20,8 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer)
 
 const rootReducer = combineReducers({
   auth: persistedAuthReducer,
-  products: productsReducer,
-  [getNewProductsModule]: getNewProductsReducer,
+  [cart]: cartReducer,
+  [productsModule]: productsReducer,
   subscribe: subscribersReducer,
 });
 
