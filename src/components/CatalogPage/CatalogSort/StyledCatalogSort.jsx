@@ -29,7 +29,7 @@ font-weight: 600;
 }
 
 @media (max-width: ${forTablet.maxWidth}px){
-  &:not(:first-child){
+  &:last-child{
     display: none;
   }
 }
@@ -42,6 +42,27 @@ font-weight: 600;
 }
 
 `
+
+export const FilterBtn = styled.button`
+    display: block;
+    font-size: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    padding: 8px 30px;
+    border: 2px solid #CCCCCC;
+    border-radius: 2px;
+    background-color:#FFFFFF;
+    color: black;
+    min-width: 160px;
+  @media (min-width: ${forTablet.minWidth}px){
+    font-size: 14px;
+    min-width: 200px;
+    padding: 5px 30px;
+  }
+  @media(min-width: 591px) {
+    display: none;
+  }
+`;
 
 export const StyledSelect = styled(Select)`
 @media (max-width: ${forMobile.maxWidth}px) { 

@@ -30,7 +30,7 @@ export const Wrapper = styled.aside`
       position: absolute;
       top: 0%;
       left: -100%;
-      width: 100%;
+      width: 50%;
       height: 100%;
       background: #ECECEC;
       transition: all 0.5s ease-out;

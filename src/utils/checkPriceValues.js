@@ -3,20 +3,14 @@
 export const checkPriceValues = (values) => {
   const result = {...values};
   for (const item in result) {
-    if (item === 'minPrice' && (result[item] === null || result[item] === undefined)) {
-      result[item] = 0;
-    }
-    if (item === 'maxPrice' && (result.minPrice === 0)
-     && (result[item] === null || result[item] === undefined)) {
-      result[item] = 0;
-      break
-    }
-    if (item === 'maxPrice' && (result[item] === null || result[item] === undefined)) {
-      result[item] = 1000000;
+    if (result[item] === undefined || result[item] === null) {
+      if (item === 'minPrice') result[item] = 0
+      if (item === 'maxPrice') result[item] = 1000000
     }
   }
   return result;
 }
+
 export const checkCurrent = (values) => {
   const result = {};
   for (const item in values) {
