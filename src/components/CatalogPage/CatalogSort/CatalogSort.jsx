@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import 'antd/dist/antd.css'
 import { Select } from 'antd'
-import { SelectWrapper, StyledSelect, Wrapper } from './StyledCatalogSort';
+import {
+  FilterBtn, SelectWrapper, StyledSelect, Wrapper
+} from './StyledCatalogSort';
 
-const CatalogSort = ({config, setSortAndPagination}) => {
+const CatalogSort = ({config, setSortAndPagination, setShowFilter}) => {
   const {perPage} = config
   
   const onChange = (value, key) => {
@@ -21,6 +23,7 @@ const CatalogSort = ({config, setSortAndPagination}) => {
 
   return (
     <Wrapper>
+      <FilterBtn type="submit" onClick={() => setShowFilter((prev) => !prev)}>Filter</FilterBtn>
       <SelectWrapper>
         <span className="title-select">Sort By:</span>
         <StyledSelect bordered={false} onChange={(value) => onChange(value, 'sort')} defaultValue="default">
@@ -44,7 +47,8 @@ const CatalogSort = ({config, setSortAndPagination}) => {
 
 CatalogSort.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,
-  setSortAndPagination: PropTypes.func.isRequired
+  setSortAndPagination: PropTypes.func.isRequired,
+  setShowFilter: PropTypes.func.isRequired,
 }
 
 export default CatalogSort

@@ -8,17 +8,24 @@ import { CatalogProducts, Flex } from './StyledCatalogPage'
 
 const CatalogPage = () => {
   const [sortAndPagination, setSortAndPagination] = useState({perPage: '15'})
-  const config = {...sortAndPagination}
+  const [showFilter, setShowFilter] = useState(false);
+  const [filter, setFilter] = useState({});
+  const config = {...sortAndPagination, ...filter}
 
   return (
     <Container>
       <Heading>Products</Heading>
       <Flex>
-        <CatalogFilter />
+        <CatalogFilter
+          setFilter={setFilter}
+          showFilter={showFilter}
+          setShowFilter={setShowFilter}
+        />
         <CatalogProducts>
           <CatalogSort
             config={config}
             setSortAndPagination={setSortAndPagination}
+            setShowFilter={setShowFilter}
           />
           <CatalogProductsPlace
             config={config}

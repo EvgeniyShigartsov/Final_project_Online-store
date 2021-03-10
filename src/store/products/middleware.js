@@ -81,7 +81,6 @@ export const getProductsToCatalog = (param) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
-  
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) {
