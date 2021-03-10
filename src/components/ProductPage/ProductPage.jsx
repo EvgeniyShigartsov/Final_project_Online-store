@@ -37,7 +37,7 @@ const ProductPage = () => {
       })
   }, [history, productID])
 
-  if (!product) return <SpinAnimation width="100vw" height="80vh" />
+  if (!product) return <SpinAnimation width="80vw" height="80vh" />
   const { reviews, rating } = rateCalculator(product.reviews)
 
   return (
@@ -104,7 +104,6 @@ const ProductPage = () => {
             </b>
           </PriceBox>
         </InformationBox>
-        <div style={{ height: '50vh'}} />
       </PageContainer>
     </Container>
   )
