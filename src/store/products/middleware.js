@@ -73,7 +73,7 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
   return res
 }
 
-export const getFilteredProductsToCatalog = (param) => (dispatch) => {
+export const getProductsToCatalog = (param) => (dispatch) => {
   let paramStr = ''
   Object.keys(param).forEach((key, index) => {
     if (index === 0) {

@@ -2,32 +2,30 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { Spin } from 'antd'
-import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 import rateCalculator from '../../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../../utils/upperCaseFirstLetter'
 import {ProductCard} from '../../ProductCard/ProductCard'
-import { getFilteredProductsToCatalog } from '../../../store/products/middleware'
+import { getProductsToCatalog } from '../../../store/products/middleware'
 import CatalogPagination from '../CatalogPagination/CatalogPagination'
+import { ProductsWrapper, StyledSpin, Wrapper } from './StyledCatalogProductsPlace'
 
 const mapStateToProps = (state) => ({
   catalogProducts: state.products.catalog.catalogProducts
 })
 
 const CatalogProductsPlace = connect(mapStateToProps, {
-  getFilteredProductsToCatalog
+  getProductsToCatalog
 })((
   {
     config,
     setSortAndPagination,
     catalogProducts,
-    getFilteredProductsToCatalog
+    getProductsToCatalog
   }
 ) => {
   useEffect(() => {
-    getFilteredProductsToCatalog(config)
-  }, [config, getFilteredProductsToCatalog])
+    getProductsToCatalog(config)
+  }, [config, getProductsToCatalog])
 
   return (
     catalogProducts.length === 0
@@ -55,33 +53,6 @@ const CatalogProductsPlace = connect(mapStateToProps, {
       )
   )
 })
-
-const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
-  text-align: center;
- `
-    
-const ProductsWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  
-  @media (min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
-      grid-gap: 15px;
-      grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (min-width: ${forDesktop.minWidth}px){
-      grid-gap: 15px;
-      grid-template-columns: repeat(5, 1fr);
-  }
-
-`
-
-const StyledSpin = styled(Spin)`
-    margin: 50px auto;
-`
 
 CatalogProductsPlace.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,

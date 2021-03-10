@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import {Container} from '../common/Container'
 import Heading from '../common/Heading/Heading'
 import CatalogFilter from './CatalogFilter/CatalogFilter'
 import CatalogProductsPlace from './CatalogProductsPlace/CatalogProductsPlace'
 import CatalogSort from './CatalogSort/CatalogSort'
+import { CatalogProducts, Flex } from './StyledCatalogPage'
 
 const CatalogPage = () => {
   const [sortAndPagination, setSortAndPagination] = useState({perPage: '15'})
@@ -29,18 +29,5 @@ const CatalogPage = () => {
     </Container>
   )
 }
-
-const CatalogProducts = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; 
-  font-family: inherit;
-  width: 100%;
-  min-height: 80%
-`
-
-const Flex = styled.div`
-  display: flex;
-`
 
 export default CatalogPage

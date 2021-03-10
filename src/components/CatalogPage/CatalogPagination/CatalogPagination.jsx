@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Pagination } from 'antd'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
+import {StyledPagination} from './StyledCatalogPagination'
 
 const mapStateToProps = (state) => ({
   productsQuantity: state.products.catalog.productsQuantity
@@ -37,17 +36,6 @@ const CatalogPagination = connect(mapStateToProps)(({
     />
   )
 })
-
-const StyledPagination = styled(Pagination)`
-    margin: 20px auto;
-    & .ant-pagination-item,
-    .ant-pagination-item-link{
-      border-radius: 50%;
-    }
-    & .ant-pagination-item-active{
-      font-weight: 600;
-    }
-`
 
 CatalogPagination.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,

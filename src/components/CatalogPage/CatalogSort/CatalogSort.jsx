@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import styled from 'styled-components'
 import 'antd/dist/antd.css'
 import { Select } from 'antd'
-import { forDesktop, forMobile, forTablet } from '../../../styles/mediaBreakPoints';
+import { SelectWrapper, StyledSelect, Wrapper } from './StyledCatalogSort';
 
 const CatalogSort = ({config, setSortAndPagination}) => {
   const {perPage} = config
@@ -42,61 +41,6 @@ const CatalogSort = ({config, setSortAndPagination}) => {
     </Wrapper>
   )
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 10px;
-  margin-bottom: 30px;
-  @media (min-width: 591px){
-    & {
-      justify-content: flex-end;
-    }
-  }
-`
-
-const SelectWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  border: 2px solid rgba(204,204,204,1);
-  padding: 0 10px;
-  border-radius: 2px;
-  font-weight: 600;
-
-  & .title-select {
-    color: rgba(204,204,204,1);
-  }
-
-  @media (max-width: ${forTablet.maxWidth}px){
-    &:not(:first-child){
-      display: none;
-    }
-  }
-
-  @media (min-width: ${forDesktop.minWidth}px){
-    & {
-      font-size: 13px;
-      margin-left: 11px;
-    }
-  }
-
-`
-
-const StyledSelect = styled(Select)`
-  @media (max-width: ${forMobile.maxWidth}px) { 
-    &{
-      width: 100px;
-      font-size: inherit;
-    }
-  }
-  @media (min-width: ${forTablet.minWidth}px){
-    &{
-      min-width: 140px;
-    }
-  }
-`
 
 CatalogSort.propTypes = {
   config: PropTypes.instanceOf(Object).isRequired,
