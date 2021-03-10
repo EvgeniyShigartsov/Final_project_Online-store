@@ -182,6 +182,9 @@ export const ContainerBrandsImg = styled.div`
   display: block;
 `;
 export const WishList = styled.div`
+  @media(max-width: 591px) {
+    display: none;
+  }
   margin-top: 50px;
   height: 120px;
   border-top: 7px solid white;

@@ -1,6 +1,4 @@
 import React, {useRef, useState} from 'react'
-
-// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
 import {
   Checkbox,
@@ -84,15 +82,15 @@ const CatalogFilter = ({
         </FilterTitle>
         <StyledMenu mode="inline">
           <SubMenu key="brand" title="Brands">
-            <StyledMenuItem key="msi"><Checkbox value="MSI" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>MSI</Checkbox></StyledMenuItem>
-            <StyledMenuItem key="lg"><Checkbox value="LG" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>LG</Checkbox></StyledMenuItem>
-            <StyledMenuItem key="liyama"><Checkbox value="Liyama" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>Liyama</Checkbox></StyledMenuItem>
-            <StyledMenuItem key="samsung"><Checkbox value="Samsung" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>Samsung</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="msi-check" key="msi"><Checkbox value="MSI" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>MSI</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="lg-check" key="lg"><Checkbox value="LG" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>LG</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="liyama-check" key="liyama"><Checkbox value="Liyama" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>Liyama</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="samsung-check" key="samsung"><Checkbox value="Samsung" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>Samsung</Checkbox></StyledMenuItem>
           </SubMenu>
           <SubMenu title="Price">
             <LI style={{paddingLeft: '0px !important'}}>
               <FromTag>From</FromTag>
-              <FormItemWrapper name="minPrice" label="From">
+              <FormItemWrapper name="minPrice" label="From" rule={[{type: 'number'}]}>
                 <InputFrom autoFocus />
               </FormItemWrapper>
             </LI>
@@ -104,10 +102,10 @@ const CatalogFilter = ({
             </LI>
           </SubMenu>
           <SubMenu key="сategories" title="Сategories">
-            <StyledMenuItem key="gamingMonitors"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="gamingMonitors">Gaming Monitors</Checkbox></StyledMenuItem>
-            <StyledMenuItem key="tablets"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="tablets">Tablets</Checkbox></StyledMenuItem>
-            <StyledMenuItem key="laptops"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="laptops">Laptops</Checkbox></StyledMenuItem>
-            <StyledMenuItem key="desctops"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="desctops">Desctops</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="gamingMonitors-check" key="gamingMonitors"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="gamingMonitors">Gaming Monitors</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="tablets-check" key="tablets"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="tablets">Tablets</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="laptops-check" key="laptops"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="laptops">Laptops</Checkbox></StyledMenuItem>
+            <StyledMenuItem data-testid="desctops-check" key="desctops"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="desctops">Desctops</Checkbox></StyledMenuItem>
           </SubMenu>
         </StyledMenu>
         <AlignBtn>
