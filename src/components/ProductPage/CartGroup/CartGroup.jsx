@@ -46,7 +46,7 @@ const CartGroup = connect(null, { addToCart })(({ productID, avilableQuantity, a
 CartGroup.propTypes = {
   productID: PropTypes.string.isRequired,
   avilableQuantity: PropTypes.number.isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToCart: PropTypes.func
 }
 
 export default CartGroup

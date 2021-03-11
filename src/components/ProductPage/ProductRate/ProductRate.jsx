@@ -58,7 +58,7 @@ ProductRate.propTypes = {
   reviews: PropTypes.number.isRequired,
   productID: PropTypes.string.isRequired,
   itemNo: PropTypes.string.isRequired,
-  updateOneProduct: PropTypes.func.isRequired
+  updateOneProduct: PropTypes.func
 }
 
 export default ProductRate
