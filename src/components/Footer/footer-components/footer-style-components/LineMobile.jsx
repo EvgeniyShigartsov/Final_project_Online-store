@@ -1,14 +1,7 @@
-import React from 'react'
 import styled from 'styled-components'
-import { forDesktop } from '../../../styles/mediaBreakPoints'
+import { forDesktop } from '../../../../styles/mediaBreakPoints'
 
-const FooterLineMobile = () => (
-  <Line />
-)
-
-export default FooterLineMobile
-
-const Line = styled.div`
+const LineMobile = styled.div`
 width: 100%;
 height: 2px;
 display: block;
@@ -20,3 +13,4 @@ text-align: center;
 display: none;
 }
 `
+export default LineMobile

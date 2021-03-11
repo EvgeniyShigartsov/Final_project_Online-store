@@ -5,7 +5,7 @@ import FooterAdressText from './footer-style-components/FooterAdressText'
 import Accordion from './footer-style-components/Accordion'
 import Input from './footer-style-components/Input'
 import Content from './footer-style-components/Content'
-import FooterLineMobile from './FooterLineMobile'
+import MobileLine from './MobileLine'
 
 const FooterDesctops = () => (
   <Accordion>
@@ -25,7 +25,7 @@ const FooterDesctops = () => (
         <FooterAdressLink> shop@email.com</FooterAdressLink>
       </FooterAdressText>
     </Content>
-    <FooterLineMobile />
+    <MobileLine />
   </Accordion>
 )
 

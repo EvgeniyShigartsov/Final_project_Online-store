@@ -5,7 +5,7 @@ import FooterLinkItem from './footer-style-components/FooterLinkItem'
 import Content from './footer-style-components/Content'
 import Accordion from './footer-style-components/Accordion'
 import Input from './footer-style-components/Input'
-import FooterLineMobile from './FooterLineMobile'
+import MobileLine from './MobileLine'
 
 const FooterLinks = ({ title, links, id }) => (
   <Accordion>
@@ -18,7 +18,7 @@ const FooterLinks = ({ title, links, id }) => (
         </FooterLinkItem>
       ))}
     </Content>
-    <FooterLineMobile />
+    <MobileLine />
   </Accordion>
 )
 

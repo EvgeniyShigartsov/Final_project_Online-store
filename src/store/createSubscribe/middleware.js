@@ -8,7 +8,7 @@ const headers = {
 
 const createNewSubscribe = (newSubscriber) => async (dispatch) => {
   dispatch(createSubscribe());
-  axios.post('/subscribers', newSubscriber, headers)
+  axios.post('/subscribers', newSubscriber, {headers})
     .then((response) => {
       console.log(response);
       dispatch(createSubscribeSuccess(response.data))
