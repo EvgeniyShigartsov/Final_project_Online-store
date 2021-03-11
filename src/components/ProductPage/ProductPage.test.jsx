@@ -1,5 +1,4 @@
 /* eslint-disable padded-blocks */
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'

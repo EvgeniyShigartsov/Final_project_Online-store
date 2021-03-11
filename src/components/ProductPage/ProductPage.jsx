@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { message } from 'antd'
@@ -21,21 +20,24 @@ import rateCalculator from '../../utils/rateCalculator'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
 import ProductRate from './ProductRate/ProductRate'
+import { getOneProduct } from '../../store/products/middleware'
 
 const ProductPage = () => {
   const [product, setProduct] = useState(null)
-  const { productID } = useParams()
+  const { itemNo } = useParams()
   const history = useHistory()
 
   useEffect(() => {
-    axios.get(`/products/${productID}`)
-      .then((res) => (res.status === 200 ? setProduct(() => res.data) : null))
-      .catch((err) => {
+    const getProduct = async () => {
+      const response = await getOneProduct(itemNo)
+      if (response.status === 200) setProduct(() => response.data)
+      else {
         message.error('Something went wrong')
         history.push('/')
-        return err.response
-      })
-  }, [history, productID])
+      }
+    }
+    getProduct()
+  }, [history, itemNo])
 
   if (!product) return <SpinAnimation width="80vw" height="80vh" />
   const { reviews, rating } = rateCalculator(product.reviews)

@@ -7,7 +7,7 @@ import StyledButton from '../../common/Buttons/StyledButton'
 import checkValue from '../../../utils/checkValue'
 import { addToCart } from '../../../store/cart/middleware'
 
-const CartGroup = connect(null, { addToCart })(({productID, avilableQuantity, addToCart }) => {
+const CartGroup = connect(null, { addToCart })(({ productID, avilableQuantity, addToCart }) => {
   const [quantity, setQuanity] = useState(avilableQuantity > 0 ? 1 : 0)
   const inputHandler = (e) => {
     const value = +e.target.value.trim()

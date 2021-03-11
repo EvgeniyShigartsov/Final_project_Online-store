@@ -44,7 +44,7 @@ function App() {
         <Route exact path="/checkout">
           <Checkout />
         </Route>
-        <Route exact path="/products/:productID">
+        <Route exact path="/products/:itemNo">
           <ProductPage />
         </Route>
         <Route exact path="/buttons">
