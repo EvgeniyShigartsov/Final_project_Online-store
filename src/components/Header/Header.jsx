@@ -5,7 +5,7 @@ import {useCycle} from 'framer-motion';
 import {
   DownOutlined
 } from '@ant-design/icons';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import vector from '../../images/header/Vector.png';
 import FaceBook from '../../images/header/FaceBook.png';
 import Inst from '../../images/header/Inst.png';
@@ -69,14 +69,14 @@ const Header = () => {
     <HeaderContainer>
       <ShaduleContainer>
         <ContainerAlign>
-          <NavLink to="/" style={{outline: 'none'}}>
+          <Link to="/" style={{outline: 'none'}}>
             <CircleMobile>
               <Logo
                 src={vector}
                 alt="icon"
               />
             </CircleMobile>
-          </NavLink>
+          </Link>
           <ShaduleArrowContainer id="shadule">
             <p>
               Mon - Thu:
@@ -110,14 +110,14 @@ const Header = () => {
 
       <SearchAndItemsBlock>
         <MenuOutlinedStyled onClick={openCloseMenu} />
-        <NavLink to="/" style={{outline: 'none'}}>
+        <Link to="/" style={{outline: 'none'}}>
           <CircleDesktop>
             <LogoDesktop
               src={vector}
               alt="icon2"
             />
           </CircleDesktop>
-        </NavLink>
+        </Link>
         <PopUpList
           checkForLinkOpen={checkForLinkOpen}
           hideList={hideList}
@@ -136,9 +136,9 @@ const Header = () => {
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />
         {/* mediaSearch */}
-        <NavLink to="/cart">
+        <Link to="/cart">
           <ShoppingCartOutlinedStyled />
-        </NavLink>
+        </Link>
         <RelativePosUserPopUp>
           <UserOutlinedStyled id="userBtn" />
           <UserPopUp

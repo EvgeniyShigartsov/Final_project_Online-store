@@ -77,7 +77,7 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
               <li>Sign In</li>
             </NavLink>
           )}
-        <Close onClick={() => setIsOpenUser(false)}>
+        <Close data-testid="closeImg" onClick={() => setIsOpenUser(false)}>
           <img src={close} alt="close" />
         </Close>
       </ul>
