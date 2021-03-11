@@ -1,11 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import 'antd/dist/antd.css';
+import { Form } from 'antd'
 import { useDispatch } from 'react-redux'
-import { Form } from 'antd';
-// import axios from 'axios';
 import StyledButton from '../../common/Buttons/StyledButton'
-import StyledInput from './footer-style-components/StyledInput'
+import { StyledInput, StyledForm } from './footer-style-components/Styled'
 import { letterSubject, letterHtml} from './footer-config/letterConfig'
 import createNewSubscribe from '../../../store/createSubscribe/middleware'
 
@@ -34,10 +32,3 @@ const FormSubscribe = () => {
 }
 
 export default FormSubscribe
-
-const StyledForm = styled(Form)`
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: auto;
-`

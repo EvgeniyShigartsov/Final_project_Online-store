@@ -8,11 +8,9 @@ import FooterAdress from './footer-components/FooterAdress'
 import FooterCopyRight from './footer-components/FooterCopyRight'
 import FooterSocialNetwork from './footer-components/FooterSocialNetwork'
 import FooterPayment from './footer-components/FooterPayment'
-import FooterLine from './footer-components/FooterLine'
-import StyledFooter from './footer-components/footer-style-components/StyledFooter'
-import StyledSection from './footer-components/footer-style-components/StyledSection'
-import StyledWrapper from './footer-components/footer-style-components/StyledWrapper'
-import StyledWrapperFooter from './footer-components/footer-style-components/StyledWrapperFooter'
+import {
+  Line, StyledFooter, StyledSection, StyledWrapper, StyledWrapperFooter
+} from './footer-components/footer-style-components/Styled'
 
 const Footer = () => (
   <StyledFooter>
@@ -25,7 +23,7 @@ const Footer = () => (
           ))}
           <FooterAdress />
         </StyledWrapper>
-        <FooterLine />
+        <Line />
         <StyledWrapperFooter>
           <FooterSocialNetwork />
           <FooterPayment />

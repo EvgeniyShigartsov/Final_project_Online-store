@@ -1,15 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FooterLinksTitle from './footer-style-components/FooterLinksTitle'
-import FooterLinkItem from './footer-style-components/FooterLinkItem'
-import Content from './footer-style-components/Content'
-import Accordion from './footer-style-components/Accordion'
-import Input from './footer-style-components/Input'
-import MobileLine from './MobileLine'
+import {
+  FooterLinksTitle, FooterLinkItem, Content, Accordion, StyledCheckBox, LineMobile
+} from './footer-style-components/Styled'
 
 const FooterLinks = ({ title, links, id }) => (
   <Accordion>
-    <Input type="checkbox" id={id} />
+    <StyledCheckBox type="checkbox" id={id} />
     <FooterLinksTitle htmlFor={id}>{title}</FooterLinksTitle>
     <Content>
       {links.map((link) => (
@@ -18,7 +15,7 @@ const FooterLinks = ({ title, links, id }) => (
         </FooterLinkItem>
       ))}
     </Content>
-    <MobileLine />
+    <LineMobile />
   </Accordion>
 )
 

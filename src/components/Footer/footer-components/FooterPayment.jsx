@@ -1,5 +1,5 @@
 import React from 'react'
-import StyledPaymentWrapper from './footer-style-components/StyledPaymentWrapper'
+import { StyledPaymentWrapper } from './footer-style-components/Styled'
 
 const FooterPayment = () => (
   <StyledPaymentWrapper>
