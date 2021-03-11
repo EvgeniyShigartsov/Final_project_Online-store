@@ -3,14 +3,14 @@ import { NavLink, Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
 import StyledButton from './components/common/Buttons/StyledButton'
-import {AboutUsPage} from './pages/About-us/AboutUs'
-import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
+import { AboutUsPage } from './pages/About-us/AboutUs'
+import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
+import { Cart } from './components/CartWrapper/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import ContactUsPage from './pages/Contact-us/ContactUs'
-import {Cart} from './components/CartWrapper/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
 import Header from './components/Header/Header'
-import {Container} from './components/common/Container'
+import { Container } from './components/common/Container'
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
 
@@ -51,7 +51,7 @@ function App() {
         <Route exact path="/checkout">
           <Checkout />
         </Route>
-        <Route exact path="/products/:productID">
+        <Route exact path="/products/:itemNo">
           <ProductPage />
         </Route>
         <Route exact path="/buttons">
