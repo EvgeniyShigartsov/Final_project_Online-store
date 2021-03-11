@@ -5,18 +5,17 @@ import { Wrapper } from '../common/Wrapper'
 import InstaSec, {
   InstaSecWrapper, InstaPostWrap, PostPic, PostText, PostDate
 } from './StylesInstaSection'
-import firstImg from '../../images/news&rewiews/pic1.png'
-import secondImg from '../../images/news&rewiews/pic2.png'
-import thirdImg from '../../images/news&rewiews/pic3.jpg'
-import fourthImg from '../../images/news&rewiews/pic4.jpg'
-import fifthImg from '../../images/news&rewiews/pic5.jpg'
-import sixthImg from '../../images/news&rewiews/pic6.png'
-import seventhImg from '../../images/news&rewiews/pic7.png'
-import eighthImg from '../../images/news&rewiews/pic8.png'
-import ninthImg from '../../images/news&rewiews/pic9.jpg'
+import firstImg from '../../images/news&reviews/pic1.png'
+import secondImg from '../../images/news&reviews/pic2.png'
+import thirdImg from '../../images/news&reviews/pic3.jpg'
+import fourthImg from '../../images/news&reviews/pic4.jpg'
+import fifthImg from '../../images/news&reviews/pic5.jpg'
+import sixthImg from '../../images/news&reviews/pic6.png'
+import seventhImg from '../../images/news&reviews/pic7.png'
+import eighthImg from '../../images/news&reviews/pic8.png'
+import ninthImg from '../../images/news&reviews/pic9.jpg'
 
 export const InstaSection = () => (
-  
   <Container>
     <Wrapper>
       <InstaSec>
@@ -125,7 +124,6 @@ export const InstaSection = () => (
       </InstaSec>
     </Wrapper>
   </Container>
-
 )
 
 export default InstaSection
