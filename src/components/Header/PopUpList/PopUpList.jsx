@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import vector from '../../../images/header/Vector.png';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
-  RightOutlinedStyled, Logo, CloseOutlinedStyled
+  RightOutlinedStyled, Logo, CloseOutlinedStyled,
+  StyledExceptionLi, Listnavigation
 } from './PopUpListStyled';
-
 import StyledButton from '../../common/Buttons/StyledButton';
 
 const PopUpList = ({
 
-  openSlide, isOpen, openCloseMenu, setIsOpen, hideList
+  openSlide, isOpen, openCloseMenu, setIsOpen, hideList, checkForLinkOpen
 }) => (
 
   <PopUpContainer hideList={hideList} setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
@@ -22,39 +23,33 @@ const PopUpList = ({
       <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
       <Line />
     </HeaderOfPopUp>
-    <ul>
+    <Listnavigation onClick={(e) => checkForLinkOpen(e)}>
       <li>
-        <h5>Laptops</h5>
+        <NavLink to="/">
+          <h5>Homepage</h5>
+        </NavLink>
         <RightOutlinedStyled />
       </li>
       <li>
-        <h5>Desktop PCs</h5>
+        <NavLink to="/signup"><h5>Sign Up</h5></NavLink>
         <RightOutlinedStyled />
       </li>
       <li>
-        <h5>Networking</h5>
+        <NavLink to="/signin"><h5>Sign In</h5></NavLink>
         <RightOutlinedStyled />
       </li>
       <li>
-        <h5>Printers & Scanners</h5>
+        <NavLink to="/aboutus"><h5>About Us</h5></NavLink>
         <RightOutlinedStyled />
       </li>
       <li>
-        <h5>PC Parts</h5>
+        <NavLink to="/products/739628"><h5>Products</h5></NavLink>
         <RightOutlinedStyled />
       </li>
-      <li>
-        <h5>All Other Products</h5>
-        <RightOutlinedStyled />
-      </li>
-      <li>
-        <h5>Repairs</h5>
-        <RightOutlinedStyled />
-      </li>
-      <li style={{marginBottom: '20px'}}>
+      <StyledExceptionLi>
         <StyledButton color="borderBlue" size="xs" shape="round">Our Deals</StyledButton>
-      </li>
-    </ul>
+      </StyledExceptionLi>
+    </Listnavigation>
   </PopUpContainer>
 )
 PopUpList.propTypes = {
@@ -62,6 +57,7 @@ PopUpList.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   openCloseMenu: PropTypes.func.isRequired,
+  checkForLinkOpen: PropTypes.func.isRequired,
   openSlide: PropTypes.shape({
     show: PropTypes.shape({
       clipPath: PropTypes.string.isRequired,

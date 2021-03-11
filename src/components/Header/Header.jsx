@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-import { useCycle } from 'framer-motion';
+// import {useCycle} from 'framer-motion';
+import {useCycle} from 'framer-motion';
 import {
   DownOutlined
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import vector from '../../images/header/Vector.png';
 import FaceBook from '../../images/header/FaceBook.png';
 import Inst from '../../images/header/Inst.png';
@@ -41,13 +42,20 @@ const Header = () => {
     hidden: {
       clipPath: 'circle(0.1px at 0.1px 0.1px)',
       transition: {
-        delay: 0.35,
+        delay: 0.15,
         type: 'spring',
         stiffness: 400,
         damping: 40
       }
     }
   };
+
+  const checkForLinkOpen = (e) => {
+    if (e.target.localName === 'h5') {
+      setIsOpen((prev) => !prev)
+    }
+  }
+
   const openCloseMenu = () => {
     setIsOpen((prev) => (!prev))
   }
@@ -61,14 +69,14 @@ const Header = () => {
     <HeaderContainer>
       <ShaduleContainer>
         <ContainerAlign>
-          <Link to="/" style={{outline: 'none'}}>
+          <NavLink to="/" style={{outline: 'none'}}>
             <CircleMobile>
               <Logo
                 src={vector}
                 alt="icon"
               />
             </CircleMobile>
-          </Link>
+          </NavLink>
           <ShaduleArrowContainer id="shadule">
             <p>
               Mon - Thu:
@@ -102,15 +110,16 @@ const Header = () => {
 
       <SearchAndItemsBlock>
         <MenuOutlinedStyled onClick={openCloseMenu} />
-        <Link to="/" style={{outline: 'none'}}>
+        <NavLink to="/" style={{outline: 'none'}}>
           <CircleDesktop>
             <LogoDesktop
               src={vector}
               alt="icon2"
             />
           </CircleDesktop>
-        </Link>
+        </NavLink>
         <PopUpList
+          checkForLinkOpen={checkForLinkOpen}
           hideList={hideList}
           setIsOpen={setIsOpen}
           openSlide={openSlide}
@@ -127,9 +136,9 @@ const Header = () => {
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />
         {/* mediaSearch */}
-        <Link to="/cart">
+        <NavLink to="/cart">
           <ShoppingCartOutlinedStyled />
-        </Link>
+        </NavLink>
         <RelativePosUserPopUp>
           <UserOutlinedStyled id="userBtn" />
           <UserPopUp

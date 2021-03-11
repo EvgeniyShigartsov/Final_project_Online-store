@@ -7,6 +7,12 @@ import {forTablet, forDesktop, forMobile} from '../../styles/mediaBreakPoints';
 
 export const HeaderContainer = styled.header`
   width: 100%;
+  @media(min-width: ${forTablet.minWidth}px) {
+    padding-bottom: 20px;
+  }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    padding-bottom: 2px;
+  }
 `;
 export const ShaduleArrowContainer = styled.div`
   position: relative;
@@ -113,11 +119,10 @@ export const SearchAndItemsBlock = styled.div`
   @media(min-width: ${forDesktop.minWidth}px) {
     border-bottom: 1px solid #CCCCCC;
     background-color: white;
-
     max-width: 1200px;
-        width: 90%;
-        margin: 0 auto;
-        padding: 0 10px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 10px;
   }
 `;
 export const FormContainer = styled.form`
@@ -201,7 +206,7 @@ export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
   flex: 1;
   padding: 0 20px;
   @media(min-width: ${forDesktop.minWidth}px) {
-    filter: invert(0%) sepia(7%) saturate(0%) hue-rotate(39deg) brightness(102%) contrast(106%);
+    filter: invert(37%) sepia(0%) saturate(0%) hue-rotate(559deg) brightness(52%) contrast(106%);
     flex: 3;
     padding: 0px 10px 0px 10px;
   }
