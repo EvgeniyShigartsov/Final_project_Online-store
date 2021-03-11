@@ -7,23 +7,23 @@ import brandThermaltake from '../../images/home-page-brands/thermaltake.png'
 import brandAdata from '../../images/home-page-brands/adata.png'
 import brandGigabite from '../../images/home-page-brands/gigabite.png'
 import brandHp from '../../images/home-page-brands/hp.png'
-import { Image, BrendBox, Flex } from './StyledHomePageBrands'
+import { Image, BrandBox, Flex } from './StyledHomePageBrands'
 
-const brands = [
-  brandRoccat,
-  brandMsi,
-  brandRazer,
-  brandThermaltake,
-  brandAdata,
-  brandHp,
-  brandGigabite
-];
-export function HomepageBrands() {
+export const HomepageBrands = () => {
+  const brands = [
+    brandRoccat,
+    brandMsi,
+    brandRazer,
+    brandThermaltake,
+    brandAdata,
+    brandHp,
+    brandGigabite
+  ];
   return (
     <Container>
       <Flex className="container">
         {brands.map((element) => (
-          <BrendBox key={Math.random()}><Image key={Math.random()} src={element} alt="brand-name" /></BrendBox>))}
+          <BrandBox key={Math.random()}><Image key={Math.random()} src={element} alt="brand-name" /></BrandBox>))}
       </Flex>
     </Container>
   )

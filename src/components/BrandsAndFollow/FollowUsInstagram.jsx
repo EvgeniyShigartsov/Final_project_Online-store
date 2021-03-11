@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 import { Container } from '../common/Container'
 import photoOne from '../../images/follow-us-block/insta_photo_one.png'
 import photoTwo from '../../images/follow-us-block/insta_photo_two.png'
@@ -14,29 +13,24 @@ import {
   Flex, BlockTitle, Posts, PostBox, Image, PostContent, PostDate
 } from './StyledFollowUsInstagram'
 
-const pictures = [
-  photoOne,
-  photoTwo,
-  photoThree,
-  photoFous,
-  photoFive,
-  photoSix,
-  photoSeven,
-  photoEight,
-  photoNine
-];
-
-const now = new Date().toLocaleDateString();
-const content = {
-  title: 'Follow us on Instagram for News, Offers & More',
-  text: 'If you’ve recently made a desktop PC or laptop, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...',
-}
-content.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.stringisRequired
-}
-
-export function HomepageFollowUs() {
+export const HomepageFollowUs = () => {
+  const pictures = [
+    photoOne,
+    photoTwo,
+    photoThree,
+    photoFous,
+    photoFive,
+    photoSix,
+    photoSeven,
+    photoEight,
+    photoNine
+  ];
+  
+  const now = new Date().toLocaleDateString();
+  const content = {
+    title: 'Follow us on Instagram for News, Offers & More',
+    text: 'If you’ve recently made a desktop PC or laptop, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...',
+  }
   return (
     <Container>
       <Flex className="container">

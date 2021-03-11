@@ -6,7 +6,7 @@ import heartIcon from '../../images/about-us-page/heart-icon.png'
 import yellowComputer from '../../images/about-us-page/computer-yellow.jpg'
 import coloredComputer from '../../images/about-us-page/computer-colored.png'
 import starIcon from '../../images/about-us-page/star-icon.jpg'
-import blueComputer from '../../images/about-us-page/computer-blue.jpg'
+import greenComputer from '../../images/about-us-page/computer-green.png'
 import carIcon from '../../images/about-us-page/car-icon.png'
 
 const data = [
@@ -52,7 +52,7 @@ const data = [
     title: 'Delivery to All Regions',
     subtitle: '',
     content: 'We deliver our goods all across Australia. No matter where you live, your order will be shipped in time and delivered right to your door or to any other location you have stated. The packages are handled with utmost care, so the ordered products will be handed to you safe and sound, just like you expect them to be.',
-    img: blueComputer,
+    img: greenComputer,
     icon: carIcon,
     id: 5,
     biggerSize: null
