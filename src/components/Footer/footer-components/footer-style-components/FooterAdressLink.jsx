@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { forDesktop } from '../../../../styles/mediaBreakPoints'
 
-const FooterAdressLink = styled(Link)`
+const FooterAdressLink = styled.a`
 font-size: 12px;
 font-weight: 300;
 font-style: normal;
