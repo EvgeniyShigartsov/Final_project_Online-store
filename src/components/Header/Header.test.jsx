@@ -3,6 +3,10 @@ import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import fireEvent from '@testing-library/user-event';
+import {
+  DownOutlined
+} from '@ant-design/icons';
 import Header from './Header';
 import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
 import PopUpList from './PopUpList/PopUpList';
@@ -92,5 +96,40 @@ describe('UserPopUp components test for Header', () => {
       </Provider>
     )
     expect(getByTestId('closeImg')).toBeDefined()
+  })
+})
+describe('Events', () => {
+  test('Click shadule', () => {
+    const handleChange = jest.fn()
+    const { getByTestId } = render(
+      <Provider store={store}><Router><DownOutlined data-testid="arrowDownShedule" onClick={handleChange} /></Router></Provider>
+    )
+    const arrowDown = getByTestId('arrowDownShedule')
+    expect(handleChange).not.toHaveBeenCalled()
+    fireEvent.click(arrowDown)
+    expect(handleChange).toHaveBeenCalledTimes(1)
+  })
+  test('Click burger', () => {
+    const handleChange = jest.fn()
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <Router>
+          <PopUpList
+            data-testid="popuplist"
+            onClick={handleChange}
+            openSlide={{ }}
+            isOpen
+            openCloseMenu={() => { }}
+            setIsOpen={() => { }}
+            hideList
+            checkForLinkOpen={() => { }}
+          />
+        </Router>
+      </Provider>
+    )
+    const burgerCall = getByTestId('popuplist')
+    expect(handleChange).not.toHaveBeenCalled()
+    fireEvent.click(burgerCall)
+    expect(handleChange).toHaveBeenCalledTimes(1)
   })
 })
