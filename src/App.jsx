@@ -8,10 +8,6 @@ import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
 import { Cart } from './components/CartWrapper/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
 import Header from './components/Header/Header'
-<<<<<<< HEAD
-=======
-import { Container } from './components/common/Container'
->>>>>>> 803d2404a9b37c1a5b6124b563fb79c4285b5bd2
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
 
