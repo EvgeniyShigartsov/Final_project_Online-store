@@ -192,12 +192,12 @@ export const CircleDesktop = styled.div`
 export const LogoDesktop = styled.img`
   display: block; 
   @media(min-width: ${forDesktop.minWidth}px) {
-    color: blue;
+    /* color: blue; */
     width: 30px;
     height: 34px;
     margin-left: auto; 
     margin-right: auto; 
-    filter: invert(778%) sepia(360%) saturate(6818%) hue-rotate(-131.5deg) brightness(112%) contrast(145%);
+    filter: invert(71%) sepia(14%) saturate(7210%) hue-rotate(553deg) brightness(102%) contrast(98%);
   }
 `;
 export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`

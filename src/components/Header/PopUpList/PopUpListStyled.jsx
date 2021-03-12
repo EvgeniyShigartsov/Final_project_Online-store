@@ -71,7 +71,7 @@ export const HeaderOfPopUp = styled.div`
   padding: 10px;
 
   @media(min-width: ${forDesktop.minWidth}px) {
-        display: none;
+    display: none;
   }
 `;
 export const Line = styled.span`
