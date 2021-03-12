@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-// import {useCycle} from 'framer-motion';
 import {useCycle} from 'framer-motion';
 import {
   DownOutlined
@@ -109,7 +108,7 @@ const Header = () => {
       </ShaduleContainer>
 
       <SearchAndItemsBlock>
-        <MenuOutlinedStyled onClick={openCloseMenu} />
+        <MenuOutlinedStyled onClick={openCloseMenu} data-testid="burger" />
         <Link to="/" style={{outline: 'none'}}>
           <CircleDesktop>
             <LogoDesktop
@@ -119,7 +118,6 @@ const Header = () => {
           </CircleDesktop>
         </Link>
         <PopUpList
-          data-testid="popuplist"
           checkForLinkOpen={checkForLinkOpen}
           hideList={hideList}
           setIsOpen={setIsOpen}
@@ -141,7 +139,7 @@ const Header = () => {
           <ShoppingCartOutlinedStyled />
         </Link>
         <RelativePosUserPopUp>
-          <UserOutlinedStyled id="userBtn" />
+          <UserOutlinedStyled id="userBtn" data-testid="userBtn" />
           <UserPopUp
             isOpenUser={isOpenUser}
             setIsOpenUser={setIsOpenUser}

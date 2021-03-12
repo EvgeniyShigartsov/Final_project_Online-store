@@ -5,13 +5,17 @@ import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import fireEvent from '@testing-library/user-event';
 import {
-  DownOutlined
+  DownOutlined,
+  MenuOutlined,
+  UserOutlined
+
 } from '@ant-design/icons';
 import Header from './Header';
 import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
-import PopUpList from './PopUpList/PopUpList';
+
 import { store } from '../../store/index';
 import UserPopUp from './UserPopUp/UserPopUp';
+import PopUpList from './PopUpList/PopUpList';
 
 describe('Test Header', () => {
   test('Header filter render test', () => {
@@ -106,6 +110,7 @@ describe('Events', () => {
     )
     const arrowDown = getByTestId('arrowDownShedule')
     expect(handleChange).not.toHaveBeenCalled()
+    expect(getByTestId('arrowDownShedule')).toBeInTheDocument()
     fireEvent.click(arrowDown)
     expect(handleChange).toHaveBeenCalledTimes(1)
   })
@@ -114,22 +119,36 @@ describe('Events', () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <Router>
-          <PopUpList
-            data-testid="popuplist"
+          <MenuOutlined
+            data-testid="burger"
             onClick={handleChange}
-            openSlide={{ }}
-            isOpen
-            openCloseMenu={() => { }}
-            setIsOpen={() => { }}
-            hideList
-            checkForLinkOpen={() => { }}
           />
         </Router>
       </Provider>
     )
-    const burgerCall = getByTestId('popuplist')
+    const burgerCall = getByTestId('burger')
     expect(handleChange).not.toHaveBeenCalled()
+    expect(getByTestId('burger')).toBeInTheDocument()
     fireEvent.click(burgerCall)
     expect(handleChange).toHaveBeenCalledTimes(1)
+  })
+  test('Click user', () => {
+    const handleChange = jest.fn()
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <Router>
+          <UserOutlined
+            data-testid="userBtn"
+            onClick={handleChange}
+          />
+        </Router>
+      </Provider>
+    )
+    const burgerCall = getByTestId('userBtn')
+    expect(handleChange).not.toHaveBeenCalled()
+    expect(getByTestId('userBtn')).toBeInTheDocument()
+    fireEvent.click(burgerCall)
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(getByTestId('userBtn')).toBeDefined()
   })
 })
