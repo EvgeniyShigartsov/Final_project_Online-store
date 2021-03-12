@@ -205,7 +205,7 @@ margin: 35px 0 35px 0;
 export const StyledWrapperFooter = styled.div`
 display: flex;
 flex-direction: row;
-// justify-content: flex-start;
+justify-content: space-between;
 padding: 10px 0 10px 0;
 
 @media(min-width: ${forDesktop.minWidth}px){
