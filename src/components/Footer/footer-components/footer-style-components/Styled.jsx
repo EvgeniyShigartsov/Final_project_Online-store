@@ -203,13 +203,15 @@ margin: 35px 0 35px 0;
 `
 
 export const StyledWrapperFooter = styled.div`
-display: grid;
-grid-template-columns: none;
+display: flex;
+flex-direction: row;
+// justify-content: flex-start;
+padding: 10px 0 10px 0;
 
 @media(min-width: ${forDesktop.minWidth}px){
-grid-template-columns: 60px 600px 200px;
-grid-gap: 100px;
-padding-bottom: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 20px;
 }
 `
 
