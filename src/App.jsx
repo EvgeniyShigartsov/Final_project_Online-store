@@ -3,11 +3,15 @@ import { Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
 import StyledButton from './components/common/Buttons/StyledButton'
-import {AboutUsPage} from './pages/About-us/AboutUs'
-import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
-import {Cart} from './components/CartWrapper/Cart/Cart'
+import { AboutUsPage } from './pages/About-us/AboutUs'
+import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
+import { Cart } from './components/CartWrapper/Cart/Cart'
 import ProductPage from './components/ProductPage/ProductPage'
 import Header from './components/Header/Header'
+<<<<<<< HEAD
+=======
+import { Container } from './components/common/Container'
+>>>>>>> 803d2404a9b37c1a5b6124b563fb79c4285b5bd2
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
 
@@ -35,7 +39,7 @@ function App() {
         <Route exact path="/checkout">
           <Checkout />
         </Route>
-        <Route exact path="/products/:productID">
+        <Route exact path="/products/:itemNo">
           <ProductPage />
         </Route>
         <Route exact path="/buttons">
