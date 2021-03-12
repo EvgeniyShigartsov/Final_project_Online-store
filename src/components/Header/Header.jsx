@@ -81,7 +81,9 @@ const Header = () => {
               Mon - Thu:
               <span> 9.30 AM - 5.30 PM</span>
             </p>
-            <div data-testid="arrowDownShedule" id="arrowDownShedule"><DownOutlined style={{color: 'white', cursor: 'pointer'}} /></div>
+            <div data-testid="arrowDownShedule" id="arrowDownShedule">
+              <DownOutlined style={{color: 'white', cursor: 'pointer'}} />
+            </div>
           </ShaduleArrowContainer>
           <ContactUsCall>
             <p>
