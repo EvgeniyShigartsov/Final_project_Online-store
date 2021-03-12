@@ -26,6 +26,7 @@ describe('UserPopUp components test for Header', () => {
       </Provider>
     )
   })
+  
   test('UserPopUp closeImg', () => {
     const {getByTestId} = render(
       <Provider store={store}>
