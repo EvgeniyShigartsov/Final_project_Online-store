@@ -10,6 +10,7 @@ import { getNewProductsCreator } from '../../store/products/actionCreator'
 import { getFilteredProducts } from '../../store/products/middleware'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import rateCalculator from '../../utils/rateCalculator'
+import SliderTitle from './SliderTitle/SliderTitle'
 
 const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
@@ -63,6 +64,7 @@ const NewProductsSlider = connect(
   }
   return (
     <Container>
+      <SliderTitle />
       <Carousel carouselSettings={carouselSettings}>
         {newProducts.map((el) => (
           <Link to={`products/${el.itemNo}`} key={el.itemNo}>
