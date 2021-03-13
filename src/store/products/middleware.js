@@ -36,6 +36,7 @@ export const updateOneProduct = (id, newProduct) => (dispatch) => {
       return data
     })
     .catch((error) => error.response)
+
   return res
 }
 
