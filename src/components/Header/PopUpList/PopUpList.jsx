@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import vector from '../../../images/header/Vector.png';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
@@ -9,8 +10,12 @@ import {
 } from './PopUpListStyled';
 import StyledButton from '../../common/Buttons/StyledButton';
 
-const PopUpList = ({
-  openSlide, isOpen, openCloseMenu, setIsOpen, hideList, checkForLinkOpen
+const mapStateToProps = (state) => ({
+  isLogin: state.auth.isLogin
+})
+
+const PopUpList = connect(mapStateToProps)(({
+  openSlide, isOpen, openCloseMenu, setIsOpen, hideList, checkForLinkOpen, isLogin
 }) => (
 
   <PopUpContainer hideList={hideList} setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
@@ -41,6 +46,12 @@ const PopUpList = ({
         <Link to="/aboutus"><h5>About Us</h5></Link>
         <RightOutlinedStyled />
       </li>
+      {isLogin && (
+      <li>
+        <Link to="/dashboard"><h5>Dashboard</h5></Link>
+        <RightOutlinedStyled />
+      </li>
+      )}
       <li>
         <Link to="/products/739628"><h5>Products</h5></Link>
         <RightOutlinedStyled />
@@ -50,7 +61,7 @@ const PopUpList = ({
       </StyledExceptionLi>
     </Listnavigation>
   </PopUpContainer>
-)
+))
 PopUpList.propTypes = {
   hideList: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,

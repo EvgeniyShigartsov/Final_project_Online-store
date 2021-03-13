@@ -38,13 +38,11 @@ export const updateCustomer = (credentials) => () => {
   return res
 }
 
-export const getCustomer = () => () => {
+export const getCustomer = () => {
   const res = axios.get(`${BASE_ENDPOINT}/customer`, {headers})
-    .then((data) => {
-      console.log(data)
-    })
+    .then((data) => (data))
     .catch((error) => {
-      console.log(error.response)
+      error(error.response)
     })
   return res
 }

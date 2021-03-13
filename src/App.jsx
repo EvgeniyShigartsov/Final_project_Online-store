@@ -12,6 +12,7 @@ import ProductPage from './components/ProductPage/ProductPage'
 import Header from './components/Header/Header'
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
+import DashBoard from './components/DashBoard/DashBoard'
 
 function App() {
   return (
@@ -42,6 +43,9 @@ function App() {
         </Route>
         <Route exact path="/products/:itemNo">
           <ProductPage />
+        </Route>
+        <Route exact path="/dashboard">
+          <DashBoard />
         </Route>
         <Route exact path="/buttons">
           <StyledButton shape="round">Submit</StyledButton>
