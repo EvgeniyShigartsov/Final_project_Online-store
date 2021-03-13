@@ -1,5 +1,8 @@
 import axios from 'axios'
 import { createSubscribe, createSubscribeSuccess, createSubscribeError } from './actionCreator'
+import { DOMAIN } from '../general'
+
+const BASE_ENDPOINT = `${DOMAIN}/subscribers`
 
 const headers = {
   Autorization: localStorage.getItem('token'),
@@ -8,7 +11,7 @@ const headers = {
 
 const createNewSubscribe = (newSubscriber) => async (dispatch) => {
   dispatch(createSubscribe());
-  axios.post('/subscribers', newSubscriber, {headers})
+  axios.post(BASE_ENDPOINT, newSubscriber, { headers })
     .then((response) => {
       console.log(response);
       dispatch(createSubscribeSuccess(response.data))

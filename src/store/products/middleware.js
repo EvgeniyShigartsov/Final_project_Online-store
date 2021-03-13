@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { headers } from '../headers';
 import { setProducts, addProduct, updateProduct } from './actionCreator';
+import { DOMAIN } from '../general'
 
-const BASE_ENDPOINT = '/products'
+const BASE_ENDPOINT = `${DOMAIN}/products`
 
 export const getProducts = () => (dispatch) => {
   axios.get('/products')

@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { message } from 'antd'
+import { DOMAIN } from '../general'
 
-const BASE_ENDPOINT = '/customers'
+const BASE_ENDPOINT = `${DOMAIN}/customers`
 
 const headers = {
   authorization: localStorage.getItem('token'),
