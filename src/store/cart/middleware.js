@@ -46,7 +46,7 @@ export const addToCart = (productId, quantity) => (dispatch, getStore) => {
     .then((updatedCart) => {
       if (updatedCart.status === 200) {
         dispatch(addToCartCreator(updatedCart.data));
-        message.success('Товар добавлен в корзину!')
+        message.success('The product has been added to cart!')
       }
     })
     .catch((error) => error.response)
