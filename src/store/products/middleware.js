@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { headers } from '../headers';
 import { setProducts, addProduct, updateProduct } from './actionCreator';
-import { DOMAIN } from '../general'
+import { DOMAIN, getHeaders } from '../general'
 
+const headers = getHeaders()
 const BASE_ENDPOINT = `${DOMAIN}/products`
 
 export const getProducts = () => (dispatch) => {

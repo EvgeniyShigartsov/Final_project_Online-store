@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { message } from 'antd'
 import axios from 'axios'
-import { getHeaders } from '../headers'
 import {
   setCart,
   decreaseQuantityCreator,
@@ -12,7 +11,7 @@ import {
   getBranches,
   getShippingCostCreator,
 } from './actionCreator'
-import { DOMAIN } from '../general'
+import { DOMAIN, getHeaders } from '../general'
 
 const BASE_ENDPOINT = `${DOMAIN}/cart`
 
