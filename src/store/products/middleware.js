@@ -6,13 +6,9 @@ import {
   setProductsToCatalog,
   setCatalogProductsQuantity
 } from './actionCreator';
+import { headers } from '../headers';
 
 const BASE_ENDPOINT = '/products'
-
-const headers = {
-  Authorization: localStorage.getItem('token'),
-  'Content-Type': 'application/json'
-}
 
 export const getProducts = () => (dispatch) => {
   axios.get('/products')
@@ -36,22 +32,22 @@ export const addOneProduct = (newProduct) => (dispatch) => {
   return res
 }
 
-export const updatedOneProduct = (id, newProduct) => (dispatch) => {
-  const res = axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, {headers})
+export const updateOneProduct = (id, newProduct) => (dispatch) => {
+  const res = axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, { headers })
     .then((data) => {
       if (data.status === 200) {
         dispatch(updateProduct(data.data))
       }
       return data
     })
-    .catch((error) => error)
+    .catch((error) => error.response)
   return res
 }
 
-export const getOneProduct = (itemNo) => () => {
+export const getOneProduct = (itemNo) => {
   const res = axios.get(`${BASE_ENDPOINT}/${itemNo}`)
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error.response))
+    .then((data) => data)
+    .catch((error) => error.response)
   return res
 }
 
