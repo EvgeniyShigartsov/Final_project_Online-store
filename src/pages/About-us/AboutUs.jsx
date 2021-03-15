@@ -2,13 +2,17 @@ import React from 'react'
 import data from './ContentForAboutUs'
 import {
   TitleBox, Flex, Section, ContentContainer, SectionTitle, SectionContent, SectionImg, Img,
-  Image, ContentBlock, BlockContainer, Text
+  Image, ContentBlock, Text, ComponentContainer, TitleText
 }
   from './StyledAboutUs';
 
 export const AboutUsPage = () => (
-  <BlockContainer>
-    <TitleBox key={7}><p>About Us</p></TitleBox>
+  <ComponentContainer>
+    <TitleBox>
+      <TitleText>
+        <p>About Us</p>
+      </TitleText>
+    </TitleBox>
     <Flex key={8} className="container">
       {data.map((item, i) => {
         const section = item;
@@ -57,7 +61,7 @@ export const AboutUsPage = () => (
         )
       })}
     </Flex>
-  </BlockContainer>
+  </ComponentContainer>
 )
 
 export default AboutUsPage;

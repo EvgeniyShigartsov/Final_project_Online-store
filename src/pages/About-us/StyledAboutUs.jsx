@@ -1,42 +1,42 @@
 import styled from 'styled-components';
 import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
-const BlockContainer = styled.div`
+const ComponentContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 0 10px;
   min-width: 360px;
+`
+const TitleBox = styled.div`  
+  width: 90%;
+  margin: 10px auto 15px auto;
+  // Tablet
+  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
+    width: 92%;
+    margin: 0 auto 16px auto;
+  }
   // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
+    max-width: 1200px;
     width: 90%;
+    margin: 20px auto;
+    padding: 0 1%;
   }
 `
-
-const TitleBox = styled.div`
-  display: flex;
-  justify-content: start;
-  height: 27px;
-  margin: 10px 0 15px 15px;
-  font-size: 18px;
+const TitleText = styled.div`
+  font-size: 22px;
   font-weight: bold;
-  
-  // Tablet
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    margin: 13px 0 13px 26px;
-  }
   // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
-    height: 48px;
-    margin: 20px 0 20px 30px;
-    font-size: 48px;
+    font-size: 42px;
     font-weight: bold;
+    justify-content: start;
+    padding: 0 1,5%;
   }
 `
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  // flex-wrap: nowrap;
   width: 100%;
 `
 const Section = styled.div`
@@ -44,8 +44,13 @@ const Section = styled.div`
   display: flex;
   width: 100%;
   background-color: ${(props) => (props.colored ? 'black' : 'white')};
+ // Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+  justify-content: center;
+  align-items: center;
+  }
 // Tablet
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
     justify-content: center;
     align-items: center;
   }
@@ -56,12 +61,19 @@ const Section = styled.div`
   }
 `
 const ContentBlock = styled.div`
-  max-width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: ${(props) => (props.colored ? 'column-reverse' : 'column')};
   color: ${(props) => (props.colored ? 'white' : 'black')};
+  // Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 10px 0;
+  }
 // Tablet
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -69,10 +81,11 @@ const ContentBlock = styled.div`
 }
 // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
+    max-width: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
+    padding: 50px 5%;
   }
 `
 const ContentContainer = styled.div`
@@ -80,15 +93,21 @@ const ContentContainer = styled.div`
   flex-direction: column;
   width: 90%;
   margin: 17px 2% 25px 10%;
-// Tablet
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 45%;
-    margin-right: ${(props) => (props.colored ? '5%' : '0')};
+// Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+    width: 55%;
+    margin-right: ${(props) => (props.colored ? '2%' : '3%')};
     margin-left: ${(props) => (props.colored ? '0' : '5%')};  
+  }
+// Tablet
+  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
+    width: 45%;
+    margin-right: ${(props) => (props.colored ? '5%' : '2%')};
+    margin-left: ${(props) => (props.colored ? '3%' : '5%')};  
   }
 // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
-    width: 45%;
+    width: 50%;
     margin-right: ${(props) => (props.colored ? '5%' : '0')};
     margin-left: ${(props) => (props.colored ? '0' : '5%')};
   }
@@ -97,12 +116,17 @@ const SectionTitle = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  font-size: 32px;
+  font-size: 30px;
   margin: 5px 0 13px 0;
+  // Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+    width: 95%;
+    font-size: 30px;
+  }
   // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     width: 90%;
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 32px;
   }
 `
@@ -111,12 +135,18 @@ const SectionContent = styled.div`
   flex-direction: column;
   width: 95%;
   font-size: 14px;
+  line-height: 20px;
   letter-spacing: 1px;
+  // Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+    width: 95%;
+    font-size: 12px;
+  }
   // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
-    width: 92%;
-    font-size: 18px;
-    line-height: 26px;
+    width: 85%;
+    font-size: 16px;
+    line-height: 22px;
   }
 `
 const SectionImg = styled.div`
@@ -124,27 +154,37 @@ const SectionImg = styled.div`
   justify-content: center;
   width: 100%;
   height: 50%;
-  overflow: hidden;
-  object-fit: cover;
+
+  // Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+    height: 95%;
+    width: 37%;
+  }
   // Tablet
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    height: 65%;
-    width: 35%;
+  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
+    height: 90%;
+    width: 40%;
   }  
   // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     width: 40%;
-    height: 75%;
+    height: 100%;
   }
 `
 const Image = styled.img`
+  object-fit: cover;
   margin-top: ${(props) => (props.first ? '0' : '25px')};
   display: flex;
   flex-direction: row;
   width: ${(props) => (props.first ? '100%' : '50%')};
-  height: ${(props) => (props.first ? '100%' : '180px')};
+  height: ${(props) => (props.first ? '100%' : '50%')};
+  // Intermediate point
+  @media(min-width: 600px) and (max-width:750px) {
+    width: 100%;
+    height: 100%;
+  }
   // Tablet
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
     width: 100%;
     height: 100%;
   }  
@@ -167,8 +207,7 @@ const Img = styled.img`
 const Text = styled.p`
   margin-bottom: 20px;
 `
-
 export {
   Img, Image, SectionImg, ContentContainer, SectionContent, SectionTitle, Section, Flex, TitleBox,
-  Text, ContentBlock, BlockContainer
+  TitleText, Text, ContentBlock, ComponentContainer
 };

@@ -1,6 +1,3 @@
-import { Provider } from 'react-redux'
-import { HashRouter as Router } from 'react-router-dom'
-import { PersistGate } from 'redux-persist/es/integration/react';
 import React from 'react'
 import { Provider } from 'react-redux'
 import { HashRouter as Router } from 'react-router-dom';
