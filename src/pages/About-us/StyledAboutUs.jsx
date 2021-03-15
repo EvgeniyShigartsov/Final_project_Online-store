@@ -9,12 +9,12 @@ const ComponentContainer = styled.div`
 const TitleBox = styled.div`  
   width: 90%;
   margin: 10px auto 15px auto;
-  // Tablet
+// Tablet
   @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
     width: 92%;
     margin: 0 auto 16px auto;
   }
-  // Desktop
+// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     max-width: 1200px;
     width: 90%;
@@ -44,16 +44,19 @@ const Section = styled.div`
   display: flex;
   width: 100%;
   background-color: ${(props) => (props.colored ? 'black' : 'white')};
- // Intermediate point
+
+// Intermediate point
   @media(min-width: 600px) and (max-width:750px) {
   justify-content: center;
   align-items: center;
   }
+
 // Tablet
   @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
     justify-content: center;
     align-items: center;
   }
+
 // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     justify-content: center;
@@ -65,7 +68,7 @@ const ContentBlock = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.colored ? 'column-reverse' : 'column')};
   color: ${(props) => (props.colored ? 'white' : 'black')};
-  // Intermediate point
+// Intermediate point
   @media(min-width: 600px) and (max-width:750px) {
     flex-direction: row;
     justify-content: center;
@@ -118,12 +121,12 @@ const SectionTitle = styled.div`
   width: 90%;
   font-size: 30px;
   margin: 5px 0 13px 0;
-  // Intermediate point
+// Intermediate point
   @media(min-width: 600px) and (max-width:750px) {
     width: 95%;
     font-size: 30px;
   }
-  // Desktop
+// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     width: 90%;
     font-size: 32px;
@@ -137,12 +140,12 @@ const SectionContent = styled.div`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 1px;
-  // Intermediate point
+// Intermediate point
   @media(min-width: 600px) and (max-width:750px) {
     width: 95%;
     font-size: 12px;
   }
-  // Desktop
+// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     width: 85%;
     font-size: 16px;
