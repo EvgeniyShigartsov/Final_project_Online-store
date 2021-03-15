@@ -6,8 +6,9 @@ import {
   persistReducer
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import {reducer as authReducer} from './auth/reducer';
-import {MODULE_NAME as cart, cartReducer} from './cart/reducer'
+import { reducer as authReducer } from './auth/reducer';
+import { reducer as dashBoardModalReducer } from './modal/reducer';
+import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   [cart]: cartReducer,
   [productsModule]: productsReducer,
   subscribe: subscribersReducer,
+  dashBoardModal: dashBoardModalReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

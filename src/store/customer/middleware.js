@@ -24,17 +24,17 @@ export const createCustomer = (credentials, history) => {
     })
 }
 
-export const changePassword = (passwords) => () => {
+export const changePassword = (passwords) => {
   const res = axios.put(`${BASE_ENDPOINT}/password`, passwords, {headers})
-    .then((data) => data)
-    .catch((error) => error.response)
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error.response))
   return res
 }
 
-export const updateCustomer = (credentials) => () => {
+export const updateCustomer = (credentials) => {
   const res = axios.put(BASE_ENDPOINT, credentials, {headers})
     .then((data) => data)
-    .catch((error) => error)
+    .catch((error) => error.response)
   return res
 }
 
@@ -42,7 +42,7 @@ export const getCustomer = () => {
   const res = axios.get(`${BASE_ENDPOINT}/customer`, {headers})
     .then((data) => (data))
     .catch((error) => {
-      error(error.response)
+      error(error)
     })
   return res
 }

@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
-import { connect } from 'react-redux'
-import {forTablet, forDesktop, forMobile} from '../../styles/mediaBreakPoints';
-import {Container} from '../common/Container'
-import {getCustomer} from '../../store/customer/middleware'
+import { connect } from 'react-redux';
+// import PasswordChange from 'antd/lib/input/Password';
+import { forTablet, forDesktop, forMobile } from '../../styles/mediaBreakPoints';
+import { Container } from '../common/Container'
+import { getCustomer } from '../../store/customer/middleware'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
+import Modal from './Modal';
+import FormInfoChange from './FormInfoChange';
+import { setShowModal } from '../../store/modal/middleware';
 
-const mapStateToProps = (state) => ({
-  test: state
-})
-
-const DashBoard = connect(mapStateToProps, {getCustomer})(({test}) => {
+const DashBoard = connect(null, { getCustomer, setShowModal })(({ setShowModal }) => {
   const [info, setInfo] = useState({})
   useEffect(() => {
     const customer = async () => {
@@ -24,103 +24,113 @@ const DashBoard = connect(mapStateToProps, {getCustomer})(({test}) => {
     }
     customer()
   }, [])
-  console.log(info);
-  if (Object.keys(info).length === 0) return <SpinAnimation width="100vw" height="80vh" />
+  console.log(info.password);
 
+  if (Object.keys(info).length === 0) return <SpinAnimation width="90vw" height="90vh" />
+  
   return (
     <Container>
       <MyDash>
         <p>My Dashboard</p>
       </MyDash>
-      <Test>
-        <AccountInfo>
-          <h3>Account Information</h3>
-        </AccountInfo>
-        <WrapperBlocks>
-          <RowBlocks>
-            <BlockInfo>
-              <h4>Contact Information</h4>
+
+      <AccountInfo>
+        <h3>Account Information</h3>
+      </AccountInfo>
+      <WrapperBlocks>
+        <RowBlocks>
+          <BlockInfo>
+            <h4>Contact Information</h4>
+            <div>
+              <TextInfo>
+                <p>
+                  {info.firstName}
+                </p>
+                <p>
+                  {info.lastName}
+                </p>
+              </TextInfo>
               <div>
-                <TextInfo>
-                  <p>
-                    {info.firstName}
-                  </p>
-                  <p>
-                    {info.lastName}
-                  </p>
-                </TextInfo>
-                <div>
-                  <button type="submit">Edit</button>
-                  <button type="submit">Change Password</button>
-                </div>
+                <button type="submit" id="setInfo" onClick={(e) => setShowModal(e.target.id)}>Edit</button>
+                <Modal>
+                  <FormInfoChange />
+                </Modal>
+                <button type="submit" id="setPassword" onClick={(e) => setShowModal(e.target.id)}>Change Password</button>
+                {/* <Modal
+                  title="Add New Password"
+                  cancelText="Close"
+                  okButtonProps={{style: {display: 'none'}}}
+                  visible={isModalVisible}
+                  onCancel={handleCancel}
+                >
+                  <PasswordChange handleCancel={handleCancel} setInfo={setInfo} />
+                </Modal> */}
               </div>
-            </BlockInfo>
-            <BlockInfo>
-              <h4>Contact Information</h4>
+            </div>
+          </BlockInfo>
+          <BlockInfo>
+            <h4>Contact Information</h4>
+            <div>
               <div>
-                <div>
-                  <p>
-                    {info.firstName}
-                  </p>
-                  <p>
-                    {info.lastName}
-                  </p>
-                </div>
-                <div>
-                  <button type="submit">Edit</button>
-                  <button type="submit">Change Password</button>
-                </div>
+                <p>
+                  {info.firstName}
+                </p>
+                <p>
+                  {info.lastName}
+                </p>
               </div>
-            </BlockInfo>
-          </RowBlocks>
-          <ManagingBooks>
-            <h3>Address Book</h3>
-            <BtnMenage type="submit">Menage Addresses</BtnMenage>
-          </ManagingBooks>
-          <RowBlocks>
-            <BlockInfo>
-              <h4>Contact Information</h4>
               <div>
-                <div>
-                  <p>
-                    {info.firstName}
-                  </p>
-                  <p>
-                    {info.lastName}
-                  </p>
-                </div>
-                <div>
-                  <button type="submit">Edit</button>
-                  <button type="submit">Change Password</button>
-                </div>
+                <button type="submit">Edit</button>
+                <button type="submit">Change Password</button>
               </div>
-            </BlockInfo>
-            <BlockInfo>
-              <h4>Contact Information</h4>
+            </div>
+          </BlockInfo>
+        </RowBlocks>
+        <ManagingBooks>
+          <h3>Address Book</h3>
+          <BtnMenage type="submit">Menage Addresses</BtnMenage>
+        </ManagingBooks>
+        <RowBlocks>
+          <BlockInfo>
+            <h4>Contact Information</h4>
+            <div>
               <div>
-                <div>
-                  <p>
-                    {info.firstName}
-                  </p>
-                  <p>
-                    {info.lastName}
-                  </p>
-                </div>
-                <div>
-                  <button type="submit">Edit</button>
-                  <button type="submit">Change Password</button>
-                </div>
+                <p>
+                  {info.firstName}
+                </p>
+                <p>
+                  {info.lastName}
+                </p>
               </div>
-            </BlockInfo>
-          </RowBlocks>
-        </WrapperBlocks>
-      </Test>
+              <div>
+                <button type="submit">Edit</button>
+                <button type="submit">Change Password</button>
+              </div>
+            </div>
+          </BlockInfo>
+          <BlockInfo>
+            <h4>Contact Information</h4>
+            <div>
+              <div>
+                <p>
+                  {info.firstName}
+                </p>
+                <p>
+                  {info.lastName}
+                </p>
+              </div>
+              <div>
+                <button type="submit">Edit</button>
+                <button type="submit">Change Password</button>
+              </div>
+            </div>
+          </BlockInfo>
+        </RowBlocks>
+      </WrapperBlocks>
     </Container>
   );
 })
-const Test = styled.div`
-  /* max-width: 80vw; */
-`;
+
 const AccountInfo = styled.div`
   @media(max-width: ${forMobile.maxWidth}px) {
       width: 90%;
