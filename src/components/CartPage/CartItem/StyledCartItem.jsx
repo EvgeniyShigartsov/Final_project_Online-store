@@ -1,70 +1,77 @@
 import styled from 'styled-components';
-import { Button, Select } from 'antd'
-import 'antd/dist/antd.css'
+import { Button, Input} from 'antd'
+import 'antd/dist/antd.css';
+import {forDesktop} from '../../../styles/mediaBreakPoints';
 
 export const StyledCartItem = styled.div`
-    display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #cccccc;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    width:100%;
+    padding-bottom: 17px;
+    margin-bottom: 17px;
     
     img {
-        width: 13.2%;
-        height: 13.2%;
+        width: 90%;
+        height: 90%;
         display: block;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+        padding-bottom: 15px;
     }
     p {
-        width:29.7%;
+        width: 90%;
         font-size: 14px;
-        line-height: 21px;
-        margin: 0 2.75%;
-    }
-    span.price {
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        text-align: center;
+        line-height: 18px;
+        padding-bottom: 15px;
         color: #000000;
-        width: 9.9%;
     }
-    /* select {
-        background-color: #EBEBEB;
-        border-radius: 6px;
-        width: 70px;
-        height:50px;
-
-        option {        
-            text-align: center;
+    .price, .subtotal  {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        color: #000000;
+    }
+    .subtotal {
+        text-align: end;
+    }
+    .bold {
+        font-weight: 600;
+    }
+    @media(min-width: ${forDesktop.minWidth}px){
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        img {
+            padding-bottom: 0;
         }
-    } */
-
-    div.column {
-        display:flex;
-        flex-direction: column;
+        p {
+            font-size: 14px;
+            line-height: 21px;
+            padding-bottom: 0;
+        }
+        .price, .subtotal {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .subtotal {
+            text-align: end;
+        }
     }
 `;
 
-export const StyledButton = styled(Button)`
-margin: 3px 6px;
+export const ButtonRemoveEdit = styled(Button)`
+    margin: 3px 6px;
 `;
 
-export const StyledSelect = styled(Select)`
+export const StyledInput = styled(Input)`
+    display: block;
+    background-color: #EBEBEB;
+    border-radius: 6px;
+    min-width: 50px;
+    width: 50px;
+    height: 40%;
+    margin: 0 5px;
 
-        background-color: #EBEBEB;
-        border-radius: 6px;
-        width: 70px;
-        height:50px;
-
-        .ant-select-selector {
-            border: none;
-            background-color:#EBEBEB;
-            height: 50px
-        } 
+    @media(min-width: ${forDesktop.minWidth}px){
+        display: block;
+        width: 112px;
+        height: 40%;
+    }
 `;
 
 export default StyledCartItem;

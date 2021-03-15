@@ -1,37 +1,77 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Empty } from 'antd';
+import { useHistory } from 'react-router-dom';
 import TheadCart from '../TheadCart/TheadCart';
 import { CartItem } from '../CartItem/CartItem';
-import {Row, RowBetween} from '../Cart/Row';
+import { ColumnRowBetween} from '../Flex';
 import StyledButton from '../../common/Buttons/StyledButton';
+import StyledCartList from './StyledCartList';
+import { getCart, clearCart } from '../../../store/cart/middleware';
+import { selectProducts } from '../../../store/cart/reducer';
 
-const CartList = () => (
-  <div>
-    <TheadCart />
-    <CartItem
-      img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-      description="MSI MEG Trident X 10SD-1012AU Intel i7 10700K, 2070 SUPER, 32GB RAM, 1TB SSD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years Warranty"
-      price="12,345.00"
-    //   quantity="2"
-      subtotal="24,345.00"
-      key="123"
-    />
-    <CartItem
-      img="https://i.citrus.ua/imgcache/size_800/uploads/shop/0/8/08d983e24e5cced849bd3ab8ac562b35.jpg"
-      description="MSI MEG Trident X 10SD-1012AU Intel i7 10700K, 2070 SUPER, 32GB RAM, 1TB SSD, Windows 10 Home, Gaming Keyboard and Mouse 3 Years Warranty"
-      price="12,345.00"
-    //   quantity="2"
-      subtotal="24,345.00"
-      key="123"
-    />
-    <RowBetween>
-      <Row>
-        <StyledButton size="xl" smallHeight shape="round" color="borderGrey">Continue Shopping</StyledButton>
-        <StyledButton size="xl" smallHeight shape="round" color="black">Clear Shopping Cart</StyledButton>
-      </Row>
-      <StyledButton size="xl" smallHeight shape="round" color="black">Update Shopping Cart</StyledButton>
-    </RowBetween>
-    <div>1111111</div>
-  </div>
-);
+const mapStateToProps = (state) => ({products: selectProducts(state)})
+
+const CartList = connect(
+  mapStateToProps, {
+    getCart, clearCart
+  }
+)(({
+  products,
+  getCart,
+  clearCart,
+}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      getCart()
+    }, 1000)
+  }, [getCart]);
+
+  const history = useHistory()
+
+  const onClickContinue = () => {
+    history.push('/')
+  }
+
+  const showCartItem = (productsAll) => {
+    console.log(productsAll);
+    return productsAll.map((item) => (
+      <CartItem
+        product={item.product}
+        cartQuantity={item.cartQuantity}
+        key={item.product._id}
+      />
+    ))
+  }
+
+  return (
+    <StyledCartList>
+      <TheadCart />
+      {products.length ? showCartItem(products) : (<Empty />)}
+
+      <ColumnRowBetween>
+        <div className="margin">
+          <StyledButton onClick={onClickContinue} size="xl" shape="round" color="borderGrey">Continue Shopping</StyledButton>
+        </div>
+        <div className="margin">
+          <StyledButton onClick={() => clearCart()} size="xl" shape="round" color="black">Clear Shopping Cart</StyledButton>
+        </div>
+      </ColumnRowBetween>
+    </StyledCartList>
+  )
+})
 
 export default CartList;
+
+CartList.propTypes = {
+  product: PropTypes.shape({
+    imageUrls: PropTypes.arrayOf(PropTypes.string),
+    name: PropTypes.string,
+    currentPrice: PropTypes.number,
+    _id: PropTypes.string,
+  }),
+  getCart: PropTypes.func,
+  clearCart: PropTypes.func,
+}
