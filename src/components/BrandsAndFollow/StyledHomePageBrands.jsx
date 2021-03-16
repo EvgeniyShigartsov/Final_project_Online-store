@@ -5,6 +5,7 @@ const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 15px 0;
+  min-width: 360px;
 // Tablet
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     margin: 18px 0;
@@ -22,6 +23,7 @@ const BrandBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-size: cover;
   height: 172px;
   width: calc(100% / 2);
   &:hover{
@@ -31,14 +33,16 @@ const BrandBox = styled.div`
 // Tablet
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     width: calc(100% / 3);
+    height: 155px;
   }  
 // Desktop
   @media(min-width: ${forDesktop.minWidth}px){
-    height: 150px;
+    height: 145px;
   }
 `
 const Image = styled.img`
   display: flex;
+  object-fit: contain;
   height: 57%;
   width: 73%;
 // Tablet

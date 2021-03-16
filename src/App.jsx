@@ -51,14 +51,6 @@ function App() {
           <ProductPage />
         </Route>
       </Switch>
-      <StyledButton shape="round">Submit</StyledButton>
-      <StyledButton size="sm" shape="round">Submit</StyledButton>
-      <StyledButton size="xl" shape="round" color="black">Submit</StyledButton>
-      <StyledButton size="lg" shape="round">Submit</StyledButton>
-      <StyledButton size="md" shape="round" color="borderGrey">Submit</StyledButton>
-      <StyledButton size="xs" shape="round" color="borderBlue">Submit</StyledButton>
-      <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
-      <Cart />
       <Footer />
     </div>
   )
