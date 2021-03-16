@@ -42,7 +42,7 @@ const PopUpList = ({
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/products/739628"><h5>Products</h5></Link>
+        <Link to="/products/896750"><h5>Products</h5></Link>
         <RightOutlinedStyled />
       </li>
       <StyledExceptionLi>
