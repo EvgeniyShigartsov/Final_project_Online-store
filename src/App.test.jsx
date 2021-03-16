@@ -4,7 +4,6 @@ import { render } from '@testing-library/react'
 import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/index'
-import { HashRouter as Router} from 'react-router-dom'
 import App from './App'
 
 test('App render test', () => {
