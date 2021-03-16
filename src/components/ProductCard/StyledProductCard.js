@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { forDesktop } from '../../styles/mediaBreakPoints'
+import { forDesktop, forTablet } from '../../styles/mediaBreakPoints'
 
 const StyledCardItem = styled.li`
-  list-style: none;
-  width: 215px;
+  max-width: 215px;
   padding: 5px 13px;
 
   @media(min-width: ${forDesktop.minWidth}px){
@@ -11,21 +10,20 @@ const StyledCardItem = styled.li`
   }
 `
 
-export const StyledCardImg = styled.div`
-  width: 100%;
+export const StyledCardImgWrapper = styled.div`
   height: 100px;
 
-  background-image: url(${(props) => props.url});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  margin-bottom: 5px;
-
-  @media(min-width: ${forDesktop.minWidth}px){
+  @media(min-width: ${forTablet.minWidth}px){
     height: 150px;
   }
+`
 
+export const StyledCardImg = styled.img`
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+
+  margin: 0 auto;
 `
 
 export const StyledCardReviews = styled.span`
@@ -42,6 +40,8 @@ export const StyledCardReviews = styled.span`
 export const StyledCardTitle = styled.h2`
   font-size: 11px;
   line-height: 16px;
+  height: 2rem;
+  overflow: hidden;
 
   margin-top: 5px;
 
