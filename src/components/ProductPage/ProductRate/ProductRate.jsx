@@ -47,7 +47,6 @@ const ProductRate = connect(null, { updateOneProduct })(({
       </ReviewsCount>
       <span>
         <Rate tooltips={desc} onChange={handleChange} value={rate} />
-        {rate ? <span className="ant-rate-text">{desc[rate - 1]}</span> : ''}
       </span>
     </RateBox>
   )

@@ -66,11 +66,11 @@ export const AboutProduct = styled.ul`
 `
 export const PriceBox = styled.div`
     border-radius: 4px;
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-decoration: underline;
+    font-size: 24px;
+    margin: 15px 0;
     font-weight: 300;
     b {
-        font-weight: 500;
+        font-weight: 700;
+        margin-right: 10px;
     }
 `

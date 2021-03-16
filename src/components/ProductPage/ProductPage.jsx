@@ -56,15 +56,12 @@ const ProductPage = () => {
         <InformationBox>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
           <PriceBox>
-            Price:
             <b>
-              {' '}
               {product.currentPrice}
-              {' '}
             </b>
-            ₴
+            ₴.
           </PriceBox>
-          <div>
+          <div style={{ marginBottom: '6px' }}>
             Product number:
             {' '}
             {product.itemNo}
