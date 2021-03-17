@@ -1,19 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { StarRating } from '../StarRating/StarRating'
-import StyledCardItem, {
-  StyledCardImg,
-  StyledCardImgWrapper,
-  StyledCardLastPrice,
-  StyledCardNowPrice,
-  StyledCardReviews,
-  StyledCardTitle
-} from './StyledProductCard';
+
+// Compomemts
 import { InStock } from './InStock/InStock';
 import { CheckAvailability } from './CheckAvailability/CheckAvailability';
+import { StarRating } from '../StarRating/StarRating'
+
+// Styles
+import {
+  StyledCardItem,
+  StyledCardReviews,
+  StyledCardTitle
+} from './StyledProductCard/Common';
+import { StyledCardIconCart, StyledCardIconWrapper } from './StyledProductCard/Icons';
+import { StyledCardImg, StyledCardImgWrapper, } from './StyledProductCard/Img';
+import { StyledCardLastPrice, StyledCardNowPrice} from './StyledProductCard/Prices';
+
+// Functions
 import cutString from '../../utils/cutString';
 import rateCalculator from '../../utils/rateCalculator';
+import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter';
 
 export const ProductCard = ({ productInfo }) => {
   const {
@@ -26,8 +33,9 @@ export const ProductCard = ({ productInfo }) => {
     itemNo
   } = productInfo
   
-  // string length limitation
-  const verifiedTitle = cutString(name, 45)
+  // string length limitation and translation of the first letter into capital
+  let verifiedTitle = cutString(name, 45)
+  verifiedTitle = upperCaseFirstLetter(verifiedTitle)
 
   // getting an average rating and the number of reviews left
   const { reviewsQuantity, rating } = rateCalculator(reviews)
@@ -35,6 +43,10 @@ export const ProductCard = ({ productInfo }) => {
   return (
     <StyledCardItem>
       {quantity > 0 ? <InStock /> : <CheckAvailability />}
+
+      <StyledCardIconWrapper>
+        <StyledCardIconCart />
+      </StyledCardIconWrapper>
 
       <Link to={`products/${itemNo}`}>
         <StyledCardImgWrapper>
