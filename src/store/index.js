@@ -7,7 +7,7 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { reducer as authReducer } from './auth/reducer';
-import { reducer as dashBoardModalReducer } from './modal/reducer';
+import { reducer as dashBoardModalReducer } from './dashBoardModal/reducer';
 import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'

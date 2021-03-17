@@ -1,13 +1,9 @@
 /* eslint-disable no-extra-boolean-cast */
 import axios from 'axios'
 import { message } from 'antd'
+import { getHeaders } from '../headers'
 
 const BASE_ENDPOINT = '/customers'
-
-const headers = {
-  authorization: localStorage.getItem('token'),
-  'Content-Type': 'application/json'
-}
 
 export const createCustomer = (credentials, history) => {
   axios.post(BASE_ENDPOINT, credentials)
@@ -26,6 +22,7 @@ export const createCustomer = (credentials, history) => {
 }
 
 export const changePassword = (passwords) => {
+  const headers = getHeaders();
   const res = axios.put(`${BASE_ENDPOINT}/password`, passwords, {headers})
     .then((data) => {
       if (data.status === 200) {
@@ -47,6 +44,7 @@ export const changePassword = (passwords) => {
 }
 
 export const updateCustomer = (credentials) => {
+  const headers = getHeaders();
   const res = axios.put(BASE_ENDPOINT, credentials, {headers})
     .then((data) => {
       if (data.status === 200) {
@@ -58,10 +56,9 @@ export const updateCustomer = (credentials) => {
 }
 
 export const getCustomer = () => {
+  const headers = getHeaders();
   const res = axios.get(`${BASE_ENDPOINT}/customer`, {headers})
     .then((data) => (data))
-    .catch((error) => {
-      error(error.response)
-    })
+    .catch((error) => error.response)
   return res
 }
