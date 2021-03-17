@@ -18,6 +18,19 @@ const getParsedListFromLS = () => {
   const items = localStorage.getItem('wishlist')
   return JSON.parse(items)
 }
+const addProductToLS = (product) => {
+  const prevItems = getParsedListFromLS()
+  const updatedItems = [...prevItems, product]
+  localStorage.setItem('wishlist', JSON.stringify(updatedItems))
+  return updatedItems
+}
+const removeProductFromLS = (product) => {
+  const prevItems = getParsedListFromLS()
+  const updatedItems = prevItems.filter((item) => item._id !== product._id)
+  localStorage.setItem('wishlist', JSON.stringify(updatedItems))
+  return updatedItems
+}
+
 const getWishListFromDB = () => {
   const headers = getHeaders()
   const result = axios.get(BASE_ENDPOINT, { headers })
@@ -33,6 +46,7 @@ export const setWishlist = () => async (dispatch, getState) => {
   
   if (isLogin) {
     const { data, status } = await getWishListFromDB()
+
     if (data && status === 200) itemsToSet.push(...data.products)
     else itemsToSet.push(...getParsedListFromLS())
   } else {
@@ -47,30 +61,67 @@ export const setWishlist = () => async (dispatch, getState) => {
   dispatch(setWishlistCreator(dataToAdd))
 }
 
-export const addProductToWishlist = (productID) => async (dispatch, getState) => {
-  if (!productID) return
+export const addProductToWishlist = (product) => async (dispatch, getState) => {
+  // if (!product || !product._id) return
+  // const productID = product._id
+  const productID = product
   const {auth: { isLogin }} = getState()
-  
+  const updatedList = []
+
   if (isLogin) {
     const headers = getHeaders()
     const { data, status } = await getWishListFromDB()
     const isSucces = data && status === 200
-    
     const check = isSucces ? data.products.find((product) => product._id === productID) : null
-    console.log(check)
-    if (check) return
+    if (check) {
+      updatedList.push(...data.products)
+      return
+    } // Вынужденя проверка, потому что бэк написан таким образом что может хранить один и тот же
+    //  id товара для одного пользователья дважды+ раз.
 
-    axios.put(`${BASE_ENDPOINT}/${productID}`, null, { headers })
-      .then((d) => console.log(d))
-      .catch((e) => console.log(e.response))
+    await axios.put(`${BASE_ENDPOINT}/${productID}`, null, { headers })
+      .then((response) => {
+        const {data, status} = response
+        if (data && status === 200) updatedList.push(...data.products)
+        else updatedList.push(...getParsedListFromLS())
+      })
+      .catch((err) => console.log(err.response))
+  } else {
+    const updatedItems = addProductToLS(product)
+    updatedList.push(...updatedItems)
   }
+
+  const dataToAdd = {
+    wishitstItems: updatedList,
+    wishitstLength: updatedList.length
+  }
+  dispatch(addProductToWishlistCreator(dataToAdd))
 }
 
-export const removeProductFromWishlist = (productID) => (dispatch, getState) => {
-  if (!productID) return
-  const headers = getHeaders()
+export const removeProductFromWishlist = (product) => async (dispatch, getState) => {
+  // if (!product || !product._id) return
+  const productID = product
+  const {auth: { isLogin }} = getState()
+  const updatedList = []
+  
+  if (isLogin) {
+    const headers = getHeaders()
+    await axios.delete(`${BASE_ENDPOINT}/${productID}`, { headers })
+      .then((response) => {
+        const { data, status } = response
 
-  axios.delete(`${BASE_ENDPOINT}/${productID}`, { headers })
-    .then((d) => console.log(d))
-    .catch((e) => console.log(e.response))
+        if (data && status === 200) updatedList.push(...data.products)
+        else updatedList.push(...getParsedListFromLS())
+      })
+      .catch((err) => console.log(err.response))
+  } else {
+    const updatedItems = removeProductFromWishlist(product)
+    updatedList.push(...updatedItems)
+  }
+
+  const dataToAdd = {
+    wishitstItems: updatedList,
+    wishitstLength: updatedList.length
+  }
+  dispatch(removeProducFromWishlistCreator(dataToAdd))
 }
