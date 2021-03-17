@@ -3,11 +3,7 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { getHeaders } from '../headers'
-import {
-  setWishlistCreator,
-  addProductToWishlistCreator,
-  removeProducFromWishlistCreator
-} from './actionCreator'
+import updateWishlistCreator from './actionCreator'
 
 const BASE_ENDPOINT = '/wishlist'
 
@@ -58,7 +54,7 @@ export const setWishlist = () => async (dispatch, getState) => {
     wishitstItems: itemsToSet,
     wishitstLength: itemsToSet.length
   }
-  dispatch(setWishlistCreator(dataToAdd))
+  dispatch(updateWishlistCreator(dataToAdd))
 }
 
 export const addProductToWishlist = (product) => async (dispatch, getState) => {
@@ -95,7 +91,7 @@ export const addProductToWishlist = (product) => async (dispatch, getState) => {
     wishitstItems: updatedList,
     wishitstLength: updatedList.length
   }
-  dispatch(addProductToWishlistCreator(dataToAdd))
+  dispatch(updateWishlistCreator(dataToAdd))
 }
 
 export const removeProductFromWishlist = (product) => async (dispatch, getState) => {
@@ -115,7 +111,7 @@ export const removeProductFromWishlist = (product) => async (dispatch, getState)
       })
       .catch((err) => console.log(err.response))
   } else {
-    const updatedItems = removeProductFromWishlist(product)
+    const updatedItems = removeProductFromLS(product)
     updatedList.push(...updatedItems)
   }
 
@@ -123,5 +119,5 @@ export const removeProductFromWishlist = (product) => async (dispatch, getState)
     wishitstItems: updatedList,
     wishitstLength: updatedList.length
   }
-  dispatch(removeProducFromWishlistCreator(dataToAdd))
+  dispatch(updateWishlistCreator(dataToAdd))
 }
