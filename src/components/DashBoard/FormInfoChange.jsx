@@ -1,18 +1,17 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Form, Input, Button
 } from 'antd';
+import { connect } from 'react-redux';
 import { updateCustomer } from '../../store/customer/middleware';
+import { setHideModal } from '../../store/dashBoardModal/middleware';
 
-// eslint-disable-next-line react/prop-types
-const FormInfoChange = ({
-  handleCancel,
-  setInfo
+const FormInfoChange = connect(null, { setHideModal })(({
+  setInfo, setHideModal
 }) => {
   const onFinish = (values) => {
-    handleCancel((prev) => !prev);
     updateCustomer(values);
+    setHideModal();
     setInfo((prev) => ({
       ...prev,
       ...values
@@ -58,6 +57,5 @@ const FormInfoChange = ({
       </Form.Item>
     </Form>
   );
-}
-
+})
 export default FormInfoChange;

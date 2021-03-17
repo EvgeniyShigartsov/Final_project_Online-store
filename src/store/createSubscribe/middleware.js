@@ -18,4 +18,11 @@ const createNewSubscribe = (newSubscriber) => async (dispatch) => {
       dispatch(createSubscribeError(err.response))
     })
 }
+export const getSubscriber = (email) => {
+  const result = axios
+    .get(`/subscribers/${email}`, {headers})
+    .then((data) => data)
+    .catch((err) => err.response);
+  return result
+}
 export default createNewSubscribe

@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Form,
   Input,
   Button,
 } from 'antd';
-import { setShowModal } from '../../store/modal/middleware';
-// import { updateCustomer } from '../../store/customer/middleware';
+import { connect } from 'react-redux';
+import { setHideModal } from '../../store/dashBoardModal/middleware';
+import { changePassword } from '../../store/customer/middleware';
 
 const formItemLayout = {
   labelCol: {
@@ -32,11 +32,11 @@ const tailFormItemLayout = {
   },
 };
 
-// eslint-disable-next-line react/prop-types
-const PasswordChange = () => {
+const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
   const [form] = Form.useForm();
   const onFinish = ({middlePassword, ...rest}) => {
-    console.log('Received values of form: ', rest);
+    changePassword(rest);
+    form.resetFields();
   };
   
   return (
@@ -99,7 +99,7 @@ const PasswordChange = () => {
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
+              if (!value || getFieldValue('middlePassword') === value) {
                 return Promise.resolve();
               }
               return Promise.reject(new Error('The two passwords that you entered do not match!'));
@@ -111,12 +111,12 @@ const PasswordChange = () => {
       </Form.Item>
     
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" onClick={setShowModal}>
+        <Button type="primary" htmlType="submit" onClick={setHideModal}>
           Submit
         </Button>
       </Form.Item>
     </Form>
   );
-}
+})
 
 export default PasswordChange;

@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import { Modal as AntModal } from 'antd';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {setHideModal} from '../../store/modal/middleware';
+import {setHideModal} from '../../store/dashBoardModal/middleware';
 import PasswordChange from './PasswordChange';
 import FormInfoChange from './FormInfoChange';
 
@@ -13,30 +13,38 @@ const mapStateToProps = (state) => ({
   formId: state.dashBoardModal.formId,
 })
 const Modal = connect(mapStateToProps, { setHideModal })(({
-  show, setHideModal, formId
+  show, setHideModal, formId, setInfo
 }) => {
   const checkForIdtoRender = (id) => {
     switch (id) {
       case 'setInfo':
-        return <FormInfoChange />
+        return {
+          title: 'Hello',
+          form: <FormInfoChange setInfo={setInfo} />
+        }
         
       case 'setPassword':
-        return <PasswordChange />
+        return {
+          title: 'password',
+          form: <PasswordChange />
+        }
 
       default:
         return ''
     }
   }
+
+  const {title, form} = checkForIdtoRender(formId);
   
   return (
     <StyledAntModal
-      title="Add Contact Information"
+      title={title}
       cancelText="Close"
       okButtonProps={{style: {display: 'none'}}}
       visible={show}
       onCancel={setHideModal}
     >
-      {checkForIdtoRender(formId)}
+      {form}
     </StyledAntModal>
   );
 })
