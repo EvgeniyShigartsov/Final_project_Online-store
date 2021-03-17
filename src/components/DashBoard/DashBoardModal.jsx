@@ -19,13 +19,13 @@ const Modal = connect(mapStateToProps, { setHideModal })(({
     switch (id) {
       case 'setInfo':
         return {
-          title: 'Hello',
+          title: 'Change your contact information',
           form: <FormInfoChange setInfo={setInfo} />
         }
         
       case 'setPassword':
         return {
-          title: 'password',
+          title: 'Change your password',
           form: <PasswordChange />
         }
 

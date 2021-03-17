@@ -1,22 +1,16 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Container } from '../common/Container'
 import { getCustomer } from '../../store/customer/middleware'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
-import FormInfoChange from './FormInfoChange';
-import Modal from './DashBoardModal';
-import { setShowModal } from '../../store/dashBoardModal/middleware';
 import Subscribe from './Subscribed/Subscribe';
 import {
-  AccountInfo, MyDash, WrapperBlocks, RowBlocks, BlockInfo, TextInfo
+  AccountInfo, MyDash, WrapperBlocks, RowBlocks
 } from './StyledDashBoard';
+import PasswordInfoChange from './PasswordInfoChange';
 
-const DashBoard = connect(null, { getCustomer, setShowModal })(({
-  setShowModal,
-}) => {
+const DashBoard = connect(null, { getCustomer })(() => {
   const [info, setInfo] = useState({})
 
   useEffect(() => {
@@ -39,24 +33,7 @@ const DashBoard = connect(null, { getCustomer, setShowModal })(({
       </AccountInfo>
       <WrapperBlocks>
         <RowBlocks>
-          <BlockInfo>
-            <h4>Contact Information</h4>
-            <div>
-              <TextInfo>
-                <p>
-                  {info.firstName}
-                </p>
-                <p>
-                  {info.lastName}
-                </p>
-              </TextInfo>
-              <div>
-                <button type="submit" id="setInfo" onClick={(e) => setShowModal(e.target.id)}>Edit</button>
-                <Modal setInfo={setInfo} title />
-                <button type="submit" id="setPassword" onClick={(e) => setShowModal(e.target.id)}>Change Password</button>
-              </div>
-            </div>
-          </BlockInfo>
+          <PasswordInfoChange info={info} setInfo={setInfo} />
         </RowBlocks>
         <RowBlocks>
           <Subscribe email={info.email} />
@@ -65,5 +42,7 @@ const DashBoard = connect(null, { getCustomer, setShowModal })(({
     </Container>
   );
 })
-
+DashBoard.PropTypes = {
+  getCustomer: PropTypes.func.isRequired
+}
 export default DashBoard;
