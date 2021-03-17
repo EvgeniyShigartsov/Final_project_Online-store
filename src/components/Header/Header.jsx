@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
 import {useCycle} from 'framer-motion';
@@ -5,21 +6,22 @@ import {
   DownOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import vector from '../../images/header/Vector.png';
 import FaceBook from '../../images/header/FaceBook.png';
 import Inst from '../../images/header/Inst.png';
 import PopUpList from './PopUpList/PopUpList';
 import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
 import UserPopUp from './UserPopUp/UserPopUp';
+import LogoMobile from './Utils/LogoMobile';
+import LogoDesktop from './Utils/LogoDesktop'
 
 // styled
 import {
   HeaderContainer, ContainerAlign, ContactUsCall, CallBackAsk,
   SearchAndItemsBlock, FormContainer, SearchInputBlock, Input,
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
-  ShaduleArrowContainer, LogoDesktop, ShoppingCartOutlinedStyled,
+  ShaduleArrowContainer, ShoppingCartOutlinedStyled,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
-  CircleMobile, Logo, MenuOutlinedStyled, SearchOutlinedStyled
+  CircleMobile, MenuOutlinedStyled, SearchOutlinedStyled
 } from './HeaderStyled';
 
 const Header = () => {
@@ -41,7 +43,6 @@ const Header = () => {
     hidden: {
       clipPath: 'circle(0.1px at 0.1px 0.1px)',
       transition: {
-        delay: 0.15,
         type: 'spring',
         stiffness: 400,
         damping: 40
@@ -70,10 +71,7 @@ const Header = () => {
         <ContainerAlign>
           <Link to="/" style={{outline: 'none'}}>
             <CircleMobile>
-              <Logo
-                src={vector}
-                alt="icon"
-              />
+              <LogoMobile />
             </CircleMobile>
           </Link>
           <ShaduleArrowContainer id="shadule">
@@ -111,12 +109,9 @@ const Header = () => {
 
       <SearchAndItemsBlock>
         <MenuOutlinedStyled onClick={openCloseMenu} data-testid="burger" />
-        <Link to="/" style={{outline: 'none'}}>
+        <Link to="/" style={{outline: 'none', paddingRight: '20px'}}>
           <CircleDesktop>
-            <LogoDesktop
-              src={vector}
-              alt="icon2"
-            />
+            <LogoDesktop />
           </CircleDesktop>
         </Link>
         <PopUpList
@@ -134,9 +129,8 @@ const Header = () => {
           </SearchInputBlock>
         </FormContainer>
 
-        {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />
-        {/* mediaSearch */}
+        
         <Link to="/cart">
           <ShoppingCartOutlinedStyled />
         </Link>

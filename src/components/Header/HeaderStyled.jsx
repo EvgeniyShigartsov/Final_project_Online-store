@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components'
 import {
-  MenuOutlined, UserOutlined, ShoppingCartOutlined, SearchOutlined
+  MenuOutlined, UserOutlined, ShoppingCartOutlined, SearchOutlined,
 
 } from '@ant-design/icons';
 import {forTablet, forDesktop, forMobile} from '../../styles/mediaBreakPoints';
@@ -189,17 +189,6 @@ export const CircleDesktop = styled.div`
    padding-left: 20px;
   }
 `;
-export const LogoDesktop = styled.img`
-  display: block; 
-  @media(min-width: ${forDesktop.minWidth}px) {
-    /* color: blue; */
-    width: 30px;
-    height: 34px;
-    margin-left: auto; 
-    margin-right: auto; 
-    filter: invert(71%) sepia(14%) saturate(7210%) hue-rotate(553deg) brightness(102%) contrast(98%);
-  }
-`;
 export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
   filter: brightness(0) invert(1);
   font-size: 25px;
@@ -230,31 +219,13 @@ export const CircleMobile = styled.div`
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
   background-color: #0156FF;
-
+  z-index: 1;
   @media(min-width: ${forTablet.minWidth}px) {
     flex: 1;
   }
   @media(min-width: ${forDesktop.minWidth}px) {
     display: none;
   }
-`;
-export const Logo = styled.img`
-  color: white; 
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  width: 30px;
-  height: 35px;
-  transform: Translate(-50%, -55%);
-  filter: brightness(0) invert(1);
-
-@media(min-width: ${forTablet.minWidth}px) {
-    filter: brightness(0) invert(1);
-  }
-  @media(min-width: ${forDesktop.minWidth}px) {
-    filter: invert(78%) sepia(90%) saturate(6818%) hue-rotate(246deg) brightness(112%) contrast(145%);
-  }
-  
 `;
 export const MenuOutlinedStyled = styled(MenuOutlined)`
   color: white; 

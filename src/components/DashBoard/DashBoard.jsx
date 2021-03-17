@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Container } from '../common/Container'
 import { getCustomer } from '../../store/customer/middleware'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
@@ -12,6 +11,7 @@ import PasswordInfoChange from './PasswordInfoChange';
 
 const DashBoard = connect(null, { getCustomer })(() => {
   const [info, setInfo] = useState({})
+  const [isSubscribed, setIsSubscribed] = useState('')
 
   useEffect(() => {
     const customer = async () => {
@@ -21,8 +21,13 @@ const DashBoard = connect(null, { getCustomer })(() => {
     }
     customer()
   }, [])
+  console.log(info.email);
 
   if (Object.keys(info).length === 0) return <SpinAnimation width="90vw" height="90vh" />
+  // if (Object.keys(info).length === 0) return <SpinAnimation width="90vw" height="90vh" />
+  // решить вопрос рендиринга блока который
+  // отвечате за подписку, она меняется при загрузке страници,
+
   return (
     <Container>
       <MyDash>
@@ -36,13 +41,14 @@ const DashBoard = connect(null, { getCustomer })(() => {
           <PasswordInfoChange info={info} setInfo={setInfo} />
         </RowBlocks>
         <RowBlocks>
-          <Subscribe email={info.email} />
+          <Subscribe
+            email={info.email}
+            isSubscribed={isSubscribed}
+            setIsSubscribed={setIsSubscribed}
+          />
         </RowBlocks>
       </WrapperBlocks>
     </Container>
   );
 })
-DashBoard.PropTypes = {
-  getCustomer: PropTypes.func.isRequired
-}
 export default DashBoard;

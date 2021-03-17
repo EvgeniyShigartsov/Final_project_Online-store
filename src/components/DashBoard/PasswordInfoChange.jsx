@@ -27,7 +27,7 @@ const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info, 
 ))
 
 PasswordInfoChange.propTypes = {
-  setShowModal: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func,
   info: PropTypes.instanceOf(Object).isRequired,
   setInfo: PropTypes.func.isRequired,
 }

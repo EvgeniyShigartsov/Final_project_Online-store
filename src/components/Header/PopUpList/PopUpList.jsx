@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import vector from '../../../images/header/Vector.png';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
-  RightOutlinedStyled, Logo, CloseOutlinedStyled,
+  RightOutlinedStyled, CloseOutlinedStyled,
   StyledExceptionLi, Listnavigation
 } from './PopUpListStyled';
 import StyledButton from '../../common/Buttons/StyledButton';
+import LogoDesktop from '../Utils/LogoDesktop';
 
 const mapStateToProps = (state) => ({
   isLogin: state.auth.isLogin
@@ -20,10 +20,7 @@ const PopUpList = connect(mapStateToProps)(({
 
   <PopUpContainer hideList={hideList} setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
     <HeaderOfPopUp>
-      <Logo
-        src={vector}
-        alt="icon"
-      />
+      <LogoDesktop />
       <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
       <Line />
     </HeaderOfPopUp>
@@ -68,24 +65,7 @@ PopUpList.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   openCloseMenu: PropTypes.func.isRequired,
   checkForLinkOpen: PropTypes.func.isRequired,
-  openSlide: PropTypes.shape({
-    show: PropTypes.shape({
-      clipPath: PropTypes.string.isRequired,
-      transition: PropTypes.shape({
-        type: PropTypes.string.isRequired,
-        stiffness: PropTypes.number.isRequired,
-        restDelta: PropTypes.number.isRequired
-      })
-    }),
-    hidden: PropTypes.shape({
-      clipPath: PropTypes.string.isRequired,
-      transition: PropTypes.shape({
-        delay: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        stiffness: PropTypes.number.isRequired,
-        damping: PropTypes.number.isRequired
-      })
-    })
-  }).isRequired,
+  openSlide: PropTypes.instanceOf(Object)
+
 }
 export default PopUpList;

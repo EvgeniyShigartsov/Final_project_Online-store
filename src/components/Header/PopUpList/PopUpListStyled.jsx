@@ -2,9 +2,9 @@ import {
   RightOutlined,
   CloseOutlined
 } from '@ant-design/icons';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
-import {forDesktop} from '../../../styles/mediaBreakPoints';
+import { forDesktop } from '../../../styles/mediaBreakPoints';
 
 export const PopUpContainer = styled(motion.div)`
   position: absolute;
@@ -14,7 +14,6 @@ export const PopUpContainer = styled(motion.div)`
   height: 70%;
   background-color: white;
   z-index: 20;
-  
    ul{
     display: flex;
     width: 100%;
@@ -50,10 +49,11 @@ export const PopUpContainer = styled(motion.div)`
       ${(props) => !props.isOpen && css`
         clip-path: circle(2200px at 40px 40px) !important;
       `}
-      ${(props) => props.hideList && css`
-        display: none;
-    `}
+      ${(props) => props.isOpen && css`
+        clip-path: circle(2200px at 40px 40px) !important;
+      `}
   }
+  
 `;
 export const StyledExceptionLi = styled.li`
   margin-bottom: 20px;
@@ -92,10 +92,6 @@ export const RightOutlinedStyled = styled(RightOutlined)`
     @media(min-width: ${forDesktop.minWidth}px) {
       display: none;
     }
-`;
-export const Logo = styled.img`
-    padding-left: 20px;
-    filter: invert(78%) sepia(90%) saturate(6818%) hue-rotate(576deg) brightness(112%) contrast(145%);
 `;
 export const CloseOutlinedStyled = styled(CloseOutlined)`
     color: black;

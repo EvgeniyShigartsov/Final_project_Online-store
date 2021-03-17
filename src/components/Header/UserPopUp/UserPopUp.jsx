@@ -49,7 +49,6 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
         }
       }
     })
-    // console.log(isOpenUser);
   }, [isOpenUser, setIsOpenUser])
   return (
     <NavUserContainer

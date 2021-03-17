@@ -30,6 +30,6 @@ const NotSubscribed = connect(null, {createNewSubscribe})(({
   );
 })
 NotSubscribed.propTypes = {
-  createNewSubscribe: PropTypes.func.isRequired
+  createNewSubscribe: PropTypes.func
 }
 export default NotSubscribed;
