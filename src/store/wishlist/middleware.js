@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { getHeaders } from '../headers'
 import updateWishlistCreator from './actionCreator'
