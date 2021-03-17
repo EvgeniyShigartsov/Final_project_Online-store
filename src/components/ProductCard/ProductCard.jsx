@@ -13,9 +13,9 @@ import {
   StyledCardReviews,
   StyledCardTitle
 } from './StyledProductCard/Common';
-import { StyledCardIconCart, StyledCardIconWrapper } from './StyledProductCard/Icons';
+import { StyledCardIconAddToCart, StyledCardIconAddToFavorite, StyledCardIconWrapper } from './StyledProductCard/Icons';
 import { StyledCardImg, StyledCardImgWrapper, } from './StyledProductCard/Img';
-import { StyledCardLastPrice, StyledCardNowPrice} from './StyledProductCard/Prices';
+import { StyledCardAreRunningOut, StyledCardLastPrice, StyledCardNowPrice} from './StyledProductCard/Prices';
 
 // Functions
 import cutString from '../../utils/cutString';
@@ -45,7 +45,8 @@ export const ProductCard = ({ productInfo }) => {
       {quantity > 0 ? <InStock /> : <CheckAvailability />}
 
       <StyledCardIconWrapper>
-        <StyledCardIconCart />
+        <StyledCardIconAddToCart />
+        <StyledCardIconAddToFavorite />
       </StyledCardIconWrapper>
 
       <Link to={`products/${itemNo}`}>
@@ -70,9 +71,11 @@ export const ProductCard = ({ productInfo }) => {
       <div>
         <StyledCardLastPrice>{previousPrice}</StyledCardLastPrice>
         <StyledCardNowPrice>
-          {currentPrice}
-          грн
+          {`${currentPrice} грн`}
         </StyledCardNowPrice>
+        {
+          quantity < 10 ? <StyledCardAreRunningOut>заканчиваеться!</StyledCardAreRunningOut> : null
+        }
       </div>
     </StyledCardItem>
   )
