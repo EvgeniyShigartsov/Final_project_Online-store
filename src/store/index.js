@@ -10,6 +10,7 @@ import {reducer as authReducer} from './auth/reducer';
 import {MODULE_NAME as cart, cartReducer} from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'
+import { MODULE_NAME as wishlistModule, reducer as wishlistReducer } from './wishlist/reducer'
 
 const persistConfig = {
   key: 'authLS',
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   [cart]: cartReducer,
   [productsModule]: productsReducer,
   subscribe: subscribersReducer,
+  [wishlistModule]: wishlistReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

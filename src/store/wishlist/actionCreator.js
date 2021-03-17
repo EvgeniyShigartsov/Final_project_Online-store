@@ -1,17 +1,20 @@
 import {
   SET_WISHLIST,
-  ADD_ONE_PRODUCT_TO_WISHLIST,
-  REMOVE_ONE_PRODUCT_FROM_WISHLIST
+  ADD_PRODUCT_TO_WISHLIST,
+  REMOVE_PRODUCT_FROM_WISHLIST
 } from './actionType'
 
-export const setWishlist = () => ({ type: SET_WISHLIST })
-
-export const addOneProductToWishlist = (payload) => ({
-  type: ADD_ONE_PRODUCT_TO_WISHLIST,
+export const setWishlistCreator = (payload) => ({
+  type: SET_WISHLIST,
   payload
 })
 
-export const removeOneProducFromWishlist = (payload) => ({
-  type: REMOVE_ONE_PRODUCT_FROM_WISHLIST,
+export const addProductToWishlistCreator = (payload) => ({
+  type: ADD_PRODUCT_TO_WISHLIST,
+  payload
+})
+
+export const removeProducFromWishlistCreator = (payload) => ({
+  type: REMOVE_PRODUCT_FROM_WISHLIST,
   payload
 })

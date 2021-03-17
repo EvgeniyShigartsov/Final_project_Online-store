@@ -1,6 +1,8 @@
 import { SET_WISHLIST } from './actionType'
 
 export const MODULE_NAME = 'wishlist'
+export const selectWishlistItems = (state) => state[MODULE_NAME].wishitstItems
+export const selectWishlistLength = (state) => state[MODULE_NAME].wishitstLength
 
 const initialState = {
   wishitstItems: [],
