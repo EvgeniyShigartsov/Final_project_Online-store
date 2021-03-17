@@ -1,24 +1,25 @@
 import React from 'react'
-import { NavLink, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
-import {Cart} from './components/CartPage/Cart/Cart'
 import StyledButton from './components/common/Buttons/StyledButton'
 import {AboutUsPage} from './pages/About-us/AboutUs'
-import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
 import { InstaSection } from './components/InstaSection/InstaSection'
 import ReviewSlider from './components/ReviewSlider/ReviewSlider'
 import ServiceSection from './components/ServiceSection/ServiceSection'
+import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
+import { Cart } from './components/CartWrapper/Cart/Cart'
+import Footer from './components/Footer/Footer'
+import ContactUsPage from './pages/Contact-us/ContactUs'
+import ProductPage from './components/ProductPage/ProductPage'
+import Header from './components/Header/Header'
+import LogIn from './components/LogIn/LogIn'
+import Checkout from './components/Checkout/Checkout'
 
 function App() {
   return (
     <div>
-      <NavLink to="/">Homepage</NavLink>
-      <NavLink to="/signup">Sign Up</NavLink>
-      <NavLink to="/aboutus">About Us</NavLink>
-      <NavLink to="/cart">Cart</NavLink>
-      <NavLink to="/buttons">Buttons</NavLink>
-      
+      <Header />
       <Switch>
         <Route exact path="/">
           <BannerSlider />
@@ -27,14 +28,29 @@ function App() {
           <ReviewSlider />
           <ServiceSection />
         </Route>
+        <Route exact path="/signin">
+          <LogIn />
+        </Route>
         <Route exact path="/signup">
           <CreateCustomerPage />
         </Route>
         <Route exact path="/aboutus">
           <AboutUsPage />
+          <ServiceSection />
+        </Route>
+        <Route exact path="/contactus">
+          <ContactUsPage />
+          <ServiceSection />
         </Route>
         <Route exact path="/cart">
           <Cart />
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout />
+          <ServiceSection />
+        </Route>
+        <Route exact path="/products/:itemNo">
+          <ProductPage />
         </Route>
         <Route exact path="/buttons">
           <StyledButton shape="round">Submit</StyledButton>
@@ -46,7 +62,7 @@ function App() {
           <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
         </Route>
       </Switch>
-      
+      <Footer />
     </div>
   )
 }
