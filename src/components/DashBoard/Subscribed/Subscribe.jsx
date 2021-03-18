@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
+/* eslint-disable react/prop-types */
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { getSubscriber } from '../../../store/createSubscribe/middleware';
 import { BlockInfo, TextInfo } from '../StyledDashBoard';
 import SubscribedUser from './SubscribedUser';
 import NotSubscribedUser from './NotSubscribedUser';
 
-const Subscribe = ({ email, isSubscribed, setIsSubscribed }) => {
+const Subscribe = ({ email }) => {
+  const [isSubscribed, setIsSubscribed] = useState('')
+
   useEffect(() => {
-    console.log('HEllo');
     const getSubscriberInfo = async () => {
       if (email) {
         const checkSubscription = await getSubscriber(email);
@@ -19,7 +21,7 @@ const Subscribe = ({ email, isSubscribed, setIsSubscribed }) => {
       }
     }
     getSubscriberInfo()
-  }, [email, setIsSubscribed])
+  }, [email, isSubscribed, setIsSubscribed])
 
   return (
     <BlockInfo>
@@ -40,8 +42,6 @@ const Subscribe = ({ email, isSubscribed, setIsSubscribed }) => {
   );
 }
 Subscribe.propTypes = {
-  email: PropTypes.string.isRequired,
-  isSubscribed: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-  setIsSubscribed: PropTypes.func.isRequired
+  email: PropTypes.string.isRequired
 }
 export default Subscribe;
