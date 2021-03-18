@@ -26,24 +26,18 @@ const removeProductFromLS = (product) => {
   return updatedItems
 }
 
-const getWishListFromDB = () => {
-  const headers = getHeaders()
-  const result = axios.get(BASE_ENDPOINT, { headers })
-    .then((response) => response)
-    .catch((err) => err.response)
-  
-  return result
-}
-
 export const setWishlist = () => async (dispatch, getState) => {
   const {auth: { isLogin }} = getState()
   const itemsToSet = []
   
   if (isLogin) {
-    const { data, status } = await getWishListFromDB()
-
-    if (data && status === 200) itemsToSet.push(...data.products)
-    else itemsToSet.push(...getParsedListFromLS())
+    const headers = getHeaders()
+    await axios.get(BASE_ENDPOINT, { headers })
+      .then((response) => {
+        const { data, status } = response
+        if (data && status === 200) itemsToSet.push(...data.products)
+      })
+      .catch((err) => console.log(err.response))
   } else {
     itemsToSet.push(...getParsedListFromLS())
   }
@@ -58,26 +52,17 @@ export const setWishlist = () => async (dispatch, getState) => {
 
 export const addProductToWishlist = (product) => async (dispatch, getState) => {
   if (!product || !product._id) return
+
   const productID = product._id
   const {auth: { isLogin }} = getState()
   const updatedList = []
 
   if (isLogin) {
     const headers = getHeaders()
-    const { data, status } = await getWishListFromDB()
-    const isSucces = data && status === 200
-    const check = isSucces ? data.products.find((product) => product._id === productID) : null
-    if (check) {
-      updatedList.push(...data.products)
-      return
-    } // Вынужденя проверка, потому что бэк написан таким образом что может хранить один и тот же
-    //  id товара для одного пользователья дважды+ раз.
-
     await axios.put(`${BASE_ENDPOINT}/${productID}`, null, { headers })
       .then((response) => {
         const {data, status} = response
         if (data && status === 200) updatedList.push(...data.products)
-        else updatedList.push(...getParsedListFromLS())
       })
       .catch((err) => console.log(err.response))
   } else {
@@ -94,6 +79,7 @@ export const addProductToWishlist = (product) => async (dispatch, getState) => {
 
 export const removeProductFromWishlist = (product) => async (dispatch, getState) => {
   if (!product || !product._id) return
+
   const productID = product._id
   const {auth: { isLogin }} = getState()
   const updatedList = []
@@ -103,9 +89,7 @@ export const removeProductFromWishlist = (product) => async (dispatch, getState)
     await axios.delete(`${BASE_ENDPOINT}/${productID}`, { headers })
       .then((response) => {
         const { data, status } = response
-
         if (data && status === 200) updatedList.push(...data.products)
-        else updatedList.push(...getParsedListFromLS())
       })
       .catch((err) => console.log(err.response))
   } else {

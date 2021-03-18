@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { IconWrapper } from './StylesFavoriteIcon'
@@ -14,16 +14,17 @@ const FavoriteIcon = connect(mapStateToProps, { addProductToWishlist, removeProd
     product,
     wishlist,
     addProductToWishlist,
-    removeProductFromWishlist
+    removeProductFromWishlist,
   }
 ) => {
-  const isFavorite = Boolean(wishlist.find((currentList) => currentList._id === product._id))
+  const isFavorite = Boolean(wishlist.find((item) => item._id === product._id))
 
   const chooseHandler = () => (
     isFavorite
       ? removeProductFromWishlist(product)
       : addProductToWishlist(product)
   )
+    
   return (
     <IconWrapper
       isFavorite={isFavorite}
@@ -36,8 +37,10 @@ const FavoriteIcon = connect(mapStateToProps, { addProductToWishlist, removeProd
   )
 })
 FavoriteIcon.propTypes = {
-  product: PropTypes.instanceOf(Object),
-  wishlist: PropTypes.instanceOf(Array)
+  product: PropTypes.instanceOf(Object).isRequired,
+  wishlist: PropTypes.instanceOf(Array),
+  addProductToWishlist: PropTypes.func,
+  removeProductFromWishlist: PropTypes.func
 }
 
 export default FavoriteIcon

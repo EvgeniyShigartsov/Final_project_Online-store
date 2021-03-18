@@ -1,26 +1,21 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { WishlistBox, WishlistItem } from './StylesWishlist';
-import { setWishlist, addProductToWishlist, removeProductFromWishlist } from '../../../store/wishlist/middleware'
+import { addProductToWishlist, removeProductFromWishlist } from '../../../store/wishlist/middleware'
 import { selectWishlistItems } from '../../../store/wishlist/reducer'
 
 const mapStateToProps = (state) => ({ wishlist: selectWishlistItems(state) })
 
 const Wishlist = connect(mapStateToProps, {
-  setWishlist,
   addProductToWishlist,
   removeProductFromWishlist
 })(({
   wishlist,
-  setWishlist,
   addProductToWishlist,
   removeProductFromWishlist
 }) => {
-  useEffect(() => {
-    setWishlist()
-  }, [setWishlist])
   const items = wishlist.map((item, i) => (
     <WishlistItem key={i}>
       someItem
