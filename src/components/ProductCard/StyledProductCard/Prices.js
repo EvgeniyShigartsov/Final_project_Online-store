@@ -34,8 +34,7 @@ export const StyledCardNowPrice = styled.p`
 
 export const StyledCardAreRunningOut = styled.div`
   color: #ff5c00;
-  font-size: 12px;
-  text-transform: capitalize;
+  font-size: 13px;
 `
 
 export default StyledCardLastPrice

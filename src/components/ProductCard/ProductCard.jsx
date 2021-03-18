@@ -39,8 +39,7 @@ export const ProductCard = ({ productInfo }) => {
   } = productInfo
   
   // string length limitation and translation of the first letter into capital
-  let verifiedTitle = cutString(name, 45)
-  verifiedTitle = upperCaseFirstLetter(verifiedTitle)
+  const verifiedTitle = upperCaseFirstLetter(cutString(name, 45))
 
   // getting an average rating and the number of reviews left
   const { reviewsQuantity, rating } = rateCalculator(reviews)
@@ -75,11 +74,11 @@ export const ProductCard = ({ productInfo }) => {
       <StyledCardPriceWrapper>
         <StyledCardLastPrice>{previousPrice}</StyledCardLastPrice>
         <StyledCardNowPrice>
-          {`${currentPrice} грн`}
+          {`${currentPrice} ₴`}
         </StyledCardNowPrice>
         {
           quantity < 10
-            ? <StyledCardAreRunningOut>заканчиваеться!</StyledCardAreRunningOut>
+            ? <StyledCardAreRunningOut>Product is running out!</StyledCardAreRunningOut>
             : null
         }
       </StyledCardPriceWrapper>
