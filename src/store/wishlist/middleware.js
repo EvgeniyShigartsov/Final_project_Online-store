@@ -57,9 +57,8 @@ export const setWishlist = () => async (dispatch, getState) => {
 }
 
 export const addProductToWishlist = (product) => async (dispatch, getState) => {
-  // if (!product || !product._id) return
-  // const productID = product._id
-  const productID = product
+  if (!product || !product._id) return
+  const productID = product._id
   const {auth: { isLogin }} = getState()
   const updatedList = []
 
@@ -94,8 +93,8 @@ export const addProductToWishlist = (product) => async (dispatch, getState) => {
 }
 
 export const removeProductFromWishlist = (product) => async (dispatch, getState) => {
-  // if (!product || !product._id) return
-  const productID = product
+  if (!product || !product._id) return
+  const productID = product._id
   const {auth: { isLogin }} = getState()
   const updatedList = []
   

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { forDesktop } from '../../../styles/mediaBreakPoints'
 
 export const IconWrapper = styled.div`
     position: absolute;
@@ -11,13 +12,17 @@ export const IconWrapper = styled.div`
     height: 40px;
     border: 2px solid #8C8C8C;
     border-radius: 50%;
-    background-color: transparent;
-    cursor: pointer;    
+    cursor: pointer;
+    ${(props) => props.isFavorite && css`
+        background-color: yellow;
+    `}
 
     &:hover {
         background-color: yellow;
     }
-    &::after {
+
+    @media(min-width: ${forDesktop.minWidth}px) {
+        &::after {
         content: 'Add to favorite!';
         position: absolute;
         top: 25px;
@@ -35,6 +40,8 @@ export const IconWrapper = styled.div`
     &:hover::after {
         display: block;
     }
+    } 
+    
 
 `
 

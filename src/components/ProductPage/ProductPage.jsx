@@ -56,7 +56,7 @@ const ProductPage = () => {
           </Carousel>
         </ProductImagesCarouselBox>
         <InformationBox>
-          <FavoriteIcon productID={product._id} />
+          <FavoriteIcon product={product} />
           <Description>About product</Description>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
           <div>
