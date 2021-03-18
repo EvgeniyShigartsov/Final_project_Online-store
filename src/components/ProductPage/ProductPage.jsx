@@ -21,6 +21,7 @@ import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
 import ProductRate from './ProductRate/ProductRate'
 import { getOneProduct } from '../../store/products/middleware'
+import FavoriteIcon from './FavotiteIcon/FavoriteIcon'
 
 const ProductPage = () => {
   const [product, setProduct] = useState(null)
@@ -55,6 +56,7 @@ const ProductPage = () => {
           </Carousel>
         </ProductImagesCarouselBox>
         <InformationBox>
+          <FavoriteIcon productID={product._id} />
           <Description>About product</Description>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
           <div>
