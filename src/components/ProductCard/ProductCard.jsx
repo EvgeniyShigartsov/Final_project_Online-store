@@ -13,9 +13,14 @@ import {
   StyledCardReviews,
   StyledCardTitle
 } from './StyledProductCard/Common';
-import { StyledCardIconAddToCart, StyledCardIconAddToFavorite, StyledCardIconWrapper } from './StyledProductCard/Icons';
-import { StyledCardImg, StyledCardImgWrapper, } from './StyledProductCard/Img';
-import { StyledCardAreRunningOut, StyledCardLastPrice, StyledCardNowPrice} from './StyledProductCard/Prices';
+import { StyledCardIconAddToCart, StyledCardIconAddToCartWrapper } from './StyledProductCard/Icons';
+import { StyledCardImg, StyledCardImgWrapper } from './StyledProductCard/Img';
+import {
+  StyledCardPriceWrapper,
+  StyledCardAreRunningOut,
+  StyledCardLastPrice,
+  StyledCardNowPrice
+} from './StyledProductCard/Prices';
 
 // Functions
 import cutString from '../../utils/cutString';
@@ -44,10 +49,9 @@ export const ProductCard = ({ productInfo }) => {
     <StyledCardItem>
       {quantity > 0 ? <InStock /> : <CheckAvailability />}
 
-      <StyledCardIconWrapper>
+      <StyledCardIconAddToCartWrapper>
         <StyledCardIconAddToCart />
-        <StyledCardIconAddToFavorite />
-      </StyledCardIconWrapper>
+      </StyledCardIconAddToCartWrapper>
 
       <Link to={`products/${itemNo}`}>
         <StyledCardImgWrapper>
@@ -58,7 +62,7 @@ export const ProductCard = ({ productInfo }) => {
       <div>
         <StarRating rating={rating} />
         <StyledCardReviews>
-          Отзывов (
+          Reviews (
           {reviewsQuantity}
           )
         </StyledCardReviews>
@@ -68,15 +72,17 @@ export const ProductCard = ({ productInfo }) => {
         <StyledCardTitle>{verifiedTitle}</StyledCardTitle>
       </Link>
 
-      <div>
+      <StyledCardPriceWrapper>
         <StyledCardLastPrice>{previousPrice}</StyledCardLastPrice>
         <StyledCardNowPrice>
           {`${currentPrice} грн`}
         </StyledCardNowPrice>
         {
-          quantity < 10 ? <StyledCardAreRunningOut>заканчиваеться!</StyledCardAreRunningOut> : null
+          quantity < 10
+            ? <StyledCardAreRunningOut>заканчиваеться!</StyledCardAreRunningOut>
+            : null
         }
-      </div>
+      </StyledCardPriceWrapper>
     </StyledCardItem>
   )
 }

@@ -1,38 +1,40 @@
-import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import {ShoppingCartOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
-export const StyledCardIconWrapper = styled.div`
+export const StyledCardIconAddToCartWrapper = styled.button`
   position: absolute;
   top: 9px;
-  right: 5px;
+  right: 13px;
 
   display: flex;
-  flex-direction: column;
-`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-export const StyledCardIconAddToCart = styled(ShoppingCartOutlined)`
-  color: #78A962;
-  font-size: 17px;
-  transition: .3s;
+  width: 32px;
+  height: 32px;
 
-  padding: 3px;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 
+  margin-bottom: 4px;
+  padding: 0;
+  
   :hover {
     background-color: #e9ffee;
   }
 `
 
-export const StyledCardIconAddToFavorite = styled(HeartOutlined)`
-  color: #fcc10a;
-  font-size: 17px;
+export const StyledCardIconAddToCart = styled(ShoppingCartOutlined)`
+  color: #78A962;
+  font-size: 20px;
+
   transition: .3s;
+  z-index: 1;
 
   padding: 3px;
-  margin-top: 5px;
-
-  :hover {
-    background-color: #fff8e7;
-  }
 `
 
-export default StyledCardIconWrapper
+export default StyledCardIconAddToCartWrapper
