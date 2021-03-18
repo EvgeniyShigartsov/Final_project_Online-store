@@ -46,7 +46,6 @@ background: #0156FF;
     width: 45px;
     height: 45px;
 };
-
 @media(max-width: ${forMobile.maxWidth}px){
     width: 45px;
     height: 45px;
@@ -61,11 +60,11 @@ height: 25px;
     width: 18px;
     height: 18px;
 };
-
 @media(max-width: ${forMobile.maxWidth}px){
     width: 18px;
     height: 18px;
-}`;
+}
+`;
 
 export const Service = styled.div`
 font-size: 18px;
@@ -74,7 +73,6 @@ font-weight: 700;
 @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) and (max-width: ${forMobile.maxWidth}px) {
     font-size: 14px;
 };
-
 @media(max-width: ${forMobile.maxWidth}px){
     font-size: 14px;
 }
@@ -90,7 +88,6 @@ line-height: 19px;
     font-size: 11.5px;
     line-height: 16px;
 };
-
 @media(max-width: ${forMobile.maxWidth}px){
     font-size: 11.5px;
     line-height: 16px;
