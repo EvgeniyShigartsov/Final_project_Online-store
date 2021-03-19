@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-// import {useCycle} from 'framer-motion';
 import { useCycle } from 'framer-motion';
 import {
   DownOutlined
