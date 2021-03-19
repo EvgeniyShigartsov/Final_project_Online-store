@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { InStock } from './InStock/InStock';
 import { CheckAvailability } from './CheckAvailability/CheckAvailability';
 import { StarRating } from '../StarRating/StarRating'
+import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 
 // Styles
 import {
@@ -13,7 +14,7 @@ import {
   StyledCardReviews,
   StyledCardTitle
 } from './StyledProductCard/Common';
-import { StyledCardIconAddToCart, StyledCardIconAddToCartWrapper } from './StyledProductCard/Icons';
+import { FavoriteIconBox, StyledCardIconAddToCart, StyledCardIconAddToCartWrapper } from './StyledProductCard/Icons';
 import { StyledCardImg, StyledCardImgWrapper } from './StyledProductCard/Img';
 import {
   StyledCardPriceWrapper,
@@ -51,6 +52,9 @@ export const ProductCard = ({ productInfo }) => {
       <StyledCardIconAddToCartWrapper>
         <StyledCardIconAddToCart />
       </StyledCardIconAddToCartWrapper>
+      <FavoriteIconBox>
+        <FavoriteIcon small product={productInfo} />
+      </FavoriteIconBox>
 
       <Link to={`products/${itemNo}`}>
         <StyledCardImgWrapper>

@@ -14,13 +14,14 @@ import {
   AboutProduct,
   PriceBox,
   ImageBox,
+  FavoriteIconBox,
 } from './StylesProductPage'
 import Carousel from '../Carousel/Carousel'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
 import ProductRate from './ProductRate/ProductRate'
 import { getOneProduct } from '../../store/products/middleware'
-import FavoriteIcon from './FavotiteIcon/FavoriteIcon'
+import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 
 const ProductPage = () => {
   const [product, setProduct] = useState(null)
@@ -54,7 +55,9 @@ const ProductPage = () => {
           </Carousel>
         </ProductImagesCarouselBox>
         <InformationBox>
-          <FavoriteIcon product={product} />
+          <FavoriteIconBox>
+            <FavoriteIcon product={product} />
+          </FavoriteIconBox>
           <Description>About product</Description>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
           <div>

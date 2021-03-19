@@ -1,10 +1,7 @@
 import styled, { css } from 'styled-components'
-import { forDesktop } from '../../../styles/mediaBreakPoints'
+import { forDesktop } from '../../styles/mediaBreakPoints'
 
-export const IconWrapper = styled.div`
-    position: absolute;
-    top: 25px;
-    right: 25px;
+export const IconCircle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +13,10 @@ export const IconWrapper = styled.div`
     ${(props) => props.isFavorite && css`
         background-color: yellow;
     `}
+    ${(props) => props.small && css`
+        width: 22px;
+        height: 22px;
+    `}
 
     &:hover {
         background-color: yellow;
@@ -24,25 +25,24 @@ export const IconWrapper = styled.div`
     @media(min-width: ${forDesktop.minWidth}px) {
         &::after {
         content: 'Add to favorite!';
+        display: none;
         position: absolute;
         top: 25px;
         right: -100px;
-        display: none;
         padding: 2px 4px;
         font-size: 12px;
         border: 0.5px solid black;
         border-radius: 3px;
+        background-color: white;
+        z-index: 2;
         ${(props) => props.isFavorite && css`
-            content: 'Unlike.'; 
+            content: 'Unlike'; 
             right: -50px;
         `}
     }
     &:hover::after {
         display: block;
     }
-    } 
-    
-
+} 
 `
-
-export const d = styled.div``
+export default IconCircle

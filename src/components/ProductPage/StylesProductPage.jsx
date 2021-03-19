@@ -82,3 +82,8 @@ export const PriceBox = styled.div`
         font-weight: 500;
     }
 `
+export const FavoriteIconBox = styled.div`
+    position: absolute;
+    top: 25px;
+    right: 35px;
+`

@@ -26,6 +26,11 @@ export const StyledCardIconAddToCartWrapper = styled.button`
     background-color: #e9ffee;
   }
 `
+export const FavoriteIconBox = styled.div`
+  position: absolute;
+  top: 14px;
+  right: 45px;
+`
 
 export const StyledCardIconAddToCart = styled(ShoppingCartOutlined)`
   color: #78A962;
