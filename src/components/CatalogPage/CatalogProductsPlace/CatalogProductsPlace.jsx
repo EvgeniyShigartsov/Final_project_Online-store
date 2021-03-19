@@ -2,8 +2,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import rateCalculator from '../../../utils/rateCalculator'
-import upperCaseFirstLetter from '../../../utils/upperCaseFirstLetter'
 import {ProductCard} from '../../ProductCard/ProductCard'
 import { getProductsToCatalog } from '../../../store/products/middleware'
 import CatalogPagination from '../CatalogPagination/CatalogPagination'
@@ -39,12 +37,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
             {catalogProducts.map((el) => (
               <ProductCard
                 key={el.itemNo}
-                title={upperCaseFirstLetter(el.name)}
-                img={el.imageUrls[0]}
-                previousPrice={el.previousPrice}
-                currentPrice={el.currentPrice}
-                isGoodsInStock={el.quantity > 0}
-                {...rateCalculator(el.reviews)}
+                productInfo={el}
               />
             ))}
           </ProductsWrapper>

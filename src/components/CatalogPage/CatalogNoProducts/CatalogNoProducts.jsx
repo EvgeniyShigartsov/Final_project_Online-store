@@ -14,7 +14,7 @@ const CatalogNoProducts = ({productsQuantity}) => (
 )
 
 CatalogNoProducts.propTypes = {
-  productsQuantity: PropTypes.string.isRequired
+  productsQuantity: PropTypes.number.isRequired
 }
 
 export default CatalogNoProducts
