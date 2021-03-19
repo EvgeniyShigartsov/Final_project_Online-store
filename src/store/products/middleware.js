@@ -4,7 +4,8 @@ import {
   addProduct,
   updateProduct,
   setProductsToCatalog,
-  setCatalogProductsQuantity
+  setCatalogProductsQuantity,
+  cleanCatalogProducts
 } from './actionCreator';
 import { headers } from '../headers';
 
@@ -70,13 +71,16 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
 }
 
 export const getProductsToCatalog = (param) => (dispatch) => {
+  dispatch(cleanCatalogProducts())
+  console.log(param)
   let paramStr = ''
   Object.keys(param).forEach((key, index) => {
     if (index === 0) {
-      return paramStr += `${key}=${param[key]}`
+      return paramStr += `${key}=${param[key].toString()}`
     }
-    return paramStr += `&${key}=${param[key]}`
+    return paramStr += `&${key}=${param[key].toString()}`
   })
+  console.log(paramStr)
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) {
@@ -85,6 +89,9 @@ export const getProductsToCatalog = (param) => (dispatch) => {
       }
       return res
     })
-    .catch((error) => error)
+    .catch((error) => {
+      dispatch(setCatalogProductsQuantity(0))
+      return error
+    })
   return res
 }

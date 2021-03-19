@@ -1,4 +1,3 @@
-import { Spin } from 'antd'
 import styled from 'styled-components'
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 
@@ -21,11 +20,11 @@ export const ProductsWrapper = styled.div`
 
   @media (min-width: ${forDesktop.minWidth}px){
       grid-gap: 15px;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
   }
 
-`
+  @media (min-width: 1200px){
+    grid-template-columns: repeat(5, 1fr);
+  }
 
-export const StyledSpin = styled(Spin)`
-    margin: 50px auto;
 `

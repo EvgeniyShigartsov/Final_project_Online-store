@@ -1,37 +1,29 @@
 import styled, {css} from 'styled-components';
 import {
   Form,
-  InputNumber,
-  Menu,
+  Checkbox
 } from 'antd';
-import { forDesktop, forTablet} from '../../../styles/mediaBreakPoints';
+import { forDesktop} from '../../../styles/mediaBreakPoints';
 
 export const StyledForm = styled(Form)`
   background: #F5F7FF;
-  @media(min-width: 591px) {
-      min-width: 27%;
+  @media(min-width: 592px) {
+    min-width: 220px;
+    width: 27%;
   } 
   @media(min-width: ${forDesktop.minWidth}px) {
-      min-width: 20%;
+    min-width: 220px;
+    width: 20%;
   } 
 `;
 
-export const StyledMenuItem = styled(Menu.Item)`
-  @media(min-width: ${forDesktop.minWidth}px) {
-    padding-left: 20px !important;
-  } 
-  @media(min-width: ${forTablet.minWidth}px) {
-    padding: 0px 0px 0px 10px !important;
-    font-size: 2px !important;
-  } 
-`;
 export const Wrapper = styled.aside`
-    @media(max-width: 590px) {
+    @media(max-width: 592px) {
       position: absolute;
       top: 0%;
       left: -100%;
-      width: 50%;
-      height: 100%;
+      width: 100%;
+      min-height: 100vh;
       background: #ECECEC;
       transition: all 0.5s ease-out;
       opacity: 0;
@@ -44,7 +36,7 @@ export const Wrapper = styled.aside`
 `;
 
 export const FilterTitle = styled.div`
-  @media(max-width: 591px) {
+  @media(max-width: 592px) {
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -67,79 +59,34 @@ export const FilterTitle = styled.div`
     }
   }
 `;
-export const FormItemWrapper = styled(Form.Item)`
-  @media(max-width: 591px) {
-    text-align: right !important;
-    padding-right: 20px !important;
-    position: relative;
-  }
-  @media(min-width: 592px) {
-    padding-left: 20px !important;
-  }
-`;
-export const FromTag = styled.h6`
-  position: absolute;
-  top: 35px;
-  left: 30px;
-  @media(min-width: 591px) {
-    display: none;
-  }
-`;
-export const ToTag = styled.h6`
-  position: absolute;
-  top: 35px;
-  left: 30px;
-  @media(min-width: 591px) {
-    display: none;
-  }
-`;
-export const InputFrom = styled(InputNumber)`
-  @media(max-width: 591px) {
-    width: 70% !important;
-    border: 0.5px solid rgba(0,0,0,0.5) !important;
-  }
-  @media(min-width: 592px) {
-    width: 90% !important;
 
+export const StyledCheckbox = styled(Checkbox)`
+  width: 100%;
+  padding: 10px;
+  margin-left: 0 !important;
+  &.ant-checkbox-wrapper-checked{
+    background-color: #edf3ff;
   }
-`;
-export const InputTo = styled(InputNumber)`
-  @media(max-width: 591px) {
-    width: 70% !important;
-    border: 0.5px solid rgba(0,0,0,0.5) !important;
-  }
-  @media(min-width: 592px) {
-    width: 80% !important;
-    margin-left: 15px;
-  }
-`;
+`
+
 export const CloseBtn = styled.div`
-  @media(max-width: 591px) {
+  @media(max-width: 592px) {
     cursor: pointer;
   }
-  @media(min-width: 591px) {
+  @media(min-width: 592px) {
     display: none;
   }
   @media(min-width: ${forDesktop.minWidth}px) {
     display: none;
   }
 `;
-export const StyledMenu = styled(Menu)`
-  min-width: 20%;
-`;
-export const LI = styled(Menu.Item)`
-  padding-left: 10px !important;
-  @media(max-width: ${forTablet.maxWidth}px) {
-    padding-right: 0px !important;
-  }
-`;
+
 export const AlignBtn = styled.div`
-  margin-top: 20px;
-  @media(max-width: 591px) {
-    width: 90%;
+  margin: 20px 0;
+  @media(max-width: 592px) {
+    width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 30px;
   }
   @media(min-width: 592px) {
     width: 100%;
@@ -149,7 +96,7 @@ export const AlignBtn = styled.div`
   }
 `;
 export const AllBrandsTitle = styled.div`
-  @media(max-width: 591px) {
+  @media(max-width: 592px) {
     display: none;
   }
   @media(min-width: 592px) {
@@ -167,7 +114,7 @@ export const AllBrandsTitle = styled.div`
   
 `;
 export const GridFilterPart = styled.div`
-  @media(max-width: 591px) {
+  @media(max-width: 592px) {
     display: none;
   }
   @media(min-width: 592px) {
@@ -182,7 +129,7 @@ export const ContainerBrandsImg = styled.div`
   display: block;
 `;
 export const WishList = styled.div`
-  @media(max-width: 591px) {
+  @media(max-width: 592px) {
     display: none;
   }
   margin-top: 50px;
@@ -214,10 +161,10 @@ export const WishItem = styled.div`
   }
 `;
 export const ContainerImage = styled.div`
-  @media(max-width: 591px) {
+  @media(max-width: 592px) {
     display: none;
   }
-  @media(min-width: 591px) {
+  @media(min-width: 592px) {
     text-align: center;
     display: block;
     img{

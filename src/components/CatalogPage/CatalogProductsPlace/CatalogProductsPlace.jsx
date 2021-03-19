@@ -7,10 +7,12 @@ import upperCaseFirstLetter from '../../../utils/upperCaseFirstLetter'
 import {ProductCard} from '../../ProductCard/ProductCard'
 import { getProductsToCatalog } from '../../../store/products/middleware'
 import CatalogPagination from '../CatalogPagination/CatalogPagination'
-import { ProductsWrapper, StyledSpin, Wrapper } from './StyledCatalogProductsPlace'
+import { ProductsWrapper, Wrapper } from './StyledCatalogProductsPlace'
+import CatalogNoProducts from '../CatalogNoProducts/CatalogNoProducts'
 
 const mapStateToProps = (state) => ({
-  catalogProducts: state.products.catalog.catalogProducts
+  catalogProducts: state.products.catalog.catalogProducts,
+  productsQuantity: state.products.catalog.productsQuantity
 })
 
 const CatalogProductsPlace = connect(mapStateToProps, {
@@ -20,6 +22,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
     config,
     setSortAndPagination,
     catalogProducts,
+    productsQuantity,
     getProductsToCatalog
   }
 ) => {
@@ -29,7 +32,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
 
   return (
     catalogProducts.length === 0
-      ? <StyledSpin size="large" tip="Loading..." />
+      ? <CatalogNoProducts productsQuantity={productsQuantity} />
       : (
         <Wrapper>
           <ProductsWrapper>

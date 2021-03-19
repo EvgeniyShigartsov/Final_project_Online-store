@@ -14,7 +14,7 @@ const initialState = {
   products: [],
   catalog: {
     catalogProducts: [],
-    productsQuantity: 0
+    productsQuantity: 1
   },
   newProducts: [],
   pageProduct: {}

@@ -1,19 +1,20 @@
-import React, {useRef, useState} from 'react'
+/* eslint-disable react/jsx-props-no-spreading */
+import React, {useState} from 'react'
 import PropTypes from 'prop-types';
 import {
-  Checkbox,
-  Button, Menu
+  Checkbox, InputNumber,
+  Menu, Form
 } from 'antd';
 import close from '../../../images/filter/close.svg';
 // styles
 import {
-  StyledForm, StyledMenuItem, Wrapper, FilterTitle,
-  FormItemWrapper, FromTag, ToTag, InputFrom, InputTo,
-  CloseBtn, StyledMenu, LI, AlignBtn, AllBrandsTitle,
+  StyledForm, Wrapper, FilterTitle,
+  CloseBtn, AlignBtn, AllBrandsTitle,
+  StyledCheckbox,
   GridFilterPart, ContainerBrandsImg, WishList, NoWishItem,
   WishItem, ContainerImage
 } from './StylesCatalogfilter';
-import {checkPriceValues, checkCurrent} from '../../../utils/checkPriceValues';
+import {checkFormValues} from '../../../utils/checkFormValues';
 // img
 import imageBrands1 from '../../../images/filter/imageBrands1.svg';
 import imageBrands2 from '../../../images/filter/imageBrands2.svg';
@@ -22,57 +23,40 @@ import imageBrands4 from '../../../images/filter/imageBrands4.svg';
 import imageBrands5 from '../../../images/filter/imageBrands5.svg';
 import imageBrands6 from '../../../images/filter/imageBrands6.svg';
 import styl from '../../../images/filter/styl.svg';
+import { brands, categories } from '../filterConfig'
+import StyledButton from '../../common/Buttons/StyledButton'
 
 const { SubMenu } = Menu;
+
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
 
 const CatalogFilter = ({
   showFilter, setShowFilter, setFilter
 }) => {
   // eslint-disable-next-line no-unused-vars
-  const [wish, setWish] = useState(true); // temporaly for wisth list
-  const { current } = useRef({
-    brand: [],
-    categoris: []
-  });
-  const valuesOfBrand = current.brand;
-  const valuesOfCategories = current.categoris;
+  const [wish, setWish] = useState(true); // temporaly for wish list
+
+  const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    const refValue = checkPriceValues(values);
-    const refCheckBox = checkCurrent(current);
+    if (!Object.keys(values).length) return
+    const refValue = checkFormValues(values);
     setFilter({
       ...refValue,
-      ...refCheckBox
     })
     setShowFilter((prev) => !prev)
   };
 
-  const getValuesFromBrands = (e, values) => {
-    if (e.target.checked) {
-      values.push(e.target.value)
-    } else {
-      values.forEach((item, i) => {
-        if (item === e.target.value) {
-          values.splice(i, 1)
-        }
-      });
-    }
-  }
-
-  const getValuesFromCategories = (e, values) => {
-    if (e.target.checked) {
-      values.push(e.target.value)
-    } else {
-      values.forEach((item, i) => {
-        if (item === e.target.value) {
-          values.splice(i, 1)
-        }
-      });
-    }
+  const clearForm = () => {
+    form.resetFields()
+    setFilter({})
   }
 
   return (
-    <StyledForm onFinish={onFinish}>
+    <StyledForm form={form} {...layout} onFinish={onFinish}>
       <Wrapper showFilter={showFilter}>
         <FilterTitle>
           <h3>Filter By</h3>
@@ -80,38 +64,61 @@ const CatalogFilter = ({
             <img src={close} alt="close" />
           </CloseBtn>
         </FilterTitle>
-        <StyledMenu mode="inline">
-          <SubMenu key="brand" title="Brands">
-            <StyledMenuItem data-testid="msi-check" key="msi"><Checkbox value="MSI" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>MSI</Checkbox></StyledMenuItem>
-            <StyledMenuItem data-testid="lg-check" key="lg"><Checkbox value="LG" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>LG</Checkbox></StyledMenuItem>
-            <StyledMenuItem data-testid="liyama-check" key="liyama"><Checkbox value="Liyama" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>Liyama</Checkbox></StyledMenuItem>
-            <StyledMenuItem data-testid="samsung-check" key="samsung"><Checkbox value="Samsung" onChange={(e) => { getValuesFromBrands(e, valuesOfBrand) }}>Samsung</Checkbox></StyledMenuItem>
+        <AlignBtn>
+          <StyledButton
+            size="xs"
+            shape="round"
+            color="borderGrey"
+            onClick={clearForm}
+          >
+            Clear
+
+          </StyledButton>
+        </AlignBtn>
+        <Menu defaultOpenKeys={['brands']} inlineIndent={10} mode="inline">
+          <SubMenu key="brands" title="Brand">
+            <Form.Item name="brand" noStyle>
+              <Checkbox.Group>
+                {brands.map(({value, title}) => (
+                  <StyledCheckbox
+                    key={value}
+                    value={value}
+                  >
+                    {title}
+                  </StyledCheckbox>
+                ))}
+              </Checkbox.Group>
+            </Form.Item>
           </SubMenu>
-          <SubMenu title="Price">
-            <LI style={{paddingLeft: '0px !important'}}>
-              <FromTag>From</FromTag>
-              <FormItemWrapper name="minPrice" label="From" rule={[{type: 'number'}]}>
-                <InputFrom autoFocus />
-              </FormItemWrapper>
-            </LI>
-            <LI>
-              <ToTag>To</ToTag>
-              <FormItemWrapper name="maxPrice" label="To" style={{fontSize: '2px !important'}}>
-                <InputTo autoFocus />
-              </FormItemWrapper>
-            </LI>
+          <SubMenu key="price" title="Price">
+            <div style={{padding: '20px 20px 0'}}>
+              <Form.Item name="minPrice" label="From">
+                <InputNumber style={{width: '100%'}} min={0} />
+              </Form.Item>
+              <Form.Item name="maxPrice" label="To">
+                <InputNumber style={{width: '100%'}} min={0} />
+              </Form.Item>
+            </div>
           </SubMenu>
           <SubMenu key="сategories" title="Сategories">
-            <StyledMenuItem data-testid="gamingMonitors-check" key="gamingMonitors"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="gamingMonitors">Gaming Monitors</Checkbox></StyledMenuItem>
-            <StyledMenuItem data-testid="tablets-check" key="tablets"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="tablets">Tablets</Checkbox></StyledMenuItem>
-            <StyledMenuItem data-testid="laptops-check" key="laptops"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="laptops">Laptops</Checkbox></StyledMenuItem>
-            <StyledMenuItem data-testid="desctops-check" key="desctops"><Checkbox onChange={(e) => { getValuesFromCategories(e, valuesOfCategories) }} value="desctops">Desctops</Checkbox></StyledMenuItem>
+            <Form.Item name="categories" noStyle>
+              <Checkbox.Group>
+                {categories.map(({value, title}) => (
+                  <StyledCheckbox
+                    key={value}
+                    value={value}
+                  >
+                    {title}
+                  </StyledCheckbox>
+                ))}
+              </Checkbox.Group>
+            </Form.Item>
           </SubMenu>
-        </StyledMenu>
+        </Menu>
         <AlignBtn>
-          <Button type="primary" htmlType="submit" size="middle">
+          <StyledButton size="xs" shape="round" htmlType="submit">
             Apply Filtres
-          </Button>
+          </StyledButton>
         </AlignBtn>
         <AllBrandsTitle>
           <h5>All Brands</h5>

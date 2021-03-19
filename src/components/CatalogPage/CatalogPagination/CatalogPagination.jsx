@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {StyledPagination} from './StyledCatalogPagination'
@@ -12,8 +12,8 @@ const CatalogPagination = connect(mapStateToProps)(({
   setSortAndPagination,
   productsQuantity
 }) => {
-  const [currentPage, setCurrentPage] = useState(1)
-  
+  const {perPage, startPage} = config
+
   const onChangePage = (page) => {
     window.scrollTo({
       top: 0,
@@ -23,15 +23,14 @@ const CatalogPagination = connect(mapStateToProps)(({
       ...prev,
       startPage: page
     }))
-    setCurrentPage(+page)
   }
 
   return (
     <StyledPagination
       showSizeChanger={false}
       onChange={onChangePage}
-      current={currentPage}
-      pageSize={+config.perPage}
+      current={+startPage}
+      pageSize={+perPage}
       total={+productsQuantity}
     />
   )

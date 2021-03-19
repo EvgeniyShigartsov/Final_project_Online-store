@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import {Container} from '../common/Container'
 import Heading from '../common/Heading/Heading'
 import CatalogFilter from './CatalogFilter/CatalogFilter'
@@ -7,10 +7,14 @@ import CatalogSort from './CatalogSort/CatalogSort'
 import { CatalogProducts, Flex } from './StyledCatalogPage'
 
 const CatalogPage = () => {
-  const [sortAndPagination, setSortAndPagination] = useState({perPage: '15'})
   const [showFilter, setShowFilter] = useState(false);
+  const [sortAndPagination, setSortAndPagination] = useState({perPage: '15', startPage: 1})
   const [filter, setFilter] = useState({});
-  const config = {...sortAndPagination, ...filter}
+
+  const config = useMemo(() => ({
+    ...sortAndPagination,
+    ...filter
+  }), [sortAndPagination, filter])
 
   return (
     <Container>
