@@ -7,19 +7,21 @@ export const IconCircle = styled.div`
     align-items: center;
     width: 40px;
     height: 40px;
-    border: 2px solid #8C8C8C;
+    /* border: 2px solid #8C8C8C; */
     border-radius: 50%;
     cursor: pointer;
     ${(props) => props.isFavorite && css`
-        background-color: yellow;
+        ${'' /* background-color: yellow; */}
     `}
     ${(props) => props.small && css`
         width: 22px;
         height: 22px;
     `}
 
-    &:hover {
-        background-color: yellow;
+
+    &:hover svg  {
+        fill: #eb2d69;
+        /* background-color: yellow; */
     }
 
     @media(min-width: ${forDesktop.minWidth}px) {

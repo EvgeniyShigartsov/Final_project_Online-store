@@ -84,6 +84,6 @@ export const PriceBox = styled.div`
 `
 export const FavoriteIconBox = styled.div`
     position: absolute;
-    top: 25px;
+    top: 175px;
     right: 35px;
 `
