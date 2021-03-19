@@ -2,10 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
-import StyledButton from './components/common/Buttons/StyledButton'
 import { AboutUsPage } from './pages/About-us/AboutUs'
 import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
-import { Cart } from './components/CartWrapper/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import ContactUsPage from './pages/Contact-us/ContactUs'
 import ProductPage from './components/ProductPage/ProductPage'
@@ -13,6 +11,9 @@ import CatalogPage from './components/CatalogPage/CatalogPage'
 import Header from './components/Header/Header'
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
+import {CartPage} from './components/CartPage/CartPage'
+import OrderPage from './components/OrderPage/OrderPage'
+// import { MainCatalog } from './components/MainCatalog/MainCatalog'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/">
           <BannerSlider />
           <NewProductsSlider />
+          {/* <MainCatalog /> */}
         </Route>
         <Route exact path="/signin">
           <LogIn />
@@ -36,25 +38,19 @@ function App() {
           <ContactUsPage />
         </Route>
         <Route exact path="/cart">
-          <Cart />
+          <CartPage />
         </Route>
         <Route exact path="/checkout">
           <Checkout />
+        </Route>
+        <Route exact path="/order">
+          <OrderPage />
         </Route>
         <Route exact path="/products/:itemNo">
           <ProductPage />
         </Route>
         <Route path="/catalog">
           <CatalogPage />
-        </Route>
-        <Route exact path="/buttons">
-          <StyledButton shape="round">Submit</StyledButton>
-          <StyledButton size="sm" shape="round">Submit</StyledButton>
-          <StyledButton size="xl" shape="round" color="black">Submit</StyledButton>
-          <StyledButton size="lg" shape="round">Submit</StyledButton>
-          <StyledButton size="md" shape="round" color="borderGrey">Submit</StyledButton>
-          <StyledButton size="xs" shape="round" color="borderBlue">Submit</StyledButton>
-          <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
         </Route>
       </Switch>
       <Footer />
