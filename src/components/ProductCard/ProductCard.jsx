@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -12,16 +13,19 @@ import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 import {
   StyledCardItem,
   StyledCardReviews,
-  StyledCardTitle
-} from './StyledProductCard/Common';
-import { FavoriteIconBox, StyledCardIconAddToCart, StyledCardIconAddToCartWrapper } from './StyledProductCard/Icons';
-import { StyledCardImg, StyledCardImgWrapper } from './StyledProductCard/Img';
-import {
+  StyledCardTitle,
+  RatingBox,
+  FavoriteIconBox,
+  StyledCardIconAddToCart,
+  StyledCardIconAddToCartWrapper,
+  StyledCardImg,
+  StyledCardImgWrapper,
   StyledCardPriceWrapper,
   StyledCardAreRunningOut,
   StyledCardLastPrice,
   StyledCardNowPrice
-} from './StyledProductCard/Prices';
+
+} from './StyledProductCard';
 
 // Functions
 import cutString from '../../utils/cutString';
@@ -47,29 +51,28 @@ export const ProductCard = ({ productInfo }) => {
 
   return (
     <StyledCardItem>
-      {quantity > 0 ? <InStock /> : <CheckAvailability />}
-
-      <StyledCardIconAddToCartWrapper>
-        <StyledCardIconAddToCart />
-      </StyledCardIconAddToCartWrapper>
-      <FavoriteIconBox>
-        <FavoriteIcon small product={productInfo} />
-      </FavoriteIconBox>
-
       <Link to={`products/${itemNo}`}>
         <StyledCardImgWrapper>
           <StyledCardImg src={imageUrls[0]} />
         </StyledCardImgWrapper>
       </Link>
+
+      {/* <StyledCardIconAddToCartWrapper>
+        <StyledCardIconAddToCart />
+      </StyledCardIconAddToCartWrapper>
+      <FavoriteIconBox>
+        <FavoriteIcon small product={productInfo} />
+      </FavoriteIconBox> */}
       
-      <div>
+      <RatingBox>
         <StarRating rating={rating} />
         <StyledCardReviews>
           Reviews (
           {reviewsQuantity}
           )
         </StyledCardReviews>
-      </div>
+      </RatingBox>
+      {quantity > 0 ? <InStock /> : <CheckAvailability />}
 
       <Link to={`products/${itemNo}`}>
         <StyledCardTitle>{verifiedTitle}</StyledCardTitle>
