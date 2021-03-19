@@ -49,18 +49,24 @@ const DirectionChange = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-around;
-  @media(max-width: 1250px) {
+  @media(max-width: 1300px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   > * {
-    flex-grow: 1;
-    flex-basis: 225px;
+    flex-grow: 1; 
+    flex-basis: 105px;
     padding: 0px 10px 0px 10px;
     @media(max-width: 1250px) {
       padding: 0px;
-   }
+    }
+   @media(max-width: 580px) {
+    width: 383px !important;
+    }
+    @media(max-width: 400px) {
+    width: 323px !important;
+    }
   }
 `;
 

@@ -38,6 +38,9 @@ const ContainerOrder = styled.div`
     width: 60%;
   } */
   height: 100% !important;
+  .ant-descriptions-item-label {
+    padding: 8px 13px 0px 13px!important;
+  }
 `;
 
 export default OrderComponent;
