@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   gamingMonitorList: [],
-  desktops: [],
+  desktopList: [],
   laptopList: [],
   tabletList: []
 }
@@ -21,7 +21,7 @@ export const reducer = (state = initialState, { type, payload }) => {
     case GET_DESKTOPS:
       return {
         ...state,
-        desktops: payload
+        desktopList: payload
       }
 
     case GET_LAPTOPS:

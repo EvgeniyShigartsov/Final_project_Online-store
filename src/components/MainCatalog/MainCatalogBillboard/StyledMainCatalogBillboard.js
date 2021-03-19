@@ -1,51 +1,53 @@
 import styled from 'styled-components'
-
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 
-export const StyledMainCatalogBillboardMobile = styled.div`
+export const StyledMainCatalogBillboard = styled.div`
   position: relative;
   z-index: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+
+  width: 95%;
+  min-width: 15vw;
   height: 82px;
-  background-image: url(${(props) => props.bgImg});
-  background-size: 100%;
+
+  text-align: center;
+  word-wrap: break-word;
+
+  background-image: url(${(props) => props.src});
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 15px;
-  margin-right: 15px;
+
+  padding: 10px;
+  margin: auto 0;
+
   ::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
+
     width: 100%;
     height: 100%;
+
     background-color: rgba(0, 0, 0, .5);
   }
-  @media(min-width: ${forTablet.minWidth}px){
-    display: none;
-  }
-`
 
-export const StyledMainCatalogBillboardDesktop = styled(StyledMainCatalogBillboardMobile)`
-  display: none;
   @media(min-width: ${forTablet.minWidth}px){
-    display: flex;
-    min-width: 181px;
-    max-width: 181px;
-    height: 240px;
-    background-size: cover;
-    padding: 10px;
+    max-width: 234px;
+    height: 335px;
+
+    margin-right: 15px;
   }
+
   @media(min-width: ${forDesktop.minWidth}px){
     min-width: 234px;
-    max-width: 234px;
-    height: 320px;
+    height: 342px;
   }
 `
 
@@ -54,16 +56,37 @@ export const StyledMainCatalogBillboardTitle = styled.h3`
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 700;
+  line-height: 23px;
+
   margin-bottom: 10px;
 `
 
 export const StyledMainCatalogBillboardLink = styled.a`
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  display: inline-block;
+  width: 90%;
+
   color: #fff;
+  font-size: 12px;
   text-transform: capitalize;
-  text-decoration: underline;
+  text-align: center;
   cursor: pointer;
+
+  margin-top: 95px;
+
   :hover {
     color: #fff;
     text-decoration: underline;
   }
+
+  @media(min-width: ${forTablet.minWidth}px){
+    font-size: 13px;
+    bottom: 30px;
+  }
 `
+
+export default StyledMainCatalogBillboard

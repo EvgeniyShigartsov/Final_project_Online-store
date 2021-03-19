@@ -1,3 +1,9 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   getGamingMonitorsCreater,
@@ -10,26 +16,42 @@ export const getMainCatalogProducts = () => (dispatch) => {
   axios.get('/products')
     .then((data) => {
       const gamingMonitorList = []
+      const desctopsList = []
       const laptopList = []
       const tabletList = []
-      const desctopsList = []
 
       data.data.forEach((product) => {
         switch (product.categories) {
           case 'gamingMonitors':
-            gamingMonitorList.push(product)
+            if (
+              gamingMonitorList.length < 4
+              && product.quantity > 0
+              && product.newProduct === 'no'
+            ) gamingMonitorList.push(product)
             break
 
           case 'desctops':
-            desctopsList.push(product)
+            if (
+              desctopsList.length < 4
+              && product.quantity > 0
+              && product.newProduct === 'no'
+            ) desctopsList.push(product)
             break
 
           case 'laptops':
-            laptopList.push(product)
+            if (
+              laptopList.length < 4
+              && product.quantity > 0
+              && product.newProduct === 'no'
+            ) laptopList.push(product)
             break
 
           case 'tablets':
-            tabletList.push(product)
+            if (
+              tabletList.length < 4
+              && product.quantity > 0
+              && product.newProduct === 'no'
+            ) tabletList.push(product)
             break
 
           default:
@@ -44,7 +66,6 @@ export const getMainCatalogProducts = () => (dispatch) => {
       dispatch(getLaptopsCreater(laptopList))
       dispatch(getTabletsCreater(tabletList))
     })
-    .catch((error) => error.response)
 }
 
 export default getMainCatalogProducts

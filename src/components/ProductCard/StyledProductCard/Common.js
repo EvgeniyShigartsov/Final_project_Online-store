@@ -26,7 +26,7 @@ export const StyledCardReviews = styled.span`
 export const StyledCardTitle = styled.h2`
   font-size: 11px;
   line-height: 16px;
-  height: 2.3rem;
+  height: 2rem;
   overflow: hidden;
 
   margin-top: 5px;
@@ -34,6 +34,7 @@ export const StyledCardTitle = styled.h2`
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 13px;
     line-height: 19px;
+    height: 2.4rem;
 
     margin-top: 10px;
   }

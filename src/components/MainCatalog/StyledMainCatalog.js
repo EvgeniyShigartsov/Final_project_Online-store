@@ -3,16 +3,44 @@ import { Tabs } from 'antd'
 import { forDesktop, forTablet } from '../../styles/mediaBreakPoints'
 
 // Catalog сard
+export const StyledMaincCatalogWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  
+  min-width: 320px;
+
+  margin-top: 30px;
+  margin-left: 5%;
+
+  @media(min-width: ${forTablet.minWidth}px) {
+    flex-direction: row;
+  }
+  
+  @media(min-width: ${forDesktop.minWidth}px){
+    width: 90%;
+    max-width: 1200px;
+
+    padding: 0 10px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+`
 export const StyledMainCatalogCardWrapper = styled.ul`
   display: grid;
-  grid-template-columns: repeat(5, 170px);
+  grid-template-columns: repeat(4, 1fr);
   overflow-x: scroll;
+
   margin-top: 15px;
+
   @media(min-width: ${forTablet.minWidth}px){
-    grid-template-columns: repeat(5, 181px);
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: scroll;
   }
+
   @media(min-width: ${forDesktop.minWidth}px){
-    grid-template-columns: repeat(5, 234px);
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: auto;
   }
 `
 
@@ -44,8 +72,4 @@ export const StyledTabs = styled(Tabs)`
   .ant-tabs-nav::before {
     border-bottom: none;
   }
-  grid-area: tabs;
-  display: flex;
-  margin-left: 5%;
-  margin-top: 15px;
 `

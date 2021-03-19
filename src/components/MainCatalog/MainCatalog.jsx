@@ -1,16 +1,18 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-file no-use-before-define
 import React, { useEffect } from 'react'
-import { Tabs } from 'antd'
 
+// Redux
 import { connect } from 'react-redux'
 import { getMainCatalogProducts } from '../../store/mainCatalog/middleware'
 
+// Styles
 import { MainCatalogCardWrapper } from './MainCatalogCardWrapper/MainCatalogCardWrapper'
-import { MainCatalogBillboardMobile } from './MainCatalogBillboard/MainCatalogBillboardMobile'
-import { MainCatalogBillboardDesktop } from './MainCatalogBillboard/MainCatalogBillboardDesktop'
-import { StyledTabs } from './StyledMainCatalog'
+import { MainCatalogBillboard } from './MainCatalogBillboard/MainCatalogBillboard'
+import { StyledMaincCatalogWrapper } from './StyledMainCatalog'
 
 // Redux maps
-const mapStateToProps = (state) => ({catalogProduct: state.catalogProduct})
+const mapStateToProps = (state) => ({catalogProduct: state.mainCatalog})
 const mapDispatchToProps = (dispatch) => ({
   dispatchCatalogProduct: () => dispatch(getMainCatalogProducts())
 })
@@ -18,53 +20,64 @@ const mapDispatchToProps = (dispatch) => ({
 export const MainCatalog = connect(mapStateToProps, mapDispatchToProps)(({
   catalogProduct, dispatchCatalogProduct
 }) => {
-  // Ant tabs
-  const { TabPane } = Tabs
-
   useEffect(() => {
     dispatchCatalogProduct()
-  })
+  }, [dispatchCatalogProduct])
 
-  let catalogToRender
-
-  if (catalogProduct !== undefined) {
-    catalogToRender = catalogProduct.map((catalog) => (
-      <>
-        <MainCatalogBillboardMobile
-          billboardInfo={catalog.billboard}
-          key={`bilboard mobile ${catalog.billboard.itemNo}`}
-        />
-        
-        <StyledTabs key={`StyledTabs ${catalog.catalogNo}`}>
-          {
-            catalog.category.map((categoryItem) => (
-              <TabPane
-                tab={categoryItem.productSubcategory}
-                key={`main catalog nav${categoryItem.productSubcategory}`}
-              >
-                <div style={{display: 'flex'}}>
-                  <MainCatalogBillboardDesktop
-                    billboardInfo={catalog.billboard}
-                    key={`bilboard desktop ${catalog.billboard.itemNo}`}
-                  />
-                  <MainCatalogCardWrapper
-                    productsList={categoryItem.productItem}
-                    key={`main catalog card wrapper' ${categoryItem.productSubcategory}`}
-                  />
-                </div>
-              </TabPane>
-            ))
-        }
-        </StyledTabs>
-      </>
-    ))
-  }
-  console.log(catalogToRender)
   return (
-    <>
-      {/* { catalogToRender } */}
-      some
-    </>
+    <section>
+      <StyledMaincCatalogWrapper>
+        <MainCatalogBillboard
+          billboardInfo={{
+            title: 'gaming monitors',
+            img: 'https://fuzzmusic.ru/wp-content/uploads/2020/08/pesni-iz-igry-kiberpank-2077-1.jpg',
+            url: 'google.com'
+          }}
+        />
+        <MainCatalogCardWrapper
+          productsList={catalogProduct.gamingMonitorList}
+        />
+      </StyledMaincCatalogWrapper>
+
+      <StyledMaincCatalogWrapper>
+        <MainCatalogBillboard
+          billboardInfo={{
+            title: 'desktops',
+            img: 'https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/blt3ce6d340560cf08f/5e71863623ff3341c4f5aba8/computing-evergreen-feature-gaming-desktop-orientation-s.jpg?width=2877&quality=80',
+            url: 'google.com'
+          }}
+        />
+        <MainCatalogCardWrapper
+          productsList={catalogProduct.desktopList}
+        />
+      </StyledMaincCatalogWrapper>
+
+      <StyledMaincCatalogWrapper>
+        <MainCatalogBillboard
+          billboardInfo={{
+            title: 'laptops',
+            img: 'https://www.xmg.gg/wp-content/uploads/XMG_Pro-15_gg_Rotationsbanner_EN_Desktop.jpg',
+            url: 'google.com'
+          }}
+        />
+        <MainCatalogCardWrapper
+          productsList={catalogProduct.laptopList}
+        />
+      </StyledMaincCatalogWrapper>
+
+      <StyledMaincCatalogWrapper>
+        <MainCatalogBillboard
+          billboardInfo={{
+            title: 'tablets',
+            img: 'https://cdn.pixabay.com/photo/2015/06/24/15/45/hands-820272_1280.jpg',
+            url: 'google.com'
+          }}
+        />
+        <MainCatalogCardWrapper
+          productsList={catalogProduct.tabletList}
+        />
+      </StyledMaincCatalogWrapper>
+    </section>
   )
 })
 
