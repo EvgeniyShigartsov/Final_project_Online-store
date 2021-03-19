@@ -4,7 +4,7 @@ import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 const ComponentContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  min-width: 360px;
+  min-width: 320px;
 `
 const TitleBox = styled.div`  
   width: 90%;
@@ -45,12 +45,6 @@ const Section = styled.div`
   width: 100%;
   background-color: ${(props) => (props.colored ? 'black' : 'white')};
 
-// Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
-  justify-content: center;
-  align-items: center;
-  }
-
 // Tablet
   @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
     justify-content: center;
@@ -69,7 +63,7 @@ const ContentBlock = styled.div`
   flex-direction: ${(props) => (props.colored ? 'column-reverse' : 'column')};
   color: ${(props) => (props.colored ? 'white' : 'black')};
 // Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
+  @media(min-width: 650px) and (max-width:750px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -97,7 +91,7 @@ const ContentContainer = styled.div`
   width: 90%;
   margin: 17px 2% 25px 10%;
 // Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
+  @media(min-width: 650px) and (max-width:750px) {
     width: 55%;
     margin-right: ${(props) => (props.colored ? '2%' : '3%')};
     margin-left: ${(props) => (props.colored ? '0' : '5%')};  
@@ -122,7 +116,7 @@ const SectionTitle = styled.div`
   font-size: 30px;
   margin: 5px 0 13px 0;
 // Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
+  @media(min-width: 650px) and (max-width:750px) {
     width: 95%;
     font-size: 30px;
   }
@@ -141,7 +135,7 @@ const SectionContent = styled.div`
   line-height: 20px;
   letter-spacing: 1px;
 // Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
+  @media(min-width: 650px) and (max-width:750px) {
     width: 95%;
     font-size: 12px;
   }
@@ -159,7 +153,7 @@ const SectionImg = styled.div`
   height: 50%;
 
   // Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
+  @media(min-width: 650px) and (max-width:750px) {
     height: 95%;
     width: 37%;
   }
@@ -182,7 +176,7 @@ const Image = styled.img`
   width: ${(props) => (props.first ? '100%' : '50%')};
   height: ${(props) => (props.first ? '100%' : '50%')};
   // Intermediate point
-  @media(min-width: 600px) and (max-width:750px) {
+  @media(min-width: 650px) and (max-width:750px) {
     width: 100%;
     height: 100%;
   }
