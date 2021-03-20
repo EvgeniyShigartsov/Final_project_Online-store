@@ -64,7 +64,11 @@ export const ProductCard = ({ productInfo }) => {
           {reviewsQuantity}
           )
         </CardReviews>
-        <FavoriteIcon product={productInfo} small />
+        <FavoriteIcon
+          product={productInfo}
+          small
+          showTooltip
+        />
       </ReviewsBox>
       {quantity < 1 ? <CheckAvailability /> : <InStock />}
 
@@ -84,10 +88,6 @@ export const ProductCard = ({ productInfo }) => {
           </CardCurrentPrice>
         </PriceBox>
         <StyledButton type="borderBlue" size="xs" shape="round">Add to cart</StyledButton>
-        {/* <AddToCartIconWrapper>
-          <AddToCartIcon />
-        </AddToCartIconWrapper> */}
-
       </PurchaseGroup>
     </CardItem>
   )

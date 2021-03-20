@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import axios from 'axios'
-import { getHeaders } from '../general'
+import { DOMAIN, getHeaders } from '../general'
 import updateWishlistCreator from './actionCreator'
 
-const BASE_ENDPOINT = '/wishlist'
+const BASE_ENDPOINT = `${DOMAIN}/wishlist`
 
 const getParsedListFromLS = () => {
   const check = localStorage.getItem('wishlist')
@@ -41,7 +41,6 @@ export const setWishlist = () => async (dispatch, getState) => {
   } else {
     itemsToSet.push(...getParsedListFromLS())
   }
-  // такое условие гарантрует что данные будут взяты либо с базы данных либо с локальной памяти.
 
   const dataToAdd = {
     wishitstItems: itemsToSet,
@@ -69,11 +68,11 @@ export const addProductToWishlist = (product) => async (dispatch, getState) => {
     const updatedItems = addProductToLS(product)
     updatedList.push(...updatedItems)
   }
-
   const dataToAdd = {
     wishitstItems: updatedList,
     wishitstLength: updatedList.length
   }
+  console.log(dataToAdd)
   dispatch(updateWishlistCreator(dataToAdd))
 }
 
