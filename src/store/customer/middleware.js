@@ -1,12 +1,10 @@
 import axios from 'axios'
 import { message } from 'antd'
+import { DOMAIN, getHeaders } from '../general'
 
-const BASE_ENDPOINT = '/customers'
+const BASE_ENDPOINT = `${DOMAIN}/customers`
 
-const headers = {
-  authorization: localStorage.getItem('token'),
-  'Content-Type': 'application/json'
-}
+const headers = getHeaders()
 
 export const createCustomer = (credentials, history) => {
   axios.post(BASE_ENDPOINT, credentials)
@@ -26,14 +24,14 @@ export const createCustomer = (credentials, history) => {
 }
 
 export const changePassword = (passwords) => () => {
-  const res = axios.put(`${BASE_ENDPOINT}/password`, passwords, {headers})
+  const res = axios.put(`${BASE_ENDPOINT}/password`, passwords, { headers })
     .then((data) => data)
     .catch((error) => error.response)
   return res
 }
 
 export const updateCustomer = (credentials) => () => {
-  const res = axios.put(BASE_ENDPOINT, credentials, {headers})
+  const res = axios.put(BASE_ENDPOINT, credentials, { headers })
     .then((data) => data)
     .catch((error) => error)
   return res
@@ -41,11 +39,7 @@ export const updateCustomer = (credentials) => () => {
 
 export const getCustomer = () => () => {
   const res = axios.get(`${BASE_ENDPOINT}/customer`, {headers})
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((error) => {
-      console.log(error.response)
-    })
+    .then((data) => data)
+    .catch((error) => error.response)
   return res
 }

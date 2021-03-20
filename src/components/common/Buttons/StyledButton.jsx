@@ -93,8 +93,9 @@ ${(props) => props.size === 'xs' && css`
       width: 150px;
      `};
     ${(props) => props.size === 'xs' && css`
-      width: 120px;
-      padding: 8px 15px;
+      width: 100px;
+      padding: 4px 10px;
+      font-size: 11px;
   `};
   }
 `

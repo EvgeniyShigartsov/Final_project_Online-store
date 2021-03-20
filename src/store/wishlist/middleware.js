@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import axios from 'axios'
-import { getHeaders } from '../headers'
+import { getHeaders } from '../general'
 import updateWishlistCreator from './actionCreator'
 
 const BASE_ENDPOINT = '/wishlist'

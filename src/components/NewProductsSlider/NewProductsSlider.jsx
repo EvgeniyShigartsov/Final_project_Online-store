@@ -7,6 +7,7 @@ import { ProductCard } from '../ProductCard/ProductCard'
 import { Container } from '../common/Container'
 import { getNewProductsCreator } from '../../store/products/actionCreator'
 import { getFilteredProducts } from '../../store/products/middleware'
+import SliderTitle from './SliderTitle/SliderTitle'
 
 const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
@@ -24,17 +25,10 @@ const NewProductsSlider = connect(
   }, [getFilteredProducts, getNewProductsCreator])
 
   const carouselSettings = {
-    slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     dots: false,
     responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-        }
-      },
       {
         breakpoint: forTablet.maxWidth,
         settings: {
@@ -60,6 +54,7 @@ const NewProductsSlider = connect(
   }
   return (
     <Container>
+      <SliderTitle />
       <Carousel carouselSettings={carouselSettings}>
         {newProducts.map((el) => (
           <ProductCard

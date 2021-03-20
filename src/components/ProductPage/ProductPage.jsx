@@ -9,7 +9,6 @@ import {
   ProductImagesCarouselBox,
   InformationBox,
   StyledImg,
-  Description,
   ProductHeading,
   AboutProduct,
   PriceBox,
@@ -58,10 +57,15 @@ const ProductPage = () => {
           <FavoriteIconBox>
             <FavoriteIcon product={product} />
           </FavoriteIconBox>
-          <Description>About product</Description>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
-          <div>
-            Код товара:
+          <PriceBox>
+            <b>
+              {product.currentPrice}
+            </b>
+            ₴.
+          </PriceBox>
+          <div style={{ marginBottom: '6px' }}>
+            Product number:
             {' '}
             {product.itemNo}
           </div>
@@ -92,21 +96,15 @@ const ProductPage = () => {
               </li>
             ))}
             <li>
-              Особенности:
+              Description:
               {' '}
-              <b>{product.description}</b>
+              <b>
+                {product.description}
+                .
+              </b>
             </li>
           </AboutProduct>
           <CartGroup productID={product._id} avilableQuantity={product.quantity} />
-          <PriceBox>
-            On Sale from
-            <b>
-              {' '}
-              ₴
-              {' '}
-              {product.currentPrice}
-            </b>
-          </PriceBox>
         </InformationBox>
       </PageContainer>
     </Container>

@@ -5,13 +5,13 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+    padding-bottom: 20px;
     @media(min-width: 721px){
         flex-direction: row;
     }
 `
 export const ProductImagesCarouselBox = styled.div`
     width: 100%;
-    border: 3px solid #F5F7FF;
     @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
         width: 55%;
     }
@@ -45,13 +45,6 @@ export const StyledImg = styled.img`
     width: 100%;
     height: 100%;
 `
-export const Description = styled.div`
-    margin: 20px 0 13px 0;
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 600;
-    color: #666666;
-`
 export const ProductHeading = styled.h3`
     margin-bottom: 7px;
     font-size: 22px;
@@ -73,13 +66,13 @@ export const AboutProduct = styled.ul`
     }
 `
 export const PriceBox = styled.div`
-    text-align: center;
-    background-color: #F5F7FF;
     border-radius: 4px;
-    padding: 7px 10px;
+    font-size: 24px;
+    margin: 15px 0;
     font-weight: 300;
     b {
-        font-weight: 500;
+        font-weight: 700;
+        margin-right: 10px;
     }
 `
 export const FavoriteIconBox = styled.div`
