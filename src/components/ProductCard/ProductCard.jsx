@@ -89,10 +89,11 @@ export const ProductCard = ({ productInfo }) => {
             {`${currentPrice} ₴`}
           </CardCurrentPrice>
         </PriceBox>
-        {/* <StyledButton type="borderBlue" size="xs" shape="round">Add to cart</StyledButton> */}
-        <AddToCartIconWrapper>
+        <StyledButton type="borderBlue" size="xs" shape="round">Add to cart</StyledButton>
+        {/* <AddToCartIconWrapper>
           <AddToCartIcon />
-        </AddToCartIconWrapper>
+        </AddToCartIconWrapper> */}
+
       </PurchaseGroup>
     </CardItem>
   )
