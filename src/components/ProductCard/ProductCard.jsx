@@ -8,6 +8,7 @@ import { InStock } from './InStock/InStock';
 import { CheckAvailability } from './CheckAvailability/CheckAvailability';
 import { StarRating } from '../StarRating/StarRating'
 import StyledButton from '../common/Buttons/StyledButton'
+import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 
 // Styles
 import {
@@ -42,16 +43,8 @@ export const ProductCard = ({ productInfo }) => {
     itemNo
   } = productInfo
   
-  const getProductStatus = () => {
-    if (quantity <= 0) return <CheckAvailability />
-    if (quantity > 0 && quantity <= 10) {
-      return <RunningOutLine>Product is running out!</RunningOutLine>
-    }
-    return <InStock />
-  }
-
   // string length limitation and translation of the first letter into capital
-  const verifiedTitle = upperCaseFirstLetter(cutString(name, 27))
+  const verifiedTitle = upperCaseFirstLetter(cutString(name, 24))
 
   // getting an average rating and the number of reviews left
   const { reviewsQuantity, rating } = rateCalculator(reviews)
@@ -71,8 +64,9 @@ export const ProductCard = ({ productInfo }) => {
           {reviewsQuantity}
           )
         </CardReviews>
+        <FavoriteIcon product={productInfo} small />
       </ReviewsBox>
-      {getProductStatus()}
+      {quantity < 1 ? <CheckAvailability /> : <InStock />}
 
       <Link to={`products/${itemNo}`}>
         <CardTitle>

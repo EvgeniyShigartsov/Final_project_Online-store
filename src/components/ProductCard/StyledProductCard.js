@@ -9,8 +9,7 @@ export const CardItem = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  padding: 5px 10px;
-  border: 1px solid blue;
+  padding: 10px 15px;
 `
 
 export const ImageWrapper = styled.div`
@@ -19,8 +18,6 @@ export const ImageWrapper = styled.div`
   align-items: center;
   height: 150px;
   width: 100%;
-
-  border: 1px solid red;
 `
 
 export const CardImage = styled.img`
@@ -32,13 +29,14 @@ export const CardImage = styled.img`
 export const ReviewsBox = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   margin: 9px 0 6px 0;
 `
 
 export const CardReviews = styled.span`
   color: #8C8C8C;
-  margin-left: 9px;
+  margin: 0 20px 0 9px;
   font-size: 12px;
 `
 
@@ -46,7 +44,7 @@ export const CardTitle = styled.h3`
   font-size: 11px;
   line-height: 16px;
   font-weight: 500;
-  margin: 5px 0;
+  margin: 10px 0;
   text-align: left;
 
   @media(min-width: ${forTablet.minWidth}px){
@@ -88,8 +86,9 @@ export const CardCurrentPrice = styled.div`
 `
 
 export const RunningOutLine = styled.div`
-  color: #ff5c00;
-  font-size: 13px;
+  color: #C94D3F;
+  font-size: 12px;
+  text-transform: lowercase;
 `
 
 export const AddToCartIconWrapper = styled.button`

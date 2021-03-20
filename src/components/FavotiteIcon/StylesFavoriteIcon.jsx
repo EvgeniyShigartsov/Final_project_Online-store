@@ -10,12 +10,13 @@ export const IconCircle = styled.div`
     /* border: 2px solid #8C8C8C; */
     border-radius: 50%;
     cursor: pointer;
+
     ${(props) => props.isFavorite && css`
         ${'' /* background-color: yellow; */}
     `}
     ${(props) => props.small && css`
-        width: 22px;
-        height: 22px;
+        width: 25px;
+        height: 25px;
     `}
 
 
