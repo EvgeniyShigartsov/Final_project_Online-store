@@ -23,7 +23,7 @@ export const MainCatalog = connect(mapStateToProps, mapDispatchToProps)(({
   useEffect(() => {
     dispatchCatalogProduct()
   }, [dispatchCatalogProduct])
-
+  
   return (
     <section>
       <StyledMaincCatalogWrapper>

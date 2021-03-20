@@ -1,16 +1,5 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-undef */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import axios from 'axios';
-import {
-  getGamingMonitorsCreater,
-  getDesctopsCreater,
-  getLaptopsCreater,
-  getTabletsCreater
-} from './actionCreator';
+import { getMainCatalogCreater } from './actionCreator';
 
 export const getMainCatalogProducts = () => (dispatch) => {
   axios.get('/products')
@@ -61,10 +50,14 @@ export const getMainCatalogProducts = () => (dispatch) => {
         return null
       })
 
-      dispatch(getGamingMonitorsCreater(gamingMonitorList))
-      dispatch(getDesctopsCreater(desctopsList))
-      dispatch(getLaptopsCreater(laptopList))
-      dispatch(getTabletsCreater(tabletList))
+      const combinePayload = {
+        gamingMonitorList,
+        desctopsList,
+        laptopList,
+        tabletList
+      }
+
+      dispatch(getMainCatalogCreater(combinePayload))
     })
 }
 
