@@ -10,7 +10,6 @@ export const CardItem = styled.div`
   align-items: flex-start;
   width: 100%;
   padding: 5px 10px;
-  border: 1px solid tomato;
 `
 
 export const ImageWrapper = styled.div`
