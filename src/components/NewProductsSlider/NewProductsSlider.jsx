@@ -25,17 +25,10 @@ const NewProductsSlider = connect(
   }, [getFilteredProducts, getNewProductsCreator])
 
   const carouselSettings = {
-    slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     dots: false,
     responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-        }
-      },
       {
         breakpoint: forTablet.maxWidth,
         settings: {

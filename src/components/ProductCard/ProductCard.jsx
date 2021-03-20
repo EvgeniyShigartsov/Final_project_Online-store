@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -6,21 +7,24 @@ import { Link } from 'react-router-dom';
 import { InStock } from './InStock/InStock';
 import { CheckAvailability } from './CheckAvailability/CheckAvailability';
 import { StarRating } from '../StarRating/StarRating'
+import StyledButton from '../common/Buttons/StyledButton'
 
 // Styles
 import {
-  StyledCardItem,
-  StyledCardReviews,
-  StyledCardTitle
-} from './StyledProductCard/Common';
-import { StyledCardIconAddToCart, StyledCardIconAddToCartWrapper } from './StyledProductCard/Icons';
-import { StyledCardImg, StyledCardImgWrapper } from './StyledProductCard/Img';
-import {
-  StyledCardPriceWrapper,
-  StyledCardAreRunningOut,
-  StyledCardLastPrice,
-  StyledCardNowPrice
-} from './StyledProductCard/Prices';
+  CardItem,
+  CardReviews,
+  CardTitle,
+  CardImage,
+  ReviewsBox,
+  AddToCartIcon,
+  AddToCartIconWrapper,
+  ImageWrapper,
+  PurchaseGroup,
+  PriceBox,
+  RunningOutLine,
+  CardLastPrice,
+  CardCurrentPrice,
+} from './StyledProductCard'
 
 // Functions
 import cutString from '../../utils/cutString';
@@ -38,51 +42,59 @@ export const ProductCard = ({ productInfo }) => {
     itemNo
   } = productInfo
   
+  const getProductStatus = () => {
+    if (quantity <= 0) return <CheckAvailability />
+    if (quantity > 0 && quantity <= 10) {
+      return <RunningOutLine>Product is running out!</RunningOutLine>
+    }
+    return <InStock />
+  }
+
   // string length limitation and translation of the first letter into capital
-  const verifiedTitle = upperCaseFirstLetter(cutString(name, 45))
+  const verifiedTitle = upperCaseFirstLetter(cutString(name, 27))
 
   // getting an average rating and the number of reviews left
   const { reviewsQuantity, rating } = rateCalculator(reviews)
-
   return (
-    <StyledCardItem>
-      {quantity > 0 ? <InStock /> : <CheckAvailability />}
-
-      <StyledCardIconAddToCartWrapper>
-        <StyledCardIconAddToCart />
-      </StyledCardIconAddToCartWrapper>
+    <CardItem>
 
       <Link to={`products/${itemNo}`}>
-        <StyledCardImgWrapper>
-          <StyledCardImg src={imageUrls[0]} />
-        </StyledCardImgWrapper>
+        <ImageWrapper>
+          <CardImage src={imageUrls[0]} />
+        </ImageWrapper>
       </Link>
-      
-      <div>
+
+      <ReviewsBox>
         <StarRating rating={rating} />
-        <StyledCardReviews>
+        <CardReviews>
           Reviews (
           {reviewsQuantity}
           )
-        </StyledCardReviews>
-      </div>
+        </CardReviews>
+      </ReviewsBox>
+      {getProductStatus()}
 
       <Link to={`products/${itemNo}`}>
-        <StyledCardTitle>{verifiedTitle}</StyledCardTitle>
+        <CardTitle>
+          {verifiedTitle}
+        </CardTitle>
       </Link>
 
-      <StyledCardPriceWrapper>
-        <StyledCardLastPrice>{previousPrice}</StyledCardLastPrice>
-        <StyledCardNowPrice>
-          {`${currentPrice} ₴`}
-        </StyledCardNowPrice>
-        {
-          quantity < 10
-            ? <StyledCardAreRunningOut>Product is running out!</StyledCardAreRunningOut>
-            : null
-        }
-      </StyledCardPriceWrapper>
-    </StyledCardItem>
+      <PurchaseGroup>
+        <PriceBox>
+          <CardLastPrice>
+            {`${previousPrice} ₴`}
+          </CardLastPrice>
+          <CardCurrentPrice>
+            {`${currentPrice} ₴`}
+          </CardCurrentPrice>
+        </PriceBox>
+        {/* <StyledButton type="borderBlue" size="xs" shape="round">Add to cart</StyledButton> */}
+        <AddToCartIconWrapper>
+          <AddToCartIcon />
+        </AddToCartIconWrapper>
+      </PurchaseGroup>
+    </CardItem>
   )
 }
 
