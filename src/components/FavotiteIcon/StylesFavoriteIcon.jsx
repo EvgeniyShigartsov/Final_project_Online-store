@@ -28,7 +28,7 @@ export const IconWrapper = styled.div`
             z-index: 2;
             ${props.isFavorite && css`
                 content: 'Unlike'; 
-                right: -50px;
+                right: -40px;
             `}
         `}
 } 

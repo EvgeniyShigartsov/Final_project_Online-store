@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ShoppingCartOutlined } from '@ant-design/icons';
 import { forTablet } from '../../styles/mediaBreakPoints'
 
 export const CardItem = styled.div` 
@@ -8,8 +7,9 @@ export const CardItem = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100%;
+  max-width: 235px;
   padding: 10px 15px;
+  border: 1px solid lightskyblue;
 `
 
 export const ImageWrapper = styled.div`
@@ -31,13 +31,31 @@ export const ReviewsBox = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin: 9px 0 6px 0;
+  margin: 9px 0;
+`
+export const RatingBox = styled.div`
+  display: flex;
+  justify-content: center;
+
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 export const CardReviews = styled.span`
   color: #8C8C8C;
-  margin: 0 20px 0 9px;
   font-size: 12px;
+  margin-top: 4px;
+  margin-left: 9px;
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
 `
 
 export const CardTitle = styled.h3`
@@ -83,42 +101,4 @@ export const CardCurrentPrice = styled.div`
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 18px;
   }
-`
-
-export const RunningOutLine = styled.div`
-  color: #C94D3F;
-  font-size: 12px;
-  text-transform: lowercase;
-`
-
-export const AddToCartIconWrapper = styled.button`
-  position: relative;
-  background-color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  
-  &:hover {
-    /* background-color: #e9ffee; */
-    background-color: #a5f084;
-  }
-  &:hover::before {
-    content: 'Add to cart';
-    position: absolute;
-    bottom: 0;
-    right: -75px;
-    padding: 2px 4px;
-    font-size: 12px;
-    border: 0.5px solid black;
-    border-radius: 3px;
-    background-color: white;
-    z-index: 2;
-  }
-`
-
-export const AddToCartIcon = styled(ShoppingCartOutlined)`
-  font-size: 50px;
-  z-index: 1;
-  color: #78A962;
-  transition: .3s;
 `
