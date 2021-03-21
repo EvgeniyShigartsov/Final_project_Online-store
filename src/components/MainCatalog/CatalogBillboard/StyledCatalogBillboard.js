@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 
-export const StyledMainCatalogBillboard = styled.div`
+export const CatalogBillboardWrapper = styled.div`
   position: relative;
   z-index: 0;
 
@@ -53,7 +53,7 @@ export const StyledMainCatalogBillboard = styled.div`
   }
 `
 
-export const StyledMainCatalogBillboardTitle = styled.h3`
+export const CatalogBillboardTitle = styled.h3`
   color: #fff;
   font-size: 18px;
   text-transform: capitalize;
@@ -63,7 +63,7 @@ export const StyledMainCatalogBillboardTitle = styled.h3`
   margin-bottom: 10px;
 `
 
-export const StyledMainCatalogBillboardLink = styled(Link)`
+export const CatalogBillboardLink = styled(Link)`
   position: absolute;
   bottom: 15px;
   left: 50%;
@@ -91,4 +91,4 @@ export const StyledMainCatalogBillboardLink = styled(Link)`
   }
 `
 
-export default StyledMainCatalogBillboard
+export default CatalogBillboardWrapper

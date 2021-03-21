@@ -13,7 +13,7 @@ import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
 import {CartPage} from './components/CartPage/CartPage'
 import OrderPage from './components/OrderPage/OrderPage'
-import { MainCatalog } from './components/MainCatalog/MainCatalog'
+import { Catalog } from './components/MainCatalog/Catalog'
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/">
           <BannerSlider />
           <NewProductsSlider />
-          <MainCatalog />
+          <Catalog />
         </Route>
         <Route exact path="/signin">
           <LogIn />

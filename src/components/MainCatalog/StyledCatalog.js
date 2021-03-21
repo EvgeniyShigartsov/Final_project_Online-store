@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { forDesktop, forTablet } from '../../styles/mediaBreakPoints'
 
-export const StyledMaincCatalogWrapper = styled.div`
+export const StyledCatalogWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -25,7 +25,7 @@ export const StyledMaincCatalogWrapper = styled.div`
   }
 `
 
-export const StyledMainCatalogCardWrapper = styled.ul`
+export const StyledCatalogCardWrapper = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   overflow-x: scroll;
@@ -42,3 +42,5 @@ export const StyledMainCatalogCardWrapper = styled.ul`
     overflow-x: auto;
   }
 `
+
+export default StyledCatalogCardWrapper
