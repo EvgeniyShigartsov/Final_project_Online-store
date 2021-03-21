@@ -15,10 +15,20 @@ const mapStateToProps = (state) => ({
 })
 
 const PopUpList = connect(mapStateToProps)(({
-  openSlide, isOpen, openCloseMenu, setIsOpen, hideList, checkForLinkOpen, isLogin
+  openSlide, isOpen, openCloseMenu, setIsOpen,
+  hideList, checkForLinkOpen, isLogin,
+  hideInput
 }) => (
 
-  <PopUpContainer hideList={hideList} setIsOpen={setIsOpen} isOpen={isOpen} variants={openSlide} initial={false} animate={isOpen ? 'show' : 'hidden'}>
+  <PopUpContainer
+    hideInput={hideInput}
+    hideList={hideList}
+    setIsOpen={setIsOpen}
+    isOpen={isOpen}
+    variants={openSlide}
+    initial={false}
+    animate={isOpen ? 'show' : 'hidden'}
+  >
     <HeaderOfPopUp>
       <LogoDesktop />
       <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
@@ -50,7 +60,7 @@ const PopUpList = connect(mapStateToProps)(({
       </li>
       )}
       <li>
-        <Link to="/products/739628"><h5>Products</h5></Link>
+        <Link to="/catalog"><h5>Catalog</h5></Link>
         <RightOutlinedStyled />
       </li>
       <StyledExceptionLi>
@@ -65,7 +75,7 @@ PopUpList.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   openCloseMenu: PropTypes.func.isRequired,
   checkForLinkOpen: PropTypes.func.isRequired,
-  openSlide: PropTypes.instanceOf(Object)
-
+  openSlide: PropTypes.instanceOf(Object),
+  hideInput: PropTypes.bool.isRequired
 }
 export default PopUpList;

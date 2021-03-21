@@ -21,7 +21,8 @@ import {
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
   ShaduleArrowContainer, ShoppingCartOutlinedStyled,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
-  CircleMobile, MenuOutlinedStyled, SearchOutlinedStyled
+  CircleMobile, MenuOutlinedStyled, SearchOutlinedStyled,
+  CloseOutlinedFormStyled
 } from './HeaderStyled';
 
 const Header = () => {
@@ -49,17 +50,14 @@ const Header = () => {
       }
     }
   };
-
   const checkForLinkOpen = (e) => {
     if (e.target.localName === 'h5') {
       setIsOpen((prev) => !prev)
     }
   }
-
   const openCloseMenu = () => {
     setIsOpen((prev) => (!prev))
   }
-
   const toggleShow = () => {
     setHideInput((prev) => !prev);
     setHideList((prev) => !prev);
@@ -106,7 +104,6 @@ const Header = () => {
           />
         </ContainerAlign>
       </ShaduleContainer>
-
       <SearchAndItemsBlock>
         <MenuOutlinedStyled onClick={openCloseMenu} data-testid="burger" />
         <Link to="/" style={{outline: 'none', paddingRight: '20px'}}>
@@ -121,6 +118,7 @@ const Header = () => {
           openSlide={openSlide}
           isOpen={isOpen}
           openCloseMenu={openCloseMenu}
+          hideInput={hideInput}
         />
         <FormContainer action="submit" hideInput={hideInput}>
           <SearchInputBlock>
@@ -129,7 +127,9 @@ const Header = () => {
           </SearchInputBlock>
         </FormContainer>
 
-        <SearchOutlinedStyledMedia onClick={toggleShow} />
+        {hideInput
+          ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
+          : (<CloseOutlinedFormStyled onClick={toggleShow} />)}
         
         <Link to="/cart">
           <ShoppingCartOutlinedStyled />

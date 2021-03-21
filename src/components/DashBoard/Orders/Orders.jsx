@@ -1,10 +1,7 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import getOrders from '../../../store/orders/middleware';
 import OrderComponent from './OrderComponent';
-import {forMobile, forTablet} from '../../../styles/mediaBreakPoints';
 
 const Orders = () => {
   const [orders, setOrders] = useState()
@@ -15,7 +12,6 @@ const Orders = () => {
     }
     ordersToRender()
   }, [])
-  // console.log(orders);
 
   return (
     <div style={{marginTop: '50px'}}>

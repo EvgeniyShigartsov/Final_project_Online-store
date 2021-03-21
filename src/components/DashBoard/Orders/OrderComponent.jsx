@@ -1,13 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Descriptions } from 'antd';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-// import { forDesktop } from '../../../styles/mediaBreakPoints';
-
-// eslint-disable-next-line no-unused-vars
 const OrderComponent = ({orders}) => {
-  console.log(orders);
   const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1)
   return (
     <ContainerOrder>
@@ -31,12 +27,12 @@ const OrderComponent = ({orders}) => {
     </ContainerOrder>
   );
 }
+OrderComponent.propTypes = {
+  orders: PropTypes.instanceOf(Object).isRequired
+}
 const ContainerOrder = styled.div`
   border-top: 1px solid rgba(0,0,0,0.1);
   width: 100% !important;
-  /* .ant-descriptions-title {
-    width: 60%;
-  } */
   height: 100% !important;
   .ant-descriptions-item-label {
     padding: 8px 13px 0px 13px!important;

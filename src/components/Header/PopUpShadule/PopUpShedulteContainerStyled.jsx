@@ -4,12 +4,13 @@ import {
   EnvironmentOutlined
 } from '@ant-design/icons';
 import { motion } from 'framer-motion';
+import { forTablet } from '../../../styles/mediaBreakPoints';
 
 export const PopUpBlock = styled(motion.div)`
     position: absolute;
     top: 0%;
     height: 250px;
-    width: 350px;
+    width: 310px;
     transform: translateX(-50%);
     background-color: white;
     z-index: 25;
@@ -19,6 +20,9 @@ export const PopUpBlock = styled(motion.div)`
               0 4px 4px rgba(0,0,0,0.12), 
               0 8px 8px rgba(0,0,0,0.12),
               0 16px 16px rgba(0,0,0,0.12);
+    @media(min-width: ${forTablet.minWidth}px) {
+      width: 350px;
+    }
 `;
 export const FieldTimeOutlinedStyled = styled(FieldTimeOutlined)`
   font-size: 30px;

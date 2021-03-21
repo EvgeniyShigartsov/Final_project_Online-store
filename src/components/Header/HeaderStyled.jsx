@@ -1,7 +1,8 @@
 import styled, {css} from 'styled-components'
 import {
-  MenuOutlined, UserOutlined, ShoppingCartOutlined, SearchOutlined,
-
+  MenuOutlined, UserOutlined,
+  ShoppingCartOutlined, SearchOutlined,
+  CloseOutlined
 } from '@ant-design/icons';
 import {forTablet, forDesktop, forMobile} from '../../styles/mediaBreakPoints';
 
@@ -160,6 +161,20 @@ export const Input = styled.input`
     background: #EBEBEB;
   }
 `;
+export const CloseOutlinedFormStyled = styled(CloseOutlined)`
+  @media(max-width: ${forMobile.maxWidth}px) {
+    display: none;
+  }
+  @media(min-width: ${forTablet.minWidth}px) {
+    display: none;
+  }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    display: block;
+    color: black;
+    font-size: 22px;
+    padding-left: 20px;
+  }
+`;
 export const RelativePosUserPopUp = styled.div`
   position: relative;
   z-index: 10;
@@ -252,7 +267,7 @@ export const SearchOutlinedStyledMedia = styled(SearchOutlinedStyled)`
   @media(min-width: ${forDesktop.minWidth}px) {
     display: block;
     flex: 0.5;
-    padding-left: 120px;
+    padding-left: 20px;
     font-size: 22px;
   }
 `;

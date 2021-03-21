@@ -11,6 +11,7 @@ import { reducer as dashBoardModalReducer } from './dashBoardModal/reducer';
 import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'
+import { reducer as mainCatalogReducer} from './mainCatalog/reducer';
 
 const persistConfig = {
   key: 'authLS',
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   [cart]: cartReducer,
   [productsModule]: productsReducer,
   subscribe: subscribersReducer,
-  dashBoardModal: dashBoardModalReducer
+  dashBoardModal: dashBoardModalReducer,
+  mainCatalog: mainCatalogReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

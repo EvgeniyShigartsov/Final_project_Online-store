@@ -52,6 +52,12 @@ export const PopUpContainer = styled(motion.div)`
       ${(props) => props.isOpen && css`
         clip-path: circle(2200px at 40px 40px) !important;
       `}
+      ${(props) => !props.hideInput && css`
+        display: none;
+      `}
+      ${(props) => props.hideInput && css`
+        display: block;
+      `}
   }
   
 `;
