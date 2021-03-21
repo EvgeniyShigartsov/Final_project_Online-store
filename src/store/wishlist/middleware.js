@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import axios from 'axios'
 import { DOMAIN, getHeaders } from '../general'
 import updateWishlistCreator from './actionCreator'

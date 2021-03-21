@@ -4,8 +4,6 @@ import { DOMAIN, getHeaders } from '../general'
 
 const BASE_ENDPOINT = `${DOMAIN}/customers`
 
-const headers = getHeaders()
-
 export const createCustomer = (credentials, history) => {
   axios.post(BASE_ENDPOINT, credentials)
     .then((res) => {
@@ -24,6 +22,7 @@ export const createCustomer = (credentials, history) => {
 }
 
 export const changePassword = (passwords) => () => {
+  const headers = getHeaders()
   const res = axios.put(`${BASE_ENDPOINT}/password`, passwords, { headers })
     .then((data) => data)
     .catch((error) => error.response)
@@ -31,14 +30,16 @@ export const changePassword = (passwords) => () => {
 }
 
 export const updateCustomer = (credentials) => () => {
+  const headers = getHeaders()
   const res = axios.put(BASE_ENDPOINT, credentials, { headers })
     .then((data) => data)
     .catch((error) => error)
   return res
 }
-
+  
 export const getCustomer = () => () => {
-  const res = axios.get(`${BASE_ENDPOINT}/customer`, {headers})
+  const headers = getHeaders()
+  const res = axios.get(`${BASE_ENDPOINT}/customer`, { headers })
     .then((data) => data)
     .catch((error) => error.response)
   return res
