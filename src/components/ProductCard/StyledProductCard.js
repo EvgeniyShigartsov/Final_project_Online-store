@@ -70,6 +70,9 @@ export const CardTitle = styled.h3`
     font-size: 13px;
     line-height: 19.5px;
   }
+  @media(min-width: ${forDesktop.minWidth}px) {
+    min-height: 0;
+  }
 `
 
 export const PurchaseGroup = styled.div`

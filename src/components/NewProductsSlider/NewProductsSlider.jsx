@@ -2,7 +2,6 @@
 import React, { useEffect, } from 'react'
 import { connect } from 'react-redux'
 import Carousel from '../Carousel/Carousel'
-import { forTablet } from '../../styles/mediaBreakPoints'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { Container } from '../common/Container'
 import { getNewProductsCreator } from '../../store/products/actionCreator'
@@ -30,7 +29,7 @@ const NewProductsSlider = connect(
     dots: false,
     responsive: [
       {
-        breakpoint: forTablet.maxWidth,
+        breakpoint: 1170,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,

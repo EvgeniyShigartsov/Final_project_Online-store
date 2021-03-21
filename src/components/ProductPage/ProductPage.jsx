@@ -13,7 +13,8 @@ import {
   AboutProduct,
   PriceBox,
   ImageBox,
-  FavoriteIconBox,
+  FavoriteBox,
+  FavoriteText,
 } from './StylesProductPage'
 import Carousel from '../Carousel/Carousel'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
@@ -39,7 +40,7 @@ const ProductPage = () => {
     getProduct()
   }, [history, itemNo])
 
-  if (!product) return <SpinAnimation width="100vw" height="80vh" />
+  if (!product) return <SpinAnimation width="100%" height="80vh" />
 
   return (
     <Container>
@@ -54,9 +55,6 @@ const ProductPage = () => {
           </Carousel>
         </ProductImagesCarouselBox>
         <InformationBox>
-          <FavoriteIconBox>
-            <FavoriteIcon product={product} />
-          </FavoriteIconBox>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
           <PriceBox>
             <b>
@@ -74,6 +72,10 @@ const ProductPage = () => {
             productID={product._id}
             itemNo={product.itemNo}
           />
+          <FavoriteBox>
+            <FavoriteIcon product={product} showTooltip />
+            <FavoriteText>Add to favorite!</FavoriteText>
+          </FavoriteBox>
           <AboutProduct>
             <li>
               Brand:

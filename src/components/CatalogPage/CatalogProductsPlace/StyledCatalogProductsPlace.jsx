@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   text-align: center;
   padding: 10px;
  `
-    
 export const ProductsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);

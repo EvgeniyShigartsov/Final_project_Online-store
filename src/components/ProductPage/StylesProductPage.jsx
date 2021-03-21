@@ -20,7 +20,6 @@ export const ProductImagesCarouselBox = styled.div`
     }
 `
 export const InformationBox = styled.div`
-    position: relative;
     display: flex;
     align-self: stretch;
     flex-direction: column;
@@ -75,8 +74,11 @@ export const PriceBox = styled.div`
         margin-right: 10px;
     }
 `
-export const FavoriteIconBox = styled.div`
-    position: absolute;
-    top: 175px;
-    right: 35px;
+export const FavoriteBox = styled.div`
+    display: flex;
+    align-items: center;
+`
+export const FavoriteText = styled.div`
+    font-size: 14px;
+    margin-left: 5px;
 `
