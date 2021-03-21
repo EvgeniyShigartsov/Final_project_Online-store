@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setShowModal } from '../../store/dashBoardModal/middleware';
 import { BlockInfo, TextInfo } from './StyledDashBoard';
-import Modal from './DashBoardModal';
+import Modal from './DashBoardModal/DashBoardModal';
 
 const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info, setInfo }) => (
   <BlockInfo>

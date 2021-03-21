@@ -30,7 +30,7 @@ const Orders = () => {
         {orders !== undefined && (
           orders.map((item, i) => (
             <OrderComponent
-              key={item.products[0].product.id}
+              key={item.orderNo}
               orders={orders[i].products[0].product}
             />
           ))

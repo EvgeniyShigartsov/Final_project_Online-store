@@ -3,8 +3,9 @@ import {
   Form, Input, Button
 } from 'antd';
 import { connect } from 'react-redux';
-import { updateCustomer } from '../../store/customer/middleware';
-import { setHideModal } from '../../store/dashBoardModal/middleware';
+import PropTypes from 'prop-types';
+import { updateCustomer } from '../../../store/customer/middleware';
+import { setHideModal } from '../../../store/dashBoardModal/middleware';
 
 const FormInfoChange = connect(null, { setHideModal })(({
   setInfo, setHideModal
@@ -58,4 +59,8 @@ const FormInfoChange = connect(null, { setHideModal })(({
     </Form>
   );
 })
+FormInfoChange.propTypes = {
+  setInfo: PropTypes.func.isRequired,
+  setHideModal: PropTypes.bool,
+}
 export default FormInfoChange;

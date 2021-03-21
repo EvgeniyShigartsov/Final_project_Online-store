@@ -6,8 +6,9 @@ import {
   Button,
 } from 'antd';
 import { connect } from 'react-redux';
-import { setHideModal } from '../../store/dashBoardModal/middleware';
-import { changePassword } from '../../store/customer/middleware';
+import PropTypes from 'prop-types';
+import { setHideModal } from '../../../store/dashBoardModal/middleware';
+import { changePassword } from '../../../store/customer/middleware';
 
 const formItemLayout = {
   labelCol: {
@@ -119,4 +120,7 @@ const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
   );
 })
 
+PasswordChange.propTypes = {
+  setHideModal: PropTypes.func
+}
 export default PasswordChange;

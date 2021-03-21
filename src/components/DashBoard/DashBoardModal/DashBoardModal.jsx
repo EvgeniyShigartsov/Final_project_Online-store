@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
-import { Modal as AntModal } from 'antd';
+import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
-import {setHideModal} from '../../store/dashBoardModal/middleware';
-import PasswordChange from './PasswordChange';
-import FormInfoChange from './FormInfoChange';
+import PropTypes from 'prop-types';
+import { setHideModal } from '../../../store/dashBoardModal/middleware';
+import PasswordChange from '../FormPasswordChange/FormPasswordChange';
+import FormInfoChange from '../FormInfoChange/FormInfoChange';
+import StyledAntModal from './DashBoardModalStyled';
 
 const mapStateToProps = (state) => ({
   show: state.dashBoardModal.show,
@@ -48,10 +46,11 @@ const Modal = connect(mapStateToProps, { setHideModal })(({
     </StyledAntModal>
   );
 })
+Modal.propTypes = {
+  show: PropTypes.bool,
+  setHideModal: PropTypes.func,
+  formId: PropTypes.string,
+  setInfo: PropTypes.func.isRequired,
+}
 
-const StyledAntModal = styled(AntModal)`
-  .ant-modal-body{
-    padding-bottom: 0px !important;
-  }
-`;
 export default Modal;
