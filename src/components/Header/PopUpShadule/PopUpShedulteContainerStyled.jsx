@@ -9,7 +9,7 @@ export const PopUpBlock = styled(motion.div)`
     position: absolute;
     top: 0%;
     height: 250px;
-    width: 350px;
+    width: 320px;
     transform: translateX(-50%);
     background-color: white;
     z-index: 25;

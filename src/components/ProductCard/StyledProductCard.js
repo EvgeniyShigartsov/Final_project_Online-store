@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { forTablet } from '../../styles/mediaBreakPoints'
+import { forDesktop, forTablet } from '../../styles/mediaBreakPoints'
 
 export const CardItem = styled.div` 
   position: relative;
@@ -8,8 +8,12 @@ export const CardItem = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   max-width: 235px;
-  padding: 10px 15px;
+  padding: 5px 8px;
   border: 1px solid lightskyblue;
+
+  @media(min-width: ${forTablet.minWidth}px) {
+    padding: 10px 15px;
+  }
 `
 
 export const ImageWrapper = styled.div`
@@ -35,13 +39,12 @@ export const ReviewsBox = styled.div`
 `
 export const RatingBox = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
 
-
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    flex-direction: column;
+  @media(min-width: ${forDesktop.minWidth}px){
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
   }
 `
 
@@ -49,12 +52,9 @@ export const CardReviews = styled.span`
   color: #8C8C8C;
   font-size: 12px;
   margin-top: 4px;
-  margin-left: 9px;
 
-  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    flex-direction: column;
-    align-items: center;
-    margin-left: 0;
+  @media(min-width: ${forDesktop.minWidth}px){
+    margin-left: 5px;
   }
 `
 
@@ -64,6 +64,7 @@ export const CardTitle = styled.h3`
   font-weight: 500;
   margin: 10px 0;
   text-align: left;
+  min-height: 35px;
 
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 13px;
@@ -73,9 +74,15 @@ export const CardTitle = styled.h3`
 
 export const PurchaseGroup = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
+
+  @media(min-width: ${forDesktop.minWidth}px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `
 export const PriceBox = styled.div`
   display: flex;

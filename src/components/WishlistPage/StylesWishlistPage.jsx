@@ -3,7 +3,7 @@ import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
 export const WishlistBox = styled.div`
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     justify-items: center;
     grid-gap: 10px 15px;
@@ -16,7 +16,4 @@ export const WishlistBox = styled.div`
         grid-template-columns: repeat(4, 1fr);
     }
 `
-export const WishlistItem = styled.div`
-    border: 1px solid tomato;
-    width: 240px;
-`
+export default WishlistBox
