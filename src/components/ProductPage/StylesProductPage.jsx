@@ -28,12 +28,10 @@ export const InformationBox = styled.div`
     @media(min-width: 721px) and (max-width: ${forTablet.maxWidth}px){
         width: 50%;
         padding: 12px 20px;
-        /* background-color: #F5F7FF; */
     }
     @media(min-width: ${forDesktop.minWidth}px){
         width: 60%;
         padding: 12px 20px;
-        /* background-color: #F5F7FF; */
     }
 `
 export const ImageBox = styled.div`

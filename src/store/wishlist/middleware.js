@@ -72,7 +72,6 @@ export const addProductToWishlist = (product) => async (dispatch, getState) => {
     wishitstItems: updatedList,
     wishitstLength: updatedList.length
   }
-  console.log(dataToAdd)
   dispatch(updateWishlistCreator(dataToAdd))
 }
 
