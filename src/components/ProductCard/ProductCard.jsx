@@ -31,7 +31,13 @@ import cutString from '../../utils/cutString';
 import rateCalculator from '../../utils/rateCalculator';
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter';
 
-export const ProductCard = connect(null, { addToCart })(({ productInfo, addToCart }) => {
+export const ProductCard = connect(null, { addToCart })((
+  {
+    productInfo,
+    addToCart,
+    hideBorder
+  }
+) => {
   const {
     name,
     imageUrls,
@@ -45,12 +51,12 @@ export const ProductCard = connect(null, { addToCart })(({ productInfo, addToCar
   const isAvilable = quantity > 0
 
   // string length limitation and translation of the first letter into capital
-  const verifiedTitle = upperCaseFirstLetter(cutString(name, 24))
+  const verifiedTitle = upperCaseFirstLetter(cutString(name, 38))
 
   // getting an average rating and the number of reviews left
   const { reviewsQuantity, rating } = rateCalculator(reviews)
   return (
-    <CardItem>
+    <CardItem hideBorder={hideBorder}>
 
       <Link to={`products/${itemNo}`}>
         <ImageWrapper>

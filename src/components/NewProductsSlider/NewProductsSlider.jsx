@@ -59,6 +59,7 @@ const NewProductsSlider = connect(
           <ProductCard
             key={el.itemNo}
             productInfo={el}
+            hideBorder
           />
         ))}
       </Carousel>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { forDesktop, forTablet } from '../../styles/mediaBreakPoints'
 
 export const CardItem = styled.div` 
@@ -10,6 +10,10 @@ export const CardItem = styled.div`
   max-width: 235px;
   padding: 5px 8px;
   border: 1px solid lightskyblue;
+
+  ${(props) => props.hideBorder && css`
+    border: none;
+  `}
 
   @media(min-width: ${forTablet.minWidth}px) {
     padding: 10px 15px;
@@ -69,9 +73,7 @@ export const CardTitle = styled.h3`
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 13px;
     line-height: 19.5px;
-  }
-  @media(min-width: ${forDesktop.minWidth}px) {
-    min-height: 0;
+    min-height: 40px;
   }
 `
 
