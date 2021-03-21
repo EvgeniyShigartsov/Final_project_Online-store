@@ -10,7 +10,7 @@ export const MainCatalogBillboard = ({ billboardInfo }) => {
   return (
     <StyledMainCatalogBillboard src={img}>
       <StyledMainCatalogBillboardTitle>{title}</StyledMainCatalogBillboardTitle>
-      <StyledMainCatalogBillboardLink href={url}>view all products</StyledMainCatalogBillboardLink>
+      <StyledMainCatalogBillboardLink to={url}>view all products</StyledMainCatalogBillboardLink>
     </StyledMainCatalogBillboard>
   )
 }

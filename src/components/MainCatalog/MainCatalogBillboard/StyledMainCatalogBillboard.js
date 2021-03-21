@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import styled from 'styled-components'
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints'
 
@@ -61,7 +63,7 @@ export const StyledMainCatalogBillboardTitle = styled.h3`
   margin-bottom: 10px;
 `
 
-export const StyledMainCatalogBillboardLink = styled.a`
+export const StyledMainCatalogBillboardLink = styled(Link)`
   position: absolute;
   bottom: 15px;
   left: 50%;
