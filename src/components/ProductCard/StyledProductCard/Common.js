@@ -3,7 +3,6 @@ import { forTablet } from '../../../styles/mediaBreakPoints'
 
 export const StyledCardItem = styled.li`
   position: relative;
-  width: 45vw;
   max-width: 215px;
   padding: 5px 13px;
 

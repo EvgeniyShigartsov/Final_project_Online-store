@@ -7,14 +7,14 @@ export const StyledCardImgWrapper = styled.div`
   align-items: center;
 
   height: 100px;
-  width: 100px;
+  max-width: 100px;
 
   margin: 0 auto;
   margin-bottom: 3px;
 
   @media(min-width: ${forTablet.minWidth}px){
     height: 150px;
-    width: 150px;
+    max-width: 150px;
 
     margin-bottom: 6px;
   }

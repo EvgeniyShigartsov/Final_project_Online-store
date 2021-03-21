@@ -8,22 +8,23 @@ import { forDesktop} from '../../../styles/mediaBreakPoints';
 export const StyledForm = styled(Form)`
   background: #F5F7FF;
   @media(min-width: 592px) {
-    min-width: 220px;
+    min-width: 250px;
     width: 27%;
   } 
   @media(min-width: ${forDesktop.minWidth}px) {
-    min-width: 220px;
+    min-width: 250px;
     width: 20%;
   } 
 `;
 
 export const Wrapper = styled.aside`
     @media(max-width: 592px) {
-      position: absolute;
+      position: fixed;
       top: 0%;
       left: -100%;
       width: 100%;
-      min-height: 100vh;
+      height: 100%;
+      overflow: auto;
       background: #ECECEC;
       transition: all 0.5s ease-out;
       opacity: 0;
@@ -82,16 +83,20 @@ export const CloseBtn = styled.div`
 `;
 
 export const AlignBtn = styled.div`
-  margin: 20px 0;
+  padding: 20px 10px;
   @media(max-width: 592px) {
     width: 100%;
     display: flex;
-    justify-content: center;
+    background: #cbccd4;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    bottom: 0;
   }
   @media(min-width: 592px) {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 `;

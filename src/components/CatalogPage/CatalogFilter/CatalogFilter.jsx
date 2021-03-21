@@ -64,17 +64,6 @@ const CatalogFilter = ({
             <img src={close} alt="close" />
           </CloseBtn>
         </FilterTitle>
-        <AlignBtn>
-          <StyledButton
-            size="xs"
-            shape="round"
-            color="borderGrey"
-            onClick={clearForm}
-          >
-            Clear
-
-          </StyledButton>
-        </AlignBtn>
         <Menu defaultOpenKeys={['brands']} inlineIndent={10} mode="inline">
           <SubMenu key="brands" title="Brand">
             <Form.Item name="brand" noStyle>
@@ -116,7 +105,22 @@ const CatalogFilter = ({
           </SubMenu>
         </Menu>
         <AlignBtn>
-          <StyledButton size="xs" shape="round" htmlType="submit">
+          <StyledButton
+            size="xs"
+            shape="round"
+            color="borderGrey"
+            onClick={clearForm}
+            style={{marginRight: 5}}
+          >
+            Clear
+
+          </StyledButton>
+          <StyledButton
+            size="xs"
+            shape="round"
+            htmlType="submit"
+            style={{marginLeft: 5}}
+          >
             Apply Filtres
           </StyledButton>
         </AlignBtn>
