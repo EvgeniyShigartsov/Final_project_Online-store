@@ -14,7 +14,10 @@ export const NavUserContainer = styled(motion.div)`
     left: 0px;
     width: 200px;
     height: 150px;
-    ul{
+    ul{     
+        a {
+            outline: none;
+        }
         position: relative;
         height: 100%;
         display: flex;
