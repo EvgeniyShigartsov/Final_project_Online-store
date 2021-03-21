@@ -7,10 +7,10 @@ export const CatalogBillboardWrapper = styled.div`
   position: relative;
   z-index: 0;
 
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 
   width: 95%;
   min-width: 15vw;
@@ -60,25 +60,22 @@ export const CatalogBillboardTitle = styled.h3`
   font-weight: 700;
   line-height: 23px;
 
+  margin-top: 10px;
   margin-bottom: 10px;
+
+  @media(min-width: ${forTablet.minWidth}px){
+    margin-top: 140px;
+  }
 `
 
 export const CatalogBillboardLink = styled(Link)`
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
-
   display: inline-block;
-  width: 90%;
-
   color: #fff;
   font-size: 12px;
   text-transform: capitalize;
   text-align: center;
-  cursor: pointer;
 
-  margin-top: 95px;
+  margin-top: 0;
 
   :hover {
     color: #fff;
@@ -87,7 +84,7 @@ export const CatalogBillboardLink = styled(Link)`
 
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 13px;
-    bottom: 30px;
+    margin-top: 110px;
   }
 `
 
