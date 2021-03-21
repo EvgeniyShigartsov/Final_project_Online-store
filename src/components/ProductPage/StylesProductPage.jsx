@@ -75,6 +75,7 @@ export const PriceBox = styled.div`
 export const FavoriteBox = styled.div`
     display: flex;
     align-items: center;
+    margin: 10px 0;
 `
 export const FavoriteText = styled.div`
     font-size: 14px;
