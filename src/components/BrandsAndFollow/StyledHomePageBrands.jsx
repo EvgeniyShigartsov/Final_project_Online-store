@@ -5,7 +5,7 @@ const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 15px 0;
-  min-width: 320px;
+  min-width: 300px;
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     margin: 18px 0;
   }  
