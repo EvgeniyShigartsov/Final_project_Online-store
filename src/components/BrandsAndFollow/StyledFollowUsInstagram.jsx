@@ -3,11 +3,9 @@ import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
 const Flex = styled.div`
   display: none;
-  // Tablet
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     display: none;
   }
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +13,6 @@ const Flex = styled.div`
   }
 `
 const BlockTitle = styled.p`
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     display: flex;
     justify-content: start;
@@ -26,18 +23,14 @@ const BlockTitle = styled.p`
   }
 `
 const Posts = styled.div`
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
-    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 21px;
   }
 `
 const PostBox = styled.div`
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
-    // display: inline-flex;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -47,8 +40,7 @@ const PostBox = styled.div`
     margin: 0 0 6% 1%;
   }
 `
-const Image = styled.img`
-// Desktop
+const Image = styled.a`
   @media(min-width: ${forDesktop.minWidth}px){
     display: flex;
     overflow: hidden;
@@ -57,11 +49,8 @@ const Image = styled.img`
   }
 `
 const PostContent = styled.p`
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     display: flex;
-    font-style: normal;
-    font-weight: normal;
     font-size: 12px;
     line-height: 15px;
     text-align: center;
@@ -70,7 +59,6 @@ const PostContent = styled.p`
   }
 `
 const PostDate = styled.p`
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     display: flex;
     justify-content: center;

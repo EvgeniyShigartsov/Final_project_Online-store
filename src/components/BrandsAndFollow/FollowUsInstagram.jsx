@@ -38,9 +38,9 @@ export const HomepageFollowUs = () => {
         <Posts className="posts">
           {pictures.map((element) => (
             <PostBox key={Math.random()}>
-              <Image key={Math.random()} src={element} alt="insta-photo" />
-              <PostContent key={Math.random()} as="a" href="https://www.instagram.com/?hl=ru">{content.text}</PostContent>
-              <PostDate key={Math.random()}>{now}</PostDate>
+              <Image href="https://www.instagram.com/?hl=ru"><img src={element} alt="insta" /></Image>
+              <PostContent as="a" href="https://www.instagram.com/?hl=ru">{content.text}</PostContent>
+              <PostDate>{now}</PostDate>
             </PostBox>
           ))}
         </Posts>
