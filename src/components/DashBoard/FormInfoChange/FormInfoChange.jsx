@@ -19,7 +19,7 @@ const FormInfoChange = connect(null, { setHideModal })(({
     }))
   }
   return (
-    <Form name="nest" onFinish={onFinish}>
+    <Form name="nest" onFinish={onFinish} datatest-id="ModalFormInfo">
       <Form.Item
         name="firstName"
         label="First name"
@@ -61,6 +61,6 @@ const FormInfoChange = connect(null, { setHideModal })(({
 })
 FormInfoChange.propTypes = {
   setInfo: PropTypes.func.isRequired,
-  setHideModal: PropTypes.bool,
+  setHideModal: PropTypes.func.isRequired,
 }
 export default FormInfoChange;

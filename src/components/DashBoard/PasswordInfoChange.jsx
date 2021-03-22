@@ -18,9 +18,22 @@ const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info, 
         </p>
       </TextInfo>
       <div>
-        <button type="submit" id="setInfo" onClick={(e) => setShowModal(e.target.id)}>Edit</button>
+        <button
+          type="submit"
+          id="setInfo"
+          data-testid="setInfo"
+          onClick={(e) => setShowModal(e.target.id)}
+        >
+          Edit
+        </button>
         <Modal setInfo={setInfo} title />
-        <button type="submit" id="setPassword" onClick={(e) => setShowModal(e.target.id)}>Change Password</button>
+        <button
+          type="submit"
+          id="setPassword"
+          onClick={(e) => setShowModal(e.target.id)}
+        >
+          Change Password
+        </button>
       </div>
     </div>
   </BlockInfo>
@@ -28,7 +41,7 @@ const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info, 
 
 PasswordInfoChange.propTypes = {
   setShowModal: PropTypes.func,
-  info: PropTypes.instanceOf(Object).isRequired,
-  setInfo: PropTypes.func.isRequired,
+  info: PropTypes.instanceOf(Object),
+  setInfo: PropTypes.func,
 }
 export default PasswordInfoChange;

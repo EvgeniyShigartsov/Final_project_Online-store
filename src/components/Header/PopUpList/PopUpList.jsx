@@ -77,6 +77,6 @@ PopUpList.propTypes = {
   openCloseMenu: PropTypes.func.isRequired,
   checkForLinkOpen: PropTypes.func.isRequired,
   openSlide: PropTypes.instanceOf(Object),
-  hideInput: PropTypes.bool.isRequired
+  hideInput: PropTypes.bool
 }
 export default PopUpList;
