@@ -44,7 +44,7 @@ const CatalogFilter = ({
     setFilter({
       ...refValue,
     })
-    setShowFilter((prev) => !prev)
+    setShowFilter(false)
   };
 
   const clearForm = () => {
@@ -58,7 +58,7 @@ const CatalogFilter = ({
       <Wrapper showFilter={showFilter}>
         <FilterTitle>
           <h3>Filter By</h3>
-          <CloseBtn onClick={() => setShowFilter((prev) => !prev)}>
+          <CloseBtn onClick={() => setShowFilter(false)}>
             <img src={close} alt="close" />
           </CloseBtn>
         </FilterTitle>
