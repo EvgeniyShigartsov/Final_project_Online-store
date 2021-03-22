@@ -6,7 +6,8 @@ import {
   SET_TO_CATALOG,
   SET_CATALOG_PRODUCTS_QUANTITY,
   CLEAN_CATALOG_PRODUCTS,
-  SET_SEARCH_PRODUCTS
+  SET_SEARCH_PRODUCTS,
+  CLEAR_SEARCH_PRODUCTS
 } from './actionType';
 
 export const MODULE_NAME = 'products'
@@ -75,6 +76,11 @@ export const reducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         searchProducts: [...payload]
+      }
+    case CLEAR_SEARCH_PRODUCTS:
+      return {
+        ...state,
+        searchProducts: []
       }
     default:
       return state

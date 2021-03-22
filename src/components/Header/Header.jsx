@@ -128,7 +128,7 @@ const Header = () => {
           isOpen={isOpen}
           openCloseMenu={openCloseMenu}
         />
-        <SearchProducts hideInput={hideInput} />
+        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
 
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />

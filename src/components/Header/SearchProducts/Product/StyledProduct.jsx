@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { forMobile } from '../../../../styles/mediaBreakPoints';
 
 export const ProductWrapper = styled.div`
     display: flex;
@@ -10,6 +11,7 @@ export const ProductWrapper = styled.div`
 `
 
 export const ProductImg = styled.div`
+    min-width: 80px;
     width: 20%;
     padding: 10px;
     & img {
@@ -26,6 +28,13 @@ export const ProductInfo = styled.div`
     text-align: start;
     justify-content: space-between;
     padding: 10px 0
+`
+
+export const ProductDescription = styled.div`
+    font-size: 8px;
+    @media(max-width: ${forMobile.maxWidth}px){
+        display: none;
+    }
 `
 
 export const PriceWrapper = styled.div`

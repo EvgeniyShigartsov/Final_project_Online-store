@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -8,17 +8,17 @@ import {
 import { getSearchProducts } from '../../../store/products/middleware';
 import { CloseList, SearchList } from './StyledSearchProducts';
 import { Product} from './Product/Product';
-import { setSearchProducts } from '../../../store/products/actionCreator';
+import { clearSearchProducts} from '../../../store/products/actionCreator';
 
 const mapStateToProps = (state) => ({
-  products: state.products.searchProducts
+  searchProducts: state.products.searchProducts
 })
 
-const SearchProducts = connect(mapStateToProps, {setSearchProducts, getSearchProducts})(({
-  products,
+const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchProducts})(({
+  searchProducts,
   hideInput,
   getSearchProducts,
-  setSearchProducts
+  clearSearchProducts
 }) => {
   const [search, setSearch] = useState('')
 
@@ -27,31 +27,42 @@ const SearchProducts = connect(mapStateToProps, {setSearchProducts, getSearchPro
     setSearch(value)
     if (value.length > 3) {
       getSearchProducts({query: value})
-    } else setSearchProducts([])
+    } else clearSearchProducts()
   }
 
-  const onFinish = async (e) => {
-    e.preventDefault()
-  }
-
-  const reset = () => {
-    setSearchProducts([])
+  const reset = useCallback(() => {
+    clearSearchProducts()
     setSearch('')
-  }
+  }, [clearSearchProducts])
+
+  const checkProductsLength = Boolean(searchProducts.length)
+
+  useEffect(() => {
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('#search-form') && !hideInput) {
+        reset()
+      }
+    })
+  }, [hideInput, reset])
 
   return (
-    <FormContainer onKeyUp={(e) => ((e.code === 'Escape') && reset())} hideInput={hideInput} onSubmit={onFinish}>
+    <FormContainer
+      id="search-form"
+      onKeyUp={(e) => ((e.code === 'Escape') && reset())}
+      hideInput={hideInput}
+      onSubmit={(e) => e.preventDefault()}
+    >
       <SearchInputBlock>
         <SearchOutlinedStyled />
         <Input value={search} onChange={onChange} name="search" type="text" placeholder="Search for goods" />
-        {!!products.length && (
+        {checkProductsLength && (
         <CloseList onClick={reset}>
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="far" data-icon="times-circle" className="svg-inline--fa fa-times-circle fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z" /></svg>
         </CloseList>
         )}
       </SearchInputBlock>
       <SearchList>
-        {products.map((product, index) => (
+        {searchProducts.map((product, index) => (
           index < 5 && (
           <Product
             reset={reset}
@@ -60,14 +71,14 @@ const SearchProducts = connect(mapStateToProps, {setSearchProducts, getSearchPro
           />
           )
         ))}
-        {!!products.length && <Link style={{display: 'inline-block', padding: '10px 0'}} onClick={reset} to="/catalog">All Products...</Link>}
+        {checkProductsLength && <Link style={{display: 'inline-block', padding: '10px 0', width: '100%'}} onClick={reset} to="/catalog">All Products...</Link>}
       </SearchList>
     </FormContainer>
   )
 })
 
 SearchProducts.propTypes = {
-  hideInput: PropTypes.bool.isRequired
+  hideInput: PropTypes.bool.isRequired,
 }
 
 export default SearchProducts

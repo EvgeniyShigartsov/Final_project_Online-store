@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {
   PriceWrapper,
   ProductCurrentPrice,
+  ProductDescription,
   ProductFullPrice, ProductImg, ProductInfo, ProductWrapper
 } from './StyledProduct'
 import {StarRating} from '../../../StarRating/StarRating';
@@ -21,7 +22,7 @@ export const Product = ({product, reset}) => {
         </ProductImg>
         <ProductInfo>
           <div style={{fontSize: 10}}>{product.name}</div>
-          <div style={{fontSize: 8}}>{product.description}</div>
+          <ProductDescription>{product.description}</ProductDescription>
           <div>
             <StarRating rating={rating} />
             <StyledCardReviews>

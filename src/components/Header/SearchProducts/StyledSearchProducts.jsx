@@ -1,13 +1,18 @@
 import styled from 'styled-components';
+import { forTablet } from '../../../styles/mediaBreakPoints';
 
 export const SearchList = styled.div`
     position: absolute;
     background-color: #FFFFFF;
-    width: 90%;
-    left: 5%;
     z-index: 100000;
+    width: 120%;
     text-align: center;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.1)
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    @media (min-width: ${forTablet.minWidth}px){
+        width: 90%;
+        left: 5%;
+    }
 `
 
 export const SearchProducts = styled.div`
