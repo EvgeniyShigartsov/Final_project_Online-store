@@ -23,7 +23,7 @@ export const HomepageBrands = () => {
     <Container>
       <Flex className="container">
         {brands.map((element) => (
-          <BrandBox key={Math.random()}><Image key={Math.random()} src={element} alt="brand-name" /></BrandBox>))}
+          <BrandBox key={Math.random()}><Image src={element} alt="brand-name" /></BrandBox>))}
       </Flex>
     </Container>
   )

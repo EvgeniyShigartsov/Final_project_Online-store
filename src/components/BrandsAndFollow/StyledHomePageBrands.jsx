@@ -5,12 +5,10 @@ const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 15px 0;
-  min-width: 360px;
-// Tablet
+  min-width: 320px;
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     margin: 18px 0;
   }  
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     align-items: stretch;
     flex-wrap: nowrap;
@@ -30,12 +28,12 @@ const BrandBox = styled.div`
     background-color: #EBEBEB;
     transition: opacity 0.6s;
   }
-// Tablet
+
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     width: calc(100% / 3);
     height: 155px;
   }  
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     height: 145px;
   }
@@ -45,12 +43,12 @@ const Image = styled.img`
   object-fit: contain;
   height: 57%;
   width: 73%;
-// Tablet
+
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     height: 53%;
     width: 63%;
   }  
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     height: 53%;
     width: 88%;
