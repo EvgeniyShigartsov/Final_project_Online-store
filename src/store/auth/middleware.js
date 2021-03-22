@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { DOMAIN } from '../general'
 import { logIn, logOut } from './actionCreator'
@@ -18,9 +19,9 @@ export const authLogIn = (credentials) => (dispatch) => {
 
 export const authLogOut = () => (dispatch) => {
   localStorage.removeItem('token')
-  localStorage.removeItem('wishlist')
+  // localStorage.removeItem('wishlist')
   dispatch(logOut())
-  dispatch(updateWishlistCreator(wishlistInitialState))
+  // dispatch(updateWishlistCreator(wishlistInitialState))
 }
 
 export default authLogIn
