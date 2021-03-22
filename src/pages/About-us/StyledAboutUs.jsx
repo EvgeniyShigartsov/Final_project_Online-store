@@ -9,12 +9,12 @@ const ComponentContainer = styled.div`
 const TitleBox = styled.div`  
   width: 90%;
   margin: 10px auto 15px auto;
-// Tablet
-  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
+
+  @media(min-width: ${forTablet.minWidth}) and (max-width: ${forTablet.maxWidth}px) {
     width: 92%;
     margin: 0 auto 16px auto;
   }
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     max-width: 1200px;
     width: 90%;
@@ -25,7 +25,7 @@ const TitleBox = styled.div`
 const TitleText = styled.div`
   font-size: 22px;
   font-weight: bold;
-  // Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     font-size: 42px;
     font-weight: bold;
@@ -45,13 +45,11 @@ const Section = styled.div`
   width: 100%;
   background-color: ${(props) => (props.colored ? 'black' : 'white')};
 
-// Tablet
-  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
+  @media(min-width: ${forTablet.minWidth}) and (max-width: ${forTablet.maxWidth}px) {
     justify-content: center;
     align-items: center;
   }
 
-// Desktop
   @media(min-width: ${forDesktop.minWidth}px){
     justify-content: center;
     align-items: center;
@@ -62,51 +60,54 @@ const ContentBlock = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.colored ? 'column-reverse' : 'column')};
   color: ${(props) => (props.colored ? 'white' : 'black')};
-// Intermediate point
-  @media(min-width: 650px) and (max-width:750px) {
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 15px 0 10px 0;
+    padding: 39px 5% 48px 5%;
+    
+    @media(min-width: 481px) and (max-width: 700px) {
+      width: 100%;
+      flex-direction: ${(props) => (props.colored ? 'column-reverse' : 'column')};
+      color: ${(props) => (props.colored ? 'white' : 'black')};
+      justify-content: center;
+      align-items: center;
+      padding: 0 0 10px 0;
+    }
   }
-// Tablet
-  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 39px 0 48px 0;
-}
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     max-width: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 50px 5%;
+    padding: 50px 6% 50px 5%;;
   }
 `
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin: 17px 2% 25px 10%;
-// Intermediate point
-  @media(min-width: 650px) and (max-width:750px) {
-    width: 55%;
-    margin-right: ${(props) => (props.colored ? '2%' : '3%')};
-    margin-left: ${(props) => (props.colored ? '0' : '5%')};  
-  }
-// Tablet
-  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
+  width: 80%;
+  margin: 17px 2% 25px 15%;
+  justify-content: center;
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     width: 45%;
-    margin-right: ${(props) => (props.colored ? '5%' : '2%')};
-    margin-left: ${(props) => (props.colored ? '3%' : '5%')};  
+    margin-right: ${(props) => (props.colored ? '3%' : '5%')};
+    margin-left: ${(props) => (props.colored ? '5%' : '3%')};
+  
+    @media(min-width: 481px) and (max-width: 700px) {
+      width: 80%;
+      margin: 17px 3% 25px 7%; 
+    }
   }
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
-    width: 50%;
-    margin-right: ${(props) => (props.colored ? '5%' : '0')};
-    margin-left: ${(props) => (props.colored ? '0' : '5%')};
+    width: 48%;
+    margin-right: ${(props) => (props.colored ? '1%' : '0')};
+    margin-left: ${(props) => (props.colored ? '0' : '10%')};
+    padding-left: 5%;
   }
 `
 const SectionTitle = styled.div`
@@ -115,12 +116,15 @@ const SectionTitle = styled.div`
   width: 90%;
   font-size: 30px;
   margin: 5px 0 13px 0;
-// Intermediate point
-  @media(min-width: 650px) and (max-width:750px) {
-    width: 95%;
-    font-size: 30px;
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+
+    @media(min-width: 481px) and (max-width: 700px) {
+      width: 95%;
+      font-size: 30px;
+    }
   }
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     width: 90%;
     font-size: 32px;
@@ -134,12 +138,16 @@ const SectionContent = styled.div`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 1px;
-// Intermediate point
-  @media(min-width: 650px) and (max-width:750px) {
-    width: 95%;
-    font-size: 12px;
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+  width: 100%;
+
+    @media(min-width: 481px) and (max-width: 700px) {
+      width: 100%;
+      font-size: 14px;
+    }
   }
-// Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     width: 85%;
     font-size: 16px;
@@ -150,22 +158,29 @@ const SectionImg = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 50%;
+  height: 30%;
+  object-fit: cover;
 
-  // Intermediate point
-  @media(min-width: 650px) and (max-width:750px) {
-    height: 95%;
-    width: 37%;
-  }
   // Tablet
-  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
-    height: 90%;
-    width: 40%;
-  }  
-  // Desktop
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+    height: 60%;
+    width: 48%;
+    margin-right: ${(props) => (props.nocolored ? '0' : '7%')};
+    margin-left: ${(props) => (props.nocolored ? '2%' : '0')};
+    padding-left: ${(props) => (props.nocolored ? '2%' : '2%')};
+
+    @media(min-width: 481px) and (max-width: 700px) {
+      height: 50%;
+      width: 100%;
+      padding-left: 0;
+      margin-right: 0;
+    }
+  } 
+
   @media(min-width: ${forDesktop.minWidth}px){
-    width: 40%;
-    height: 100%;
+    width: 48%;
+    height: 60%;
+    padding-left: ${(props) => (props.nocolored ? '2%' : '1%')};
   }
 `
 const Image = styled.img`
@@ -175,26 +190,29 @@ const Image = styled.img`
   flex-direction: row;
   width: ${(props) => (props.first ? '100%' : '50%')};
   height: ${(props) => (props.first ? '100%' : '50%')};
-  // Intermediate point
-  @media(min-width: 650px) and (max-width:750px) {
+  
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     width: 100%;
-    height: 100%;
-  }
-  // Tablet
-  @media(min-width: 751px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 100%;
-    height: 100%;
-  }  
-  // Desktop
+    height: auto;
+    
+    @media(min-width: 481px) and (max-width: 700px) {
+      margin-top: ${(props) => (props.first ? '0' : '15px')};
+      width: ${(props) => (props.first ? '100%' : '50%')};
+      height: ${(props) => (props.first ? '100%' : '50%')};
+      object-fit: cover;
+    }
+  } 
+
  @media(min-width: ${forDesktop.minWidth}px){
-    width: 100%;
-    height: 100%;
+    width: ${(props) => (props.first ? '80%' : '100%')};
+    height: auto;
+    object-fit: ${(props) => (props.first ? 'none' : 'cover')};
   }
 `
 const Img = styled.img` 
   height: 30px;
   width: ${(props) => (props.biggerSize ? '52px' : '30px')};
-  // Desktop
+
   @media(min-width: ${forDesktop.minWidth}px){
     width: ${(props) => (props.biggerSize ? '87px' : '50px')};
     height: 50px;
