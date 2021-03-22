@@ -7,7 +7,6 @@ import {
   RightOutlinedStyled, Logo, CloseOutlinedStyled,
   StyledExceptionLi, Listnavigation
 } from './PopUpListStyled';
-import StyledButton from '../../common/Buttons/StyledButton';
 
 const PopUpList = ({
   openSlide, isOpen, openCloseMenu, setIsOpen, hideList, checkForLinkOpen
@@ -42,11 +41,11 @@ const PopUpList = ({
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/products/739628"><h5>Products</h5></Link>
+        <Link to="/catalog"><h5>Catalog</h5></Link>
         <RightOutlinedStyled />
       </li>
       <StyledExceptionLi>
-        <StyledButton color="borderBlue" size="xs" shape="round">Our Deals</StyledButton>
+        <Link to="/wishlist"><h5>Wishlist</h5></Link>
       </StyledExceptionLi>
     </Listnavigation>
   </PopUpContainer>
