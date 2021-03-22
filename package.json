@@ -14,6 +14,7 @@
         "axios": "^0.21.1",
         "framer-motion": "^3.10.3",
         "node-sass": "^4.14.1",
+        "patch-package": "^6.4.7",
         "prop-types": "^15.7.2",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
@@ -31,7 +32,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "postinstall": "patch-package"
     },
     "eslintConfig": {
         "parser": "babel-eslint",
