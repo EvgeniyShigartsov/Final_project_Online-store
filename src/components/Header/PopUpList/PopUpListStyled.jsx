@@ -19,7 +19,8 @@ export const PopUpContainer = styled(motion.div)`
     width: 100%;
     flex-direction: column;
     @media(min-width: ${forDesktop.minWidth}px) {
-      min-width: 80%;
+      width: 90%;
+      height: 100%;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -36,7 +37,8 @@ export const PopUpContainer = styled(motion.div)`
       h5{
         font-size: 20px;
         @media(min-width: ${forDesktop.minWidth}px) {
-          font-size: 11px;
+          font-size: 14px;
+          font-weight: 600;
         }
       }
     }
@@ -44,8 +46,6 @@ export const PopUpContainer = styled(motion.div)`
    @media(min-width: ${forDesktop.minWidth}px) {
       position: static;
       width: 100%;
-      display: flex;
-      align-items: center;
       ${(props) => !props.isOpen && css`
         clip-path: circle(2200px at 40px 40px) !important;
       `}
@@ -61,11 +61,18 @@ export const PopUpContainer = styled(motion.div)`
   }
   
 `;
-export const StyledExceptionLi = styled.li`
-  margin-bottom: 20px;
+export const ExceptionLi = styled.li`
   @media(min-width: ${forDesktop.minWidth}px) {
-    margin-bottom: 0px;
+    padding-left: 65px !important;
   }
+`;
+export const TechTag = styled.h1`
+  position: absolute;
+  top: 30px;
+  left: 66px;
+  font-size: 25px;
+  color: #0157fe;
+  font-weight: 500;
 `;
 export const HeaderOfPopUp = styled.div`
   position: relative;

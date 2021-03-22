@@ -5,10 +5,9 @@ import { connect } from 'react-redux';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
   RightOutlinedStyled, CloseOutlinedStyled,
-  StyledExceptionLi, Listnavigation
+  Listnavigation, ExceptionLi, TechTag
 } from './PopUpListStyled';
-import StyledButton from '../../common/Buttons/StyledButton';
-import LogoDesktop from '../Utils/LogoDesktop';
+import LogoBurger from '../Utils/LogoDesktop';
 
 const mapStateToProps = (state) => ({
   isLogin: state.auth.isLogin
@@ -30,27 +29,36 @@ const PopUpList = connect(mapStateToProps)(({
     animate={isOpen ? 'show' : 'hidden'}
   >
     <HeaderOfPopUp>
-      <LogoDesktop />
+      <TechTag>TechStore</TechTag>
+      <LogoBurger />
       <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
       <Line />
     </HeaderOfPopUp>
     <Listnavigation onClick={(e) => checkForLinkOpen(e)}>
+      <ExceptionLi>
+        <Link to="/desctops">
+          <h5>Desctops</h5>
+        </Link>
+        <RightOutlinedStyled />
+      </ExceptionLi>
       <li>
-        <Link to="/">
-          <h5>Homepage</h5>
+        <Link to="/gamingMonitors">
+          <h5>Gaming Monitors</h5>
         </Link>
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/signup"><h5>Sign Up</h5></Link>
+        <Link to="/laptops">
+          <h5>Laptops</h5>
+        </Link>
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/signin"><h5>Sign In</h5></Link>
+        <Link to="/tablets"><h5>Tablets</h5></Link>
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/aboutus"><h5>About Us</h5></Link>
+        <Link to="/catalog"><h5>Catalog</h5></Link>
         <RightOutlinedStyled />
       </li>
       {isLogin && (
@@ -59,13 +67,6 @@ const PopUpList = connect(mapStateToProps)(({
         <RightOutlinedStyled />
       </li>
       )}
-      <li>
-        <Link to="/catalog"><h5>Catalog</h5></Link>
-        <RightOutlinedStyled />
-      </li>
-      <StyledExceptionLi>
-        <StyledButton color="borderBlue" size="xs" shape="round">Our Deals</StyledButton>
-      </StyledExceptionLi>
     </Listnavigation>
   </PopUpContainer>
 ))

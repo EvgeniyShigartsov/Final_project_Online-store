@@ -22,7 +22,7 @@ import {
   ShaduleArrowContainer, ShoppingCartOutlinedStyled,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
   CircleMobile, MenuOutlinedStyled, SearchOutlinedStyled,
-  CloseOutlinedFormStyled
+  CloseOutlinedFormStyled, TechTag
 } from './HeaderStyled';
 
 const Header = () => {
@@ -109,6 +109,7 @@ const Header = () => {
         <Link to="/" style={{outline: 'none', paddingRight: '20px'}}>
           <CircleDesktop>
             <LogoDesktop />
+            <TechTag>Tech Store</TechTag>
           </CircleDesktop>
         </Link>
         <PopUpList

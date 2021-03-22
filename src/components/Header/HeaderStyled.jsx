@@ -133,6 +133,7 @@ export const FormContainer = styled.form`
   }
   @media(min-width: ${forDesktop.minWidth}px) {
     flex: 100;
+    padding-left: 50px;
     ${(props) => props.hideInput && css`
         display: none;
     `}
@@ -150,6 +151,15 @@ export const SearchInputBlock = styled.div`
   @media(min-width: ${forDesktop.minWidth}px) {
     background: #EBEBEB;
   }
+`;
+export const TechTag = styled.h1`
+  position: absolute;
+  top: 0px;
+  left: 83px;
+  z-index: 1999;
+  font-size: 20px;
+  color: #0157fe;
+  font-weight: 500;
 `;
 export const Input = styled.input`
   border: none;
@@ -173,6 +183,7 @@ export const CloseOutlinedFormStyled = styled(CloseOutlined)`
     color: black;
     font-size: 22px;
     padding-left: 20px;
+    padding-top: 2.5px;
   }
 `;
 export const RelativePosUserPopUp = styled.div`
