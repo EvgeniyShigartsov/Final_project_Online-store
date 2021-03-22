@@ -59,6 +59,7 @@ export const CardReviews = styled.span`
 
   @media(min-width: ${forDesktop.minWidth}px){
     margin-left: 5px;
+    margin-top: 0;
   }
 `
 
