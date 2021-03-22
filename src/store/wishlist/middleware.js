@@ -52,6 +52,8 @@ export const setWishlist = () => async (dispatch, getState) => {
     wishitstLength: itemsToSet.length
   }
   dispatch(updateWishlistCreator(dataToAdd))
+
+  console.log(dataToAdd)
 }
 
 export const addProductToWishlist = (product) => async (dispatch, getState) => {
@@ -108,12 +110,11 @@ export const removeProductFromWishlist = (product) => async (dispatch, getState)
 }
 
 export const compareLSItemsAndDBItems = () => async (dispatch) => {
-  const { data, status } = getItemsFromDB()
+  const LSItems = getParsedListFromLS()
+  const { data, status } = await getItemsFromDB()
   const DBItems = []
   if (data && status === 200) DBItems.push(...data.products)
 
-  const LSItems = getParsedListFromLS()
-
-  console.log(DBItems)
-  console.log(LSItems)
+  const AllItems = [...LSItems, ...DBItems]
+  console.log(AllItems)
 }

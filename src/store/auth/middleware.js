@@ -1,6 +1,8 @@
 import axios from 'axios'
-import { logIn, logOut } from './actionCreator'
 import { DOMAIN } from '../general'
+import { logIn, logOut } from './actionCreator'
+import updateWishlistCreator from '../wishlist/actionCreator'
+import { initialState as wishlistInitialState} from '../wishlist/reducer'
 
 export const authLogIn = (credentials) => (dispatch) => {
   const res = axios.post(`${DOMAIN}/customers/login`, credentials)
@@ -16,7 +18,9 @@ export const authLogIn = (credentials) => (dispatch) => {
 
 export const authLogOut = () => (dispatch) => {
   localStorage.removeItem('token')
+  localStorage.removeItem('wishlist')
   dispatch(logOut())
+  dispatch(updateWishlistCreator(wishlistInitialState))
 }
 
 export default authLogIn
