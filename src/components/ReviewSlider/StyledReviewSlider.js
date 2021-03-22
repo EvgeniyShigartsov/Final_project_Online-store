@@ -1,16 +1,6 @@
 import styled from 'styled-components'
 import { forTablet, forMobile } from '../../styles/mediaBreakPoints'
 
-// const ContentStyle = styled.div`
-//   height: 310px;
-//   font-size: 18px;
-//   color: #000000;
-//   line-height: 27px;
-//   text-align: left;
-//   background: #F5F7FF;
-//   border: 1px solid #000000;
-// `;
-
 export const RoundDots = styled.div`
   position: relative;
   width: 15px;
@@ -41,6 +31,9 @@ export const ReviewTextWrap = styled.div`
     font-size: 14px;
     line-height: 20px;
   };
+  @media(min-width: 993px) and (max-width: 1024px) {
+    width: 800px;
+  }
   @media(max-width: ${forMobile.maxWidth}px){
     width: 300px;
     font-size: 12px;

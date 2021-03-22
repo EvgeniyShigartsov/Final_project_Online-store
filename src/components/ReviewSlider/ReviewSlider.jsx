@@ -8,13 +8,13 @@ import ReviewWrapper, {
   RoundDots, ReviewTextWrap, ReviewIcon, ReviewText, ReviewAuthor
 } from './StyledReviewSlider'
 import bracketsIcon from '../../images/brackets.png'
-// import ContentStyle from './StyledReviewSlider'
 
 const contentStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   height: '300px',
+  marginTop: '35px',
   color: '#000000',
   fontSize: '18px',
   lineHeight: '27px',
