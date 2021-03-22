@@ -12,7 +12,7 @@ import {
   CloseBtn, AlignBtn, AllBrandsTitle,
   StyledCheckbox,
   GridFilterPart, ContainerBrandsImg, WishList, NoWishItem,
-  WishItem, ContainerImage
+  WishItem, ContainerImage, GlobalStyle
 } from './StylesCatalogfilter';
 import {checkFormValues} from '../../../utils/checkFormValues';
 // img
@@ -57,6 +57,7 @@ const CatalogFilter = ({
 
   return (
     <StyledForm form={form} {...layout} onFinish={onFinish}>
+      <GlobalStyle showFilter={showFilter} />
       <Wrapper showFilter={showFilter}>
         <FilterTitle>
           <h3>Filter By</h3>
@@ -110,7 +111,7 @@ const CatalogFilter = ({
             shape="round"
             color="borderGrey"
             onClick={clearForm}
-            style={{marginRight: 5}}
+            style={{margin: 10}}
           >
             Clear
 
@@ -119,7 +120,7 @@ const CatalogFilter = ({
             size="xs"
             shape="round"
             htmlType="submit"
-            style={{marginLeft: 5}}
+            style={{margin: 10}}
           >
             Apply Filtres
           </StyledButton>

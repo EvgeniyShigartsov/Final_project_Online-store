@@ -1,9 +1,15 @@
-import styled, {css} from 'styled-components';
+import styled, {css, createGlobalStyle} from 'styled-components';
 import {
   Form,
   Checkbox
 } from 'antd';
 import { forDesktop} from '../../../styles/mediaBreakPoints';
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    ${({showFilter}) => showFilter && css`overflow: hidden`}
+  }
+`
 
 export const StyledForm = styled(Form)`
   background: #F5F7FF;
@@ -23,7 +29,7 @@ export const Wrapper = styled.aside`
       top: 0%;
       left: -100%;
       width: 100%;
-      height: 100%;
+      height: calc(100% - 80px);
       overflow: auto;
       background: #ECECEC;
       transition: all 0.5s ease-out;
@@ -83,12 +89,12 @@ export const CloseBtn = styled.div`
 `;
 
 export const AlignBtn = styled.div`
-  padding: 20px 10px;
+  padding: 10px;
   @media(max-width: 592px) {
+    background: #cbccd4;
     width: 100%;
     display: flex;
-    background: #cbccd4;
-    justify-content: space-between;
+    justify-content: space-around;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -96,7 +102,8 @@ export const AlignBtn = styled.div`
   @media(min-width: 592px) {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
   }
 `;

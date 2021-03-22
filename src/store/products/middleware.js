@@ -5,7 +5,8 @@ import {
   updateProduct,
   setProductsToCatalog,
   setCatalogProductsQuantity,
-  cleanCatalogProducts
+  cleanCatalogProducts,
+  setSearchProducts
 } from './actionCreator';
 import { headers } from '../headers';
 
@@ -96,11 +97,11 @@ export const getProductsToCatalog = (param) => (dispatch) => {
   return res
 }
 
-export const getSearchProducts = (searchPhrases) => {
+export const getSearchProducts = (searchPhrases) => (dispatch) => {
   axios
     .post('/products/search', searchPhrases)
-    .then((products) => {
-      console.log(products)
+    .then(({data}) => {
+      dispatch(setSearchProducts(data))
     })
     .catch((err) => err);
 }
