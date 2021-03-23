@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import shop from '../../images/about-us-page/computer-shop.png'
 import logoIcon from '../../images/about-us-page/logo-icon.png'
 import keyboard from '../../images/about-us-page/keyboard.png'
@@ -60,12 +59,3 @@ const data = [
 ]
 
 export default data;
-data.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  content: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  biggerSize: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
-}

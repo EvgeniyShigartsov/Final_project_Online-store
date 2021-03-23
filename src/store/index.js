@@ -1,12 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import {
-  persistStore,
-  persistReducer
-} from 'redux-persist'
-// import storage from 'redux-persist/lib/storage'
-// import { persistStore, persistReducer } from 'redux-persist'
+import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { reducer as authReducer } from './auth/reducer';
 import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
