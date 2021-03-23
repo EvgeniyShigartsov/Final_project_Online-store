@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { createRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 import {
   Checkbox, InputNumber,
@@ -38,8 +38,6 @@ const CatalogFilter = ({
 }) => {
   const [form] = Form.useForm();
 
-  const menu = createRef()
-
   const onFinish = (values) => {
     if (!Object.keys(values).length) return
     const refValue = checkFormValues(values);
@@ -65,7 +63,7 @@ const CatalogFilter = ({
           </CloseBtn>
         </FilterTitle>
         <Menu defaultOpenKeys={['сategories']} inlineIndent={10} mode="inline">
-          <SubMenu ref={menu} key="сategories" title="Сategories">
+          <SubMenu key="сategories" title="Сategories">
             <Form.Item name="categories" noStyle>
               <Checkbox.Group>
                 {categories.map(({value, title}) => (
