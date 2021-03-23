@@ -17,7 +17,7 @@ export const Product = ({product, reset}) => {
     <Link onClick={reset} to={`/products/${product.itemNo}`}>
       <ProductWrapper>
         <ProductImg>
-          <img src={product.imageUrls[0]} alt="IMG" />
+          <img src={product.imageUrls[0]} alt="Product IMG" />
         </ProductImg>
         <ProductInfo>
           <div style={{fontSize: 10}}>{product.name}</div>
