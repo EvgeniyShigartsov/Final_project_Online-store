@@ -110,11 +110,49 @@ export const removeProductFromWishlist = (product) => async (dispatch, getState)
 }
 
 export const compareLSItemsAndDBItems = () => async (dispatch) => {
-  const LSItems = getParsedListFromLS()
   const { data, status } = await getItemsFromDB()
-  const DBItems = []
-  if (data && status === 200) DBItems.push(...data.products)
+  const itemsLS = getParsedListFromLS()
+  const itemsDB = []
+  if (data && status === 200) itemsDB.push(...data.products)
+  const allItems = [...itemsLS, ...itemsDB]
+  
+  const uniqueList = []
+  allItems.forEach((el) => {
+    const check = Boolean(uniqueList.find((item) => item.itemNo === el.itemNo))
+    if (!check) uniqueList.push(el)
+  })
 
-  const AllItems = [...LSItems, ...DBItems]
-  console.log(AllItems)
+  const dataToAdd = {
+    wishitstItems: uniqueList,
+    wishitstLength: uniqueList.length
+  }
+  dispatch(updateWishlistCreator(dataToAdd))
+
+  const diff = []
+  itemsLS.forEach((el) => {
+    const check = Boolean(itemsDB.find((item) => item.itemNo === el.itemNo))
+    if (!check) diff.push(el)
+  })
+
+  console.log(diff)
+  const headers = getHeaders()
+
+  // diff.forEach(async (el, i) => {
+  //   await axios.put(`${BASE_ENDPOINT}/${el._id}`, null, { headers })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err.response))
+  //   console.log(i)
+  // })
+
+  let timeout = 500
+  diff.forEach((el, i) => {
+    setTimeout(() => {
+      axios.put(`${BASE_ENDPOINT}/${el._id}`, null, { headers })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err.response))
+    }, timeout)
+
+    timeout += 500
+    console.log(i)
+  })
 }
