@@ -43,7 +43,7 @@ export const MyDash = styled.aside`
 export const WrapperBlocks = styled.div`
   display: flex;
   flex-direction: column;
-  @media(min-width: ${forTablet.minWidth}px) {
+  @media(min-width: 600px) {
     align-items: center;
     padding-bottom: 2px;
     border-top: 0px solid #CCCC;
@@ -61,9 +61,6 @@ export const WrapperBlocks = styled.div`
 export const RowBlocks = styled.div`
   display: flex;
   flex-direction: column;
-  @media(min-width: ${forTablet.minWidth}px) {
-    flex-direction: row;
-  }
 `;
 export const BlockInfo = styled.div`
   padding: 20px 20px 20px 0px;

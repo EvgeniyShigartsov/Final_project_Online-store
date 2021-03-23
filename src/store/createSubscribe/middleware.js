@@ -12,12 +12,10 @@ const createNewSubscribe = (newSubscriber) => async (dispatch) => {
 
   axios.post(BASE_ENDPOINT, newSubscriber, { headers })
     .then((response) => {
-      console.log(response);
       dispatch(createSubscribeSuccess(response.data))
       return response
     })
     .catch((err) => {
-      console.log(err.response)
       dispatch(createSubscribeError(err.response))
       return err.response
     })
