@@ -24,12 +24,10 @@ test('App render test', () => {
   });
 
   render(
-    <Router>
     <Provider store={store}>
       <Router>
         <App />
       </Router>
     </Provider>
-    </Router>
   )
 })
