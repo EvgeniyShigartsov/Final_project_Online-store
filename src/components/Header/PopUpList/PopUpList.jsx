@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
   RightOutlinedStyled, CloseOutlinedStyled,
@@ -9,13 +8,9 @@ import {
 } from './PopUpListStyled';
 import LogoBurger from '../Utils/LogoDesktop';
 
-const mapStateToProps = (state) => ({
-  isLogin: state.auth.isLogin
-})
-
-const PopUpList = connect(mapStateToProps)(({
+const PopUpList = ({
   openSlide, isOpen, openCloseMenu, setIsOpen,
-  hideList, checkForLinkOpen, isLogin,
+  hideList, checkForLinkOpen,
   hideInput
 }) => (
 
@@ -29,7 +24,7 @@ const PopUpList = connect(mapStateToProps)(({
     animate={isOpen ? 'show' : 'hidden'}
   >
     <HeaderOfPopUp>
-      <TechTag>TechStore</TechTag>
+      <TechTag>Tech Store</TechTag>
       <LogoBurger />
       <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
       <Line />
@@ -61,22 +56,19 @@ const PopUpList = connect(mapStateToProps)(({
         <Link to="/catalog"><h5>Catalog</h5></Link>
         <RightOutlinedStyled />
       </li>
-      {isLogin && (
       <li>
-        <Link to="/dashboard"><h5>Dashboard</h5></Link>
-        <RightOutlinedStyled />
+        <Link to="/wishlist"><h5>Wishlist</h5></Link>
       </li>
-      )}
     </Listnavigation>
   </PopUpContainer>
-))
+)
 PopUpList.propTypes = {
   hideList: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   openCloseMenu: PropTypes.func.isRequired,
   checkForLinkOpen: PropTypes.func.isRequired,
-  openSlide: PropTypes.instanceOf(Object),
-  hideInput: PropTypes.bool
+  openSlide: PropTypes.instanceOf(Object).isRequired,
+  hideInput: PropTypes.bool.isRequired
 }
 export default PopUpList;

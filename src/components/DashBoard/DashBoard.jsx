@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Container } from '../common/Container'
-import { getCustomer } from '../../store/customer/middleware'
+import { getCustomer } from '../../store/customer/middleware';
 import Subscribe from './Subscribed/Subscribe';
 import {
   AccountInfo, MyDash, WrapperBlocks, RowBlocks

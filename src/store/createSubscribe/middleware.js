@@ -1,14 +1,16 @@
 import axios from 'axios'
 import { createSubscribe, createSubscribeSuccess, createSubscribeError } from './actionCreator'
+import { DOMAIN, getHeaders } from '../general'
 
-const headers = {
-  Autorization: localStorage.getItem('token'),
-  'Content-Type': 'application/json'
-}
+const BASE_ENDPOINT = `${DOMAIN}/subscribers`;
 
 const createNewSubscribe = (newSubscriber) => async (dispatch) => {
   dispatch(createSubscribe());
-  const result = axios.post('/subscribers', newSubscriber, {headers})
+  const headers = getHeaders();
+  const result = axios.post(BASE_ENDPOINT, newSubscriber, {headers})
+  dispatch(createSubscribe())
+
+  axios.post(BASE_ENDPOINT, newSubscriber, { headers })
     .then((response) => {
       console.log(response);
       dispatch(createSubscribeSuccess(response.data))
@@ -22,8 +24,9 @@ const createNewSubscribe = (newSubscriber) => async (dispatch) => {
   return result
 }
 export const getSubscriber = (email) => {
+  const headers = getHeaders();
   const result = axios
-    .get(`/subscribers/${email}`, {headers})
+    .get(`${BASE_ENDPOINT}/${email}`, {headers})
     .then((data) => data)
     .catch((err) => err.response);
   return result

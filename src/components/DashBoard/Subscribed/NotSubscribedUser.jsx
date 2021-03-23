@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { letterHtml, letterSubject } from '../../Footer/footer-components/footer-config/letterConfig';
+import { letterHtml, letterSubject } from '../../../store/general';
 import createNewSubscribe from '../../../store/createSubscribe/middleware';
 import StyledSubscribedBlock from './StyledNotSubscribedUser';
 

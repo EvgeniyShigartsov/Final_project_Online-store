@@ -1,9 +1,8 @@
-/* eslint-disable no-extra-boolean-cast */
-import axios from 'axios'
-import { message } from 'antd'
-import { getHeaders } from '../headers'
+import axios from 'axios';
+import { message } from 'antd';
+import { DOMAIN, getHeaders } from '../general';
 
-const BASE_ENDPOINT = '/customers'
+const BASE_ENDPOINT = `${DOMAIN}/customers`;
 
 export const createCustomer = (credentials, history) => {
   axios.post(BASE_ENDPOINT, credentials)
@@ -14,6 +13,7 @@ export const createCustomer = (credentials, history) => {
       }
     })
     .catch((error) => {
+      console.log(error.response)
       if (error.response) {
         const requestMessage = error.response.data.message
         message.error(`Error: ${requestMessage}`)
