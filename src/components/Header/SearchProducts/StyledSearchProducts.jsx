@@ -15,10 +15,6 @@ export const SearchList = styled.div`
     }
 `
 
-export const SearchProducts = styled.div`
-
-`
-
 export const CloseList = styled.div`
     position: absolute;
     right: 0;
@@ -26,7 +22,13 @@ export const CloseList = styled.div`
     height: 30px;
     border-radius: 50%;
     transform: translateX(-10px);
+    & path{
+        transition: all 0.3s linear;
+    }
     &:hover{
         cursor: pointer;
+        & path {
+            fill: black;
+        }
     }
 `

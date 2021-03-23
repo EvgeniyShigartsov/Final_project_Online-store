@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -9,8 +8,8 @@ import {
   ProductFullPrice, ProductImg, ProductInfo, ProductWrapper
 } from './StyledProduct'
 import {StarRating} from '../../../StarRating/StarRating';
-import { StyledCardReviews } from '../../../ProductCard/StyledProductCard/Common';
 import rateCalculator from '../../../../utils/rateCalculator';
+import { CardReviews, RatingBox } from '../../../ProductCard/StyledProductCard';
 
 export const Product = ({product, reset}) => {
   const { reviewsQuantity, rating } = rateCalculator(product.reviews)
@@ -23,14 +22,14 @@ export const Product = ({product, reset}) => {
         <ProductInfo>
           <div style={{fontSize: 10}}>{product.name}</div>
           <ProductDescription>{product.description}</ProductDescription>
-          <div>
+          <RatingBox>
             <StarRating rating={rating} />
-            <StyledCardReviews>
+            <CardReviews>
               Reviews (
               {reviewsQuantity}
               )
-            </StyledCardReviews>
-          </div>
+            </CardReviews>
+          </RatingBox>
         </ProductInfo>
         <PriceWrapper>
           <ProductFullPrice>{product.previousPrice}</ProductFullPrice>
