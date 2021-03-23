@@ -16,7 +16,6 @@ const TitleBox = styled.div`
   }
 
   @media(min-width: ${forDesktop.minWidth}px){
-    max-width: 1200px;
     width: 90%;
     margin: 20px auto;
     padding: 0 1%;
@@ -78,7 +77,6 @@ const ContentBlock = styled.div`
   }
 
   @media(min-width: ${forDesktop.minWidth}px){
-    max-width: 1200px;
     flex-direction: row;
     justify-content: center;
     align-items: center;

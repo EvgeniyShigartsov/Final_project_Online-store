@@ -4,12 +4,15 @@ import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
+  min-height: 465px;
   margin: 15px 0;
   min-width: 300px;
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     margin: 18px 0;
+    min-height: 450px;
   }  
   @media(min-width: ${forDesktop.minWidth}px){
+    min-height: 145px;
     align-items: stretch;
     flex-wrap: nowrap;
     flex-grow: 1;
@@ -22,7 +25,6 @@ const BrandBox = styled.div`
   justify-content: center;
   align-items: center;
   background-size: cover;
-  height: 172px;
   width: calc(100% / 2);
   &:hover{
     background-color: #EBEBEB;
@@ -31,12 +33,7 @@ const BrandBox = styled.div`
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     width: calc(100% / 3);
-    height: 155px;
   }  
-
-  @media(min-width: ${forDesktop.minWidth}px){
-    height: 145px;
-  }
 `
 const Image = styled.img`
   display: flex;
