@@ -30,10 +30,7 @@ const getItemsFromDB = () => {
   const headers = getHeaders()
   return axios.get(BASE_ENDPOINT, { headers })
     .then((response) => response)
-    .catch((err) => {
-      console.log(err.response)
-      return err.response
-    })
+    .catch((err) => console.log(err.response))
 }
 
 export const setWishlist = () => async (dispatch, getState) => {
@@ -52,8 +49,6 @@ export const setWishlist = () => async (dispatch, getState) => {
     wishitstLength: itemsToSet.length
   }
   dispatch(updateWishlistCreator(dataToAdd))
-
-  console.log(dataToAdd)
 }
 
 export const addProductToWishlist = (product) => async (dispatch, getState) => {
@@ -121,38 +116,17 @@ export const compareLSItemsAndDBItems = () => async (dispatch) => {
     const check = Boolean(uniqueList.find((item) => item.itemNo === el.itemNo))
     if (!check) uniqueList.push(el)
   })
-
   const dataToAdd = {
     wishitstItems: uniqueList,
     wishitstLength: uniqueList.length
   }
   dispatch(updateWishlistCreator(dataToAdd))
 
-  const diff = []
-  itemsLS.forEach((el) => {
-    const check = Boolean(itemsDB.find((item) => item.itemNo === el.itemNo))
-    if (!check) diff.push(el)
-  })
-
-  console.log(diff)
+  const updatedItems = {
+    products: uniqueList
+  }
   const headers = getHeaders()
-
-  // diff.forEach(async (el, i) => {
-  //   await axios.put(`${BASE_ENDPOINT}/${el._id}`, null, { headers })
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err.response))
-  //   console.log(i)
-  // })
-
-  let timeout = 500
-  diff.forEach((el, i) => {
-    setTimeout(() => {
-      axios.put(`${BASE_ENDPOINT}/${el._id}`, null, { headers })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err.response))
-    }, timeout)
-
-    timeout += 500
-    console.log(i)
-  })
+  axios.put(BASE_ENDPOINT, updatedItems, { headers })
+    .then((res) => res)
+    .catch((err) => console.log(err.response))
 }
