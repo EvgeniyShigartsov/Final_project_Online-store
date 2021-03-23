@@ -1,10 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types';
 import {
   Checkbox, InputNumber,
   Menu, Form
 } from 'antd';
+import { useHistory, useLocation } from 'react-router';
 import close from '../../../images/filter/close.svg';
 import WishlistBox from './WishlistBox/WishlistBox'
 // styles
@@ -34,8 +36,11 @@ const layout = {
 };
 
 const CatalogFilter = ({
-  showFilter, setShowFilter, setFilter
+  showFilter, setShowFilter, setFilter, filter
 }) => {
+  const {pathname} = useLocation()
+  const history = useHistory()
+
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -52,8 +57,34 @@ const CatalogFilter = ({
     setFilter({})
   }
 
+  const fields = useMemo(() => ([
+    {
+      name: 'brand',
+      value: filter?.brand || null
+    },
+    {
+      name: 'categories',
+      value: filter?.categories || null
+    }
+  ]), [filter])
+
+  const checkPathToConfig = useCallback((pathname) => {
+    const [key, value] = pathname.split('/').splice(2)[0].split('=')
+    setFilter((prev) => ({
+      ...prev,
+      [key]: value.split(',')
+    }))
+  }, [setFilter])
+  
+  useEffect(() => {
+    if (pathname !== '/catalog') {
+      checkPathToConfig(pathname)
+      history.push('/catalog')
+    }
+  }, [checkPathToConfig, filter, history, pathname])
+
   return (
-    <StyledForm form={form} {...layout} onFinish={onFinish}>
+    <StyledForm fields={fields} form={form} {...layout} onFinish={onFinish}>
       <Wrapper showFilter={showFilter}>
         <FilterTitle>
           <h3>Filter By</h3>
@@ -148,7 +179,9 @@ const CatalogFilter = ({
     </StyledForm>
   );
 }
+
 CatalogFilter.propTypes = {
+  filter: PropTypes.instanceOf(Object).isRequired,
   showFilter: PropTypes.bool.isRequired,
   setShowFilter: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired
