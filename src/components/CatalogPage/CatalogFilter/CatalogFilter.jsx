@@ -29,8 +29,8 @@ import StyledButton from '../../common/Buttons/StyledButton'
 import {FormMenu} from './FormMenu/FormMenu';
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 6 },
+  wrapperCol: { span: 18 },
 };
 
 const CatalogFilter = ({
@@ -69,7 +69,7 @@ const CatalogFilter = ({
 
   const checkPathToConfig = useCallback((pathname) => {
     const [key, value] = pathname.split('/').splice(2)[0].split('=')
-    if (value.trim()) {
+    if (value) {
       setFilter((prev) => ({
         ...prev,
         [key]: value.split(',')
@@ -94,7 +94,7 @@ const CatalogFilter = ({
             <img src={close} alt="close" />
           </CloseBtn>
         </FilterTitle>
-        <FormMenu />
+        <FormMenu filter={filter} />
         <AlignBtn>
           <StyledButton
             size="sm"
@@ -103,8 +103,7 @@ const CatalogFilter = ({
             onClick={clearForm}
             style={{margin: 10, padding: 7}}
           >
-            Clear
-
+            Clear Filter
           </StyledButton>
           <StyledButton
             size="sm"
@@ -112,7 +111,7 @@ const CatalogFilter = ({
             htmlType="submit"
             style={{margin: 10, padding: 7}}
           >
-            Apply Filtres
+            Apply Filter
           </StyledButton>
         </AlignBtn>
         <AllBrandsTitle>

@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { DOMAIN } from '../../store/general';
+
 function SortArr(arr) {
   return arr.sort((a, b) => {
     if (a.title.toLowerCase() > b.title.toLowerCase()) {
@@ -84,3 +87,36 @@ export const brands = SortArr([
     title: 'Everest'
   },
 ])
+
+export const checkFilterConfig = async (param) => {
+  let paramStr = ''
+  const menuConfig = {
+    brands: [],
+  }
+  Object.keys(param).forEach((key, index) => {
+    if (index === 0) {
+      return paramStr += `${key}=${param[key].toString()}`
+    }
+    return paramStr += `&${key}=${param[key].toString()}`
+  })
+    
+  await axios.get(`${DOMAIN}/products/filter?${paramStr}`)
+    .then(({data: {products}}) => {
+      const refBrand = new Set()
+
+      products.forEach((product) => {
+        if (product.brand) refBrand.add(product.brand)
+      })
+
+      if (param.categories) {
+        brands.forEach(((brand) => {
+          if (refBrand.has(brand.value)) {
+            menuConfig.brands.push(brand)
+          }
+        }))
+      } else delete menuConfig.brands
+      return products
+    })
+    .catch((error) => error)
+  return {...menuConfig}
+}
