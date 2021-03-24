@@ -1,10 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, {
+  createRef, useCallback, useEffect, useMemo
+} from 'react'
 import PropTypes from 'prop-types';
 import {
-  Checkbox, InputNumber,
-  Menu, Form
+  Form
 } from 'antd';
 import { useHistory, useLocation } from 'react-router';
 import close from '../../../images/filter/close.svg';
@@ -13,7 +14,6 @@ import WishlistBox from './WishlistBox/WishlistBox'
 import {
   StyledForm, Wrapper, FilterTitle,
   CloseBtn, AlignBtn, AllBrandsTitle,
-  StyledCheckbox,
   GridFilterPart, ContainerBrandsImg, ContainerImage, GlobalStyle
 } from './StylesCatalogfilter';
 import {checkFormValues} from '../../../utils/checkFormValues';
@@ -25,10 +25,8 @@ import imageBrands4 from '../../../images/filter/imageBrands4.svg';
 import imageBrands5 from '../../../images/filter/imageBrands5.svg';
 import imageBrands6 from '../../../images/filter/imageBrands6.svg';
 import styl from '../../../images/filter/styl.svg';
-import { brands, categories } from '../filterConfig'
 import StyledButton from '../../common/Buttons/StyledButton'
-
-const { SubMenu } = Menu;
+import {FormMenu} from './FormMenu/FormMenu';
 
 const layout = {
   labelCol: { span: 8 },
@@ -40,6 +38,7 @@ const CatalogFilter = ({
 }) => {
   const {pathname} = useLocation()
   const history = useHistory()
+  const formRef = createRef()
 
   const [form] = Form.useForm();
 
@@ -70,10 +69,12 @@ const CatalogFilter = ({
 
   const checkPathToConfig = useCallback((pathname) => {
     const [key, value] = pathname.split('/').splice(2)[0].split('=')
-    setFilter((prev) => ({
-      ...prev,
-      [key]: value.split(',')
-    }))
+    if (value.trim()) {
+      setFilter((prev) => ({
+        ...prev,
+        [key]: value.split(',')
+      }))
+    }
   }, [setFilter])
   
   useEffect(() => {
@@ -84,7 +85,7 @@ const CatalogFilter = ({
   }, [checkPathToConfig, filter, history, pathname])
 
   return (
-    <StyledForm fields={fields} form={form} {...layout} onFinish={onFinish}>
+    <StyledForm ref={formRef} fields={fields} form={form} {...layout} onFinish={onFinish}>
       <GlobalStyle showFilter={showFilter} />
       <Wrapper showFilter={showFilter}>
         <FilterTitle>
@@ -93,46 +94,7 @@ const CatalogFilter = ({
             <img src={close} alt="close" />
           </CloseBtn>
         </FilterTitle>
-        <Menu defaultOpenKeys={['сategories']} inlineIndent={10} mode="inline">
-          <SubMenu key="сategories" title="Сategories">
-            <Form.Item name="categories" noStyle>
-              <Checkbox.Group>
-                {categories.map(({value, title}) => (
-                  <StyledCheckbox
-                    key={value}
-                    value={value}
-                  >
-                    {title}
-                  </StyledCheckbox>
-                ))}
-              </Checkbox.Group>
-            </Form.Item>
-          </SubMenu>
-          <SubMenu key="brands" title="Brand">
-            <Form.Item name="brand" noStyle>
-              <Checkbox.Group>
-                {brands.map(({value, title}) => (
-                  <StyledCheckbox
-                    key={value}
-                    value={value}
-                  >
-                    {title}
-                  </StyledCheckbox>
-                ))}
-              </Checkbox.Group>
-            </Form.Item>
-          </SubMenu>
-          <SubMenu key="price" title="Price">
-            <div style={{padding: '20px 20px 0'}}>
-              <Form.Item name="minPrice" label="From">
-                <InputNumber style={{width: '100%'}} min={0} />
-              </Form.Item>
-              <Form.Item name="maxPrice" label="To">
-                <InputNumber style={{width: '100%'}} min={0} />
-              </Form.Item>
-            </div>
-          </SubMenu>
-        </Menu>
+        <FormMenu />
         <AlignBtn>
           <StyledButton
             size="sm"

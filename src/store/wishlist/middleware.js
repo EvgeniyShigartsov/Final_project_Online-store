@@ -39,7 +39,7 @@ export const setWishlist = () => async (dispatch, getState) => {
   
   if (isLogin) {
     const { data, status } = await getItemsFromDB()
-    if (data && status === 200) itemsToSet.push(...data.products)
+    if (data && status === 200) itemsToSet.push(...data?.products)
   } else {
     itemsToSet.push(...getParsedListFromLS())
   }

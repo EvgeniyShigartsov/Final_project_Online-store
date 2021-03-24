@@ -14,19 +14,19 @@ function SortArr(arr) {
 export const categories = SortArr([
   {
     value: 'gamingMonitors',
-    title: 'Gaming Monitor'
+    title: 'Gaming Monitors'
   },
   {
     value: 'tablets',
-    title: 'Tablet'
+    title: 'Tablets'
   },
   {
     value: 'laptops',
-    title: 'Laptop'
+    title: 'Laptops'
   },
   {
     value: 'desctops',
-    title: 'Desctop'
+    title: 'Desctops'
   }
 ])
 
