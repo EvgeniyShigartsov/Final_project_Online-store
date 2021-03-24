@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import getOrders from '../../../store/orders/middleware';
 import OrderComponent from './OrderComponent';
-import DirectionChange from './StyledOrderComponent';
+import DirectionChange from './StyledOrders';
 
 const Orders = () => {
-  const [orders, setOrders] = useState()
+  const [orders, setOrders] = useState(null)
   useEffect(() => {
     const ordersToRender = async () => {
       const results = await getOrders();
@@ -13,7 +13,7 @@ const Orders = () => {
     ordersToRender()
   }, [])
   return (
-    <div style={{marginTop: '50px'}}>
+    <div style={{marginTop: '20px'}}>
       <div>
         <h5 style={{
           textAlign: 'center',
@@ -26,11 +26,11 @@ const Orders = () => {
         </h5>
       </div>
       <DirectionChange>
-        {orders !== undefined ? (
+        {orders !== null ? (
           orders.map((item, i) => (
             <OrderComponent
               key={item.orderNo}
-              orders={orders[i].products[0].product}
+              orders={orders[i]}
             />
           ))
         ) : (' ')}

@@ -28,7 +28,7 @@ const FormInfoChange = connect(null, { setHideModal })(({
           type: 'string',
           pattern: new RegExp(
             // eslint-disable-next-line no-useless-escape
-            /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+            /^[a-zA-ZА-Яа-я]+$/
           ),
           message: 'Enter correct First name'
         }]}
@@ -44,9 +44,9 @@ const FormInfoChange = connect(null, { setHideModal })(({
           type: 'string',
           pattern: new RegExp(
             // eslint-disable-next-line no-useless-escape
-            /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+            /^[a-zA-ZА-Яа-я]+$/
           ),
-          message: 'Enter correct First name'
+          message: 'Enter correct Last name'
         }]}
       >
         <Input />

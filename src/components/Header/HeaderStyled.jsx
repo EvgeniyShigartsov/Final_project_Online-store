@@ -40,7 +40,6 @@ export const ContainerAlign = styled.div`
     position: relative;
     height: 40px;
     background-color: black;
-    padding: 0px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -127,6 +126,7 @@ export const SearchAndItemsBlock = styled.div`
   }
 `;
 export const FormContainer = styled.form`
+  position: relative;
   flex: 8;
   @media(min-width: ${forTablet.minWidth}px) {
     flex: 12;
@@ -156,7 +156,7 @@ export const TechTag = styled.h1`
   position: absolute;
   top: 0px;
   left: 83px;
-  z-index: 1999;
+  z-index: 55;
   font-size: 20px;
   color: #0157fe;
   font-weight: 500;
@@ -172,12 +172,7 @@ export const Input = styled.input`
   }
 `;
 export const CloseOutlinedFormStyled = styled(CloseOutlined)`
-  @media(max-width: ${forMobile.maxWidth}px) {
     display: none;
-  }
-  @media(min-width: ${forTablet.minWidth}px) {
-    display: none;
-  }
   @media(min-width: ${forDesktop.minWidth}px) {
     display: block;
     color: black;
@@ -219,7 +214,7 @@ export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
   filter: brightness(0) invert(1);
   font-size: 25px;
   flex: 1;
-  padding: 0 20px;
+  padding: 0 7px;
   @media(min-width: ${forDesktop.minWidth}px) {
     filter: invert(37%) sepia(0%) saturate(0%) hue-rotate(559deg) brightness(52%) contrast(106%);
     flex: 3;

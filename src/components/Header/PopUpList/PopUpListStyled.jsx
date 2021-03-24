@@ -13,7 +13,7 @@ export const PopUpContainer = styled(motion.div)`
   width: 100%;
   height: 70%;
   background-color: white;
-  z-index: 20;
+  z-index: 52;
    ul{
     display: flex;
     width: 100%;

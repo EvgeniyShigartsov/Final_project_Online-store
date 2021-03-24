@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
 import {useCycle} from 'framer-motion';
@@ -13,17 +12,19 @@ import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
 import UserPopUp from './UserPopUp/UserPopUp';
 import LogoMobile from './Utils/LogoMobile';
 import LogoDesktop from './Utils/LogoDesktop'
+import WishListComponent from './WishListComponent/WishListComponent'
 
 // styled
 import {
   HeaderContainer, ContainerAlign, ContactUsCall, CallBackAsk,
-  SearchAndItemsBlock, FormContainer, SearchInputBlock, Input,
+  SearchAndItemsBlock,
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
   ShaduleArrowContainer, ShoppingCartOutlinedStyled,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
-  CircleMobile, MenuOutlinedStyled, SearchOutlinedStyled,
-  CloseOutlinedFormStyled, TechTag
+  CircleMobile, MenuOutlinedStyled,
+  CloseOutlinedFormStyled, TechTag,
 } from './HeaderStyled';
+import SearchProducts from './SearchProducts/SearchProducts';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);
@@ -127,18 +128,15 @@ const Header = () => {
           openCloseMenu={openCloseMenu}
           hideInput={hideInput}
         />
-        <FormContainer action="submit" hideInput={hideInput}>
-          <SearchInputBlock>
-            <SearchOutlinedStyled />
-            <Input type="text" placeholder="Serch for goods" />
-          </SearchInputBlock>
-        </FormContainer>
+        
+        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
 
         {hideInput
           ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
           : (<CloseOutlinedFormStyled onClick={toggleShow} />)}
+        <WishListComponent />
         
-        <Link to="/cart">
+        <Link to="/cart" style={{outline: 'none'}}>
           <ShoppingCartOutlinedStyled />
         </Link>
         <RelativePosUserPopUp>

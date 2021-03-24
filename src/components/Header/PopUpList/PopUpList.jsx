@@ -56,9 +56,6 @@ const PopUpList = ({
         <Link to="/catalog"><h5>Catalog</h5></Link>
         <RightOutlinedStyled />
       </li>
-      <li>
-        <Link to="/wishlist"><h5>Wishlist</h5></Link>
-      </li>
     </Listnavigation>
   </PopUpContainer>
 )

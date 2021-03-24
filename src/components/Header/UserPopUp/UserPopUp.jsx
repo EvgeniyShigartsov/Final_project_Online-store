@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authLogOut } from '../../../store/auth/middleware';
 import close from '../../../images/header/Close.svg';
-import { NavUserContainer, Close } from './UserPopUpStyled';
-import WishlistLI from './WishlistLI/WishlistLI'
+import { NavUserContainer, Close, UlList } from './UserPopUpStyled';
 
 const mapStateToProps = (state) => ({
   isLogin: state.auth.isLogin
@@ -58,10 +57,8 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
       initial={false}
       animate={isOpenUser ? 'show' : 'hidden'}
     >
-      <ul>
+      <UlList>
         <li>My Account</li>
-        {isLogin && <WishlistLI />}
-        <li>Compare (0)</li>
         {isLogin ? null : (
           <NavLink to="/signup">
             <li>Create an Account</li>
@@ -86,7 +83,7 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
         <Close data-testid="closeImg" onClick={() => setIsOpenUser(false)}>
           <img src={close} alt="close" />
         </Close>
-      </ul>
+      </UlList>
     </NavUserContainer>
   );
 })

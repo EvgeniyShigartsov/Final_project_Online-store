@@ -11,12 +11,12 @@ const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info, 
     <div>
       <TextInfo>
         <p>
-          First Name:
+          <span style={{fontSize: '18px', fontWeight: '600'}}>First Name:</span>
           {' '}
           {info.firstName}
         </p>
         <p>
-          Last Name:
+          <span style={{fontSize: '18px', fontWeight: '600'}}>Last Name:</span>
           {' '}
           {info.lastName}
         </p>

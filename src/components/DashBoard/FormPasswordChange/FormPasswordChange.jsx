@@ -78,6 +78,14 @@ const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
             message: 'Password length must be at least 8 symbols',
             min: 8
           },
+          {
+            type: 'string',
+            pattern: new RegExp(
+            // eslint-disable-next-line no-useless-escape
+              /^([a-zA-Z0-9])*$/i
+            ),
+            message: 'Enter please only letterts and numbers'
+          }
         ]}
         hasFeedback
       >
@@ -97,6 +105,14 @@ const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
           {
             message: 'Password length must be at least 8 symbols',
             min: 8
+          },
+          {
+            type: 'string',
+            pattern: new RegExp(
+            // eslint-disable-next-line no-useless-escape
+              /^([a-zA-Z0-9])*$/i
+            ),
+            message: 'Enter please only letterts and numbers'
           },
           ({ getFieldValue }) => ({
             validator(_, value) {

@@ -13,12 +13,6 @@ const DirectionChange = styled.div`
     @media(max-width: 1250px) {
       padding: 0px;
     }
-   // media(max-width: 580px) {
-   // width: 383px !important;
-   // }
-   // @media(max-width: 420px) {
-   // width: 320px !important;
-   // }
   }
 `;
 export default DirectionChange;

@@ -7,6 +7,11 @@ export const Close = styled.div`
     top: 5px;
     right: 5px;
 `;
+export const UlList = styled.ul`
+    > * {
+        color: black;
+    }
+`;
 export const NavUserContainer = styled(motion.div)`
     background-color: white;
     position: absolute;

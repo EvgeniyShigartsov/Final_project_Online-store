@@ -1,32 +1,54 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { Descriptions } from 'antd';
+import {
+  Descriptions, Dropdown, Button, Menu
+} from 'antd';
 import PropTypes from 'prop-types';
-import ContainerOrder from './StyledOrderComponent'
-
+import { ContainerOrder, ShowListStyled, StyledMenu } from './StyledOrderComponent'
+import UpperCaseFirstLetter from '../../../utils/upperCaseFirstLetter';
+import slicePlus from '../../../utils/slicePlus';
+ 
 const OrderComponent = ({orders}) => {
-  const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1)
+  const menu = (
+    <StyledMenu style={{width: '80%'}}>
+      {orders.products.map((item) => (
+        <Menu.Item>
+          {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity}шт`}
+        </Menu.Item>
+      ))}
+    </StyledMenu>
+  );
   return (
     <ContainerOrder>
       <br />
       <br />
       <Descriptions
         bordered
-        title={capitalizeFirstLetter(orders.name)}
+        title={`Order number: ${orders.orderNo}`}
         size="small"
       >
-        <Descriptions.Item label="Brand">{orders.brand}</Descriptions.Item>
-        <Descriptions.Item label="Categories">{orders.categories}</Descriptions.Item>
-        <Descriptions.Item label="Date">{orders.date.substr(0, 10)}</Descriptions.Item>
-        <Descriptions.Item label="Price">{`${orders.currentPrice} $`}</Descriptions.Item>
-        <Descriptions.Item label="Color">{orders.color}</Descriptions.Item>
-        <Descriptions.Item label="Quantity">{orders.quantity}</Descriptions.Item>
-        <Descriptions.Item label="Description">{orders.description}</Descriptions.Item>
+        <Descriptions.Item label="Order Date">{orders.date.substr(0, 10)}</Descriptions.Item>
+        <Descriptions.Item label="Payment type">{orders.paymentInfo}</Descriptions.Item>
+        <Descriptions.Item label="Quantity of goods">
+          {orders.products.length}
+          {' '}
+          <ShowListStyled>
+            <Dropdown overlay={menu} placement="bottomCenter" arrow>
+              <Button>Show</Button>
+            </Dropdown>
+          </ShowListStyled>
+        </Descriptions.Item>
+        <Descriptions.Item label="Shipping">{orders.shipping}</Descriptions.Item>
+        <Descriptions.Item label="Total amount">{`${orders.totalSum} ₴`}</Descriptions.Item>
+        <Descriptions.Item label="Phone">{slicePlus(orders.mobile)}</Descriptions.Item>
       </Descriptions>
       <br />
       <br />
     </ContainerOrder>
   );
 }
+
 OrderComponent.propTypes = {
   orders: PropTypes.instanceOf(Object).isRequired
 }
