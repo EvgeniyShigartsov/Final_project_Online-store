@@ -14,8 +14,8 @@ export const reducer = (state = initialState, { type, payload }) => {
     case UPDATE_WISHLIST:
       return {
         ...state,
-        wishlistItems: payload.wishitstItems,
-        wishlistLength: payload.wishitstLength
+        wishlistItems: payload.wishlistItems,
+        wishlistLength: payload.wishlistLength
       }
     default:
       return state

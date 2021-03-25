@@ -1,14 +1,8 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { DOMAIN } from '../general'
 import { logIn, logOut } from './actionCreator'
 import updateWishlistCreator from '../wishlist/actionCreator'
 import { initialState as wishlistInitialState} from '../wishlist/reducer'
-
-const wishlistTeamplate = {
-  wishitstItems: [],
-  wishitstLength: 0
-}
 
 export const authLogIn = (credentials) => (dispatch) => {
   const res = axios.post(`${DOMAIN}/customers/login`, credentials)
@@ -25,7 +19,7 @@ export const authLogIn = (credentials) => (dispatch) => {
 export const authLogOut = () => (dispatch) => {
   localStorage.removeItem('token')
   localStorage.removeItem('wishlist')
-  dispatch(updateWishlistCreator(wishlistTeamplate))
+  dispatch(updateWishlistCreator(wishlistInitialState))
   dispatch(logOut())
 }
 
