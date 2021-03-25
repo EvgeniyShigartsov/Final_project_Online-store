@@ -14,10 +14,8 @@ const contentStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   height: '300px',
-  marginTop: '35px',
+  marginTop: '40px',
   color: '#000000',
-  fontSize: '18px',
-  lineHeight: '27px',
   textAlign: 'left',
   background: '#F5F7FF',
 };

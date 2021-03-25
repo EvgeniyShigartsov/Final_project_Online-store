@@ -1,92 +1,94 @@
 import styled from 'styled-components'
-import { forTablet, forMobile } from '../../styles/mediaBreakPoints'
+import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
 export const RoundDots = styled.div`
   position: relative;
-  width: 15px;
-  height: 15px;
-  top: -35px;
+  top: -10px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #CCCCCC;
 
-  @media(max-width: ${forMobile.maxWidth}px){
-   top: -10px;
-   width: 10px;
-   height: 10px;
+  @media(min-width: ${forDesktop.minWidth}px) {
+   width: 15px;
+   height: 15px;
+   top: -35px;
   }
 `;
 
 const ReviewWrapper = styled.div`
   display: block;
+  width: 280px;
+
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+    width: 81vw;
+  };
+  @media(min-width: ${forDesktop.minWidth}px) {
+    width: 71vw;
+  };
 `;
 
 export const ReviewTextWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: top;
-  width: 922px;
+  width: 280px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 600px;
-    font-size: 14px;
-    line-height: 20px;
+    width: 81vw;
   };
-  @media(min-width: 993px) and (max-width: 1024px) {
-    width: 800px;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    width: 71vw;
   }
-  @media(max-width: ${forMobile.maxWidth}px){
-    width: 300px;
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  // border: 1px solid #0156FF;
 `;
 
 export const ReviewIcon = styled.img`
   display: block;
-  margin-right: 25px;
-  height: 22px;
+  height: 15px;
+  width: 31px;
+  margin-right: 15px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     margin-right: 17px;
   };
-  @media(max-width: ${forMobile.maxWidth}px) {
-    height: 15px;
-    width: 31px;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    margin-right: 25px;
+    height: 22px;
   }
 `;
 
 export const ReviewText = styled.p`
   display: block;
-  font-size: 18px;
-  line-height: 27px;
+  width: 345px;
+  font-size: 12px;
+  line-height: 18px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 622px;
+    width: 81vw;
     font-size: 13px;
     line-height: 19px;
   };
-  @media(max-width: ${forMobile.maxWidth}px){
-    width: 345px;
-    font-size: 12px;
-    line-height: 18px;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    width: 850px;
+    font-size: 18px;
+    line-height: 27px;
   }
 `;
 
 export const ReviewAuthor = styled.p`
   float: right;
-  font-size: 14px;
-  line-height: 21px;
-  margin-top: 10px;
+  margin-top: 5px;
+  font-size: 10px;
+  line-height: 15px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     font-size: 10px;
     margin-top: 5px;
   };
-  @media(max-width: ${forMobile.maxWidth}px) {
-    font-size: 10px;
-    margin-top: 5px;
+  @media(min-width: ${forDesktop.minWidth}px) {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 21px;
   }
 `;
 
