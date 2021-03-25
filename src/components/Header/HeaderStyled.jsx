@@ -163,7 +163,7 @@ export const Input = styled.input`
 `;
 export const RelativePosUserPopUp = styled.div`
   position: relative;
-  z-index: 10;
+  z-index: 1;
   @media(min-width: ${forDesktop.minWidth}px) {
     flex: 1;
   }

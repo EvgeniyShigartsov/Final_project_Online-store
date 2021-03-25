@@ -11,6 +11,7 @@ import Inst from '../../images/header/Inst.png';
 import PopUpList from './PopUpList/PopUpList';
 import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
 import UserPopUp from './UserPopUp/UserPopUp';
+import FavoriteLink from './FavoriteLink/FavoriteLink'
 
 // styled
 import {
@@ -140,6 +141,8 @@ const Header = () => {
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />
         {/* mediaSearch */}
+
+        <FavoriteLink />
         <Link to="/cart">
           <ShoppingCartOutlinedStyled />
         </Link>

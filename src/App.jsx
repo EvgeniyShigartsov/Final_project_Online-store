@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
@@ -20,9 +20,9 @@ import {CartPage} from './components/CartPage/CartPage'
 import OrderPage from './components/OrderPage/OrderPage'
 
 const App = connect(null, { setWishlist})(({ setWishlist}) => {
-  window.addEventListener('DOMContentLoaded', () => {
+  useEffect(() => {
     setWishlist()
-  })
+  }, [setWishlist])
 
   return (
     <div>
