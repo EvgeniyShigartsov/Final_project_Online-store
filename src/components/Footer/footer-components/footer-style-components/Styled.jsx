@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Form, Input } from 'antd';
-import { forDesktop } from '../../../../styles/mediaBreakPoints'
+import { forTablet, forDesktop } from '../../../../styles/mediaBreakPoints'
 
 export const Content = styled.div`
 padding: 10px 0 10px 10px;
 background: #000000;
 display: none;
+a {
+  outline: none;
+}
 
 @media(min-width: ${forDesktop.minWidth}px){
 display: block;
@@ -66,7 +69,7 @@ padding: 14px 0;
 display: block;
 cursor: pointer;
 position: relative;
-transition: background 0.1s;
+transition: 0.1s;
 
 &:hover {
   background: rgba(0, 0, 0, 0.1);
@@ -169,18 +172,39 @@ background-color: #000000;
 border: 1px solid #FFFFFF;
 width: 140px;
 height: auto;
-margin: 20px 10px 0 0;
+transform: translateY(50%);
 font-size: 10px;
+
+&:focus-visible{
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+@media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
+  width: 186px;
+  padding: 10px 0 10px 10px; 
+}
 
 @media(min-width: ${forDesktop.minWidth}px){
 width: 391px;
-height: auto;
-margin: 28px 23px 0 0;
+padding: 10px 0 10px 10px;
+margin: 25px 23px 0 0;
+transform: translateY(0);
 }
 `
 
 export const StyledPaymentWrapper = styled.div`
-    text-align: center;
+grid-area: payment;
+text-align: center;
+padding-top: 7px;
+
+@media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
+  text-align: center; 
+}
+
+@media(min-width: ${forDesktop.minWidth}px){
+transform: translateX(12%);
+}
 `
 
 export const StyledSection = styled.section`
@@ -203,15 +227,22 @@ margin: 35px 0 35px 0;
 `
 
 export const StyledWrapperFooter = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+display: grid;
+grid-template-areas: 
+  "social copyright"
+  "payment payment";
 padding: 10px 0 10px 0;
 
+@media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
+  padding-bottom: 14px;
+  grid-template-areas: 
+  'social payment copyright'
+}
+
 @media(min-width: ${forDesktop.minWidth}px){
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: 20px;
+    padding-bottom: 14px;
+    grid-template-areas: 
+  'social payment copyright'
 }
 `
 
@@ -235,6 +266,8 @@ font-size: 10px;
 align-items: center;
 text-align: right;
 opacity: 0.6;
+margin-top: 8px;
+grid-area: copyright;
 
 @media(min-width: ${forDesktop.minWidth}px){
 font-size: 12px;
@@ -252,7 +285,7 @@ height: 2px;
 display: block;
 background: #FFFFFF;
 opacity: 0.2;
-margin-bottom: 30px;
+margin-bottom: 15px;
 text-align: center;
 }
 `
@@ -260,10 +293,10 @@ text-align: center;
 export const Wrapper = styled.div`
 display: flex;
 font-size: 22px;
+grid-area: social;
 
 @media(min-width: ${forDesktop.minWidth}px){
-justify-content: space-between;
-padding: 10px, 20px, 50px, 0;
+padding: 15px, 20px, 50px, 0;
 }
 `
 

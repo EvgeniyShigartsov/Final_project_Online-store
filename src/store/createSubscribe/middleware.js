@@ -6,15 +6,15 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-const createNewSubscribe = (newSubscriber) => async (dispatch) => {
+const createNewSubscribe = (newForm) => async (dispatch) => {
   dispatch(createSubscribe());
-  axios.post('/subscribers', newSubscriber, {headers})
+  axios.post('/subscribers', newForm, {headers})
     .then((response) => {
       console.log(response);
       dispatch(createSubscribeSuccess(response.data))
     })
     .catch((err) => {
-      console.log(err.response)
+      console.log(err.response.data)
       dispatch(createSubscribeError(err.response))
     })
 }

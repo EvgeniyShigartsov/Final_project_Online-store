@@ -5,5 +5,5 @@ export const letterHtml = `<!DOCTYPE html><html lang='en'> <head> <meta charset=
     <style> td { padding: 20px 50px; background-color: yellow;
 color: blueviolet; font-size: 20px; }
     </style> </head> <body> <table> <tr>
-<td>Thank you for your subscribe!</td></tr> 
-<tr> <td><td>Once a week you will receive news about receipts</td></tr> </table> </body></html>`
+<td>Thank you for your appeal!</td></tr> 
+<tr> <td><td>Our manager will contact you soon</td></tr> </table> </body></html>`
