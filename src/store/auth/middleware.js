@@ -5,6 +5,11 @@ import { logIn, logOut } from './actionCreator'
 import updateWishlistCreator from '../wishlist/actionCreator'
 import { initialState as wishlistInitialState} from '../wishlist/reducer'
 
+const wishlistTeamplate = {
+  wishitstItems: [],
+  wishitstLength: 0
+}
+
 export const authLogIn = (credentials) => (dispatch) => {
   const res = axios.post(`${DOMAIN}/customers/login`, credentials)
     .then((data) => {
@@ -20,8 +25,8 @@ export const authLogIn = (credentials) => (dispatch) => {
 export const authLogOut = () => (dispatch) => {
   localStorage.removeItem('token')
   localStorage.removeItem('wishlist')
+  dispatch(updateWishlistCreator(wishlistTeamplate))
   dispatch(logOut())
-  dispatch(updateWishlistCreator(wishlistInitialState))
 }
 
 export default authLogIn

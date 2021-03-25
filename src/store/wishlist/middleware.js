@@ -34,7 +34,6 @@ const getItemsFromDB = () => {
 }
 
 export const setWishlist = () => async (dispatch, getState) => {
-  console.log('call')
   const {auth: { isLogin }} = getState()
   const itemsToSet = []
   
