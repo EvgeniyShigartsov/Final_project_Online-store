@@ -15,12 +15,13 @@ import UserPopUp from './UserPopUp/UserPopUp';
 // styled
 import {
   HeaderContainer, ContainerAlign, ContactUsCall, CallBackAsk,
-  SearchAndItemsBlock, FormContainer, SearchInputBlock, Input,
+  SearchAndItemsBlock,
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
   ShaduleArrowContainer, LogoDesktop, ShoppingCartOutlinedStyled,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
-  CircleMobile, Logo, MenuOutlinedStyled, SearchOutlinedStyled
+  CircleMobile, Logo, MenuOutlinedStyled
 } from './HeaderStyled';
+import SearchProducts from './SearchProducts/SearchProducts';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);
@@ -93,13 +94,19 @@ const Header = () => {
           </ContactUsCall>
           <CallBackAsk>
             <h5>
-              Call Us: (00) 1234 5678
+              <a href="tel: +(00) 1234 5678" style={{ color: 'white' }}>
+                Call Us: (00) 1234 5678
+              </a>
             </h5>
             <div>
-              <img src={FaceBook} alt="FaceBook" />
+              <a href="https://www.facebook.com/" target="blank">
+                <img src={FaceBook} alt="FaceBook" />
+              </a>
             </div>
             <div>
-              <img src={Inst} alt="Inst" />
+              <a href="https://www.instagram.com/" target="blank">
+                <img src={Inst} alt="Inst" />
+              </a>
             </div>
           </CallBackAsk>
           <PopUpShedulteContainer
@@ -127,12 +134,8 @@ const Header = () => {
           isOpen={isOpen}
           openCloseMenu={openCloseMenu}
         />
-        <FormContainer action="submit" hideInput={hideInput}>
-          <SearchInputBlock>
-            <SearchOutlinedStyled />
-            <Input type="text" placeholder="Serch for goods" />
-          </SearchInputBlock>
-        </FormContainer>
+        
+        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
 
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />

@@ -1,19 +1,29 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from './components/BannerSlider/BannerSlider'
-import StyledButton from './components/common/Buttons/StyledButton'
 import { AboutUsPage } from './components/About-us/AboutUs'
 import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
-import { Cart } from './components/CartWrapper/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import ContactUsPage from './components/ContactUs/ContactUsPage'
 import ProductPage from './components/ProductPage/ProductPage'
+import { HomepageBrands } from './components/BrandsAndFollow/HomePageBrands'
+import { HomepageFollowUs } from './components/BrandsAndFollow/FollowUsInstagram'
+import CatalogPage from './components/CatalogPage/CatalogPage'
 import Header from './components/Header/Header'
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
+import WishlistPage from './components/WishlistPage/WishlistPage'
+import { setWishlist } from './store/wishlist/middleware'
+import {CartPage} from './components/CartPage/CartPage'
+import OrderPage from './components/OrderPage/OrderPage'
 
-function App() {
+const App = connect(null, { setWishlist})(({ setWishlist}) => {
+  window.addEventListener('DOMContentLoaded', () => {
+    setWishlist()
+  })
+
   return (
     <div>
       <Header />
@@ -21,6 +31,9 @@ function App() {
         <Route exact path="/">
           <BannerSlider />
           <NewProductsSlider />
+          <HomepageBrands />
+          <HomepageFollowUs />
+          {/* <MainCatalog /> */}
         </Route>
         <Route exact path="/signin">
           <LogIn />
@@ -35,27 +48,27 @@ function App() {
           <ContactUsPage />
         </Route>
         <Route exact path="/cart">
-          <Cart />
+          <CartPage />
         </Route>
         <Route exact path="/checkout">
           <Checkout />
         </Route>
+        <Route exact path="/order">
+          <OrderPage />
+        </Route>
         <Route exact path="/products/:itemNo">
           <ProductPage />
         </Route>
-        <Route exact path="/buttons">
-          <StyledButton shape="round">Submit</StyledButton>
-          <StyledButton size="sm" shape="round">Submit</StyledButton>
-          <StyledButton size="xl" shape="round" color="black">Submit</StyledButton>
-          <StyledButton size="lg" shape="round">Submit</StyledButton>
-          <StyledButton size="md" shape="round" color="borderGrey">Submit</StyledButton>
-          <StyledButton size="xs" shape="round" color="borderBlue">Submit</StyledButton>
-          <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
+        <Route exact path="/wishlist">
+          <WishlistPage />
+        </Route>
+        <Route path="/catalog">
+          <CatalogPage />
         </Route>
       </Switch>
       <Footer />
     </div>
   )
-}
+})
 
 export default App

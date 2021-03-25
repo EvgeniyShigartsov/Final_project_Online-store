@@ -34,7 +34,7 @@ export const ContainerAlign = styled.div`
     width: 90%;
     margin: 0 auto;
     padding: 0 10px;
-    min-width: 360px;
+    min-width: 320px;
     max-width: 1200px;
     position: relative;
     height: 40px;
@@ -110,7 +110,7 @@ export const CallBackAsk = styled.div`
 export const SearchAndItemsBlock = styled.div`
   width: 100%;
   padding: 0 10px;
-  min-width: 360px;
+  min-width: 320px;
   height: 64px;
   background-color: #0157fe;
   display: flex;
@@ -126,6 +126,7 @@ export const SearchAndItemsBlock = styled.div`
   }
 `;
 export const FormContainer = styled.form`
+  position: relative;
   flex: 8;
   @media(min-width: ${forTablet.minWidth}px) {
     flex: 12;

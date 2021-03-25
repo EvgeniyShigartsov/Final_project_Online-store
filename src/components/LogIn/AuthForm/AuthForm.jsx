@@ -9,8 +9,14 @@ import { useHistory } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import {authLogIn} from '../../../store/auth/middleware';
+import { compareLSItemsAndDBItems } from '../../../store/wishlist/middleware'
 
-const AuthForm = connect(null, {authLogIn})(({authLogIn}) => {
+const AuthForm = connect(null, { authLogIn, compareLSItemsAndDBItems })((
+  {
+    authLogIn,
+    compareLSItemsAndDBItems
+  }
+) => {
   const formLayout = 'vertical'
 
   const [error, setError] = useState({})
@@ -22,6 +28,7 @@ const AuthForm = connect(null, {authLogIn})(({authLogIn}) => {
     if (status === 200) {
       localStorage.setItem('token', data.token)
       history.push('/')
+      compareLSItemsAndDBItems()
     }
 
     if (status === 400) {
@@ -79,8 +86,8 @@ const AuthForm = connect(null, {authLogIn})(({authLogIn}) => {
             message: 'Please input your password!',
           },
           {
-            min: 7,
-            message: 'Password lenght minimum 7!',
+            min: 8,
+            message: 'Password length must be at least 8 symbols.',
           },
         ]}
       >
