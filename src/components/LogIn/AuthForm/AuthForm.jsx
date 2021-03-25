@@ -98,6 +98,10 @@ const AuthForm = connect(null, {
             message: 'Please input your password!',
           },
           {
+            pattern: /^[a-zа0-9]+$/i,
+            message: 'Allowed characters is a-z, 0-9'
+          },
+          {
             min: 8,
             message: 'Password length must be at least 8 symbols.',
           },
