@@ -1,19 +1,22 @@
 import axios from 'axios'
-import { createSubscribe, createSubscribeSuccess, createSubscribeError } from './actionCreator'
-import { DOMAIN, getHeaders } from '../general'
+import { message } from 'antd'
+import { DOMAIN } from '../general'
 
 const BASE_ENDPOINT = `${DOMAIN}/subscribers`
 
-const createNewSubscribe = (newSubscriber) => async (dispatch) => {
-  const headers = getHeaders()
-  dispatch(createSubscribe())
-
-  axios.post(BASE_ENDPOINT, newSubscriber, { headers })
+const createNewSubscribe = (credentials, history) => {
+  axios.post(BASE_ENDPOINT, credentials,)
     .then((response) => {
-      dispatch(createSubscribeSuccess(response.data))
+      if (response.status === 200) {
+        history.push('/')
+        message.info('New account created successfully')
+      }
     })
-    .catch((err) => {
-      dispatch(createSubscribeError(err.response))
+    .catch((error) => {
+      if (error.response) {
+        const requestMessage = error.response.data.message
+        message.error(`Error: ${requestMessage}`)
+      }
     })
 }
 export default createNewSubscribe

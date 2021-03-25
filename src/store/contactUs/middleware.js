@@ -1,20 +1,22 @@
 import axios from 'axios'
-import { createContactForm, createContactFormSuccess, createContactFormError } from './actionCreator'
-import { letterSubject, letterHtml} from '../../components/Footer/footer-components/footer-config/letterConfig'
+import { message } from 'antd'
+import { DOMAIN } from '../general'
 
-const headers = {
-  Autorization: localStorage.getItem('token'),
-  'Content-Type': 'application/json'
-}
+const BASE_ENDPOINT = `${DOMAIN}/subscribers`
 
-const createNewContactForm = ({email}) => async (dispatch) => {
-  dispatch(createContactForm());
-  axios.post('/subscribers', {email, letterSubject, letterHtml}, {headers})
+const createNewContactForm = (credentials, history) => {
+  axios.post(BASE_ENDPOINT, credentials,)
     .then((response) => {
-      dispatch(createContactFormSuccess(response.data))
+      if (response.status === 200) {
+        history.push('/')
+        message.info('Thank you for your message')
+      }
     })
-    .catch((err) => {
-      dispatch(createContactFormError(err.response))
+    .catch((error) => {
+      if (error.response) {
+        const requestMessage = error.response.data.message
+        message.error(`Error: ${requestMessage}`)
+      }
     })
 }
 export default createNewContactForm

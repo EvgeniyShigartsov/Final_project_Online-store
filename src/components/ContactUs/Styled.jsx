@@ -1,11 +1,9 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { Form, Input, } from 'antd';
 import { forTablet, forDesktop } from '../../styles/mediaBreakPoints'
 
-export const StyledLink = styled(Link)`
-font-size: 12px;
-color: #000000;
+export const StyledWrapperContainer = styled.div`
+margin: 28px 0;
 `
 
 export const StyledWrapper = styled.div`
@@ -15,7 +13,7 @@ grid-area: text;
 export const StyledTitle = styled.h2`
 font-weight: 600;
 font-size: 18px;
-margin: 10px 0;
+padding-bottom: 10px;
 
 @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
 margin: 15px 0;
@@ -36,11 +34,6 @@ padding: 6px 0;
 font-size: 16px;
 padding: 4px 0;
 }
-`
-
-export const StyledIconContainer = styled.div`
-font-size: 8px;
-display: inline-block;
 `
 
 export const StyledContainer = styled.div`
@@ -82,10 +75,25 @@ justify-content: space-between;
 flex-wrap: wrap;
 `
 
+export const StyledFormItem = styled(Form.Item)`
+width: 100%;
+
+@media(min-width: ${forDesktop.minWidth}px){
+width: 50%;
+}
+`
+
+export const StyledFormItemTextArea = styled(Form.Item)`
+width: 100%;
+`
+
 export const StyledInputWrapper = styled.div`
 display: flex;
 flex-direction: column;
+
+@media(min-width: ${forDesktop.minWidth}px){
 margin-right: 20px;
+}
 `
 
 export const Lable = styled.label`
@@ -98,17 +106,11 @@ font-size: 13px;
 `
 
 export const StyledInput = styled(Input)`
-width: 300px;
-font-weight: 300;
+width: 100%;
 font-size: 11px;
 color: #8C8C8C;
 
-@media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
-width: 325px;
-}
-
 @media(min-width: ${forDesktop.minWidth}px){
-width: 400px;
 font-size: 14px;
 }
 `
@@ -116,14 +118,9 @@ font-size: 14px;
 export const StyledInputTextArea = styled(Input.TextArea)`
 width: 100%;
 height: 145px!important;
-font-weight: 300;
 font-size: 11px;
 color: #8C8C8C;
 resize: none;
-
-@media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
-width: 100%;
-}
 
 @media(min-width: ${forDesktop.minWidth}px){
 width: 100%;
@@ -139,7 +136,6 @@ color: #ff0000;
 export const StyledContact = styled.div`
 background-color: #F5F9FF;
 padding: 30px 35px;
-margin-top: 20px;
 grid-area: adress;
 `
 
@@ -182,5 +178,5 @@ padding-top: 10px;
 export const StyledLinkMailAddress = styled.a`
 font-size: 13px;
 color: #0156FF;
-padding: 10px 0 70px 0;
+padding: 10px 0 10px 0;
 `

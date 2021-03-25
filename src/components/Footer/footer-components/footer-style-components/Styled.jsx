@@ -114,6 +114,7 @@ font-size: 18px;
 font-style: normal;
 font-weight: 500;
 color: #FFFFFF;
+padding-top: 22px;
 
 @media(min-width: ${forDesktop.minWidth}px){
 font-size: 38px;
@@ -170,26 +171,30 @@ font-size: 13px;
 export const StyledInput = styled(Input)`
 background-color: #000000;
 border: 1px solid #FFFFFF;
-width: 140px;
+width: 100%;
 height: auto;
-transform: translateY(50%);
-font-size: 10px;
+transform: translateY(35%);
+font-size: 12px;
+padding: 10px 10px;
+color: #FFFFFF;
 
-&:focus-visible{
+&:focus{
   background-color: #FFFFFF;
   color: #000000;
 }
 
 @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
-  width: 186px;
-  padding: 10px 0 10px 10px; 
+  width: 90%;
+  transform: translateY(0);
+  font-size: 14px;
+  margin: 25px 23px 0 0; 
 }
 
 @media(min-width: ${forDesktop.minWidth}px){
 width: 391px;
-padding: 10px 0 10px 10px;
 margin: 25px 23px 0 0;
 transform: translateY(0);
+font-size: 14px;
 }
 `
 
@@ -251,6 +256,12 @@ display: flex;
 flex-direction: column;
 text-align: center;
 margin-bottom: 16px;
+
+@media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
+flex-direction: row;
+justify-content: space-between;
+margin-bottom: 45px;
+}
 
 @media(min-width: ${forDesktop.minWidth}px){
 flex-direction: row;

@@ -1,17 +1,19 @@
 import React from 'react'
 import 'antd/dist/antd.css';
-import { connect } from 'react-redux'
 import { Form } from 'antd'
+import { useHistory } from 'react-router-dom';
 import StyledButton from '../../common/Buttons/StyledButton'
 import { StyledInput, StyledForm } from './footer-style-components/Styled'
-import { letterSubject, letterHtml} from './footer-config/letterConfig'
 import createNewSubscribe from '../../../store/createSubscribe/middleware'
+import { letterHtmlSubscribe, letterSubjectSubscribe } from '../../../store/general';
 
-const FormSubscribe = connect(null, {createNewSubscribe})(({
-  createNewSubscribe,
-}) => {
-  const onFinish = ({email}) => {
-    createNewSubscribe({email, letterSubject, letterHtml})
+const FormSubscribe = () => {
+  const history = useHistory()
+  const onFinish = (values) => {
+    const credentials = {
+      ...values, letterHtml: letterHtmlSubscribe, letterSubject: letterSubjectSubscribe
+    }
+    createNewSubscribe(credentials, history)
   }
   return (
     <StyledForm name="nest-messages" onFinish={onFinish}>
@@ -20,6 +22,7 @@ const FormSubscribe = connect(null, {createNewSubscribe})(({
         rules={[
           {
             type: 'email',
+            message: 'Enter correct email'
           },
         ]}
       >
@@ -30,6 +33,6 @@ const FormSubscribe = connect(null, {createNewSubscribe})(({
       </StyledButton>
     </StyledForm>
   )
-})
+}
 
 export default FormSubscribe
