@@ -134,14 +134,10 @@ const Header = () => {
         {hideInput
           ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
           : (<CloseOutlinedFormStyled onClick={toggleShow} />)}
+          
         <WishListComponent />
-        
-        <Link to="/cart" style={{outline: 'none'}}>
-        {/* mediaSearch */}
-        <SearchOutlinedStyledMedia onClick={toggleShow} />
-        {/* mediaSearch */}
 
-        <Link to="/cart">
+        <Link to="/cart" style={{outline: 'none'}}>
           <ShoppingCartOutlinedStyled />
         </Link>
         <RelativePosUserPopUp>
@@ -152,7 +148,6 @@ const Header = () => {
           />
         </RelativePosUserPopUp>
       </SearchAndItemsBlock>
-
     </HeaderContainer>
   );
 };

@@ -2,15 +2,13 @@ import styled, {css} from 'styled-components'
 import {
   MenuOutlined, UserOutlined,
   ShoppingCartOutlined, SearchOutlined,
-  CloseOutlined
-  MenuOutlined, UserOutlined, SearchOutlined
-
+  CloseOutlined,
 } from '@ant-design/icons';
 import {forTablet, forDesktop, forMobile} from '../../styles/mediaBreakPoints';
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  @media(min-width: ${forTablet.minWidth}px) {
+  @media(max-width: ${forDesktop.minWidth}px) {
     padding-bottom: 20px;
   }
   @media(min-width: ${forDesktop.minWidth}px) {
@@ -212,7 +210,6 @@ export const CircleDesktop = styled.div`
    padding-left: 20px;
   }
 `;
-<<<<<<< HEAD
 export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
   filter: brightness(0) invert(1);
   font-size: 25px;
@@ -224,11 +221,9 @@ export const ShoppingCartOutlinedStyled = styled(ShoppingCartOutlined)`
     padding: 0px 10px 0px 10px;
   }
 `;
-=======
 export const LogoDesktop = styled.img`
   display: block; 
   @media(min-width: ${forDesktop.minWidth}px) {
-    /* color: blue; */
     width: 30px;
     height: 34px;
     margin-left: auto; 
@@ -237,7 +232,6 @@ export const LogoDesktop = styled.img`
   }
 `;
 
->>>>>>> b210969466aafb56d4f4fa0bd5ab3f468b60d26c
 export const UserOutlinedStyled = styled(UserOutlined)`
   cursor: pointer;
   color: white;

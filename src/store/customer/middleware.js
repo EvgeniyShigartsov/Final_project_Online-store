@@ -54,19 +54,11 @@ export const updateCustomer = (credentials) => {
     .catch((error) => error.response)
   return res
 }
-<<<<<<< HEAD
-
-export const getCustomer = () => {
-  const headers = getHeaders();
-  const res = axios.get(`${BASE_ENDPOINT}/customer`, {headers})
-    .then((data) => (data))
-=======
   
 export const getCustomer = () => {
   const headers = getHeaders()
   const res = axios.get(`${BASE_ENDPOINT}/customer`, { headers })
     .then((data) => data)
->>>>>>> b210969466aafb56d4f4fa0bd5ab3f468b60d26c
     .catch((error) => error.response)
   return res
 }

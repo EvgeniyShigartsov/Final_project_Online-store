@@ -3,12 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-<<<<<<< HEAD
-import { reducer as authReducer } from './auth/reducer';
+import { reducer as authReducer, MODULE_NAME as authModule } from './auth/reducer';
 import { reducer as dashBoardModalReducer } from './dashBoardModal/reducer';
-=======
-import { MODULE_NAME as authModule, reducer as authReducer } from './auth/reducer';
->>>>>>> b210969466aafb56d4f4fa0bd5ab3f468b60d26c
 import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'

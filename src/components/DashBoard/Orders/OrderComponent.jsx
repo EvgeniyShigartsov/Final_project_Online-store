@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import {
   Descriptions, Dropdown, Button, Menu
@@ -13,7 +11,7 @@ const OrderComponent = ({orders}) => {
   const menu = (
     <StyledMenu style={{width: '80%'}}>
       {orders.products.map((item) => (
-        <Menu.Item>
+        <Menu.Item key={orders.orderNo}>
           {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity}шт`}
         </Menu.Item>
       ))}
