@@ -14,10 +14,9 @@ const contentStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   height: '300px',
-  marginTop: '40px',
   color: '#000000',
   textAlign: 'left',
-  background: '#F5F7FF',
+  background: '#F5F9FF',
 };
 
 const ReviewSlider = () => (

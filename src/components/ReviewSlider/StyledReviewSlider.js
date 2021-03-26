@@ -9,6 +9,9 @@ export const RoundDots = styled.div`
   border-radius: 50%;
   background: #CCCCCC;
 
+  @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
+    top: -35px;
+  }
   @media(min-width: ${forDesktop.minWidth}px) {
    width: 15px;
    height: 15px;
@@ -17,14 +20,16 @@ export const RoundDots = styled.div`
 `;
 
 const ReviewWrapper = styled.div`
-  display: block;
   width: 280px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 81vw;
-  };
-  @media(min-width: ${forDesktop.minWidth}px) {
     width: 71vw;
+  };
+  @media(min-width: ${forDesktop.minWidth}px) and (max-width: 1500px){
+    width: 63vw;
+  };
+  @media(min-width: 1501px) {
+    width: 922px;
   };
 `;
 
@@ -35,11 +40,14 @@ export const ReviewTextWrap = styled.div`
   width: 280px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 81vw;
-  };
-  @media(min-width: ${forDesktop.minWidth}px) {
     width: 71vw;
-  }
+  };
+  @media(min-width: ${forDesktop.minWidth}px) and (max-width: 1500px){
+    width: 63vw;
+  };
+  @media(min-width: 1501px) {
+    width: 922px;
+  };
 `;
 
 export const ReviewIcon = styled.img`
@@ -64,8 +72,8 @@ export const ReviewText = styled.p`
   line-height: 18px;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
-    width: 81vw;
-    font-size: 13px;
+    width: 622px;
+    font-size: 14px;
     line-height: 19px;
   };
   @media(min-width: ${forDesktop.minWidth}px) {
@@ -76,7 +84,8 @@ export const ReviewText = styled.p`
 `;
 
 export const ReviewAuthor = styled.p`
-  float: right;
+  display: flex;
+  justify-content: flex-end;
   margin-top: 5px;
   font-size: 10px;
   line-height: 15px;
@@ -88,7 +97,7 @@ export const ReviewAuthor = styled.p`
   @media(min-width: ${forDesktop.minWidth}px) {
     margin-top: 10px;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 21px;  
   }
 `;
 

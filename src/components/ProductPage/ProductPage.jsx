@@ -19,8 +19,8 @@ import {
 import Carousel from '../Carousel/Carousel'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
-import ProductRate from './ProductRate/ProductRate'
 import { getOneProduct } from '../../store/products/middleware'
+import ProductRate from './ProductRate/ProductRate'
 import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 
 const ProductPage = () => {
@@ -106,7 +106,7 @@ const ProductPage = () => {
               </b>
             </li>
           </AboutProduct>
-          <CartGroup productID={product._id} avilableQuantity={product.quantity} />
+          <CartGroup product={product} avilableQuantity={product.quantity} />
         </InformationBox>
       </PageContainer>
     </Container>

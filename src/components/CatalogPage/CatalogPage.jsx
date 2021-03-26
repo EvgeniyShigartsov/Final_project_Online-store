@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState} from 'react'
 import {Container} from '../common/Container'
 import Heading from '../common/Heading/Heading'
 import CatalogFilter from './CatalogFilter/CatalogFilter'
@@ -21,6 +21,7 @@ const CatalogPage = () => {
       <Heading>Products</Heading>
       <Flex>
         <CatalogFilter
+          filter={filter}
           setFilter={setFilter}
           showFilter={showFilter}
           setShowFilter={setShowFilter}
