@@ -1,10 +1,10 @@
 import React from 'react';
-import StyledCheckAvailabilityWrapper, { StyledCheckAvailabilityIcon, StyledCheckAvailabilityText } from './StyledCheckAvailability';
+import { StyledCheckAvailabilityWrapper, StyledCheckAvailabilityIcon, StyledCheckAvailabilityBtn } from './StyledCheckAvailability';
 
 export const CheckAvailability = () => (
   <StyledCheckAvailabilityWrapper>
     <StyledCheckAvailabilityIcon />
-    <StyledCheckAvailabilityText>check availability</StyledCheckAvailabilityText>
+    <StyledCheckAvailabilityBtn>check availability</StyledCheckAvailabilityBtn>
   </StyledCheckAvailabilityWrapper>
 )
 

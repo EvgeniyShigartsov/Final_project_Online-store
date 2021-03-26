@@ -18,6 +18,7 @@ import WishlistPage from './components/WishlistPage/WishlistPage'
 import { setWishlist } from './store/wishlist/middleware'
 import {CartPage} from './components/CartPage/CartPage'
 import OrderPage from './components/OrderPage/OrderPage'
+import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSubscribeModal'
 
 const App = connect(null, { setWishlist})(({ setWishlist }) => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const App = connect(null, { setWishlist})(({ setWishlist }) => {
   return (
     <div>
       <Header />
+      <ProductSubscribeModal />
       <Switch>
         <Route exact path="/">
           <BannerSlider />

@@ -18,6 +18,8 @@ export const reducer = (state = initialState, { type, payload }) => {
         wishlistLength: payload.wishlistLength
       }
     default:
-      return state
+      return {
+        ...state
+      }
   }
 }

@@ -37,7 +37,7 @@ export const updateCustomer = (credentials) => () => {
   return res
 }
   
-export const getCustomer = () => () => {
+export const getCustomer = () => {
   const headers = getHeaders()
   const res = axios.get(`${BASE_ENDPOINT}/customer`, { headers })
     .then((data) => data)
