@@ -60,7 +60,7 @@ const ReviewSlider = () => (
               <ReviewTextWrap>
                 <ReviewIcon src={bracketsIcon} />
                 <ReviewText>
-                  TechStore order process is made to be easy and understanding. Great setup for free stuff and free upgrades with certain choices of part, and constantly keeping you in the loop on your order. Thank you Xoticpc for the great experience.
+                  TechStore order process is made to be easy and understanding. Great setup for free stuff and free upgrades with certain choices of part, and constantly keeping you in the loop on your order. Thank you TechStore for the great experience.
                 </ReviewText>
               </ReviewTextWrap>
               <ReviewAuthor> - Kristen Jaymes </ReviewAuthor>

@@ -8,6 +8,7 @@ export const RoundDots = styled.div`
   height: 10px;
   border-radius: 50%;
   background: #CCCCCC;
+  cursor: pointer;
 
   @media(min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px) {
     top: -35px;
