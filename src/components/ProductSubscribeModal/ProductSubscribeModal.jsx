@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -19,7 +18,6 @@ const ProductSubscribeModal = connect(mapStateToProps, { hideModal })((
   {
     isOpen,
     hideModal,
-    customerEmail,
   }
 ) => {
   const [form] = Form.useForm()
@@ -33,7 +31,6 @@ const ProductSubscribeModal = connect(mapStateToProps, { hideModal })((
     form.resetFields()
     hideModal()
   }
-  console.log(customerEmail)
 
   return (
     <Modal
@@ -47,7 +44,6 @@ const ProductSubscribeModal = connect(mapStateToProps, { hideModal })((
         <Form.Item
           label="Email"
           name="email"
-          initialValue={customerEmail}
           rules={[
             {
               required: true,
