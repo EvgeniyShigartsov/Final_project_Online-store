@@ -7,11 +7,10 @@ import {
   message
 } from 'antd';
 import { hideModal } from '../../store/subscriceOnProductModal/middleware'
-import { selectIsOpenModal, selectCustomerEmail } from '../../store/subscriceOnProductModal/reducer'
+import { selectIsOpenModal } from '../../store/subscriceOnProductModal/reducer'
 
 const mapStateToProps = (state) => ({
   isOpen: selectIsOpenModal(state),
-  customerEmail: selectCustomerEmail(state)
 })
 
 const ProductSubscribeModal = connect(mapStateToProps, { hideModal })((

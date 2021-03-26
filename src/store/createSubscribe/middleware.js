@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { createSubscribe, createSubscribeSuccess, createSubscribeError } from './actionCreator'
 import { DOMAIN, getHeaders } from '../general'
@@ -6,7 +5,6 @@ import { DOMAIN, getHeaders } from '../general'
 const BASE_ENDPOINT = `${DOMAIN}/subscribers`
 
 const createNewSubscribe = (newSubscriber) => async (dispatch) => {
-  const headers = getHeaders()
   dispatch(createSubscribe())
 
   axios.post(BASE_ENDPOINT, newSubscriber)
