@@ -129,7 +129,7 @@ const Header = () => {
           hideInput={hideInput}
         />
         
-        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
+        <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
 
         {hideInput
           ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
