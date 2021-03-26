@@ -1,29 +1,32 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
-import { BannerSlider } from './components/BannerSlider/BannerSlider'
-import { AboutUsPage } from './pages/About-us/AboutUs'
-import NewProductsSlider from './components/NewProductsSlider/NewProductsSlider'
 import Footer from './components/Footer/Footer'
-import ContactUsPage from './pages/Contact-us/ContactUs'
-import ProductPage from './components/ProductPage/ProductPage'
-import { HomepageBrands } from './components/BrandsAndFollow/HomePageBrands'
-import { HomepageFollowUs } from './components/BrandsAndFollow/FollowUsInstagram'
-import CatalogPage from './components/CatalogPage/CatalogPage'
 import Header from './components/Header/Header'
 import LogIn from './components/LogIn/LogIn'
 import Checkout from './components/Checkout/Checkout'
 import DashBoard from './components/DashBoard/DashBoard'
 import WishlistPage from './components/WishlistPage/WishlistPage'
 import { setWishlist } from './store/wishlist/middleware'
-import {CartPage} from './components/CartPage/CartPage'
-import OrderPage from './components/OrderPage/OrderPage'
+import { getCart } from './store/cart/middleware'
+import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSubscribeModal'
+import Router from './components/Router/Router'
+import {authLogIn} from './store/auth/middleware'
+import { setRefreshTimer } from './store/auth/actionCreator'
 
-const App = connect(null, { setWishlist})(({ setWishlist}) => {
-  window.addEventListener('DOMContentLoaded', () => {
+const App = connect(null, { authLogIn, setRefreshTimer, setWishlist})(({
+  authLogIn,
+  setWishlist,
+  setRefreshTimer
+}) => {
+  useEffect(() => {
     setWishlist()
-  })
+
+    if (localStorage.getItem('credentials')) {
+      setRefreshTimer(setInterval(() => {
+        authLogIn(JSON.parse(localStorage.getItem('credentials')))
+      }, 1800000))
+    }
+  }, [authLogIn, setRefreshTimer, setWishlist])
 
   return (
     <div>
@@ -70,6 +73,8 @@ const App = connect(null, { setWishlist})(({ setWishlist}) => {
           <CatalogPage />
         </Route>
       </Switch>
+      <ProductSubscribeModal />
+      <Router />
       <Footer />
     </div>
   );

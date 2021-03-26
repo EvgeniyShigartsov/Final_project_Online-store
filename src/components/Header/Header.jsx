@@ -129,7 +129,7 @@ const Header = () => {
           hideInput={hideInput}
         />
         
-        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
+        <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
 
         {hideInput
           ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
@@ -137,6 +137,11 @@ const Header = () => {
         <WishListComponent />
         
         <Link to="/cart" style={{outline: 'none'}}>
+        {/* mediaSearch */}
+        <SearchOutlinedStyledMedia onClick={toggleShow} />
+        {/* mediaSearch */}
+
+        <Link to="/cart">
           <ShoppingCartOutlinedStyled />
         </Link>
         <RelativePosUserPopUp>

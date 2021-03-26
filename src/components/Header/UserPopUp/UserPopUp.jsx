@@ -4,10 +4,16 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authLogOut } from '../../../store/auth/middleware';
 import close from '../../../images/header/Close.svg';
+<<<<<<< HEAD
 import { NavUserContainer, Close, UlList } from './UserPopUpStyled';
+=======
+import { NavUserContainer, Close } from './UserPopUpStyled';
+import WishlistLI from './WishlistLI/WishlistLI'
+import { selectIsLogin } from '../../../store/auth/reducer';
+>>>>>>> b210969466aafb56d4f4fa0bd5ab3f468b60d26c
 
 const mapStateToProps = (state) => ({
-  isLogin: state.auth.isLogin
+  isLogin: selectIsLogin(state)
 })
 
 const UserPopUp = connect(mapStateToProps, { authLogOut })(({
