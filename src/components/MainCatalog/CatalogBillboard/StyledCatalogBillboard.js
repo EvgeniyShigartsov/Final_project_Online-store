@@ -42,14 +42,14 @@ export const CatalogBillboardWrapper = styled.div`
 
   @media (min-width: ${forTablet.minWidth}px) and (max-width: ${forTablet.maxWidth}px){
     width: 100%;
-    height: 200px;
+    height: 150px;
 
     margin-top: 50px;
   }
 
   @media(min-width: ${forDesktop.minWidth}px){
     min-width: 234px;
-    height: 250px;
+    height: 170px;
   }
 `
 

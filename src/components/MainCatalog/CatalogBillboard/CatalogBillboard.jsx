@@ -12,7 +12,12 @@ export const CatalogBillboard = ({ billboardInfo }) => {
   return (
     <CatalogBillboardWrapper src={img}>
       <CatalogBillboardTitle>{title}</CatalogBillboardTitle>
-      <CatalogBillboardLink to={url}>view all products</CatalogBillboardLink>
+      <CatalogBillboardLink
+        to={url}
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        view all products
+      </CatalogBillboardLink>
     </CatalogBillboardWrapper>
   )
 }

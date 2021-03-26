@@ -14,7 +14,7 @@ export const getMainCatalogProducts = () => (dispatch) => {
         switch (product.categories) {
           case 'gamingMonitors':
             if (
-              gamingMonitorList.length < 12
+              gamingMonitorList.length < 4
               && product.quantity > 0
               && product.newProduct === 'no'
             ) gamingMonitorList.push(product)
@@ -22,7 +22,7 @@ export const getMainCatalogProducts = () => (dispatch) => {
 
           case 'desctops':
             if (
-              desctopsList.length < 12
+              desctopsList.length < 4
               && product.quantity > 0
               && product.newProduct === 'no'
             ) desctopsList.push(product)
@@ -30,7 +30,7 @@ export const getMainCatalogProducts = () => (dispatch) => {
 
           case 'laptops':
             if (
-              laptopList.length < 12
+              laptopList.length < 4
               && product.quantity > 0
               && product.newProduct === 'no'
             ) laptopList.push(product)
@@ -38,7 +38,7 @@ export const getMainCatalogProducts = () => (dispatch) => {
 
           case 'tablets':
             if (
-              tabletList.length < 12
+              tabletList.length < 4
               && product.quantity > 0
               && product.newProduct === 'no'
             ) tabletList.push(product)
@@ -60,6 +60,7 @@ export const getMainCatalogProducts = () => (dispatch) => {
 
       dispatch(getMainCatalogCreater(combinePayload))
     })
+    .catch((error) => error.response)
 }
 
 export default getMainCatalogProducts

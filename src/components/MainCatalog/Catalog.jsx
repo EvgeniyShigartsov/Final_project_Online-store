@@ -30,7 +30,7 @@ export const Catalog = connect(mapStateToProps, { getMainCatalogProducts })(({
     && catalogProduct.tabletList.length > 0
   )
 
-  if (!checkProductsAreLoaded) return <SpinAnimation />
+  if (!checkProductsAreLoaded) return <SpinAnimation width="100%" height="30vh" />
   
   return (
     <StyledContainer>
