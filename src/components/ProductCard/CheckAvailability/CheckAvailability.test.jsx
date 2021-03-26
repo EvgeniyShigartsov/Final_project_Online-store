@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { CheckAvailability } from './CheckAvailability';
 import { store } from '../../../store/index'
 
-test('ProductCard render test', () => {
+test('CheckAvailability render test', () => {
   render(
     <Provider store={store}>
       <CheckAvailability />

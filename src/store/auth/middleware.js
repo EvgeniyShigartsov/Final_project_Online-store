@@ -26,7 +26,6 @@ export const authLogOut = () => (dispatch) => {
   dispatch(clearRefreshTimer())
   dispatch(logOut())
   dispatch(updateWishlistCreator(wishlistInitialState))
-  dispatch(logOut())
 }
 
 export default authLogIn
