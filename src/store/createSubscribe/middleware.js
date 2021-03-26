@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { createSubscribe, createSubscribeSuccess, createSubscribeError } from './actionCreator'
-import { DOMAIN, getHeaders } from '../general'
+import { DOMAIN } from '../general'
 
 const BASE_ENDPOINT = `${DOMAIN}/subscribers`
 
