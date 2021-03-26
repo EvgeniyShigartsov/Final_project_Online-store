@@ -7,6 +7,7 @@ export const CardItem = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  display: inline-block;
   max-width: 235px;
   padding: 5px 8px;
 

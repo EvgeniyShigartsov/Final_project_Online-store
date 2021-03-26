@@ -18,6 +18,7 @@ import WishlistPage from './components/WishlistPage/WishlistPage'
 import { setWishlist } from './store/wishlist/middleware'
 import {CartPage} from './components/CartPage/CartPage'
 import OrderPage from './components/OrderPage/OrderPage'
+import { Catalog } from './components/MainCatalog/Catalog'
 
 const App = connect(null, { setWishlist})(({ setWishlist}) => {
   window.addEventListener('DOMContentLoaded', () => {
@@ -31,9 +32,9 @@ const App = connect(null, { setWishlist})(({ setWishlist}) => {
         <Route exact path="/">
           <BannerSlider />
           <NewProductsSlider />
+          <Catalog />
           <HomepageBrands />
           <HomepageFollowUs />
-          {/* <MainCatalog /> */}
         </Route>
         <Route exact path="/signin">
           <LogIn />
