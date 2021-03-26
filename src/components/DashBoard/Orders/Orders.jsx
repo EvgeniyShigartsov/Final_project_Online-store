@@ -22,7 +22,6 @@ const Orders = () => {
         }}
         >
           My Orders
-
         </h5>
       </div>
       <DirectionChange>
