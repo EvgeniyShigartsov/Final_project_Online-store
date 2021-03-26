@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { connect } from 'react-redux';
 import {
   Modal,
-  Button,
   Form,
-  Input
+  Input,
+  message
 } from 'antd';
-import { showModal, hideModal } from '../../store/subscriceOnProductModal/middleware'
+import { hideModal } from '../../store/subscriceOnProductModal/middleware'
 import { selectIsOpenModal, selectCustomerEmail } from '../../store/subscriceOnProductModal/reducer'
 
 const mapStateToProps = (state) => ({
@@ -14,55 +15,54 @@ const mapStateToProps = (state) => ({
   customerEmail: selectCustomerEmail(state)
 })
 
-const ProductSubscribeModal = connect(mapStateToProps, {showModal, hideModal})((
+const ProductSubscribeModal = connect(mapStateToProps, { hideModal })((
   {
     isOpen,
-    showModal,
     hideModal,
     customerEmail,
   }
 ) => {
   const [form] = Form.useForm()
 
-  const onSubmit = (values) => {
-    hideModal()
+  const onSubmit = () => {
     form.resetFields()
-    console.log(values)
+    hideModal()
+    message.success('Thank you, you will be notified when this item is in stock!')
   };
+  const onCancel = () => {
+    form.resetFields()
+    hideModal()
+  }
+  console.log(customerEmail)
 
   return (
-    <div>
-      <Button type="primary" onClick={showModal}>
-        Open modal
-      </Button>
-      <Modal
-        title="Notify on product availability"
-        visible={isOpen}
-        okText="Subscribe"
-        onCancel={hideModal}
-        okButtonProps={{htmlType: 'submit', form: 'subscribeOnProductsForm'}}
-      >
-        <Form name="subscribeOnProductsForm" onFinish={onSubmit} form={form}>
-          <Form.Item
-            label="Email"
-            name="email"
-            initialValue={customerEmail || null}
-            rules={[
-              {
-                required: true,
-                message: 'Please input your email.',
-              },
-              {
-                type: 'email',
-                message: 'Entered data is not an email.',
-              },
-            ]}
-          >
-            <Input placeholder="Email" />
-          </Form.Item>
-        </Form>
-      </Modal>
-    </div>
+    <Modal
+      title="Notify on product availability"
+      visible={isOpen}
+      okText="Subscribe"
+      onCancel={onCancel}
+      okButtonProps={{htmlType: 'submit', form: 'subscribeOnProductsForm'}}
+    >
+      <Form name="subscribeOnProductsForm" onFinish={onSubmit} form={form}>
+        <Form.Item
+          label="Email"
+          name="email"
+          initialValue={customerEmail}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your email.',
+            },
+            {
+              type: 'email',
+              message: 'Entered data is not an email.',
+            },
+          ]}
+        >
+          <Input placeholder="Email" />
+        </Form.Item>
+      </Form>
+    </Modal>
   );
 })
 export default ProductSubscribeModal

@@ -19,6 +19,7 @@ import { setWishlist } from './store/wishlist/middleware'
 import {CartPage} from './components/CartPage/CartPage'
 import OrderPage from './components/OrderPage/OrderPage'
 import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSubscribeModal'
+import NoMatchPage from './components/NoMatchPage/NoMatchPage'
 
 const App = connect(null, { setWishlist})(({ setWishlist }) => {
   useEffect(() => {
@@ -64,8 +65,11 @@ const App = connect(null, { setWishlist})(({ setWishlist }) => {
         <Route exact path="/wishlist">
           <WishlistPage />
         </Route>
-        <Route path="/catalog">
+        <Route exact path="/catalog">
           <CatalogPage />
+        </Route>
+        <Route>
+          <NoMatchPage />
         </Route>
       </Switch>
       <Footer />
