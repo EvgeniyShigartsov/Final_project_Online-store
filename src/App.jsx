@@ -5,11 +5,23 @@ import Header from './components/Header/Header'
 import { setWishlist } from './store/wishlist/middleware'
 import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSubscribeModal'
 import Router from './components/Router/Router'
+import {authLogIn} from './store/auth/middleware'
+import { setRefreshTimer } from './store/auth/actionCreator'
 
-const App = connect(null, { setWishlist})(({ setWishlist }) => {
+const App = connect(null, { authLogIn, setRefreshTimer, setWishlist})(({
+  authLogIn,
+  setWishlist,
+  setRefreshTimer
+}) => {
   useEffect(() => {
     setWishlist()
-  }, [setWishlist])
+
+    if (localStorage.getItem('credentials')) {
+      setRefreshTimer(setInterval(() => {
+        authLogIn(JSON.parse(localStorage.getItem('credentials')))
+      }, 1800000))
+    }
+  }, [authLogIn, setRefreshTimer, setWishlist])
 
   return (
     <div>

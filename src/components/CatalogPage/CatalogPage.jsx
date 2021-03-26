@@ -8,7 +8,7 @@ import { CatalogProducts, Flex } from './StyledCatalogPage'
 
 const CatalogPage = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [sortAndPagination, setSortAndPagination] = useState({perPage: '15', startPage: 1})
+  const [sortAndPagination, setSortAndPagination] = useState({perPage: '16', startPage: 1})
   const [filter, setFilter] = useState({});
 
   const config = useMemo(() => ({
@@ -21,6 +21,7 @@ const CatalogPage = () => {
       <Heading>Products</Heading>
       <Flex>
         <CatalogFilter
+          filter={filter}
           setFilter={setFilter}
           showFilter={showFilter}
           setShowFilter={setShowFilter}

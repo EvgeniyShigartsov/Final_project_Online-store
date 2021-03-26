@@ -1,4 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react'
+import React, {
+  useCallback, useEffect, useRef, useState
+} from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -17,10 +19,12 @@ const mapStateToProps = (state) => ({
 const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchProducts})(({
   searchProducts,
   hideInput,
+  setHideInput,
   getSearchProducts,
   clearSearchProducts
 }) => {
   const [search, setSearch] = useState('')
+  const checkProductsLength = Boolean(searchProducts.length)
 
   const onChange = (e) => {
     const {value} = e.target
@@ -31,19 +35,28 @@ const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchP
   }
 
   const reset = useCallback(() => {
-    clearSearchProducts()
-    setSearch('')
-  }, [clearSearchProducts])
+    if (checkProductsLength && !hideInput) {
+      clearSearchProducts()
+      setSearch('')
+      setHideInput()
+    }
+  }, [checkProductsLength, clearSearchProducts, hideInput, setHideInput])
 
-  const checkProductsLength = Boolean(searchProducts.length)
+  const windowListener = useCallback((e) => {
+    if (!e.target.closest('#search-form')) {
+      reset()
+    }
+  }, [reset])
+
+  const listener = useRef(windowListener)
+
+  useEffect(() => { listener.current = windowListener })
 
   useEffect(() => {
-    window.addEventListener('click', (e) => {
-      if (!e.target.closest('#search-form')) {
-        reset()
-      }
-    })
-  }, [hideInput, reset])
+    const refListener = (e) => listener.current(e)
+    window.addEventListener('click', refListener)
+    return () => { window.removeEventListener('click', refListener) }
+  }, [reset])
 
   return (
     <FormContainer
@@ -89,6 +102,7 @@ const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchP
 
 SearchProducts.propTypes = {
   hideInput: PropTypes.bool.isRequired,
+  setHideInput: PropTypes.func.isRequired
 }
 
-export default SearchProducts
+export default React.memo(SearchProducts)

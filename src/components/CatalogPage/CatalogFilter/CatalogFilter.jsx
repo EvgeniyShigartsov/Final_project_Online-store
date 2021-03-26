@@ -1,41 +1,37 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
+import React, {
+  createRef, useCallback, useEffect, useMemo
+} from 'react'
 import PropTypes from 'prop-types';
 import {
-  Checkbox, InputNumber,
-  Menu, Form
+  Form
 } from 'antd';
+import { useHistory, useLocation } from 'react-router';
 import close from '../../../images/filter/close.svg';
-import WishlistBox from './WishlistBox/WishlistBox'
 // styles
 import {
   StyledForm, Wrapper, FilterTitle,
-  CloseBtn, AlignBtn, AllBrandsTitle,
-  StyledCheckbox,
-  GridFilterPart, ContainerBrandsImg, ContainerImage, GlobalStyle
+  CloseBtn, AlignBtn, ContainerImage, GlobalStyle
 } from './StylesCatalogfilter';
 import {checkFormValues} from '../../../utils/checkFormValues';
 // img
-import imageBrands1 from '../../../images/filter/imageBrands1.svg';
-import imageBrands2 from '../../../images/filter/imageBrands2.svg';
-import imageBrands3 from '../../../images/filter/imageBrands3.svg';
-import imageBrands4 from '../../../images/filter/imageBrands4.svg';
-import imageBrands5 from '../../../images/filter/imageBrands5.svg';
-import imageBrands6 from '../../../images/filter/imageBrands6.svg';
 import styl from '../../../images/filter/styl.svg';
-import { brands, categories } from '../filterConfig'
 import StyledButton from '../../common/Buttons/StyledButton'
-
-const { SubMenu } = Menu;
+import {FormMenu} from './FormMenu/FormMenu';
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 6 },
+  wrapperCol: { span: 18 },
 };
 
 const CatalogFilter = ({
-  showFilter, setShowFilter, setFilter
+  showFilter, setShowFilter, setFilter, filter
 }) => {
+  const {pathname} = useLocation()
+  const history = useHistory()
+  const formRef = createRef()
+
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -52,8 +48,36 @@ const CatalogFilter = ({
     setFilter({})
   }
 
+  const fields = useMemo(() => ([
+    {
+      name: 'brand',
+      value: filter?.brand || null
+    },
+    {
+      name: 'categories',
+      value: filter?.categories || null
+    }
+  ]), [filter])
+
+  const checkPathToConfig = useCallback((pathname) => {
+    const [key, value] = pathname.split('/').splice(2)[0].split('=')
+    if (value) {
+      setFilter((prev) => ({
+        ...prev,
+        [key]: value.split(',')
+      }))
+    }
+  }, [setFilter])
+  
+  useEffect(() => {
+    if (pathname !== '/catalog') {
+      checkPathToConfig(pathname)
+      history.push('/catalog')
+    }
+  }, [checkPathToConfig, filter, history, pathname])
+
   return (
-    <StyledForm form={form} {...layout} onFinish={onFinish}>
+    <StyledForm ref={formRef} fields={fields} form={form} {...layout} onFinish={onFinish}>
       <GlobalStyle showFilter={showFilter} />
       <Wrapper showFilter={showFilter}>
         <FilterTitle>
@@ -62,46 +86,7 @@ const CatalogFilter = ({
             <img src={close} alt="close" />
           </CloseBtn>
         </FilterTitle>
-        <Menu defaultOpenKeys={['сategories']} inlineIndent={10} mode="inline">
-          <SubMenu key="сategories" title="Сategories">
-            <Form.Item name="categories" noStyle>
-              <Checkbox.Group>
-                {categories.map(({value, title}) => (
-                  <StyledCheckbox
-                    key={value}
-                    value={value}
-                  >
-                    {title}
-                  </StyledCheckbox>
-                ))}
-              </Checkbox.Group>
-            </Form.Item>
-          </SubMenu>
-          <SubMenu key="brands" title="Brand">
-            <Form.Item name="brand" noStyle>
-              <Checkbox.Group>
-                {brands.map(({value, title}) => (
-                  <StyledCheckbox
-                    key={value}
-                    value={value}
-                  >
-                    {title}
-                  </StyledCheckbox>
-                ))}
-              </Checkbox.Group>
-            </Form.Item>
-          </SubMenu>
-          <SubMenu key="price" title="Price">
-            <div style={{padding: '20px 20px 0'}}>
-              <Form.Item name="minPrice" label="From">
-                <InputNumber style={{width: '100%'}} min={0} />
-              </Form.Item>
-              <Form.Item name="maxPrice" label="To">
-                <InputNumber style={{width: '100%'}} min={0} />
-              </Form.Item>
-            </div>
-          </SubMenu>
-        </Menu>
+        <FormMenu filter={filter} />
         <AlignBtn>
           <StyledButton
             size="sm"
@@ -110,8 +95,7 @@ const CatalogFilter = ({
             onClick={clearForm}
             style={{margin: 10, padding: 7}}
           >
-            Clear
-
+            Clear Filter
           </StyledButton>
           <StyledButton
             size="sm"
@@ -119,33 +103,9 @@ const CatalogFilter = ({
             htmlType="submit"
             style={{margin: 10, padding: 7}}
           >
-            Apply Filtres
+            Apply Filter
           </StyledButton>
         </AlignBtn>
-        <AllBrandsTitle>
-          <h5>All Brands</h5>
-        </AllBrandsTitle>
-        <GridFilterPart>
-          <ContainerBrandsImg>
-            <img src={imageBrands1} alt="imageBrands1" />
-          </ContainerBrandsImg>
-          <ContainerBrandsImg>
-            <img src={imageBrands2} alt="imageBrands2" />
-          </ContainerBrandsImg>
-          <ContainerBrandsImg>
-            <img src={imageBrands3} alt="imageBrands3" />
-          </ContainerBrandsImg>
-          <ContainerBrandsImg>
-            <img src={imageBrands4} alt="imageBrands4" />
-          </ContainerBrandsImg>
-          <ContainerBrandsImg>
-            <img src={imageBrands5} alt="imageBrands5" />
-          </ContainerBrandsImg>
-          <ContainerBrandsImg>
-            <img src={imageBrands6} alt="imageBrands6" />
-          </ContainerBrandsImg>
-        </GridFilterPart>
-        <WishlistBox />
         <ContainerImage>
           <img src={styl} alt="styl" />
         </ContainerImage>
@@ -153,7 +113,9 @@ const CatalogFilter = ({
     </StyledForm>
   );
 }
+
 CatalogFilter.propTypes = {
+  filter: PropTypes.instanceOf(Object).isRequired,
   showFilter: PropTypes.bool.isRequired,
   setShowFilter: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired

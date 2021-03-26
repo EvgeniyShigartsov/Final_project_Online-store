@@ -11,7 +11,6 @@ import Inst from '../../images/header/Inst.png';
 import PopUpList from './PopUpList/PopUpList';
 import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
 import UserPopUp from './UserPopUp/UserPopUp';
-import FavoriteLink from './FavoriteLink/FavoriteLink'
 
 // styled
 import {
@@ -136,13 +135,12 @@ const Header = () => {
           openCloseMenu={openCloseMenu}
         />
         
-        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
+        <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
 
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />
         {/* mediaSearch */}
 
-        <FavoriteLink />
         <Link to="/cart">
           <ShoppingCartOutlinedStyled />
         </Link>
