@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import { authLogOut } from '../../../store/auth/middleware';
 import close from '../../../images/header/Close.svg';
 import { NavUserContainer, Close } from './UserPopUpStyled';
+import WishlistLI from './WishlistLI/WishlistLI'
+import { selectIsLogin } from '../../../store/auth/reducer';
 
 const mapStateToProps = (state) => ({
-  isLogin: state.auth.isLogin
+  isLogin: selectIsLogin(state)
 })
 
 const UserPopUp = connect(mapStateToProps, { authLogOut })(({
@@ -60,7 +62,7 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
     >
       <ul>
         <li>My Account</li>
-        <li>My Wish List (0)</li>
+        {isLogin && <WishlistLI />}
         <li>Compare (0)</li>
         {isLogin ? null : (
           <NavLink to="/signup">

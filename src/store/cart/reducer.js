@@ -15,6 +15,7 @@ import {
 
 export const MODULE_NAME = 'cart';
 export const selectProducts = (state) => state[MODULE_NAME].products;
+export const selectproductCartCount = (state) => state[MODULE_NAME].productCartCount;
 export const selectCartSummary = (state) => state[MODULE_NAME].summary;
 export const selectCustomer = (state) => state[MODULE_NAME].customer;
 export const selectCities = (state) => state[MODULE_NAME].cities;
@@ -29,9 +30,10 @@ const initialState = {
   branches: [],
   shippingCost: 0,
   order: {},
+  productCartCount: 0,
   cities: [
     {
-      CityName: 'Kiyv',
+      CityName: 'Kyiv',
       Ref: '8d5a980d-391c-11dd-90d9-001a92567626'
     },
     {
@@ -54,43 +56,34 @@ const initialState = {
 }
 
 export const cartReducer = (state = initialState, {type, payload}) => {
+  const summaryTotalItems = (payload) => payload.products.reduce(
+    (sum, curr) => sum + curr.cartQuantity * curr.product.currentPrice,
+    0
+  )
   switch (type) {
     case ADD_TO_CART:
     case DECREASE_QUANTITY:
     case INCREASE_QUANTITY:
-      return {
-        ...state,
-        products: payload.products,
-        summary: payload.products.reduce(
-          (sum, curr) => sum + curr.cartQuantity * curr.product.currentPrice,
-          0
-        )
-      }
     case REMOVE_FROM_CART:
       return {
         ...state,
         products: payload.products,
-        summary: payload.products.reduce(
-          (sum, curr) => sum + curr.cartQuantity * curr.product.currentPrice,
+        summary: summaryTotalItems(payload),
+        productCartCount: payload.products.reduce(
+          (sum, curr) => sum + curr.cartQuantity,
           0
-        )
-      }
-    case CLEAR_CART:
-      return {
-        ...state,
-        products: [],
-        summary: 0,
-        shippingCost: 0,
+        ),
       }
     case SET_CART:
       return {
         ...state,
         products: payload.products,
-        customer: payload.customerId,
-        summary: payload.products.reduce(
-          (sum, curr) => sum + curr.cartQuantity * curr.product.currentPrice,
+        customer: payload.customerId || {},
+        productCartCount: payload.products.reduce(
+          (sum, curr) => sum + curr.cartQuantity,
           0
-        )
+        ),
+        summary: summaryTotalItems(payload)
       }
     case SET_CART_SUMMARY:
       return {
@@ -117,6 +110,14 @@ export const cartReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         order: payload,
+      }
+    case CLEAR_CART:
+      return {
+        ...state,
+        products: [],
+        summary: 0,
+        shippingCost: 0,
+        productCartCount: 0,
       }
     case CLEAR_ORDER:
       return {
