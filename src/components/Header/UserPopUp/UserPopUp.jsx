@@ -15,7 +15,7 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
 }) => {
   const openSlideUser = {
     hidden: {
-      x: 50,
+      x: -180,
       scale: 0,
       opacity: 0,
       transition: {
@@ -58,7 +58,6 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
       animate={isOpenUser ? 'show' : 'hidden'}
     >
       <UlList>
-        <li>My Account</li>
         {isLogin ? null : (
           <NavLink to="/signup">
             <li>Create an Account</li>

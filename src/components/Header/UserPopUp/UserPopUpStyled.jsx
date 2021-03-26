@@ -18,7 +18,7 @@ export const NavUserContainer = styled(motion.div)`
     top: 25px;
     left: 0px;
     width: 200px;
-    height: 150px;
+    height: 100px;
     ul{     
         a {
             outline: none;
@@ -35,7 +35,7 @@ export const NavUserContainer = styled(motion.div)`
               0 8px 8px rgba(0,0,0,0.12),
               0 16px 16px rgba(0,0,0,0.12);
         li{
-            padding-left: 30px;
+            padding-left: 20px;
         }
     }
 `;
