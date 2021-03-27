@@ -17,11 +17,12 @@ import {
   HeaderContainer, ContainerAlign, ContactUsCall, CallBackAsk,
   SearchAndItemsBlock,
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
-  ShaduleArrowContainer, LogoDesktop, ShoppingCartOutlinedStyled,
+  ShaduleArrowContainer, LogoDesktop,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
   CircleMobile, Logo, MenuOutlinedStyled
 } from './HeaderStyled';
 import SearchProducts from './SearchProducts/SearchProducts';
+import CartIcon from './UserPopUp/CartIcon/CartIcon';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);
@@ -135,14 +136,12 @@ const Header = () => {
           openCloseMenu={openCloseMenu}
         />
         
-        <SearchProducts hideInput={hideInput} setHideInput={setHideInput} />
+        <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
 
         {/* mediaSearch */}
         <SearchOutlinedStyledMedia onClick={toggleShow} />
         {/* mediaSearch */}
-        <Link to="/cart">
-          <ShoppingCartOutlinedStyled />
-        </Link>
+        <CartIcon />
         <RelativePosUserPopUp>
           <UserOutlinedStyled id="userBtn" data-testid="userBtn" />
           <UserPopUp
