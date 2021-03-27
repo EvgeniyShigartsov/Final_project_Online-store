@@ -19,12 +19,13 @@ import {
   HeaderContainer, ContainerAlign, ContactUsCall, CallBackAsk,
   SearchAndItemsBlock,
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
-  ShaduleArrowContainer, ShoppingCartOutlinedStyled,
+  ShaduleArrowContainer,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
   CircleMobile, MenuOutlinedStyled,
   CloseOutlinedFormStyled, TechTag,
 } from './HeaderStyled';
 import SearchProducts from './SearchProducts/SearchProducts';
+import CartIcon from './CartIcon/CartIcon'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useCycle(false, true);
@@ -137,9 +138,7 @@ const Header = () => {
           
         <WishListComponent />
 
-        <Link to="/cart" style={{outline: 'none'}}>
-          <ShoppingCartOutlinedStyled />
-        </Link>
+        <CartIcon />
         <RelativePosUserPopUp>
           <UserOutlinedStyled id="userBtn" data-testid="userBtn" />
           <UserPopUp
