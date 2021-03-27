@@ -17,7 +17,6 @@ import OrderPage from '../OrderPage/OrderPage'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
 import { Catalog } from '../MainCatalog/Catalog'
 import ReviewSlider from '../ReviewSlider/ReviewSlider'
-import ServiceSection from '../ServiceSection/ServiceSection'
 
 const Router = () => (
   <Switch>
@@ -28,48 +27,37 @@ const Router = () => (
       <HomepageBrands />
       <HomepageFollowUs />
       <ReviewSlider />
-      <ServiceSection />
     </Route>
     <Route exact path="/signin">
       <LogIn />
-      <ServiceSection />
     </Route>
     <Route exact path="/signup">
       <CreateCustomerPage />
-      <ServiceSection />
     </Route>
     <Route exact path="/aboutus">
       <AboutUsPage />
       <ReviewSlider />
-      <ServiceSection />
     </Route>
     <Route exact path="/contactus">
       <ContactUsPage />
-      <ServiceSection />
     </Route>
     <Route exact path="/cart">
       <CartPage />
-      <ServiceSection />
     </Route>
     <Route exact path="/checkout">
       <Checkout />
-      <ServiceSection />
     </Route>
     <Route exact path="/order">
       <OrderPage />
-      <ServiceSection />
     </Route>
     <Route exact path="/products/:itemNo">
       <ProductPage />
-      <ServiceSection />
     </Route>
     <Route exact path="/wishlist">
       <WishlistPage />
-      <ServiceSection />
     </Route>
     <Route exact path="/catalog">
       <CatalogPage />
-      <ServiceSection />
     </Route>
     <Route>
       <NoMatchPage />

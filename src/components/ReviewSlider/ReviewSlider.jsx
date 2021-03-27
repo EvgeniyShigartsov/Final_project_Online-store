@@ -24,9 +24,7 @@ const ReviewSlider = () => (
     <Wrapper>
       <Carousel
         effect="fade"
-        customPaging={() => (
-          <RoundDots />
-        )}
+        customPaging={() => <RoundDots />}
       >
         <div>
           <div style={contentStyle}>
