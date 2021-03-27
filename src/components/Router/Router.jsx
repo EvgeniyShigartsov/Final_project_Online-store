@@ -4,7 +4,7 @@ import CreateCustomerPage from '../CreateCustomerPage/CreateCustomerPage'
 import { BannerSlider } from '../BannerSlider/BannerSlider'
 import { AboutUsPage } from '../About-us/AboutUs'
 import NewProductsSlider from '../NewProductsSlider/NewProductsSlider'
-import ContactUsPage from '../Contact-us/ContactUs'
+import ContactUsPage from '../ContactUs/ContactUsPage'
 import ProductPage from '../ProductPage/ProductPage'
 import { HomepageBrands } from '../BrandsAndFollow/HomePageBrands'
 import { HomepageFollowUs } from '../BrandsAndFollow/FollowUsInstagram'
@@ -17,6 +17,7 @@ import OrderPage from '../OrderPage/OrderPage'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
 import DashBoard from '../DashBoard/DashBoard'
 import { Catalog } from '../MainCatalog/Catalog'
+import ReviewSlider from '../ReviewSlider/ReviewSlider'
 
 const Router = () => (
   <Switch>
@@ -26,6 +27,7 @@ const Router = () => (
       <Catalog />
       <HomepageBrands />
       <HomepageFollowUs />
+      <ReviewSlider />
     </Route>
     <Route exact path="/signin">
       <LogIn />
@@ -35,6 +37,7 @@ const Router = () => (
     </Route>
     <Route exact path="/aboutus">
       <AboutUsPage />
+      <ReviewSlider />
     </Route>
     <Route exact path="/contactus">
       <ContactUsPage />

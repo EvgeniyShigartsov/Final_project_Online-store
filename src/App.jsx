@@ -8,6 +8,7 @@ import Router from './components/Router/Router'
 import {authLogIn} from './store/auth/middleware'
 import { setRefreshTimer } from './store/auth/actionCreator'
 import { getCart } from './store/cart/middleware'
+import ServiceSection from './components/ServiceSection/ServiceSection'
 
 const App = connect(null, {
   authLogIn, setRefreshTimer, setWishlist, getCart
@@ -22,6 +23,7 @@ const App = connect(null, {
     getCart()
 
     if (localStorage.getItem('credentials')) {
+      authLogIn(JSON.parse(localStorage.getItem('credentials')))
       setRefreshTimer(setInterval(() => {
         authLogIn(JSON.parse(localStorage.getItem('credentials')))
       }, 1800000))
@@ -33,6 +35,7 @@ const App = connect(null, {
       <Header />
       <ProductSubscribeModal />
       <Router />
+      <ServiceSection />
       <Footer />
     </div>
   );

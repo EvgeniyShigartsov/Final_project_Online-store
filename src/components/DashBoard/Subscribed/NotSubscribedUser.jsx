@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { letterHtml, letterSubject } from '../../../store/general';
+import { letterHtmlSubscribe, letterSubjectSubscribe } from '../../../store/general';
 import createNewSubscribe from '../../../store/createSubscribe/middleware';
 import StyledSubscribedBlock from './StyledNotSubscribedUser';
 
@@ -22,7 +22,7 @@ const NotSubscribed = connect(null, {createNewSubscribe})(({
       </p>
       <button
         type="submit"
-        onClick={() => addSubscriber(email, letterSubject, letterHtml)}
+        onClick={() => addSubscriber(email, letterSubjectSubscribe, letterHtmlSubscribe)}
       >
         Subscribe
       </button>

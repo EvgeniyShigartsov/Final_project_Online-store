@@ -13,7 +13,7 @@ const OrderComponent = ({orders}) => {
     <StyledMenu style={{width: '90%'}}>
       {orders.products.map((item) => (
         <Menu.Item key={item._id}>
-          {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity}pc`}
+          {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity} pc`}
         </Menu.Item>
       ))}
     </StyledMenu>

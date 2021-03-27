@@ -7,7 +7,6 @@ import { reducer as authReducer, MODULE_NAME as authModule } from './auth/reduce
 import { reducer as dashBoardModalReducer, MODULE_NAME as dashBoardModal } from './dashBoardModal/reducer';
 import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
-import { subscribersReducer } from './createSubscribe/reducer'
 import { MODULE_NAME as wishlistModule, reducer as wishlistReducer } from './wishlist/reducer'
 import { MODULE_NAME as mainCatalog, mainCatalogReducer} from './mainCatalog/reducer';
 import { MODULE_NAME as subscribeModalModule, reducer as subscribeModalReducer } from './subscriceOnProductModal/reducer'
@@ -23,7 +22,6 @@ const rootReducer = combineReducers({
   [authModule]: persistedAuthReducer,
   [cart]: cartReducer,
   [productsModule]: productsReducer,
-  subscribe: subscribersReducer,
   [dashBoardModal]: dashBoardModalReducer,
   [wishlistModule]: wishlistReducer,
   [mainCatalog]: mainCatalogReducer,
