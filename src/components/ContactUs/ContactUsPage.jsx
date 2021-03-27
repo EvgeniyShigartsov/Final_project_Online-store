@@ -3,7 +3,7 @@ import {
   ClockCircleOutlined, MailOutlined, PhoneOutlined, EnvironmentOutlined,
 } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom';
-import { Form } from 'antd';
+import { Form, message } from 'antd';
 import StyledButton from '../common/Buttons/StyledButton'
 import {
   StyledWrapper, StyledTitle, StyledText, StyledContact, StyledAddress, StyledTextAddress,
@@ -13,17 +13,13 @@ import {
   StyledInputWrapper, StyledForm, StyledFormItemTextArea, StyledWrapperContainer
 } from './Styled'
 import { Container } from '../common/Container'
-import createNewContactForm from '../../store/contactUs/middleware'
-import { letterSubjectContactUs, letterHtmlContactUs} from '../../store/general';
 import { prefixSelector } from './PrefixSelector'
 
 const ContactUsPage = () => {
   const history = useHistory()
-  const onFinish = (values) => {
-    const credentials = {
-      ...values, letterHtml: letterSubjectContactUs, letterSubject: letterHtmlContactUs
-    }
-    createNewContactForm(credentials, history)
+  const onFinish = () => {
+    history.push('/')
+    message.success('Thank you for a feedback, our manager will call you soon.')
   }
   return (
     <Container>
@@ -43,9 +39,17 @@ const ContactUsPage = () => {
                 rules={[
                   {
                     required: true,
-                    pattern: /^[a-zа-яіїё]+$/i,
                     message: 'Please input your name!',
                   },
+                  {
+                    pattern: /^[a-zа-яіїё]+$/i,
+                    message: 'Allowed characters is a-z, а-я.'
+                  },
+                  {
+                    min: 2,
+                    max: 25,
+                    message: 'Last Name must be beetwen 2 and 25 characters.'
+                  }
                 ]}
               >
                 <StyledInputWrapper>
@@ -74,7 +78,7 @@ const ContactUsPage = () => {
                     Your Email
                     <StyledLableSpan>*</StyledLableSpan>
                   </Lable>
-                  <StyledInput placeholder="Your Mail" />
+                  <StyledInput placeholder="Your email" />
                 </StyledInputWrapper>
               </StyledFormItem>
               <StyledFormItem
@@ -82,8 +86,12 @@ const ContactUsPage = () => {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your phone number!',
+                    message: 'Please write your phone number.',
                   },
+                  {
+                    pattern: /^[0-9+()-]+$/i,
+                    message: 'Allowed characters is 0-9, "+", "(", ")"'
+                  }
                 ]}
               >
                 <StyledInputWrapper>
@@ -106,7 +114,7 @@ const ContactUsPage = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please leave us a comment!',
+                  message: 'Please leave us a comment.',
                 },
               ]}
             >

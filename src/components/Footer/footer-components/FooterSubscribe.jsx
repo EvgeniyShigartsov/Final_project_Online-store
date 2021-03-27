@@ -1,34 +1,39 @@
 import React from 'react'
 import 'antd/dist/antd.css';
 import { Form } from 'antd'
-import { useHistory } from 'react-router-dom';
 import StyledButton from '../../common/Buttons/StyledButton'
 import { StyledInput, StyledForm } from './footer-style-components/Styled'
 import createNewSubscribe from '../../../store/createSubscribe/middleware'
 import { letterHtmlSubscribe, letterSubjectSubscribe } from '../../../store/general';
 
 const FormSubscribe = () => {
-  const history = useHistory()
+  const [form] = StyledForm.useForm()
+
   const onFinish = (values) => {
     const credentials = {
       ...values, letterHtml: letterHtmlSubscribe, letterSubject: letterSubjectSubscribe
     }
-    createNewSubscribe(credentials, history)
+    createNewSubscribe(credentials)
+    form.resetFields()
   }
   return (
-    <StyledForm name="nest-messages" onFinish={onFinish}>
+    <StyledForm name="nest-messages" onFinish={onFinish} form={form}>
       <Form.Item
         name="email"
         rules={[
           {
+            required: true,
+            message: 'Email is required.'
+          },
+          {
             type: 'email',
-            message: 'Enter correct email'
+            message: 'Entered data is not an email.'
           },
         ]}
       >
         <StyledInput placeholder="your email" />
       </Form.Item>
-      <StyledButton type="primary" htmlType="submit" size="sm" padding="0" shape="round">
+      <StyledButton type="primary" htmlType="submit" size="sm" shape="round">
         Subscribe
       </StyledButton>
     </StyledForm>
