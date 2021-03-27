@@ -16,15 +16,16 @@ import {CartPage} from '../CartPage/CartPage'
 import OrderPage from '../OrderPage/OrderPage'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
 import DashBoard from '../DashBoard/DashBoard'
+import { Catalog } from '../MainCatalog/Catalog'
 
 const Router = () => (
   <Switch>
     <Route exact path="/">
       <BannerSlider />
       <NewProductsSlider />
+      <Catalog />
       <HomepageBrands />
       <HomepageFollowUs />
-      {/* <MainCatalog /> */}
     </Route>
     <Route exact path="/signin">
       <LogIn />

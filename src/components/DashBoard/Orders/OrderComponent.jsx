@@ -37,7 +37,7 @@ const OrderComponent = ({orders}) => {
             </Dropdown>
           </ShowListStyled>
         </Descriptions.Item>
-        <Descriptions.Item label="Shipping">{orders.shipping}</Descriptions.Item>
+        <Descriptions.Item label="Shipping">{`${orders.shipping} ₴`}</Descriptions.Item>
         <Descriptions.Item label="Total amount">{`${orders.totalSum} ₴`}</Descriptions.Item>
         <Descriptions.Item label="Phone">{slicePlus(orders.mobile)}</Descriptions.Item>
       </Descriptions>

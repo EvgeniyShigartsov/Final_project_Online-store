@@ -9,7 +9,7 @@ import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { subscribersReducer } from './createSubscribe/reducer'
 import { MODULE_NAME as wishlistModule, reducer as wishlistReducer } from './wishlist/reducer'
-import { reducer as mainCatalogReducer} from './mainCatalog/reducer';
+import { MODULE_NAME as mainCatalog, mainCatalogReducer} from './mainCatalog/reducer';
 import { MODULE_NAME as subscribeModalModule, reducer as subscribeModalReducer } from './subscriceOnProductModal/reducer'
 
 const persistConfig = {
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   subscribe: subscribersReducer,
   dashBoardModal: dashBoardModalReducer,
   [wishlistModule]: wishlistReducer,
-  mainCatalog: mainCatalogReducer,
+  [mainCatalog]: mainCatalogReducer,
   [subscribeModalModule]: subscribeModalReducer
 });
 

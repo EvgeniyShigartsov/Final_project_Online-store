@@ -16,12 +16,20 @@ export const HeaderContainer = styled.header`
   }
 `;
 export const ShaduleArrowContainer = styled.div`
+   @media(max-width: 430px) {
+    p {
+      text-align: center;
+    }
+    span {
+      display: block;
+      line-height: 15px;
+    }
+  } 
   position: relative;
   display: flex;
   align-items: center;
   @media(min-width: ${forTablet.minWidth}px) {
-    flex: 6;
-    padding-left: 20px;
+    flex: 7;
   }
   @media(min-width: ${forDesktop.minWidth}px) {
     flex: 0.4;

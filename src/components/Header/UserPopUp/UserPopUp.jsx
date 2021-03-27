@@ -20,7 +20,6 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
       scale: 0,
       opacity: 0,
       transition: {
-        delay: 0.35,
         type: 'spring',
         stiffness: 200,
         damping: 40
@@ -31,7 +30,6 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
       x: -180,
       scale: 1,
       transition: {
-        delay: 0.35,
         type: 'spring',
         stiffness: 200,
         damping: 40
