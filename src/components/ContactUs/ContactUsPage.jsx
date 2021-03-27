@@ -3,7 +3,7 @@ import {
   ClockCircleOutlined, MailOutlined, PhoneOutlined, EnvironmentOutlined,
 } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom';
-import { Form, Select } from 'antd';
+import { Form } from 'antd';
 import StyledButton from '../common/Buttons/StyledButton'
 import {
   StyledWrapper, StyledTitle, StyledText, StyledContact, StyledAddress, StyledTextAddress,
@@ -15,20 +15,7 @@ import {
 import { Container } from '../common/Container'
 import createNewContactForm from '../../store/contactUs/middleware'
 import { letterSubjectContactUs, letterHtmlContactUs} from '../../store/general';
-
-const { Option } = Select;
-
-const prefixSelector = (
-  <Form.Item name="prefix" noStyle>
-    <Select
-      style={{
-        width: 70,
-      }}
-    >
-      <Option value="38">+38</Option>
-    </Select>
-  </Form.Item>
-);
+import { prefixSelector } from './PrefixSelector'
 
 const ContactUsPage = () => {
   const history = useHistory()
@@ -56,6 +43,7 @@ const ContactUsPage = () => {
                 rules={[
                   {
                     required: true,
+                    pattern: /^[a-zа-яіїё]+$/i,
                     message: 'Please input your name!',
                   },
                 ]}
@@ -118,7 +106,7 @@ const ContactUsPage = () => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input what on your mind!',
+                  message: 'Please leave us a comment!',
                 },
               ]}
             >
@@ -131,7 +119,7 @@ const ContactUsPage = () => {
               </StyledInputWrapper>
             </StyledFormItemTextArea>
             <Form.Item>
-              <StyledButton type="primary" htmlType="submit" size="sm" padding="0" shape="round">
+              <StyledButton type="primary" htmlType="submit" size="sm" shape="round">
                 Submit
               </StyledButton>
             </Form.Item>
@@ -172,7 +160,7 @@ const ContactUsPage = () => {
               </StyledIconWrapper>
               <StyledAddressWrapper>
                 <StyledHeaderAddress>E-mail:</StyledHeaderAddress>
-                <StyledLinkMailAddress href="mailto:ptopdruk@gmail.com">shop@email.com</StyledLinkMailAddress>
+                <StyledLinkMailAddress href="mailto:fem8mail@gmail.com">fem8mail@gmail.com</StyledLinkMailAddress>
               </StyledAddressWrapper>
             </StyledAddress>
           </StyledContact>
