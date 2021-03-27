@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import {
   Descriptions, Dropdown, Button, Menu
@@ -9,10 +10,10 @@ import slicePlus from '../../../utils/slicePlus';
  
 const OrderComponent = ({orders}) => {
   const menu = (
-    <StyledMenu style={{width: '80%'}}>
+    <StyledMenu style={{width: '90%'}}>
       {orders.products.map((item) => (
-        <Menu.Item key={orders.orderNo}>
-          {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity}шт`}
+        <Menu.Item key={item._id}>
+          {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity}pc`}
         </Menu.Item>
       ))}
     </StyledMenu>
@@ -32,7 +33,7 @@ const OrderComponent = ({orders}) => {
           {orders.products.length}
           {' '}
           <ShowListStyled>
-            <Dropdown overlay={menu} placement="bottomCenter" arrow>
+            <Dropdown overlay={menu} placement="bottomCenter">
               <Button>Show</Button>
             </Dropdown>
           </ShowListStyled>

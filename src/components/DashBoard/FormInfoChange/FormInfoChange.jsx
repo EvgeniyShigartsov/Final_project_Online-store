@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Form, Input, Button
 } from 'antd';
@@ -6,10 +6,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateCustomer } from '../../../store/customer/middleware';
 import { setHideModal } from '../../../store/dashBoardModal/middleware';
+import { selectModalState } from '../../../store/dashBoardModal/reducer'
 
-const FormInfoChange = connect(null, { setHideModal })(({
-  setInfo, setHideModal
+const mapStateToProps = (state) => ({
+  show: selectModalState(state)
+})
+
+const FormInfoChange = connect(mapStateToProps, { setHideModal })(({
+  setInfo, setHideModal, show
 }) => {
+  const [form] = Form.useForm();
+
   const onFinish = (values) => {
     updateCustomer(values);
     setHideModal();
@@ -17,19 +24,22 @@ const FormInfoChange = connect(null, { setHideModal })(({
       ...prev,
       ...values
     }))
+    form.resetFields()
   }
+  useEffect(() => {
+    if (!show) {
+      form.resetFields()
+    }
+  }, [form, show])
   return (
-    <Form name="nest" onFinish={onFinish} datatest-id="ModalFormInfo">
+    <Form name="nest" form={form} onFinish={onFinish} datatest-id="ModalFormInfo">
       <Form.Item
         name="firstName"
         label="First name"
         rules={[{
           required: true,
           type: 'string',
-          pattern: new RegExp(
-            // eslint-disable-next-line no-useless-escape
-            /^[a-zA-ZА-Яа-я]+$/
-          ),
+          pattern: /^[a-zA-ZА-Яа-я]+$/,
           message: 'Enter correct First name'
         }]}
       >
@@ -42,10 +52,7 @@ const FormInfoChange = connect(null, { setHideModal })(({
         rules={[{
           required: true,
           type: 'string',
-          pattern: new RegExp(
-            // eslint-disable-next-line no-useless-escape
-            /^[a-zA-ZА-Яа-я]+$/
-          ),
+          pattern: /^[a-zA-ZА-Яа-я]+$/,
           message: 'Enter correct Last name'
         }]}
       >

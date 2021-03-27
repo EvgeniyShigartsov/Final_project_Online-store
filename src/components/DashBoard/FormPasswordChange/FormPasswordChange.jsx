@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Form,
   Input,
@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setHideModal } from '../../../store/dashBoardModal/middleware';
 import { changePassword } from '../../../store/customer/middleware';
+import { selectModalState } from '../../../store/dashBoardModal/reducer'
 
 const formItemLayout = {
   labelCol: {
@@ -32,9 +33,19 @@ const tailFormItemLayout = {
     },
   },
 };
+const mapStateToProps = (state) => ({
+  show: selectModalState(state)
+})
 
-const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
+const PasswordChange = connect(mapStateToProps, { setHideModal })(({ setHideModal, show }) => {
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    if (!show) {
+      form.resetFields()
+    }
+  }, [form, show])
+
   const onFinish = ({middlePassword, ...rest}) => {
     changePassword(rest);
     form.resetFields();
@@ -80,10 +91,7 @@ const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
           },
           {
             type: 'string',
-            pattern: new RegExp(
-            // eslint-disable-next-line no-useless-escape
-              /^([a-zA-Z0-9])*$/i
-            ),
+            pattern: /^[a-zA-ZА-Яа-я]+$/,
             message: 'Enter please only letterts and numbers'
           }
         ]}
@@ -108,10 +116,7 @@ const PasswordChange = connect(null, { setHideModal })(({ setHideModal }) => {
           },
           {
             type: 'string',
-            pattern: new RegExp(
-            // eslint-disable-next-line no-useless-escape
-              /^([a-zA-Z0-9])*$/i
-            ),
+            pattern: /^[a-zA-ZА-Яа-я]+$/,
             message: 'Enter please only letterts and numbers'
           },
           ({ getFieldValue }) => ({

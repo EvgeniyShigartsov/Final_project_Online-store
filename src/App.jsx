@@ -7,21 +7,26 @@ import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSub
 import Router from './components/Router/Router'
 import {authLogIn} from './store/auth/middleware'
 import { setRefreshTimer } from './store/auth/actionCreator'
+import { getCart } from './store/cart/middleware'
 
-const App = connect(null, { authLogIn, setRefreshTimer, setWishlist})(({
+const App = connect(null, {
+  authLogIn, setRefreshTimer, setWishlist, getCart
+})(({
   authLogIn,
   setWishlist,
-  setRefreshTimer
+  setRefreshTimer,
+  getCart
 }) => {
   useEffect(() => {
     setWishlist()
+    getCart()
 
     if (localStorage.getItem('credentials')) {
       setRefreshTimer(setInterval(() => {
         authLogIn(JSON.parse(localStorage.getItem('credentials')))
       }, 1800000))
     }
-  }, [authLogIn, setRefreshTimer, setWishlist])
+  }, [authLogIn, getCart, setRefreshTimer, setWishlist])
 
   return (
     <div>

@@ -23,7 +23,9 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
         type: 'spring',
         stiffness: 200,
         damping: 40
-      }
+      },
+      originX: 0.9,
+      originY: 0,
     },
     show: {
       opacity: 1,
@@ -65,7 +67,7 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
         {isLogin
           && (
             <NavLink to="/dashboard">
-              <li>Dashboard</li>
+              <li>My Dashboard</li>
             </NavLink>
           )}
         {isLogin

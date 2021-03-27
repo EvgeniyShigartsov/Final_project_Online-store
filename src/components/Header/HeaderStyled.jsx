@@ -175,6 +175,12 @@ export const Input = styled.input`
   width: 90%;
   border-radius: 20px;
   flex: 30;
+  @media(max-width: 370px) {
+    ::placeholder,
+    ::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+  }
   @media(min-width: ${forDesktop.minWidth}px) {
     background: #EBEBEB;
   }

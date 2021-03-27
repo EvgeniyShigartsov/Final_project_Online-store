@@ -14,8 +14,8 @@ export const Circle = styled.div`
     position: absolute;
     top: -4px;
     left: 23px;
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     background-color: #0157fe;
     border-radius: 50%;
     display: flex;
@@ -23,7 +23,7 @@ export const Circle = styled.div`
     align-items: center;
     @media(max-width: ${forTablet.maxWidth}px) {
       left: 35px;
-      op: -5px;
+      top: -5px;
       background-color: black;
     }
 `;

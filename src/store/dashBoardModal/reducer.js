@@ -1,5 +1,8 @@
 import {SHOW_MODAL, HIDE_MODAL} from './actionType';
 
+export const MODULE_NAME = 'dashBoardModal'
+export const selectModalState = (state) => state[MODULE_NAME].show
+
 const initialState = {
   show: false,
   formId: ''

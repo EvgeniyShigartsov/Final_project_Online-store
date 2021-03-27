@@ -13,11 +13,11 @@ export const ContainerOrder = styled.div`
 export const ShowListStyled = styled.span`
   text-decoration-line: underline;
   color: #0156FF;
-  cursor: pointe;
+  cursor: pointer;
 `;
 export const StyledMenu = styled(Menu)`
   .ant-dropdown-menu {
-    width: 80% !important;
+    width: 90% !important;
   }
   .ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title {
     white-space: pre-wrap;
