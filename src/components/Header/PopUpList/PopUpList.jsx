@@ -31,25 +31,25 @@ const PopUpList = ({
     </HeaderOfPopUp>
     <Listnavigation onClick={(e) => checkForLinkOpen(e)}>
       <ExceptionLi>
-        <Link to="/desctops">
+        <Link to="/catalog?categories=desctops">
           <h5>Desctops</h5>
         </Link>
         <RightOutlinedStyled />
       </ExceptionLi>
       <li>
-        <Link to="/gamingMonitors">
+        <Link to="/catalog?categories=gamingMonitors">
           <h5>Gaming Monitors</h5>
         </Link>
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/laptops">
+        <Link to="/catalog?categories=laptops">
           <h5>Laptops</h5>
         </Link>
         <RightOutlinedStyled />
       </li>
       <li>
-        <Link to="/tablets"><h5>Tablets</h5></Link>
+        <Link to="/catalog?categories=tablets"><h5>Tablets</h5></Link>
         <RightOutlinedStyled />
       </li>
       <li>
