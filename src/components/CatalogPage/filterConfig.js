@@ -29,7 +29,7 @@ export const categories = SortArr([
   },
   {
     value: 'desctops',
-    title: 'Desctops'
+    title: 'Desktops'
   }
 ])
 
