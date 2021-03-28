@@ -62,7 +62,6 @@ export const addToCart = (product, quantity) => (dispatch, getStore) => {
 
 export const getCart = () => (dispatch, getStore) => {
   const {auth: {isLogin} } = getStore()
-  console.log(isLogin)
   if (isLogin) {
     const headers = getHeaders()
     axios.get(BASE_ENDPOINT, { headers })
