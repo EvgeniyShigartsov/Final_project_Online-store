@@ -9,7 +9,7 @@ import { forDesktop } from '../../styles/mediaBreakPoints'
 
 export const BannerSlider = () => {
   const carouselSettings = {
-    autoplay: true,
+    autoplay: false,
     dots: false,
     responsive: [
       {
