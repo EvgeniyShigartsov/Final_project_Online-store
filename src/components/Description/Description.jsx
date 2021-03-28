@@ -5,10 +5,10 @@ import { MainHeading, StyledDescription } from './StyledDescription';
 const Description = () => (
   <Container>
     <MainHeading>
-      Online store Tech-store
+      Online store TechStore
     </MainHeading>
     <StyledDescription>
-      The online electronics store Tech-store offers
+      The online electronics store TechStore offers
       a wide range of computer technology and electronics.
       Constant price monitoring allows you to buy equipment
       for home and office at the lowest price. The range includes
