@@ -1,6 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
+import makeConfigFromUrl from '../../../utils/makeConfigFromUrl'
+import makeFilterUrl from '../../../utils/makeFilterUrl'
 import {StyledPagination} from './StyledCatalogPagination'
 
 const mapStateToProps = (state) => ({
@@ -8,37 +11,26 @@ const mapStateToProps = (state) => ({
 })
 
 const CatalogPagination = connect(mapStateToProps)(({
-  config,
-  setSortAndPagination,
   productsQuantity
 }) => {
-  const {perPage, startPage} = config
+  const {search} = useLocation()
+  const history = useHistory()
+  const config = search ? makeConfigFromUrl(search) : {}
 
-  const onChangePage = (page) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-    setSortAndPagination((prev) => ({
-      ...prev,
-      startPage: page
-    }))
+  const onChange = (page) => {
+    config.startPage = page
+    history.push(`/catalog?${makeFilterUrl(config)}`)
   }
 
   return (
     <StyledPagination
       showSizeChanger={false}
-      onChange={onChangePage}
-      current={+startPage}
-      pageSize={+perPage}
+      onChange={onChange}
+      current={+config.startPage || 1}
+      pageSize={+config.perPage || 16}
       total={+productsQuantity}
     />
   )
 })
-
-CatalogPagination.propTypes = {
-  config: PropTypes.instanceOf(Object).isRequired,
-  setSortAndPagination: PropTypes.func.isRequired
-}
 
 export default CatalogPagination
