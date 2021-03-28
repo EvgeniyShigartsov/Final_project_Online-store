@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import {ProductCard} from '../../ProductCard/ProductCard'
@@ -25,16 +25,16 @@ const CatalogProductsPlace = connect(mapStateToProps, {
   }
 ) => {
   const {search} = useLocation()
+  const config = useMemo(() => (search ? makeConfigFromUrl(search) : {}), [search])
 
   useEffect(() => {
-    const config = search ? makeConfigFromUrl(search) : {}
     if (config.perPage) {
       getProductsToCatalog(search)
     } else {
       config.perPage = 16
       getProductsToCatalog(`?${makeFilterUrl(config)}`)
     }
-  }, [getProductsToCatalog, search])
+  }, [config, getProductsToCatalog, search])
 
   return (
     catalogProducts.length === 0
@@ -49,7 +49,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
               />
             ))}
           </ProductsWrapper>
-          <CatalogPagination />
+          {productsQuantity > (config.perPage || 16) && <CatalogPagination />}
         </Wrapper>
       )
   )

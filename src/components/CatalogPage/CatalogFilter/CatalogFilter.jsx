@@ -45,7 +45,6 @@ const CatalogFilter = ({
     history.push(`/catalog?${makeFilterUrl(refConfig)}`)
     setShowFilter(false)
   };
-
   const clearForm = () => {
     form.resetFields()
     history.push('/catalog')
