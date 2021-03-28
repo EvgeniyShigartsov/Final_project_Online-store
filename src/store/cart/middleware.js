@@ -48,13 +48,13 @@ export const addToCart = (product, quantity) => (dispatch, getStore) => {
   axios.put(BASE_ENDPOINT, {products: updatedCart}, { headers })
     .then((updatedCart) => {
       dispatch(addToCartCreator(updatedCart.data));
-      message.success('Product added to cart!')
+      message.success('Product has been added to cart')
     })
     .catch((error) => {
       if (error.response.status === 401) {
         addCartToLS(product, quantity)
         dispatch(setCart({products: getCartLS()}))
-        message.success('Product added to cart!')
+        message.success('Product has been added to cart')
       }
     })
 }
@@ -214,7 +214,7 @@ export const PlaceOrder = (
     .post(`${DOMAIN}/orders`, body)
     .then((newOrder) => {
       dispatch(getOrderCreator(newOrder.data.order))
-      clearCart(isLogin)(dispatch)
+      dispatch(clearCart())
     })
     .catch((err) => err.response)
 }
