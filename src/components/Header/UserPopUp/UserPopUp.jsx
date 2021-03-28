@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -38,19 +39,19 @@ const UserPopUp = connect(mapStateToProps, { authLogOut })(({
       }
     }
   };
-  useEffect(() => {
-    window.addEventListener('click', (e) => {
-      if (e.target.closest('#userBtn') !== null) {
-        setIsOpenUser(() => true);
-        return
-      }
-      if (isOpenUser) {
-        if (e.target.closest('#usePopUp') === null) {
-          setIsOpenUser(() => false)
-        }
-      }
-    })
-  }, [isOpenUser, setIsOpenUser])
+  // useEffect(() => {
+  //   window.addEventListener('click', (e) => {
+  //     if (e.target.closest('#userBtn') !== null) {
+  //       setIsOpenUser(() => true);
+  //       return
+  //     }
+  //     if (isOpenUser) {
+  //       if (e.target.closest('#usePopUp') === null) {
+  //         setIsOpenUser(() => false)
+  //       }
+  //     }
+  //   })
+  // }, [isOpenUser, setIsOpenUser])
   return (
     <NavUserContainer
       id="usePopUp"
