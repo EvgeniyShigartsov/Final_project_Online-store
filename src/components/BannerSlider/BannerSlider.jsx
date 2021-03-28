@@ -5,11 +5,20 @@ import secondImg from '../../images/banner-slider/second.png'
 import thirdImg from '../../images/banner-slider/third.png'
 import fourthImg from '../../images/banner-slider/fourth.png'
 import { ImageBox, Img, SliderWrapper } from './StylesBannerSlider'
+import { forDesktop } from '../../styles/mediaBreakPoints'
 
 export const BannerSlider = () => {
   const carouselSettings = {
     autoplay: true,
     dots: false,
+    responsive: [
+      {
+        breakpoint: forDesktop.minWidth,
+        settings: {
+          dots: true
+        }
+      },
+    ]
   }
   return (
     <SliderWrapper>

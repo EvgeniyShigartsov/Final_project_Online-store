@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Carousel as AntdCarousel } from 'antd'
+import { StyledCarousel } from './StyledCarousel'
 import { Wrapper } from '../common/Wrapper'
 import { SliderArrowLeft } from '../common/SliderArrowLeft'
 import { SliderArrowRight } from '../common/SliderArrowRight'
@@ -22,9 +22,9 @@ const Carousel = ({ carouselSettings, children }) => {
   return (
     <Wrapper>
       {!children.length && <SpinAnimation width="100%" height="30vh" />}
-      <AntdCarousel ref={ref} {...carouselSettings}>
+      <StyledCarousel ref={ref} {...carouselSettings}>
         {children}
-      </AntdCarousel>
+      </StyledCarousel>
       {children.length > 1 && <SliderArrowRight onClick={handlers.next} /> }
       {children.length > 1 && <SliderArrowLeft onClick={handlers.prev} /> }
     </Wrapper>

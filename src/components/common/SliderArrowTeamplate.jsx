@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { forDesktop } from '../../styles/mediaBreakPoints'
 
 export const SliderArrowTeamplate = styled.button`
+  display: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -17,8 +18,10 @@ export const SliderArrowTeamplate = styled.button`
   }
 
   @media(min-width: ${forDesktop.minWidth}px) {
+    display: block;
     width: 36px;
     height: 48px;
   }
+  
 `
 export default SliderArrowTeamplate
