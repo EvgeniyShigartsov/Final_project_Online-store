@@ -15,3 +15,7 @@ export const ImageBox = styled.div`
     height: 250px;
   }
 `
+export const SliderWrapper = styled.div`
+  max-width: 1800px;
+  margin: 0 auto;
+`
