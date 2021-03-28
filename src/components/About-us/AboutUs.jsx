@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container} from '../common/Container';
-import {Heading} from '../common/Heading/Heading';
+import Heading from '../common/Heading/Heading';
 import data from './ContentForAboutUs'
 import {
   Flex, Section, ContentContainer, SectionTitle, SectionContent, SectionImg, Img,

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { forDesktop, forTablet } from '../../../styles/mediaBreakPoints';
 
-export const Heading = styled.h3`
+const Heading = styled.h3`
 color: #000;
 font-weight: 600;
 font-size: 18px;
