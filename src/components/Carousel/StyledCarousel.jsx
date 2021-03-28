@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Carousel } from 'antd'
 
 export const StyledCarousel = styled(Carousel)`
@@ -31,5 +31,11 @@ export const StyledCarousel = styled(Carousel)`
         border-radius: 50%;
         background-color: #0156FF;
     }
+
+    ${(props) => props.moveBottomDots && css`
+        & .slick-dots.slick-dots-bottom {
+            bottom: ${props.moveBottomDots};
+        }
+    `}
 `
 export default StyledCarousel

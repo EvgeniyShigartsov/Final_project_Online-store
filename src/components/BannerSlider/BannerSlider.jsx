@@ -4,8 +4,9 @@ import firstImg from '../../images/banner-slider/first.png'
 import secondImg from '../../images/banner-slider/second.png'
 import thirdImg from '../../images/banner-slider/third.png'
 import fourthImg from '../../images/banner-slider/fourth.png'
-import { ImageBox, Img, SliderWrapper } from './StylesBannerSlider'
+import { ImageBox, Img } from './StylesBannerSlider'
 import { forDesktop } from '../../styles/mediaBreakPoints'
+import { Container } from '../common/Container'
 
 export const BannerSlider = () => {
   const carouselSettings = {
@@ -21,7 +22,7 @@ export const BannerSlider = () => {
     ]
   }
   return (
-    <SliderWrapper>
+    <Container>
       <Carousel carouselSettings={carouselSettings}>
         <ImageBox>
           <Img src={firstImg} alt="some img" />
@@ -36,7 +37,7 @@ export const BannerSlider = () => {
           <Img src={fourthImg} alt="some img" />
         </ImageBox>
       </Carousel>
-    </SliderWrapper>
+    </Container>
   )
 }
 export default BannerSlider

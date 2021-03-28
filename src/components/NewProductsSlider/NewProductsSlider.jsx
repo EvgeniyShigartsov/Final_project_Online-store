@@ -66,7 +66,7 @@ const NewProductsSlider = connect(
   return (
     <Container>
       <SliderTitle />
-      <Carousel carouselSettings={carouselSettings}>
+      <Carousel carouselSettings={carouselSettings} moveBottomDots="0px">
         {newProducts.map((el) => (
           <ItemWrapper key={el.itemNo}>
             <ProductCard

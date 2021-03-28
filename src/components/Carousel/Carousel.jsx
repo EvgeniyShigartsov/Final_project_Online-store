@@ -6,9 +6,10 @@ import { Wrapper } from '../common/Wrapper'
 import { SliderArrowLeft } from '../common/SliderArrowLeft'
 import { SliderArrowRight } from '../common/SliderArrowRight'
 import SpinAnimation from '../SpinAnimation/SpinAnimation'
-import 'antd/dist/antd.css'
 
-const Carousel = ({ carouselSettings, children }) => {
+const Carousel = ({
+  carouselSettings, children, hideArrows, moveBottomDots
+}) => {
   const ref = useRef()
   const [handlers, setHandlers] = useState({ next: () => null, prev: () => null })
 
@@ -22,18 +23,24 @@ const Carousel = ({ carouselSettings, children }) => {
   return (
     <Wrapper>
       {!children.length && <SpinAnimation width="100%" height="30vh" />}
-      <StyledCarousel ref={ref} {...carouselSettings}>
+      <StyledCarousel ref={ref} {...carouselSettings} moveBottomDots={moveBottomDots}>
         {children}
       </StyledCarousel>
-      {children.length > 1 && <SliderArrowRight onClick={handlers.next} /> }
-      {children.length > 1 && <SliderArrowLeft onClick={handlers.prev} /> }
+      {!hideArrows && children.length > 1 && <SliderArrowRight onClick={handlers.next} /> }
+      {!hideArrows && children.length > 1 && <SliderArrowLeft onClick={handlers.prev} /> }
     </Wrapper>
   )
 }
   
 Carousel.propTypes = {
   carouselSettings: PropTypes.instanceOf(Object).isRequired,
-  children: PropTypes.instanceOf(Array).isRequired
+  children: PropTypes.instanceOf(Array).isRequired,
+  hideArrows: PropTypes.bool,
+  moveBottomDots: PropTypes.string
+}
+Carousel.defaultProps = {
+  hideArrows: false,
+  moveBottomDots: ''
 }
 
 export default Carousel
