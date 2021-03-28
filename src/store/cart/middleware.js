@@ -21,8 +21,7 @@ import { DOMAIN, getHeaders } from '../general'
 const BASE_ENDPOINT = `${DOMAIN}/cart`
 
 export const addToCart = (product, quantity) => (dispatch, getStore) => {
-  const { cart: { products } } = getStore()
-  const {auth: {isLogin} } = getStore()
+  const { cart: { products }, auth: {isLogin} } = getStore()
   const productId = product._id
   let updatedCart = []
   const itemInCartAndLS = products ? products.find((el) => el.product._id === productId) : null

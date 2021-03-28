@@ -213,11 +213,9 @@ const FormCheckout = connect(mapStateToProps, {getCity, getShippingCost, PlaceOr
         value={valuePaymentInfo}
         style={{marginBottom: '20px'}}
       >
-        {/* <Row> */}
         <StyledRadio value="Payment at the time of receipt of the goods">
           Payment at the time of receipt of the goods
         </StyledRadio>
-        {/* </Row> */}
       </Radio.Group>
       
       <StyledShippingTitle>
