@@ -13,7 +13,6 @@ import {
   StyledInputWrapper, StyledForm, StyledFormItemTextArea, StyledWrapperContainer
 } from './Styled'
 import { Container } from '../common/Container'
-import { prefixSelector } from './PrefixSelector'
 
 const ContactUsPage = () => {
   const history = useHistory()
@@ -89,7 +88,7 @@ const ContactUsPage = () => {
                     message: 'Please write your phone number.',
                   },
                   {
-                    pattern: /^[0-9+()-]+$/i,
+                    pattern: /^[0-9]+$/i,
                     message: 'Allowed characters is 0-9, "+", "(", ")"'
                   }
                 ]}
@@ -101,7 +100,6 @@ const ContactUsPage = () => {
                   </Lable>
                   <StyledInput
                     placeholder="Your Phone Number"
-                    addonBefore={prefixSelector}
                     style={{
                       width: '100%',
                     }}
