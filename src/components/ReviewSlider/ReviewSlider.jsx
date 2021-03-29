@@ -16,6 +16,7 @@ import bracketsIcon from '../../images/brackets.png'
 const ReviewSlider = () => {
   const carouselSettings = {
     dots: true,
+    autoplay: true,
   }
   return (
     <Container>
