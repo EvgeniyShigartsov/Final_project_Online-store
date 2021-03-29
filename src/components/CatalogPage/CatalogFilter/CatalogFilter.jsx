@@ -6,13 +6,11 @@ import {
 } from 'antd';
 import { useHistory, useLocation } from 'react-router-dom';
 import close from '../../../images/filter/close.svg';
-// styles
 import {
   StyledForm, Wrapper, FilterTitle,
   CloseBtn, AlignBtn, ContainerImage, GlobalStyle
 } from './StylesCatalogfilter';
 import {checkFormValues} from '../../../utils/checkFormValues';
-// img
 import styl from '../../../images/filter/styl.svg';
 import StyledButton from '../../common/Buttons/StyledButton'
 import {FormMenu} from './FormMenu/FormMenu';
@@ -69,7 +67,7 @@ const CatalogFilter = ({
     },
     {
       name: 'maxPrice',
-      value: +config?.maxPrice || null
+      value: (config.maxPrice === '10000000' ? null : +config?.maxPrice) || null
     }
   ]), [config.brand, config.categories, config.maxPrice, config.minPrice])
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'

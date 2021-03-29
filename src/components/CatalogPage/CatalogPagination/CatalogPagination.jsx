@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 import makeConfigFromUrl from '../../../utils/makeConfigFromUrl'
