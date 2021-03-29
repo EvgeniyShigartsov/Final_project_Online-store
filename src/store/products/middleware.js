@@ -64,7 +64,7 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
-  const res = axios.get(`${BASE_ENDPOINT}/filter?${param}`)
+  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) dispatch(actionCreator(res.data.products))
       return res

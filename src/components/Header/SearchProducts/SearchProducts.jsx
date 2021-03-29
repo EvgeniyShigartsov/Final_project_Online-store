@@ -35,17 +35,13 @@ const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchP
   }
 
   const reset = useCallback(() => {
-    if (checkProductsLength && !hideInput) {
-      clearSearchProducts()
-      setSearch('')
-      setHideInput()
-    }
-  }, [checkProductsLength, clearSearchProducts, hideInput, setHideInput])
+    clearSearchProducts()
+    setSearch('')
+    setHideInput()
+  }, [clearSearchProducts, setHideInput])
 
-  const windowListener = useCallback((e) => {
-    if (!e.target.closest('#search-form')) {
-      reset()
-    }
+  const windowListener = useCallback(() => {
+    reset()
   }, [reset])
 
   const listener = useRef(windowListener)

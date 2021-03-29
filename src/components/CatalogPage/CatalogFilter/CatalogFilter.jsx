@@ -38,7 +38,7 @@ const CatalogFilter = ({
     const refValue = checkFormValues(values)
     const refConfig = {...config, ...refValue}
     Object.keys(refConfig).forEach((key) => {
-      if (filterParts.includes(key) && refValue[key] === undefined && refValue[key] === null) {
+      if (filterParts.includes(key) && (refValue[key] === undefined || refValue[key] === null)) {
         delete refConfig[key]
       }
     })
