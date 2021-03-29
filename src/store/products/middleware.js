@@ -64,7 +64,6 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
-  
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) dispatch(actionCreator(res.data.products))
@@ -76,15 +75,7 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
 
 export const getProductsToCatalog = (param) => (dispatch) => {
   dispatch(cleanCatalogProducts())
-  let paramStr = ''
-  Object.keys(param).forEach((key, index) => {
-    if (index === 0) {
-      return paramStr += `${key}=${param[key].toString()}`
-    }
-    return paramStr += `&${key}=${param[key].toString()}`
-  })
-
-  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+  const res = axios.get(`${BASE_ENDPOINT}/filter${param}`)
     .then((res) => {
       if (res.status === 200) {
         dispatch(setProductsToCatalog(res.data.products))
