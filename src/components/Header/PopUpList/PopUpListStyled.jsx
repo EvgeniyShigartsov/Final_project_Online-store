@@ -36,6 +36,7 @@ export const PopUpContainer = styled(motion.div)`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
   }
     h5{
         font-size: 20px;
@@ -49,7 +50,7 @@ export const PopUpContainer = styled(motion.div)`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: 25px 20px 10px 25px;
+      padding: 25px 20px 20px 25px;
       @media(min-width: ${forDesktop.minWidth}px) {
         padding: 0px 5px 0px 5px;
       }
