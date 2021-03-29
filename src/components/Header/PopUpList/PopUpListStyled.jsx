@@ -7,6 +7,12 @@ import styled, { css } from 'styled-components';
 import { forDesktop, forMobile } from '../../../styles/mediaBreakPoints';
 
 export const PopUpContainer = styled(motion.div)`
+  ${(props) => !props.isOpen && css`
+    display: none;
+  `}
+  ${(props) => props.isOpen && css`
+    display: block;
+  `}
   position: absolute;
   top: 0;
   left: 0;
@@ -81,7 +87,7 @@ export const TechTag = styled.h1`
   font-weight: 500;
 `;
 export const HeaderOfPopUp = styled.div`
-  position: relative;
+  //position: relative;
   height: 80px;
   background-color: white;
   display: flex;
