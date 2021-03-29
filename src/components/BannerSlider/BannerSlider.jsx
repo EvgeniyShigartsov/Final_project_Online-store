@@ -10,7 +10,7 @@ import { Container } from '../common/Container'
 
 export const BannerSlider = () => {
   const carouselSettings = {
-    autoplay: false,
+    autoplay: true,
     dots: false,
     responsive: [
       {

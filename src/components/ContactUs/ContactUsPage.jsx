@@ -114,7 +114,7 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                   },
                   {
                     pattern: /^[0-9]+$/i,
-                    message: 'Allowed characters is 0-9, "+", "(", ")"'
+                    message: 'Allowed characters is 0-9.'
                   }
                 ]}
               >

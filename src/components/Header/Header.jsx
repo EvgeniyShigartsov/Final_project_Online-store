@@ -88,7 +88,7 @@ const Header = () => {
               Visit our showroom in 1234 Street Adress City Address, 1234
             </p>
             <Link to="/contactus">
-              <h3 style={{cursor: 'pointer'}}>Contact Us</h3>
+              <h3>Contact Us</h3>
             </Link>
           </ContactUsCall>
           <CallBackAsk>

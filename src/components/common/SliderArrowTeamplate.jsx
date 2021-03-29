@@ -6,11 +6,10 @@ export const SliderArrowTeamplate = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px;
-  height: 37px;
-  
-  background-color: rgba(37, 41, 49, 0.5);
+  width: 36px;
+  height: 48px;
   border: none;
+  background-color: rgba(37, 41, 49, 0.5);
   transition: 0.2s;
 
   &:hover {
@@ -19,9 +18,7 @@ export const SliderArrowTeamplate = styled.button`
 
   @media(min-width: ${forDesktop.minWidth}px) {
     display: block;
-    width: 36px;
-    height: 48px;
+    
   }
-  
 `
 export default SliderArrowTeamplate
