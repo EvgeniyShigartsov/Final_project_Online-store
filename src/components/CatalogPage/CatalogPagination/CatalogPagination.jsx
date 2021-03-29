@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 import makeConfigFromUrl from '../../../utils/makeConfigFromUrl'
-import makeFilterUrl from '../../../utils/makeFilterUrl'
+import makeUrlFromConfig from '../../../utils/makeUrlFromConfig'
 import {StyledPagination} from './StyledCatalogPagination'
 
 const mapStateToProps = (state) => ({
@@ -19,7 +19,7 @@ const CatalogPagination = connect(mapStateToProps)(({
 
   const onChange = (page) => {
     config.startPage = page
-    history.push(`/catalog?${makeFilterUrl(config)}`)
+    history.push(`/catalog?${makeUrlFromConfig(config)}`)
   }
 
   return (

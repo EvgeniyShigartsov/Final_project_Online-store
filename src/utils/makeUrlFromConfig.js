@@ -1,4 +1,4 @@
-const makeFilterUrl = (param) => {
+const makeUrlFromConfig = (param) => {
   let paramStr = ''
   Object.keys(param).forEach((key, index) => {
     if (index === 0) {
@@ -9,4 +9,4 @@ const makeFilterUrl = (param) => {
   return paramStr
 }
 
-export default makeFilterUrl
+export default makeUrlFromConfig

@@ -17,7 +17,7 @@ import styl from '../../../images/filter/styl.svg';
 import StyledButton from '../../common/Buttons/StyledButton'
 import {FormMenu} from './FormMenu/FormMenu';
 import makeConfigFromUrl from '../../../utils/makeConfigFromUrl';
-import makeFilterUrl from '../../../utils/makeFilterUrl';
+import makeUrlFromConfig from '../../../utils/makeUrlFromConfig';
 
 const layout = {
   labelCol: { span: 6 },
@@ -42,12 +42,16 @@ const CatalogFilter = ({
         delete refConfig[key]
       }
     })
-    history.push(`/catalog?${makeFilterUrl(refConfig)}`)
+    history.push(`/catalog?${makeUrlFromConfig(refConfig)}`)
     setShowFilter(false)
   };
+
   const clearForm = () => {
     form.resetFields()
-    history.push('/catalog')
+    const {
+      brand, categories, minPrice, maxPrice, ...refConfig
+    } = config
+    history.push(`/catalog?${makeUrlFromConfig(refConfig)}`)
   }
 
   const fields = useMemo(() => ([

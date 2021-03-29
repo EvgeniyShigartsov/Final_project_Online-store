@@ -7,7 +7,7 @@ import {
   FilterBtn, SelectWrapper, StyledSelect, Wrapper
 } from './StyledCatalogSort';
 import makeConfigFromUrl from '../../../utils/makeConfigFromUrl';
-import makeFilterUrl from '../../../utils/makeFilterUrl';
+import makeUrlFromConfig from '../../../utils/makeUrlFromConfig';
 
 const CatalogSort = ({setShowFilter}) => {
   const {search} = useLocation()
@@ -17,10 +17,10 @@ const CatalogSort = ({setShowFilter}) => {
   const onChange = (value, key) => {
     if (value !== 'default') {
       config[key] = value
-      history.push(`/catalog?${makeFilterUrl(config)}`)
+      history.push(`/catalog?${makeUrlFromConfig(config)}`)
     } else {
       const {sort, ...rest} = config
-      history.push(`/catalog?${makeFilterUrl(rest)}`)
+      history.push(`/catalog?${makeUrlFromConfig(rest)}`)
     }
   }
 

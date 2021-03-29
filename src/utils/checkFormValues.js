@@ -1,6 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 export const checkFormValues = (values) => {
   const result = {...values};
+  if (!result.minPrice && !result.maxPrice) {
+    delete result.minPrice
+    delete result.maxPrice
+  }
   for (const item in result) {
     if (!result[item] || !result[item].length) {
       if (item === 'minPrice') {

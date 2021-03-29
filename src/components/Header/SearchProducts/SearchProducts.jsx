@@ -41,8 +41,10 @@ const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchP
   }, [clearSearchProducts, setHideInput])
 
   const windowListener = useCallback(() => {
-    reset()
-  }, [reset])
+    if (checkProductsLength) {
+      reset()
+    }
+  }, [checkProductsLength, reset])
 
   const listener = useRef(windowListener)
 
@@ -51,7 +53,7 @@ const SearchProducts = connect(mapStateToProps, {clearSearchProducts, getSearchP
   useEffect(() => {
     const refListener = (e) => listener.current(e)
     window.addEventListener('click', refListener)
-    return () => { window.removeEventListener('click', refListener) }
+    // return () => { window.removeEventListener('click', refListener) }
   }, [reset])
 
   return (

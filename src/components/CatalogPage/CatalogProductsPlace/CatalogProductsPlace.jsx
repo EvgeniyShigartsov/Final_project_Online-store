@@ -8,7 +8,7 @@ import CatalogPagination from '../CatalogPagination/CatalogPagination'
 import { ProductsWrapper, Wrapper } from './StyledCatalogProductsPlace'
 import CatalogNoProducts from '../CatalogNoProducts/CatalogNoProducts'
 import makeConfigFromUrl from '../../../utils/makeConfigFromUrl'
-import makeFilterUrl from '../../../utils/makeFilterUrl'
+import makeUrlFromConfig from '../../../utils/makeUrlFromConfig'
 
 const mapStateToProps = (state) => ({
   catalogProducts: state.products.catalog.catalogProducts,
@@ -32,7 +32,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
       getProductsToCatalog(search)
     } else {
       config.perPage = 16
-      getProductsToCatalog(`?${makeFilterUrl(config)}`)
+      getProductsToCatalog(`?${makeUrlFromConfig(config)}`)
     }
   }, [config, getProductsToCatalog, search])
 
