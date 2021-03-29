@@ -6,7 +6,7 @@ export const checkFormValues = (values) => {
     delete result.maxPrice
   }
   for (const item in result) {
-    if (!result[item] || (Array.isArray(!result[item]) && !result[item].length)) {
+    if (!result[item] || (Array.isArray(result[item]) && !result[item].length)) {
       if (item === 'minPrice') {
         result.minPrice = 0
       } else if (item === 'maxPrice') {

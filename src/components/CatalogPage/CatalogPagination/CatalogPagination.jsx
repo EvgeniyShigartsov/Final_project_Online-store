@@ -17,6 +17,10 @@ const CatalogPagination = connect(mapStateToProps)(({
   const config = search ? makeConfigFromUrl(search) : {}
 
   const onChange = (page) => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
     config.startPage = page
     history.push(`/catalog?${makeUrlFromConfig(config)}`)
   }
