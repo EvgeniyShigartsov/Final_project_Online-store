@@ -70,7 +70,7 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
       if (res.status === 200) dispatch(actionCreator(res.data.products))
       return res
     })
-    .catch((error) => error)
+    .catch((error) => error.respone)
   return res
 }
 

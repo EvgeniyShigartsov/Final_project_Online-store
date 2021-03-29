@@ -1,21 +1,55 @@
-import React from 'react'
-import {
-  ClockCircleOutlined, MailOutlined, PhoneOutlined, EnvironmentOutlined,
-} from '@ant-design/icons'
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Form, message } from 'antd';
+import {
+  ClockCircleOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  EnvironmentOutlined,
+} from '@ant-design/icons'
 import StyledButton from '../common/Buttons/StyledButton'
 import {
   StyledWrapper, StyledTitle, StyledText, StyledContact, StyledAddress, StyledTextAddress,
-  StyledHeaderAddress, StyledLinkPhoneAddress, StyledLinkMailAddress, Lable,
-  StyledAddressWrapper, StyledLableSpan, StyledInput, StyledFormItem,
+  StyledHeaderAddress, StyledLinkPhoneAddress, StyledLinkMailAddress,
+  StyledAddressWrapper, StyledInput, StyledFormItem,
   StyledInputTextArea, StyledIconWrapper, StyledContainer, StyledFormWrapper,
-  StyledInputWrapper, StyledForm, StyledFormItemTextArea, StyledWrapperContainer
+  StyledForm, StyledFormItemTextArea, StyledWrapperContainer
 } from './Styled'
 import { Container } from '../common/Container'
+import { getCustomer } from '../../store/customer/middleware'
+import { selectIsLogin } from '../../store/auth/reducer'
 
-const ContactUsPage = () => {
+const mapStateToProps = (state) => ({ isLogin: selectIsLogin(state) })
+
+const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
+  const [userInfo, setUserInfo] = useState({email: '', firstName: ''})
   const history = useHistory()
+
+  useEffect(() => {
+    const getInfo = async () => {
+      const { data, status } = await getCustomer()
+      if (status === 200) { setUserInfo(() => ({ email: data.email, firstName: data.firstName })) }
+    }
+    if (isLogin) getInfo()
+  }, [isLogin])
+  
+  const fields = [
+    {
+      name: 'name',
+      value: userInfo.firstName
+    },
+    {
+      name: 'email',
+      value: userInfo.email
+    }
+  ]
+
+  const layout = {
+    labelCol: { span: 10 },
+    wrapperCol: { span: 22 },
+  };
   const onFinish = () => {
     history.push('/')
     message.success('Thank you for a feedback, our manager will call you soon.')
@@ -31,10 +65,11 @@ const ContactUsPage = () => {
               Please contact us and we will make sure to get back to you as soon as we possibly can.
             </StyledText>
           </StyledWrapper>
-          <StyledForm onFinish={onFinish}>
+          <StyledForm onFinish={onFinish} fields={fields} layout="vertical" {...layout}>
             <StyledFormWrapper>
               <StyledFormItem
-                name={['user', 'name']}
+                name="name"
+                label="name"
                 rules={[
                   {
                     required: true,
@@ -51,16 +86,11 @@ const ContactUsPage = () => {
                   }
                 ]}
               >
-                <StyledInputWrapper>
-                  <Lable>
-                    Your Name
-                    <StyledLableSpan>*</StyledLableSpan>
-                  </Lable>
-                  <StyledInput placeholder="Your Name" />
-                </StyledInputWrapper>
+                <StyledInput placeholder="Your name" />
               </StyledFormItem>
               <StyledFormItem
-                name={['email']}
+                name="email"
+                label="email"
                 rules={[
                   {
                     type: 'email',
@@ -72,16 +102,11 @@ const ContactUsPage = () => {
                   },
                 ]}
               >
-                <StyledInputWrapper>
-                  <Lable>
-                    Your Email
-                    <StyledLableSpan>*</StyledLableSpan>
-                  </Lable>
-                  <StyledInput placeholder="Your email" />
-                </StyledInputWrapper>
+                <StyledInput placeholder="Your email" />
               </StyledFormItem>
               <StyledFormItem
                 name="phone"
+                label="Your phone"
                 rules={[
                   {
                     required: true,
@@ -93,22 +118,12 @@ const ContactUsPage = () => {
                   }
                 ]}
               >
-                <StyledInputWrapper>
-                  <Lable>
-                    Your Phone Number
-                    <StyledLableSpan>*</StyledLableSpan>
-                  </Lable>
-                  <StyledInput
-                    placeholder="Your Phone Number"
-                    style={{
-                      width: '100%',
-                    }}
-                  />
-                </StyledInputWrapper>
+                <StyledInput placeholder="Phone number" />
               </StyledFormItem>
             </StyledFormWrapper>
             <StyledFormItemTextArea
               name={['user', 'introduction']}
+              label="What’s on your mind?"
               rules={[
                 {
                   required: true,
@@ -116,13 +131,7 @@ const ContactUsPage = () => {
                 },
               ]}
             >
-              <StyledInputWrapper>
-                <Lable>
-                  What’s on your mind?
-                  <StyledLableSpan>*</StyledLableSpan>
-                </Lable>
-                <StyledInputTextArea autoSize={false} placeholder="Jot us a note and we’ll get back to you as quickly as possible" />
-              </StyledInputWrapper>
+              <StyledInputTextArea placeholder="Jot us a note and we’ll get back to you as quickly as possible" />
             </StyledFormItemTextArea>
             <Form.Item>
               <StyledButton type="primary" htmlType="submit" size="sm" shape="round">
@@ -174,6 +183,6 @@ const ContactUsPage = () => {
       </StyledWrapperContainer>
     </Container>
   )
-}
+})
 
 export default ContactUsPage
