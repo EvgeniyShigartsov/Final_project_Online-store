@@ -1,10 +1,14 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import {
   Descriptions, Dropdown, Button, Menu
 } from 'antd';
 import PropTypes from 'prop-types';
-import { ContainerOrder, ShowListStyled, StyledMenu } from './StyledOrderComponent'
+import { Link } from 'react-router-dom'
+import {
+  ContainerOrder, ShowListStyled, StyledMenu, ImgContainer
+} from './StyledOrderComponent'
 import UpperCaseFirstLetter from '../../../utils/upperCaseFirstLetter';
 import slicePlus from '../../../utils/slicePlus';
  
@@ -13,7 +17,10 @@ const OrderComponent = ({orders}) => {
     <StyledMenu style={{width: '90%'}}>
       {orders.products.map((item) => (
         <Menu.Item key={item._id}>
-          {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity} pc`}
+          <Link to={`products/${item.product.itemNo}`}>
+            {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity} pc`}
+            <ImgContainer src={item.product.imageUrls[0]} />
+          </Link>
         </Menu.Item>
       ))}
     </StyledMenu>
@@ -25,6 +32,9 @@ const OrderComponent = ({orders}) => {
       <Descriptions
         bordered
         title={`Order number: ${orders.orderNo}`}
+        column={{
+          xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1
+        }}
         size="small"
       >
         <Descriptions.Item label="Order Date">{orders.date.substr(0, 10)}</Descriptions.Item>

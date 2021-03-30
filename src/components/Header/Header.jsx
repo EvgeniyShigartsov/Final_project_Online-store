@@ -12,6 +12,7 @@ import UserPopUp from './UserPopUp/UserPopUp';
 import LogoMobile from './Utils/LogoMobile';
 import LogoDesktop from './Utils/LogoDesktop'
 import WishListComponent from './WishListComponent/WishListComponent'
+import { openSlide } from './Utils/Animations'
 
 // styled
 import {
@@ -33,26 +34,8 @@ const Header = () => {
   const [hideInput, setHideInput] = useState(true);
   const [hideList, setHideList] = useState(false);
   
-  const openSlide = {
-    show: {
-      clipPath: 'circle(2200px at 40px 40px)',
-      transition: {
-        type: 'spring',
-        stiffness: 15,
-        restDelta: 1.5
-      }
-    },
-    hidden: {
-      clipPath: 'circle(0.1px at 0.1px 0.1px)',
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
-    }
-  };
   const checkForLinkOpen = (e) => {
-    if (e.target.localName === 'h5') {
+    if (e.target.closest('li')) {
       setIsOpen(() => false)
     }
   }

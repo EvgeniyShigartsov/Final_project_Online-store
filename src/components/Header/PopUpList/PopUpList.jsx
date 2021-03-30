@@ -30,49 +30,48 @@ const PopUpList = ({
       <Line />
     </HeaderOfPopUp>
     <Listnavigation onClick={(e) => checkForLinkOpen(e)}>
-      <ExceptionLi>
-        <NavLink
-          to="/catalog?categories=desctops"
-        >
-          <h5>Desctops</h5>
-        </NavLink>
-        <RightOutlinedStyled />
-      </ExceptionLi>
-      <li>
-        <NavLink
-          to="/catalog?categories=gamingMonitors"
-        >
+      <NavLink
+        to="/catalog?categories=desctops"
+      >
+        <ExceptionLi>
+          <h5>Desktops</h5>
+          <RightOutlinedStyled />
+        </ExceptionLi>
+      </NavLink>
+      <NavLink
+        to="/catalog?categories=gamingMonitors"
+      >
+        <li>
           <h5>Gaming Monitors</h5>
-        </NavLink>
-        <RightOutlinedStyled />
-      </li>
-      <li>
-        <NavLink
-          to="/catalog?categories=laptops"
-        >
+          <RightOutlinedStyled />
+        </li>
+      </NavLink>
+      <NavLink
+        to="/catalog?categories=laptops"
+      >
+        <li>
           <h5>Laptops</h5>
-        </NavLink>
-       
-        <RightOutlinedStyled />
-      </li>
-      <li>
-        <NavLink
-          to="/catalog?categories=tablets"
-        >
+          <RightOutlinedStyled />
+        </li>
+      </NavLink>
+      <NavLink
+        to="/catalog?categories=tablets"
+      >
+        <li>
           <h5>
             Tablets
           </h5>
-        </NavLink>
-        <RightOutlinedStyled />
-      </li>
-      <li>
-        <NavLink
-          to="/catalog"
-        >
+          <RightOutlinedStyled />
+        </li>
+      </NavLink>
+      <NavLink
+        to="/catalog"
+      >
+        <li>
           <h5>Catalog</h5>
-        </NavLink>
-        <RightOutlinedStyled />
-      </li>
+          <RightOutlinedStyled />
+        </li>
+      </NavLink>
     </Listnavigation>
   </PopUpContainer>
 )
