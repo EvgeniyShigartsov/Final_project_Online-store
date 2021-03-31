@@ -48,6 +48,7 @@ export const ProductCard = connect(null, { addToCart })((
   } = productInfo
   const isAvilable = quantity > 0
 
+  const promotionalProduct = previousPrice !== 0
   // string length limitation and translation of the first letter into capital
   const verifiedTitle = upperCaseFirstLetter(cutString(name, 38))
 
@@ -87,10 +88,12 @@ export const ProductCard = connect(null, { addToCart })((
 
       <PurchaseGroup>
         <PriceBox>
+          {promotionalProduct && (
           <CardLastPrice>
             {`${previousPrice} ₴`}
           </CardLastPrice>
-          <CardCurrentPrice>
+          )}
+          <CardCurrentPrice promotionalProduct={promotionalProduct}>
             {`${currentPrice} ₴`}
           </CardCurrentPrice>
         </PriceBox>

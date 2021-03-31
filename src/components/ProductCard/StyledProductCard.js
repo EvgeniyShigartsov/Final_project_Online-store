@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { forDesktop, forTablet } from '../../styles/mediaBreakPoints'
 
 export const CardItem = styled.div` 
@@ -104,6 +104,7 @@ export const CardLastPrice = styled.div`
   font-size: 12px;
   text-decoration-line: line-through;
   color: #666666;
+  margin-bottom: 4px;
 
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 14px;
@@ -114,6 +115,9 @@ export const CardCurrentPrice = styled.div`
   font-size: 14px;
   font-weight: 600;
   color: black;
+  ${(props) => props.promotionalProduct && css`
+    background-color: #f8ff26;
+  `}
 
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 18px;

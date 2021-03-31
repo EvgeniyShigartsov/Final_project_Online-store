@@ -48,7 +48,7 @@ const AuthForm = connect(null, {
       getCart()
       compareLSItemsAndDBItems()
       // eslint-disable-next-line no-unused-expressions
-      finishCallback ? finishCallback() : history.push('/')
+      typeof finishCallback === 'function' ? finishCallback() : history.push('/')
     }
 
     if (status === 400) {
