@@ -4,14 +4,14 @@ import { NavLink } from 'react-router-dom';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
   RightOutlinedStyled, CloseOutlinedStyled,
-  Listnavigation, ExceptionLi, TechTag
+  Listnavigation, ExceptionLi, TechTag, NavLinkStyled
 } from './PopUpListStyled';
 import LogoBurger from '../Utils/LogoDesktop';
 
 const PopUpList = ({
-  openSlide, isOpen, openCloseMenu, setIsOpen,
-  hideList, checkForLinkOpen,
-  hideInput
+  openSlide, isOpen, openCloseMenu,
+  hideList, checkForLinkOpen, setIsOpen,
+  hideInput, backToDefaulOpen
 }) => (
 
   <PopUpContainer
@@ -24,9 +24,16 @@ const PopUpList = ({
     animate={isOpen ? 'show' : 'hidden'}
   >
     <HeaderOfPopUp>
-      <TechTag>Tech Store</TechTag>
-      <LogoBurger />
-      <CloseOutlinedStyled onClick={(e) => { openCloseMenu(e) }} />
+      <TechTag>
+        <NavLinkStyled
+          to="/"
+          onClick={backToDefaulOpen}
+        >
+          Tech Store
+        </NavLinkStyled>
+      </TechTag>
+      <LogoBurger backToDefaulOpen={backToDefaulOpen} />
+      <CloseOutlinedStyled onClick={() => openCloseMenu()} />
       <Line />
     </HeaderOfPopUp>
     <Listnavigation onClick={(e) => checkForLinkOpen(e)}>
@@ -82,6 +89,7 @@ PopUpList.propTypes = {
   openCloseMenu: PropTypes.func.isRequired,
   checkForLinkOpen: PropTypes.func.isRequired,
   openSlide: PropTypes.instanceOf(Object).isRequired,
-  hideInput: PropTypes.bool.isRequired
+  hideInput: PropTypes.bool.isRequired,
+  backToDefaulOpen: PropTypes.func.isRequired
 }
 export default PopUpList;

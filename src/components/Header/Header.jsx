@@ -22,7 +22,7 @@ import {
   ShaduleArrowContainer,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
   CircleMobile, MenuOutlinedStyled,
-  CloseOutlinedFormStyled, TechTag
+  CloseOutlinedFormStyled, TechTag, StrechedContainer
 } from './HeaderStyled';
 import SearchProducts from './SearchProducts/SearchProducts';
 import CartIcon from './CartIcon/CartIcon'
@@ -41,6 +41,10 @@ const Header = () => {
   }
   const openCloseMenu = () => {
     setIsOpen((prev) => (!prev))
+  }
+  const backToDefaulOpen = () => {
+    setIsOpen((prev) => (!prev))
+    window.scrollTo(0, 0,)
   }
   const toggleShow = () => {
     setHideInput((prev) => !prev);
@@ -98,45 +102,49 @@ const Header = () => {
           />
         </ContainerAlign>
       </ShaduleContainer>
-      <SearchAndItemsBlock>
-        <MenuOutlinedStyled onClick={openCloseMenu} data-testid="burger" />
-        <Link to="/" style={{outline: 'none', paddingRight: '20px'}}>
-          <CircleDesktop>
-            <LogoDesktop />
-            <TechTag>Tech Store</TechTag>
-          </CircleDesktop>
-        </Link>
-        <PopUpList
-          checkForLinkOpen={checkForLinkOpen}
-          hideList={hideList}
-          setIsOpen={setIsOpen}
-          openSlide={openSlide}
-          isOpen={isOpen}
-          openCloseMenu={openCloseMenu}
-          hideInput={hideInput}
-        />
+
+      <StrechedContainer>
+        <SearchAndItemsBlock>
+          <MenuOutlinedStyled onClick={openCloseMenu} data-testid="burger" />
+          <Link to="/" style={{outline: 'none', paddingRight: '20px'}}>
+            <CircleDesktop>
+              <LogoDesktop />
+              <TechTag>Tech Store</TechTag>
+            </CircleDesktop>
+          </Link>
+          <PopUpList
+            checkForLinkOpen={checkForLinkOpen}
+            hideList={hideList}
+            setIsOpen={setIsOpen}
+            openSlide={openSlide}
+            isOpen={isOpen}
+            openCloseMenu={openCloseMenu}
+            hideInput={hideInput}
+            backToDefaulOpen={backToDefaulOpen}
+          />
         
-        <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
+          <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
 
-        {hideInput
-          ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
-          : (<CloseOutlinedFormStyled onClick={toggleShow} />)}
+          {hideInput
+            ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
+            : (<CloseOutlinedFormStyled onClick={toggleShow} />)}
           
-        <WishListComponent />
+          <WishListComponent />
 
-        <CartIcon />
-        <RelativePosUserPopUp>
-          <UserOutlinedStyled
-            id="userBtn"
-            data-testid="userBtn"
-            onClick={() => setIsOpenUser(true)}
-          />
-          <UserPopUp
-            isOpenUser={isOpenUser}
-            setIsOpenUser={setIsOpenUser}
-          />
-        </RelativePosUserPopUp>
-      </SearchAndItemsBlock>
+          <CartIcon />
+          <RelativePosUserPopUp>
+            <UserOutlinedStyled
+              id="userBtn"
+              data-testid="userBtn"
+              onClick={() => setIsOpenUser(true)}
+            />
+            <UserPopUp
+              isOpenUser={isOpenUser}
+              setIsOpenUser={setIsOpenUser}
+            />
+          </RelativePosUserPopUp>
+        </SearchAndItemsBlock>
+      </StrechedContainer>
     </HeaderContainer>
   );
 };

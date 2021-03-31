@@ -8,7 +8,8 @@ const Orders = () => {
   useEffect(() => {
     const ordersToRender = async () => {
       const results = await getOrders();
-      setOrders(() => results.data)
+      const reversed = results.data.reverse()
+      setOrders(() => reversed)
     }
     ordersToRender()
   }, [])
