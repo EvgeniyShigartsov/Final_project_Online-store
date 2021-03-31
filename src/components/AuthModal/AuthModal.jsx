@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Modal } from 'antd'
+import { message, Modal } from 'antd'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectIsModalOpen, selectAuthModalTitle } from '../../store/authModal/reducer'
@@ -20,10 +20,21 @@ const AuthModal = connect(mapStateToProps, { hideAuthModal })(({
     hideAuthModal()
     history.push('/signup')
   }
+  const finishCallback = () => {
+    hideAuthModal()
+    message.success('You have been autorizated')
+  }
 
   return (
-    <Modal title={modalTitle} visible={isOpen} onCancel={hideAuthModal} okText="Sign up" onOk={handleOk}>
-      <AuthForm callback={hideAuthModal} />
+    <Modal
+      title={modalTitle}
+      visible={isOpen}
+      onCancel={hideAuthModal}
+      okText="Sign up"
+      onOk={handleOk}
+      destroyOnClose
+    >
+      <AuthForm finishCallback={finishCallback} />
     </Modal>
   )
 })
