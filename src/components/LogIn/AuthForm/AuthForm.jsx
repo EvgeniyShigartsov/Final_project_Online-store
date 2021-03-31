@@ -25,7 +25,8 @@ const AuthForm = connect(null, {
     compareLSItemsAndDBItems,
     setRefreshTimer,
     addLSToServer,
-    getCart
+    getCart,
+    callback
   }
 ) => {
   const startInterval = () => (
@@ -45,8 +46,9 @@ const AuthForm = connect(null, {
       setRefreshTimer(startInterval())
       addLSToServer()
       getCart()
-      history.push('/')
       compareLSItemsAndDBItems()
+      // eslint-disable-next-line no-unused-expressions
+      callback ? callback() : history.push('/')
     }
 
     if (status === 400) {
