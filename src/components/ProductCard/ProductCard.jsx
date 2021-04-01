@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 
 // Compomemts
 import { connect } from 'react-redux';
-import { addToCart } from '../../store/cart/middleware'
 import { InStock } from './InStock/InStock';
-import { CheckAvailability } from './CheckAvailability/CheckAvailability';
+import { ProductSoldOut } from './ProductSoldOut/ProductSoldOut';
 import { StarRating } from '../StarRating/StarRating'
 import StyledButton from '../common/Buttons/StyledButton'
 import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
@@ -30,11 +29,14 @@ import {
 import cutString from '../../utils/cutString';
 import rateCalculator from '../../utils/rateCalculator';
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter';
+import { addToCart } from '../../store/cart/middleware'
+import { showModal } from '../../store/subscriceOnProductModal/middleware'
 
-export const ProductCard = connect(null, { addToCart })((
+export const ProductCard = connect(null, { addToCart, showModal })((
   {
     productInfo,
     addToCart,
+    showModal,
   }
 ) => {
   const {
@@ -78,7 +80,7 @@ export const ProductCard = connect(null, { addToCart })((
           showTooltip
         />
       </ReviewsBox>
-      {isAvilable ? <InStock /> : <CheckAvailability /> }
+      {isAvilable ? <InStock /> : <ProductSoldOut /> }
 
       <Link to={`products/${itemNo}`} onClick={() => window.scrollTo(0, 0)}>
         <CardTitle>
@@ -97,15 +99,25 @@ export const ProductCard = connect(null, { addToCart })((
             {`${currentPrice} ₴`}
           </CardCurrentPrice>
         </PriceBox>
-        <StyledButton
-          type="borderBlue"
-          size="xs"
-          shape="round"
-          disabled={!isAvilable}
-          onClick={() => addToCart(productInfo, 1)}
-        >
-          Add to cart
-        </StyledButton>
+        {isAvilable ? (
+          <StyledButton
+            size="xs"
+            shape="round"
+            onClick={() => addToCart(productInfo, 1)}
+          >
+            Add to cart
+          </StyledButton>
+        ) : (
+          <StyledButton
+            color="borderGrey"
+            size="xs"
+            shape="round"
+            onClick={showModal}
+          >
+            Check avilabiliy
+          </StyledButton>
+        )}
+        
       </PurchaseGroup>
     </CardItem>
   )
