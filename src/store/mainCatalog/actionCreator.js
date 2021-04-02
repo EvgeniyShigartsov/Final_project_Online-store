@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 import { batch } from 'react-redux';
 import {
   GET_GAMING_MONITORS,
   GET_DESKTOPS,
   GET_LAPTOPS,
-  GET_TABLETS
+  GET_TABLETS,
+  START_LOADING,
+  STOP_LOADING
 } from './actionTypes';
 
 export const getMainCatalogCreater = (combinePayload) => {
@@ -23,5 +26,7 @@ export const getMainCatalogCreater = (combinePayload) => {
     })
   }
 }
+export const startLoading = () => ({type: START_LOADING})
+export const stopLoading = () => ({type: STOP_LOADING})
 
 export default getMainCatalogCreater

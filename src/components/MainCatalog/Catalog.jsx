@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 // Redux
 import { connect } from 'react-redux'
-import { getMainCatalogProducts } from '../../store/mainCatalog/middleware'
-import { selectCatalog } from '../../store/mainCatalog/reducer'
+import { selectCatalog, selectIsLoading } from '../../store/mainCatalog/reducer'
 
 // Components
 import { CatalogBillboard } from './CatalogBillboard/CatalogBillboard'
@@ -14,23 +13,15 @@ import StyledSpinner from '../StyledSpinner/StyledSpinner'
 import { StyledCatalogWrapper, StyledContainer } from './StyledCatalog'
 
 // Redux maps
-const mapStateToProps = (state) => ({catalogProduct: selectCatalog(state)})
+const mapStateToProps = (state) => ({
+  catalogProduct: selectCatalog(state),
+  isLoading: selectIsLoading(state)
+})
 
-export const Catalog = connect(mapStateToProps, { getMainCatalogProducts })(({
-  catalogProduct, getMainCatalogProducts
+export const Catalog = connect(mapStateToProps, null)(({
+  catalogProduct, isLoading
 }) => {
-  useEffect(() => {
-    getMainCatalogProducts()
-  }, [getMainCatalogProducts])
-
-  const checkProductsAreLoaded = (
-    catalogProduct.gamingMonitorList.length > 0
-    && catalogProduct.desktopList.length > 0
-    && catalogProduct.laptopList.length > 0
-    && catalogProduct.tabletList.length > 0
-  )
-
-  if (!checkProductsAreLoaded) return <StyledSpinner size="large" tip="Loading..." margin="200px auto" />
+  if (isLoading) return <StyledSpinner size="large" tip="Loading..." margin="200px auto" />
   
   return (
     <StyledContainer>

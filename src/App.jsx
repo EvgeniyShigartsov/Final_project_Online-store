@@ -10,18 +10,21 @@ import { setRefreshTimer } from './store/auth/actionCreator'
 import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
+import { getMainCatalogProducts } from './store/mainCatalog/middleware'
 
 const App = connect(null, {
-  authLogIn, setRefreshTimer, setWishlist, getCart
+  authLogIn, setRefreshTimer, setWishlist, getCart, getMainCatalogProducts
 })(({
   authLogIn,
   setWishlist,
   setRefreshTimer,
-  getCart
+  getCart,
+  getMainCatalogProducts
 }) => {
   useEffect(() => {
-    setWishlist()
+    getMainCatalogProducts()
     getCart()
+    setWishlist()
 
     if (localStorage.getItem('credentials')) {
       authLogIn(JSON.parse(localStorage.getItem('credentials')))
@@ -29,7 +32,7 @@ const App = connect(null, {
         authLogIn(JSON.parse(localStorage.getItem('credentials')))
       }, 1800000))
     }
-  }, [authLogIn, getCart, setRefreshTimer, setWishlist])
+  }, [authLogIn, getCart, getMainCatalogProducts, setRefreshTimer, setWishlist])
 
   return (
     <div style={{marginTop: '120px'}}>
