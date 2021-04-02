@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
@@ -20,6 +21,7 @@ import {
 import { Container } from '../common/Container'
 import { getCustomer } from '../../store/customer/middleware'
 import { selectIsLogin } from '../../store/auth/reducer'
+import formTrimStringValidator from '../../utils/formTrimStringValidator'
 
 const mapStateToProps = (state) => ({ isLogin: selectIsLogin(state) })
 
@@ -76,14 +78,15 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                     message: 'Please input your name!',
                   },
                   {
-                    pattern: /^[a-zа-яіїё]+$/i,
+                    pattern: /^[a-zа-яіїё\s]+$/i,
                     message: 'Allowed characters is a-z, а-я.'
                   },
                   {
                     min: 2,
                     max: 25,
-                    message: 'Last Name must be beetwen 2 and 25 characters.'
-                  }
+                    message: 'Name must be beetwen 2 and 25 characters.'
+                  },
+                  formTrimStringValidator('Name should not contain just a spaces.')
                 ]}
               >
                 <StyledInput placeholder="Your name" />
