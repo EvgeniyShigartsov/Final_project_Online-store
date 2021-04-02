@@ -1,29 +1,33 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-import { useCycle } from 'framer-motion';
 import {
   DownOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import vector from '../../images/header/Vector.png';
 import FaceBook from '../../images/header/FaceBook.png';
 import Inst from '../../images/header/Inst.png';
 import PopUpList from './PopUpList/PopUpList';
 import PopUpShedulteContainer from './PopUpShadule/PopUpShedulteContainer';
 import UserPopUp from './UserPopUp/UserPopUp';
+import LogoMobile from './Utils/LogoMobile';
+import LogoDesktop from './Utils/LogoDesktop'
+import WishListComponent from './WishListComponent/WishListComponent'
 
 // styled
 import {
   HeaderContainer, ContainerAlign, ContactUsCall, CallBackAsk,
-  SearchAndItemsBlock, FormContainer, SearchInputBlock, Input,
+  SearchAndItemsBlock,
   RelativePosUserPopUp, CircleDesktop, ShaduleContainer,
-  ShaduleArrowContainer, LogoDesktop, ShoppingCartOutlinedStyled,
+  ShaduleArrowContainer,
   UserOutlinedStyled, SearchOutlinedStyledMedia,
-  CircleMobile, Logo, MenuOutlinedStyled, SearchOutlinedStyled
+  CircleMobile, MenuOutlinedStyled,
+  CloseOutlinedFormStyled, TechTag
 } from './HeaderStyled';
+import SearchProducts from './SearchProducts/SearchProducts';
+import CartIcon from './CartIcon/CartIcon'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useCycle(false, true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isOpenSheduleMenu, setisOpenSheduleMenu] = useState(false);
   const [isOpenUser, setIsOpenUser] = useState(false);
   const [hideInput, setHideInput] = useState(true);
@@ -34,24 +38,27 @@ const Header = () => {
       clipPath: 'circle(2200px at 40px 40px)',
       transition: {
         type: 'spring',
-        stiffness: 20,
-        restDelta: 2
+        stiffness: 15,
+        restDelta: 1.5
       }
     },
     hidden: {
       clipPath: 'circle(0.1px at 0.1px 0.1px)',
       transition: {
-        delay: 0.35,
         type: 'spring',
         stiffness: 400,
         damping: 40
       }
     }
   };
+  const checkForLinkOpen = (e) => {
+    if (e.target.localName === 'h5') {
+      setIsOpen(() => false)
+    }
+  }
   const openCloseMenu = () => {
     setIsOpen((prev) => (!prev))
   }
-
   const toggleShow = () => {
     setHideInput((prev) => !prev);
     setHideList((prev) => !prev);
@@ -63,34 +70,43 @@ const Header = () => {
         <ContainerAlign>
           <Link to="/" style={{outline: 'none'}}>
             <CircleMobile>
-              <Logo
-                src={vector}
-                alt="icon"
-              />
+              <LogoMobile />
             </CircleMobile>
           </Link>
-          <ShaduleArrowContainer id="shadule">
-            <p>
+          <ShaduleArrowContainer>
+            <p id="arrowDownShedule">
               Mon - Thu:
               <span> 9.30 AM - 5.30 PM</span>
             </p>
-            <div id="arrowDownShedule"><DownOutlined style={{color: 'white', cursor: 'pointer'}} /></div>
+            <div data-testid="arrowDownShedule">
+              <DownOutlined style={{color: 'white', cursor: 'pointer'}} id="arrowDownShedule" />
+            </div>
           </ShaduleArrowContainer>
           <ContactUsCall>
             <p>
               Visit our showroom in 1234 Street Adress City Address, 1234
             </p>
-            <h3 style={{cursor: 'pointer'}}>Contact Us</h3>
+            <Link to="/contactus" style={{outline: 'none'}}>
+              <h3>
+                Contact Us
+              </h3>
+            </Link>
           </ContactUsCall>
           <CallBackAsk>
             <h5>
-              Call Us: (00) 1234 5678
+              <a href="tel: +(00) 1234 5678" style={{ color: 'white' }}>
+                Call Us: (00) 1234 5678
+              </a>
             </h5>
             <div>
-              <img src={FaceBook} alt="FaceBook" />
+              <a href="https://www.facebook.com/" target="blank">
+                <img src={FaceBook} alt="FaceBook" />
+              </a>
             </div>
             <div>
-              <img src={Inst} alt="Inst" />
+              <a href="https://www.instagram.com/" target="blank">
+                <img src={Inst} alt="Inst" />
+              </a>
             </div>
           </CallBackAsk>
           <PopUpShedulteContainer
@@ -99,46 +115,45 @@ const Header = () => {
           />
         </ContainerAlign>
       </ShaduleContainer>
-
       <SearchAndItemsBlock>
-        <MenuOutlinedStyled onClick={openCloseMenu} />
-        <Link to="/" style={{outline: 'none'}}>
+        <MenuOutlinedStyled onClick={openCloseMenu} data-testid="burger" />
+        <Link to="/" style={{outline: 'none', paddingRight: '20px'}}>
           <CircleDesktop>
-            <LogoDesktop
-              src={vector}
-              alt="icon2"
-            />
+            <LogoDesktop />
+            <TechTag>Tech Store</TechTag>
           </CircleDesktop>
         </Link>
         <PopUpList
+          checkForLinkOpen={checkForLinkOpen}
           hideList={hideList}
           setIsOpen={setIsOpen}
           openSlide={openSlide}
           isOpen={isOpen}
           openCloseMenu={openCloseMenu}
+          hideInput={hideInput}
         />
-        <FormContainer action="submit" hideInput={hideInput}>
-          <SearchInputBlock>
-            <SearchOutlinedStyled />
-            <Input type="text" placeholder="Serch for goods" />
-          </SearchInputBlock>
-        </FormContainer>
+        
+        <SearchProducts hideInput={hideInput} setHideInput={toggleShow} />
 
-        {/* mediaSearch */}
-        <SearchOutlinedStyledMedia onClick={toggleShow} />
-        {/* mediaSearch */}
-        <Link to="/cart">
-          <ShoppingCartOutlinedStyled />
-        </Link>
+        {hideInput
+          ? (<SearchOutlinedStyledMedia onClick={toggleShow} />)
+          : (<CloseOutlinedFormStyled onClick={toggleShow} />)}
+          
+        <WishListComponent />
+
+        <CartIcon />
         <RelativePosUserPopUp>
-          <UserOutlinedStyled id="userBtn" />
+          <UserOutlinedStyled
+            id="userBtn"
+            data-testid="userBtn"
+            onClick={() => setIsOpenUser(true)}
+          />
           <UserPopUp
             isOpenUser={isOpenUser}
             setIsOpenUser={setIsOpenUser}
           />
         </RelativePosUserPopUp>
       </SearchAndItemsBlock>
-
     </HeaderContainer>
   );
 };

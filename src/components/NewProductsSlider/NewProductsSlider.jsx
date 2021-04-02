@@ -1,22 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, } from 'react'
 import { connect } from 'react-redux'
-import { Carousel } from 'antd'
-import 'antd/dist/antd.css'
-import { SliderArrowLeft } from '../common/SliderArrowLeft'
-import { SliderArrowRight } from '../common/SliderArrowRight'
-import { forTablet } from '../../styles/mediaBreakPoints'
+import Carousel from '../Carousel/Carousel'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { Container } from '../common/Container'
-import { Wrapper } from '../common/Wrapper'
 import { getNewProductsCreator } from '../../store/products/actionCreator'
 import { getFilteredProducts } from '../../store/products/middleware'
-import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
-import rateCalculator from '../../utils/rateCalculator'
+import SliderTitle from './SliderTitle/SliderTitle'
+import { ItemWrapper } from './StylesNewProductSlider'
+import { forDesktop } from '../../styles/mediaBreakPoints'
 
 const mapStateToProps = (state) => ({ newProducts: state.products.newProducts })
 
-export const NewProductsSlider = connect(
+const NewProductsSlider = connect(
   mapStateToProps,
   { getNewProductsCreator, getFilteredProducts }
 )(({
@@ -24,39 +20,29 @@ export const NewProductsSlider = connect(
   getFilteredProducts,
   newProducts
 }) => {
-  const ref = useRef()
-  const [handlers, setHandlers] = useState({ next: () => null, prev: () => null })
-
-  useEffect(() => {
-    if (ref.current) {
-      setHandlers(() => ({ next: ref.current.next, prev: ref.current.prev }))
-    }
-    // при первом рендере ref.current === undefined потому используется useEffect & useState
-    // next и prev это методы слайдера для стрелок
-  }, [])
-
   useEffect(() => {
     const paramObj = { newProduct: 'yes' }
     getFilteredProducts(paramObj, getNewProductsCreator)
   }, [getFilteredProducts, getNewProductsCreator])
 
-  const carouselStentings = {
-    slidesToShow: 6,
-    slidesToScroll: 3,
+  const carouselSettings = {
+    slidesToShow: 5,
+    slidesToScroll: 5,
     dots: false,
     responsive: [
       {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-        }
-      },
-      {
-        breakpoint: forTablet.maxWidth,
+        breakpoint: 1170,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
+        }
+      },
+      {
+        breakpoint: forDesktop.minWidth,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          dots: true,
         }
       },
       {
@@ -64,6 +50,7 @@ export const NewProductsSlider = connect(
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          dots: true,
         }
       },
       {
@@ -71,29 +58,25 @@ export const NewProductsSlider = connect(
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+          dots: true
         }
       }
     ]
   }
   return (
     <Container>
-      <Wrapper>
-        <Carousel ref={ref} {...carouselStentings}>
-          {newProducts.map((el) => (
+      <SliderTitle />
+      <Carousel carouselSettings={carouselSettings} moveBottomDots="0px">
+        {newProducts.map((el) => (
+          <ItemWrapper key={el.itemNo}>
             <ProductCard
               key={el.itemNo}
-              title={upperCaseFirstLetter(el.name)}
-              img={el.imageUrls[0]}
-              previousPrice={el.previousPrice}
-              currentPrice={el.currentPrice}
-              isGoodsInStock={el.quantity > 0}
-              {...rateCalculator(el.reviews)}
+              productInfo={el}
+              hideBorder
             />
-          ))}
-        </Carousel>
-        {newProducts.length > 1 && <SliderArrowRight onClick={handlers.next} /> }
-        {newProducts.length > 1 && <SliderArrowLeft onClick={handlers.prev} /> }
-      </Wrapper>
+          </ItemWrapper>
+        ))}
+      </Carousel>
     </Container>
   )
 })

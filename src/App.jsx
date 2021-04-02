@@ -1,62 +1,44 @@
-import React from 'react'
-import { NavLink, Route, Switch } from 'react-router-dom'
-import CreateCustomerPage from './components/CreateCustomerPage/CreateCustomerPage'
-import { BannerSlider } from './components/BannerSlider/BannerSlider'
-import StyledButton from './components/common/Buttons/StyledButton'
-import {AboutUsPage} from './pages/About-us/AboutUs'
-import { NewProductsSlider } from './components/NewProductsSlider/NewProductsSlider'
-import {Cart} from './components/CartWrapper/Cart/Cart'
-import LogIn from './components/LogIn/LogIn'
-import ProductPage from './components/ProductPage/ProductPage'
-import Header from './components/Header/Header'
-import {Container} from './components/common/Container'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header';
+import { setWishlist } from './store/wishlist/middleware'
+import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSubscribeModal'
+import Router from './components/Router/Router'
+import {authLogIn} from './store/auth/middleware'
+import { setRefreshTimer } from './store/auth/actionCreator'
+import { getCart } from './store/cart/middleware'
+import ServiceSection from './components/ServiceSection/ServiceSection'
 
-function App() {
+const App = connect(null, {
+  authLogIn, setRefreshTimer, setWishlist, getCart
+})(({
+  authLogIn,
+  setWishlist,
+  setRefreshTimer,
+  getCart
+}) => {
+  useEffect(() => {
+    setWishlist()
+    getCart()
+
+    if (localStorage.getItem('credentials')) {
+      authLogIn(JSON.parse(localStorage.getItem('credentials')))
+      setRefreshTimer(setInterval(() => {
+        authLogIn(JSON.parse(localStorage.getItem('credentials')))
+      }, 1800000))
+    }
+  }, [authLogIn, getCart, setRefreshTimer, setWishlist])
+
   return (
-    <div>
+    <div style={{marginTop: '120px'}}>
       <Header />
-      <Container>
-        <NavLink to="/">Homepage</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <NavLink to="/signin">Sign In</NavLink>
-        <NavLink to="/aboutus">About Us</NavLink>
-        <NavLink to="/cart">Cart</NavLink>
-        <NavLink to="/products/720373" style={{ margin: '0 15px', color: 'tomato' }}>Products</NavLink>
-        <NavLink to="/buttons">Buttons</NavLink>
-      </Container>
-      <Switch>
-        <Route exact path="/">
-          <BannerSlider />
-          <NewProductsSlider />
-        </Route>
-        <Route exact path="/signin">
-          <LogIn />
-        </Route>
-        <Route exact path="/signup">
-          <CreateCustomerPage />
-        </Route>
-        <Route exact path="/aboutus">
-          <AboutUsPage />
-        </Route>
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
-        <Route exact path="/products/:productID">
-          <ProductPage />
-        </Route>
-        <Route exact path="/buttons">
-          <StyledButton shape="round">Submit</StyledButton>
-          <StyledButton size="sm" shape="round">Submit</StyledButton>
-          <StyledButton size="xl" shape="round" color="black">Submit</StyledButton>
-          <StyledButton size="lg" shape="round">Submit</StyledButton>
-          <StyledButton size="md" shape="round" color="borderGrey">Submit</StyledButton>
-          <StyledButton size="xs" shape="round" color="borderBlue">Submit</StyledButton>
-          <StyledButton size="sm" shape="round" color="yellow">Submit</StyledButton>
-        </Route>
-      </Switch>
-      
+      <ProductSubscribeModal />
+      <Router />
+      <ServiceSection />
+      <Footer />
     </div>
-  )
-}
+  );
+})
 
 export default App

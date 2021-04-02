@@ -1,11 +1,19 @@
 import axios from 'axios';
-import headers from '../headers';
-import { setProducts, addProduct, updateProduct } from './actionCreator';
+import { DOMAIN, getHeaders } from '../../utils/constants';
+import {
+  setProducts,
+  addProduct,
+  updateProduct,
+  setProductsToCatalog,
+  setCatalogProductsQuantity,
+  cleanCatalogProducts,
+  setSearchProducts
+} from './actionCreator';
 
-const BASE_ENDPOINT = '/products'
+const BASE_ENDPOINT = `${DOMAIN}/products`
 
 export const getProducts = () => (dispatch) => {
-  axios.get('/products')
+  axios.get(BASE_ENDPOINT)
     .then((data) => {
       if (data.status === 200) {
         dispatch(setProducts(data.data))
@@ -15,7 +23,8 @@ export const getProducts = () => (dispatch) => {
 }
 
 export const addOneProduct = (newProduct) => (dispatch) => {
-  const res = axios.post(BASE_ENDPOINT, newProduct, {headers})
+  const headers = getHeaders()
+  const res = axios.post(BASE_ENDPOINT, newProduct, { headers })
     .then((data) => {
       if (data.status === 200) {
         dispatch(addProduct(newProduct))
@@ -26,22 +35,24 @@ export const addOneProduct = (newProduct) => (dispatch) => {
   return res
 }
 
-export const updatedOneProduct = (id, newProduct) => (dispatch) => {
-  const res = axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, {headers})
+export const updateOneProduct = (id, newProduct) => (dispatch) => {
+  const headers = getHeaders()
+  const res = axios.put(`${BASE_ENDPOINT}/${id}`, newProduct, { headers })
     .then((data) => {
       if (data.status === 200) {
         dispatch(updateProduct(data.data))
       }
       return data
     })
-    .catch((error) => error)
+    .catch((error) => error.response)
+
   return res
 }
 
-export const getOneProduct = (itemNo) => () => {
+export const getOneProduct = (itemNo) => {
   const res = axios.get(`${BASE_ENDPOINT}/${itemNo}`)
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error.response))
+    .then((data) => data)
+    .catch((error) => error.response)
   return res
 }
 
@@ -53,12 +64,37 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
-  
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) dispatch(actionCreator(res.data.products))
+      return res
     })
-    .catch((error) => console.log(error.response))
-
+    .catch((error) => error.response)
   return res
+}
+
+export const getProductsToCatalog = (param) => (dispatch) => {
+  dispatch(cleanCatalogProducts())
+  const res = axios.get(`${BASE_ENDPOINT}/filter${param}`)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch(setProductsToCatalog(res.data.products))
+        dispatch(setCatalogProductsQuantity(res.data.productsQuantity))
+      }
+      return res
+    })
+    .catch((error) => {
+      dispatch(setCatalogProductsQuantity(0))
+      return error
+    })
+  return res
+}
+
+export const getSearchProducts = (searchPhrases) => (dispatch) => {
+  axios
+    .post(`${BASE_ENDPOINT}/search`, searchPhrases)
+    .then(({data}) => {
+      dispatch(setSearchProducts(data))
+    })
+    .catch((err) => err);
 }
