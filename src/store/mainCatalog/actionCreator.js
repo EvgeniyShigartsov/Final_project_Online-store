@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { batch } from 'react-redux';
 import {
   GET_GAMING_MONITORS,
