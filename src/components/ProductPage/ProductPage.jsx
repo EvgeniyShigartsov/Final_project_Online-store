@@ -12,6 +12,8 @@ import {
   ProductHeading,
   AboutProduct,
   PriceBox,
+  PreviousPrice,
+  CurrentPrice,
   ImageBox,
   FavoriteBox,
   FavoriteText,
@@ -55,6 +57,7 @@ const ProductPage = () => {
 
   if (!product) return <SpinAnimation width="100%" height="80vh" />
 
+  const promotionalProduct = product.previousPrice !== 0
   return (
     <Container>
       <PageContainer>
@@ -70,10 +73,21 @@ const ProductPage = () => {
         <InformationBox>
           <ProductHeading>{upperCaseFirstLetter(product.name)}</ProductHeading>
           <PriceBox>
-            <b>
+            {promotionalProduct && (
+            <PreviousPrice>
+              {product.previousPrice}
+              <span>
+                ₴.
+              </span>
+            </PreviousPrice>
+            )}
+            <CurrentPrice promotionalProduct={promotionalProduct}>
               {product.currentPrice}
-            </b>
-            ₴.
+              <span>
+                ₴.
+              </span>
+            </CurrentPrice>
+            
           </PriceBox>
           <div style={{ marginBottom: '6px' }}>
             Product number:
