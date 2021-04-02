@@ -7,7 +7,10 @@ import {
   SET_CATALOG_PRODUCTS_QUANTITY,
   CLEAN_CATALOG_PRODUCTS,
   SET_SEARCH_PRODUCTS,
-  CLEAR_SEARCH_PRODUCTS
+  CLEAR_SEARCH_PRODUCTS,
+  SET_MIN_MAX_PRICE,
+  START_LOADING,
+  STOP_LOADING
 } from './actionType';
 
 export const setProducts = (payload) => ({
@@ -48,4 +51,17 @@ export const setSearchProducts = (payload) => ({
 
 export const clearSearchProducts = () => ({
   type: CLEAR_SEARCH_PRODUCTS
+})
+
+export const setMinMaxPrice = (payload) => ({
+  type: SET_MIN_MAX_PRICE,
+  payload
+})
+
+export const startLoading = () => ({
+  type: START_LOADING
+})
+
+export const stopLoading = () => ({
+  type: STOP_LOADING
 })

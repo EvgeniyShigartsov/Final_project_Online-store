@@ -11,11 +11,9 @@ import { connect } from 'react-redux';
 import {authLogIn} from '../../../store/auth/middleware';
 import { compareLSItemsAndDBItems } from '../../../store/wishlist/middleware'
 import {addLSToServer, getCart} from '../../../store/cart/middleware'
-import {setRefreshTimer} from '../../../store/auth/actionCreator'
 
 const AuthForm = connect(null, {
   authLogIn,
-  setRefreshTimer,
   compareLSItemsAndDBItems,
   addLSToServer,
   getCart
@@ -23,17 +21,10 @@ const AuthForm = connect(null, {
   {
     authLogIn,
     compareLSItemsAndDBItems,
-    setRefreshTimer,
     addLSToServer,
     getCart
   }
 ) => {
-  const startInterval = () => (
-    setInterval(() => {
-      authLogIn(JSON.parse(localStorage.getItem('credentials')))
-    }, 1800000)
-  )
-
   const formLayout = 'vertical'
   const [error, setError] = useState({})
   const history = useHistory()
@@ -42,7 +33,6 @@ const AuthForm = connect(null, {
     const {status, data} = await authLogIn(values)
 
     if (status === 200) {
-      setRefreshTimer(startInterval())
       addLSToServer()
       getCart()
       history.push('/')

@@ -7,16 +7,26 @@ import {
   SET_CATALOG_PRODUCTS_QUANTITY,
   CLEAN_CATALOG_PRODUCTS,
   SET_SEARCH_PRODUCTS,
-  CLEAR_SEARCH_PRODUCTS
+  CLEAR_SEARCH_PRODUCTS,
+  SET_MIN_MAX_PRICE,
+  STOP_LOADING,
+  START_LOADING
 } from './actionType';
 
 export const MODULE_NAME = 'products'
+
+export const selectMinMaxPrice = (state) => state[MODULE_NAME].catalog.minMaxPrice
+export const selectIsLoading = (state) => state[MODULE_NAME].catalog.isLoading
+export const selectCatalogProducts = (state) => state[MODULE_NAME].catalog.catalogProducts
+export const selectProductsQuantity = (state) => state[MODULE_NAME].catalog.productsQuantity
 
 const initialState = {
   products: [],
   catalog: {
     catalogProducts: [],
-    productsQuantity: 1
+    isLoading: false,
+    productsQuantity: 0,
+    minMaxPrice: []
   },
   searchProducts: [],
   newProducts: [],
@@ -25,6 +35,15 @@ const initialState = {
 
 export const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
+    case START_LOADING:
+    case STOP_LOADING:
+      return {
+        ...state,
+        catalog: {
+          ...state.catalog,
+          isLoading: !state.catalog.isLoading
+        }
+      }
     case SET_PRODUCTS:
       return {
         ...state,
@@ -81,6 +100,14 @@ export const reducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         searchProducts: []
+      }
+    case SET_MIN_MAX_PRICE:
+      return {
+        ...state,
+        catalog: {
+          ...state.catalog,
+          minMaxPrice: payload
+        }
       }
     default:
       return state

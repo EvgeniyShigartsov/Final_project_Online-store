@@ -41,7 +41,7 @@ const CatalogSort = ({setShowFilter}) => {
           <Select.Option value="16">16 per page</Select.Option>
           <Select.Option value="32">32 per page</Select.Option>
           <Select.Option value="48">48 per page</Select.Option>
-          <Select.Option value="60">60 per page</Select.Option>
+          <Select.Option value="64">64 per page</Select.Option>
         </StyledSelect>
       </SelectWrapper>
     </Wrapper>
