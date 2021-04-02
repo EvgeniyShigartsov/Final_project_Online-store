@@ -18,15 +18,16 @@ import {
   FavoriteBox,
   FavoriteText,
 } from './StylesProductPage'
+import StyledSpinner from '../StyledSpinner/StyledSpinner'
 import Carousel from '../Carousel/Carousel'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
-import SpinAnimation from '../SpinAnimation/SpinAnimation'
 import { getOneProduct } from '../../store/products/middleware'
 import ProductRate from './ProductRate/ProductRate'
 import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 import { forDesktop } from '../../styles/mediaBreakPoints'
 
 const ProductPage = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [product, setProduct] = useState(null)
   const { itemNo } = useParams()
   const history = useHistory()
@@ -39,6 +40,7 @@ const ProductPage = () => {
         message.error('Something went wrong')
         history.push('/')
       }
+      setIsLoading(() => false)
     }
     getProduct()
   }, [history, itemNo])
@@ -55,7 +57,7 @@ const ProductPage = () => {
     ]
   }
 
-  if (!product) return <SpinAnimation width="100%" height="80vh" />
+  if (isLoading) return <StyledSpinner size="large" tip="...loading" margin="100px auto" />
 
   const promotionalProduct = product.previousPrice !== 0
   return (

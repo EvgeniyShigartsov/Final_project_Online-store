@@ -7,7 +7,7 @@ import {
   AccountInfo, MyDash, WrapperBlocks, RowBlocks
 } from './StyledDashBoard';
 import PasswordInfoChange from './PasswordInfoChange';
-import SpinAnimation from '../SpinAnimation/SpinAnimation';
+import StyledSpinner from '../StyledSpinner/StyledSpinner'
 import Orders from './Orders/Orders';
 
 const DashBoard = connect(null, { getCustomer })(() => {
@@ -22,7 +22,7 @@ const DashBoard = connect(null, { getCustomer })(() => {
     customer()
   }, [])
 
-  if (Object.keys(info).length === 0) return <SpinAnimation width="90vw" height="90vh" />
+  if (Object.keys(info).length === 0) return <StyledSpinner size="large" tip="Loading..." margin="100px auto" />
 
   return (
     <Container>

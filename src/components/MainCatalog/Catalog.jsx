@@ -8,7 +8,7 @@ import { selectCatalog } from '../../store/mainCatalog/reducer'
 // Components
 import { CatalogBillboard } from './CatalogBillboard/CatalogBillboard'
 import { CatalogCardWrapper } from './CatalogCardWrapper/MainCatalogCardWrapper'
-import SpinAnimation from '../SpinAnimation/SpinAnimation'
+import StyledSpinner from '../StyledSpinner/StyledSpinner'
  
 // Styles
 import { StyledCatalogWrapper, StyledContainer } from './StyledCatalog'
@@ -30,7 +30,7 @@ export const Catalog = connect(mapStateToProps, { getMainCatalogProducts })(({
     && catalogProduct.tabletList.length > 0
   )
 
-  if (!checkProductsAreLoaded) return <SpinAnimation width="100%" height="30vh" />
+  if (!checkProductsAreLoaded) return <StyledSpinner size="large" tip="Loading..." margin="200px auto" />
   
   return (
     <StyledContainer>

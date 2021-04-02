@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Empty } from 'antd'
-import { StyledSpin } from './Styled.CatalogProducts'
+import StyledSpinner from '../../StyledSpinner/StyledSpinner'
 
 const CatalogNoProducts = ({productsQuantity}) => (
   productsQuantity !== 0
-    ? (<StyledSpin size="large" tip="Loading..." />)
+    ? (<StyledSpinner size="large" tip="Loading..." />)
     : (
       <Empty description={false}>
         <span>Sorry, no products</span>
