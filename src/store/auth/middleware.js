@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { message } from 'antd';
-import { DOMAIN } from '../general'
+import { DOMAIN } from '../../utils/constants'
 import { logIn, logOut } from './actionCreator'
 import updateWishlistCreator from '../wishlist/actionCreator'
 import { initialState as wishlistInitialState} from '../wishlist/reducer'
