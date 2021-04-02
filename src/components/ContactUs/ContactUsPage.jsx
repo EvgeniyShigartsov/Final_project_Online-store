@@ -1,4 +1,3 @@
-/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
