@@ -1,11 +1,9 @@
 import axios from 'axios'
 import { message } from 'antd';
-import { DOMAIN } from '../general'
 import { clearRefreshTimer, logIn, logOut } from './actionCreator'
 import updateWishlistCreator from '../wishlist/actionCreator'
 import { clearCart } from '../cart/middleware'
-// import { setCart } from '../cart/actionCreator'
-// import { getCartLS } from '../../utils/cartLS'
+import { DOMAIN } from '../../utils/constants';
 
 const BASE_ENDPOINT = '/customers'
 
