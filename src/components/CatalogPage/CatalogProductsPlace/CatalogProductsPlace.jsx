@@ -41,7 +41,7 @@ const CatalogProductsPlace = connect(mapStateToProps, {
   if (isLoading) return <Spin size="large" tip="Loading..." style={{margin: '50px auto'}} />
 
   return (
-    productsQuantity
+    !productsQuantity
       ? (
         <Empty description={false}>
           <span>Sorry, no products</span>
