@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { message } from 'antd';
 import { clearRefreshTimer, logIn, logOut } from './actionCreator'
-import updateWishlistCreator from '../wishlist/actionCreator'
+import { updateWishlistCreator } from '../wishlist/actionCreator'
 import { clearCart } from '../cart/middleware'
 import { DOMAIN } from '../../utils/constants';
 
