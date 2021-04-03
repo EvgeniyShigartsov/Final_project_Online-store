@@ -6,14 +6,14 @@ import InputGroup from './InputGroup/InputGroup'
 import StyledButton from '../../common/Buttons/StyledButton'
 import checkValue from '../../../utils/checkValue'
 import { addToCart } from '../../../store/cart/middleware'
-import { showModal } from '../../../store/subscriceOnProductModal/middleware'
+import { showSubscribeModal } from '../../../store/subscriceOnProductModal/middleware'
 
-const CartGroup = connect(null, { addToCart, showModal })((
+const CartGroup = connect(null, { addToCart, showSubscribeModal })((
   {
     product,
     avilableQuantity,
     addToCart,
-    showModal
+    showSubscribeModal,
   }
 ) => {
   const [quantity, setQuanity] = useState(avilableQuantity > 0 ? 1 : 0)
@@ -58,7 +58,7 @@ const CartGroup = connect(null, { addToCart, showModal })((
             color="borderGrey"
             size="lg"
             shape="round"
-            onClick={showModal}
+            onClick={showSubscribeModal}
           >
             Check avilabiliy
           </StyledButton>

@@ -30,13 +30,13 @@ import cutString from '../../utils/cutString';
 import rateCalculator from '../../utils/rateCalculator';
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter';
 import { addToCart } from '../../store/cart/middleware'
-import { showModal } from '../../store/subscriceOnProductModal/middleware'
+import { showSubscribeModal } from '../../store/subscriceOnProductModal/middleware'
 
-export const ProductCard = connect(null, { addToCart, showModal })((
+export const ProductCard = connect(null, { addToCart, showSubscribeModal })((
   {
     productInfo,
     addToCart,
-    showModal,
+    showSubscribeModal,
   }
 ) => {
   const {
@@ -112,7 +112,7 @@ export const ProductCard = connect(null, { addToCart, showModal })((
             color="borderGrey"
             size="xs"
             shape="round"
-            onClick={showModal}
+            onClick={showSubscribeModal}
           >
             Check avilabiliy
           </StyledButton>
