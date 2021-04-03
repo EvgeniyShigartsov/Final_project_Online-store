@@ -3,7 +3,8 @@ const formTrimStringValidator = (rejectMessage = 'The field should not contain j
   const stringTrimCheck = (_, value) => {
     const trimmedStrimg = value.trim()
     if (!trimmedStrimg) return Promise.reject(rejectMessage)
-    if (value[0] === ' ' || value[1] === ' ') return Promise.reject('Field should not contain just 1 character and spaces.')
+    if (value[0] === ' ') return Promise.reject('Field should not start with space character.')
+    if (value[1] === ' ' && trimmedStrimg[2] === undefined) return Promise.reject('Field should not contain just 1 character and spaces.')
     
     return Promise.resolve()
   }
