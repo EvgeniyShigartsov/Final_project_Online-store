@@ -21,6 +21,7 @@ import { Container } from '../common/Container'
 import { getCustomer } from '../../store/customer/middleware'
 import { selectIsLogin } from '../../store/auth/reducer'
 import formTrimStringValidator from '../../utils/formTrimStringValidator'
+import { validTelephone } from '../../utils/constants'
 
 const mapStateToProps = (state) => ({ isLogin: selectIsLogin(state) })
 
@@ -31,7 +32,13 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
   useEffect(() => {
     const getInfo = async () => {
       const { data, status } = await getCustomer()
-      if (status === 200) { setUserInfo(() => ({ email: data.email, firstName: data.firstName })) }
+      if (status === 200) {
+        setUserInfo(() => ({
+          email: data.email,
+          firstName: data.firstName,
+          telephone: data.telephone
+        }))
+      }
     }
     if (isLogin) getInfo()
   }, [isLogin])
@@ -44,6 +51,10 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
     {
       name: 'email',
       value: userInfo.email
+    },
+    {
+      name: 'phone',
+      value: userInfo.telephone || ''
     }
   ]
 
@@ -96,11 +107,11 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                 rules={[
                   {
                     type: 'email',
-                    message: 'The input is not valid E-mail!',
+                    message: 'The input is not valid email!',
                   },
                   {
                     required: true,
-                    message: 'Please input your E-mail!',
+                    message: 'Please input your email!',
                   },
                 ]}
               >
@@ -115,7 +126,7 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                     message: 'Please write your phone number.',
                   },
                   {
-                    pattern: /^[0-9]+$/i,
+                    pattern: validTelephone,
                     message: 'Allowed characters is 0-9.'
                   }
                 ]}
@@ -124,7 +135,7 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
               </StyledFormItem>
             </StyledFormWrapper>
             <StyledFormItemTextArea
-              name={['user', 'introduction']}
+              name="feedback"
               label="What’s on your mind?"
               rules={[
                 {

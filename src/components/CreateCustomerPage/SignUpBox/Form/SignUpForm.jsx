@@ -88,7 +88,7 @@ const SignUpForm = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your Surename.',
+            message: 'Please input your last name.',
           },
           {
             pattern: validName,
@@ -153,9 +153,6 @@ const SignUpForm = () => {
           },
           {
             min: 8,
-            message: 'Password must be between 8 and 30 characters'
-          },
-          {
             max: 30,
             message: 'Password must be between 8 and 30 characters'
           },
