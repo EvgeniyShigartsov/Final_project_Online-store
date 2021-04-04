@@ -48,14 +48,12 @@ export const ProductCard = connect(null, { addToCart, showSubscribeModal })((
     quantity,
     itemNo,
   } = productInfo
+
   const isAvilable = quantity > 0
-
   const promotionalProduct = previousPrice !== 0
-  // string length limitation and translation of the first letter into capital
   const verifiedTitle = upperCaseFirstLetter(cutString(name, 38))
-
-  // getting an average rating and the number of reviews left
   const { reviewsQuantity, rating } = rateCalculator(reviews)
+
   return (
     <CardItem className="hidden">
 
