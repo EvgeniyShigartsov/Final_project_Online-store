@@ -1,0 +1,2 @@
+export const SET_CUSTOMER_INFO = 'SET_CUSTOMER_INFO';
+export const SET_ORDERS = 'SET_ORDERS';

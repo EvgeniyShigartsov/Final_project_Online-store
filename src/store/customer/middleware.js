@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { message } from 'antd';
 import { DOMAIN, getHeaders } from '../../utils/constants';
+import { setCustomerInfo, setOrders } from './actionCreator';
 
 const BASE_ENDPOINT = `${DOMAIN}/customers`;
+const BASE_ENDPOINT_CUSTOMER = `${DOMAIN}/orders`;
 
 export const createCustomer = (credentials, history) => {
   axios.post(BASE_ENDPOINT, credentials)
@@ -41,25 +43,41 @@ export const changePassword = (passwords) => {
     })
   return res
 }
-
-export const updateCustomer = (credentials, succesMessage) => {
-  const headers = getHeaders();
-  const res = axios.put(BASE_ENDPOINT, credentials, {headers})
+  
+export const getCustomer = () => (dispatch) => {
+  const headers = getHeaders()
+  axios.get(`${BASE_ENDPOINT}/customer`, { headers })
     .then((data) => {
       if (data.status === 200) {
+        dispatch(setCustomerInfo(data.data))
+      }
+    })
+    .catch((error) => error.response)
+}
+
+export const updateCustomer = (credentials, succesMessage) => (dispatch) => {
+  const headers = getHeaders();
+  axios.put(BASE_ENDPOINT, credentials, {headers})
+    .then((data) => {
+      if (data.status === 200) {
+        dispatch(setCustomerInfo(data.data))
         if (succesMessage) {
           message.success('Your contact information has been changed')
         }
       }
     })
     .catch((error) => error.response)
-  return res
 }
-  
-export const getCustomer = () => {
+
+export const getOrders = () => (dispatch) => {
   const headers = getHeaders()
-  const res = axios.get(`${BASE_ENDPOINT}/customer`, { headers })
-    .then((data) => data)
+  const results = axios.get(`${BASE_ENDPOINT_CUSTOMER}`, {headers})
+    .then((data) => {
+      if (data.status === 200) {
+        dispatch(setOrders(data.data))
+      }
+    })
     .catch((error) => error.response)
-  return res
+  return results
 }
+export default getOrders;

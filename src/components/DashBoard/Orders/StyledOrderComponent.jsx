@@ -39,19 +39,17 @@ export const StyledMenu = styled(Menu)`
    }
   }
 `;
-export const ImgContainer = styled.img`
+export const ImgContainer = styled.div`
+  padding: 0.7px;
   position: absolute;
   top: 0px;
-  width: 40px;
-  @media(max-width: 430px) {
-    height: inherit;
-    right: -37px;
-  }
-   @media(max-width: 349px) {
-    right: -20px;
-  }
-  @media(min-width: 387px) {
-    height: 100%;
-    right: -40px;
-  }
+  width: 60px;
+  height: 100%;
+  left: -60px;
+`;
+
+export const ImgDash = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;

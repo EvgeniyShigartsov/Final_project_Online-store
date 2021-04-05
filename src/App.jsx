@@ -10,6 +10,7 @@ import { setRefreshTimer } from './store/auth/actionCreator'
 import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
+import { headerHeight } from './utils/constants'
 
 const App = connect(null, {
   authLogIn, setRefreshTimer, setWishlist, getCart
@@ -32,7 +33,7 @@ const App = connect(null, {
   }, [authLogIn, getCart, setRefreshTimer, setWishlist])
 
   return (
-    <div style={{marginTop: '120px'}}>
+    <div style={{marginTop: headerHeight}}>
       <Header />
       <ProductSubscribeModal />
       <AuthModal />

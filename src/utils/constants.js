@@ -5,6 +5,8 @@ export const getHeaders = () => ({
   'Content-Type': 'application/json'
 })
 
+export const headerHeight = '120px';
+
 export const validName = /^[a-zа-яіїё\s]+$/i;
 export const validTelephone = /^[0-9]+$/;
 

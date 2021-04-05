@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const DirectionChange = styled.div`
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;

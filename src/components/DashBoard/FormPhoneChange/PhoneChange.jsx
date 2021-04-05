@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import {
   Form, Input, Button
@@ -8,20 +7,22 @@ import PropTypes from 'prop-types';
 import { updateCustomer } from '../../../store/customer/middleware';
 import { setHideModal } from '../../../store/dashBoardModal/middleware';
 import { selectModalState } from '../../../store/dashBoardModal/reducer'
-import { selectCustomerInfo } from '../../../store/customer/reducer'
+import { validTelephone } from '../../../utils/constants'
 
 const mapStateToProps = (state) => ({
   show: selectModalState(state),
-  info: selectCustomerInfo(state)
 })
 
-const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer })(({
+const PhoneChange = connect(mapStateToProps, { setHideModal, updateCustomer })(({
   setHideModal, show, updateCustomer
 }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    updateCustomer(values, 'Your contact information has been changed');
+    const validPhone = {
+      telephone: `+${values.telephone}`
+    }
+    updateCustomer(validPhone, 'Your contact information has been changed');
     setHideModal();
     form.resetFields()
   }
@@ -33,27 +34,21 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
   return (
     <Form name="nest" form={form} onFinish={onFinish} datatest-id="ModalFormInfo">
       <Form.Item
-        name="firstName"
-        label="First name"
-        rules={[{
-          required: true,
-          type: 'string',
-          pattern: /^[a-zA-ZА-Яа-я]+$/,
-          message: 'Enter correct First name'
-        }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        style={{paddingBottom: '0px'}}
-        name="lastName"
-        label="Last name"
-        rules={[{
-          required: true,
-          type: 'string',
-          pattern: /^[a-zA-ZА-Яа-я]+$/,
-          message: 'Enter correct Last name'
-        }]}
+        name="telephone"
+        label="New Phone"
+        rules={[
+          {
+            required: true,
+            type: 'string',
+            pattern: validTelephone,
+            message: 'Enter correct Phone'
+          },
+          {
+            min: 12,
+            max: 12,
+            message: 'Phone must be 12 characters',
+          },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -65,7 +60,12 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
     </Form>
   );
 })
-FormInfoChange.propTypes = {
-  setHideModal: PropTypes.func.isRequired,
+
+PhoneChange.propTypes = {
+  show: PropTypes.bool,
+  setHideModal: PropTypes.func,
+  formId: PropTypes.string,
+  updateCustomer: PropTypes.func
 }
-export default FormInfoChange;
+
+export default PhoneChange;

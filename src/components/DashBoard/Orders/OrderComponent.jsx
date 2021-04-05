@@ -7,10 +7,11 @@ import {
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import {
-  ContainerOrder, ShowListStyled, StyledMenu, ImgContainer
+  ContainerOrder, ShowListStyled, StyledMenu, ImgContainer,
+  ImgDash
 } from './StyledOrderComponent'
 import UpperCaseFirstLetter from '../../../utils/upperCaseFirstLetter';
-import slicePlus from '../../../utils/slicePlus';
+import cutString from '../../../utils/cutString';
  
 const OrderComponent = ({orders}) => {
   const menu = (
@@ -18,8 +19,10 @@ const OrderComponent = ({orders}) => {
       {orders.products.map((item) => (
         <Menu.Item key={item._id}>
           <Link to={`products/${item.product.itemNo}`} onClick={() => window.scrollTo(0, 0)}>
-            {`${UpperCaseFirstLetter(item.product.name)} - ${item.cartQuantity} pc`}
-            <ImgContainer src={item.product.imageUrls[0]} />
+            {`${cutString(UpperCaseFirstLetter(item.product.name), 23)} - ${item.cartQuantity} pc`}
+            <ImgContainer>
+              <ImgDash src={item.product.imageUrls[0]} />
+            </ImgContainer>
           </Link>
         </Menu.Item>
       ))}
@@ -38,9 +41,7 @@ const OrderComponent = ({orders}) => {
       >
         <Descriptions.Item label="Order Date:">{orders.date.substr(0, 10)}</Descriptions.Item>
         <Descriptions.Item label="Payment type:">{orders.paymentInfo}</Descriptions.Item>
-        <Descriptions.Item label="Quantity of goods:">
-          {orders.products.length}
-          {' '}
+        <Descriptions.Item label="Products:">
           <ShowListStyled>
             <Dropdown overlay={menu} placement="bottomCenter">
               <Button>Show</Button>
@@ -49,7 +50,6 @@ const OrderComponent = ({orders}) => {
         </Descriptions.Item>
         <Descriptions.Item label="Shipping:">{`${orders.shipping} ₴`}</Descriptions.Item>
         <Descriptions.Item label="Total amount:">{`${orders.totalSum} ₴`}</Descriptions.Item>
-        <Descriptions.Item label="Phone:">{slicePlus(orders.mobile)}</Descriptions.Item>
       </Descriptions>
       <br />
       <br />

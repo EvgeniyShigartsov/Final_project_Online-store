@@ -1,18 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import getOrders from '../../../store/orders/middleware';
+/* eslint-disable consistent-return */
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux';
 import OrderComponent from './OrderComponent';
 import DirectionChange from './StyledOrders';
+import { getOrders } from '../../../store/customer/middleware'
+import { selectOrders } from '../../../store/customer/reducer'
 
-const Orders = () => {
-  const [orders, setOrders] = useState(null)
+const mapStateToProps = (state) => ({
+  orders: selectOrders(state)
+})
+
+const Orders = connect(mapStateToProps, {getOrders})(({getOrders, orders}) => {
   useEffect(() => {
-    const ordersToRender = async () => {
-      const results = await getOrders();
-      const reversed = results.data.reverse()
-      setOrders(() => reversed)
+    if (Object.keys(orders).length !== 0) {
+      return orders
     }
-    ordersToRender()
-  }, [])
+    getOrders()
+  }, [getOrders, orders])
   return (
     <div style={{marginTop: '20px'}}>
       <div>
@@ -37,6 +41,6 @@ const Orders = () => {
       </DirectionChange>
     </div>
   );
-}
+})
 
 export default Orders;

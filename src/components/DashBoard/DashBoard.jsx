@@ -1,31 +1,34 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container } from '../common/Container'
 import { getCustomer } from '../../store/customer/middleware';
 import Subscribe from './Subscribed/Subscribe';
 import {
-  AccountInfo, MyDash, WrapperBlocks, RowBlocks
+  AccountInfo, MyDash, WrapperBlocks, RowBlocks,
+  StyledSpin
 } from './StyledDashBoard';
 import PasswordInfoChange from './PasswordInfoChange';
-import SpinAnimation from '../SpinAnimation/SpinAnimation';
 import Orders from './Orders/Orders';
+import { selectCustomerInfo } from '../../store/customer/reducer'
 
-const DashBoard = connect(null, { getCustomer })(() => {
-  const [info, setInfo] = useState({})
+const mapStateToProps = (state) => ({
+  customerInfo: selectCustomerInfo(state)
+})
 
+const DashBoard = connect(mapStateToProps, { getCustomer })(({customerInfo, getCustomer}) => {
   useEffect(() => {
-    const customer = async () => {
-      const information = await getCustomer()
-      const infoCustomer = information.data;
-      setInfo(() => infoCustomer)
+    if (Object.keys(customerInfo).length !== 0) {
+      return customerInfo
     }
-    customer()
-  }, [])
+    getCustomer()
+  }, [getCustomer, customerInfo])
 
-  if (Object.keys(info).length === 0) return <SpinAnimation width="90vw" height="90vh" />
-
+  if (Object.keys(customerInfo).length === 0) return <StyledSpin size="large" tip="Loading..." />
   return (
     <Container>
+      <p>HEllo</p>
       <MyDash>
         <p>My Dashboard</p>
       </MyDash>
@@ -34,11 +37,11 @@ const DashBoard = connect(null, { getCustomer })(() => {
       </AccountInfo>
       <WrapperBlocks>
         <RowBlocks>
-          <PasswordInfoChange info={info} setInfo={setInfo} />
+          <PasswordInfoChange info={customerInfo} />
         </RowBlocks>
         <RowBlocks>
           <Subscribe
-            email={info.email}
+            email={customerInfo.email}
           />
         </RowBlocks>
         <RowBlocks>
