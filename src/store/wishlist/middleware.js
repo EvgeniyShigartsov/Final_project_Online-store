@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios'
-import { DOMAIN, getHeaders } from '../general'
+import { DOMAIN, getHeaders } from '../../utils/constants'
 import updateWishlistCreator from './actionCreator'
 
 const BASE_ENDPOINT = `${DOMAIN}/wishlist`
@@ -47,11 +47,7 @@ export const setWishlist = () => async (dispatch, getState) => {
     itemsToSet.push(...getParsedListFromLS())
   }
 
-  const dataToAdd = {
-    wishlistItems: itemsToSet,
-    wishlistLength: itemsToSet.length
-  }
-  dispatch(updateWishlistCreator(dataToAdd))
+  dispatch(updateWishlistCreator(itemsToSet))
 }
 
 export const addProductToWishlist = (product) => async (dispatch, getState) => {
@@ -68,16 +64,13 @@ export const addProductToWishlist = (product) => async (dispatch, getState) => {
         const { data, status } = response
         if (data && status === 200) updatedList.push(...data.products)
       })
-      .catch((err) => console.log(err.response))
+      .catch((err) => err.response)
   } else {
     const updatedItems = addProductToLS(product)
     updatedList.push(...updatedItems)
   }
-  const dataToAdd = {
-    wishlistItems: updatedList,
-    wishlistLength: updatedList.length
-  }
-  dispatch(updateWishlistCreator(dataToAdd))
+ 
+  dispatch(updateWishlistCreator(updatedList))
 }
 
 export const removeProductFromWishlist = (product) => async (dispatch, getState) => {
@@ -94,17 +87,13 @@ export const removeProductFromWishlist = (product) => async (dispatch, getState)
         const { data, status } = response
         if (data && status === 200) updatedList.push(...data.products)
       })
-      .catch((err) => console.log(err.response))
+      .catch((err) => err.response)
   } else {
     const updatedItems = removeProductFromLS(product)
     updatedList.push(...updatedItems)
   }
 
-  const dataToAdd = {
-    wishlistItems: updatedList,
-    wishlistLength: updatedList.length
-  }
-  dispatch(updateWishlistCreator(dataToAdd))
+  dispatch(updateWishlistCreator(updatedList))
 }
 
 export const compareLSItemsAndDBItems = () => async (dispatch) => {
@@ -119,11 +108,8 @@ export const compareLSItemsAndDBItems = () => async (dispatch) => {
     const check = Boolean(uniqueList.find((item) => item.itemNo === el.itemNo))
     if (!check) uniqueList.push(el)
   })
-  const dataToAdd = {
-    wishlistItems: uniqueList,
-    wishlistLength: uniqueList.length
-  }
-  dispatch(updateWishlistCreator(dataToAdd))
+  
+  dispatch(updateWishlistCreator(uniqueList))
 
   const updatedItems = {
     products: uniqueList
@@ -131,5 +117,5 @@ export const compareLSItemsAndDBItems = () => async (dispatch) => {
   const headers = getHeaders()
   axios.put(BASE_ENDPOINT, updatedItems, { headers })
     .then((res) => res)
-    .catch((err) => console.log(err.response))
+    .catch((err) => err.response)
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { selectIsLogin } from '../../store/auth/reducer';
 import { RowColumn, WrapperButton } from '../CartPage/Flex';
 import StyledButton from '../common/Buttons/StyledButton';
@@ -16,10 +16,12 @@ const OrderPage = connect(mapStateToProps, null)(({isLogin}) => {
   const history = useHistory()
 
   const onClickHome = () => {
+    window.scrollTo(0, 0);
     history.push('/')
   }
   const onClickDashboard = () => {
-    history.push('/')
+    window.scrollTo(0, 0);
+    history.push('/dashboard')
   }
   return (
     <ContainerCart>
@@ -39,14 +41,16 @@ const OrderPage = connect(mapStateToProps, null)(({isLogin}) => {
         {isLogin
           ? (
             <WrapperButton>
-              <StyledButton
-                onClick={onClickDashboard}
-                size="lg"
-                shape="round"
-                color="borderGrey"
-              >
-                Go to Dashboard
-              </StyledButton>
+              <Link to="/dashboard">
+                <StyledButton
+                  onClick={onClickDashboard}
+                  size="lg"
+                  shape="round"
+                  color="borderGrey"
+                >
+                  Go to Dashboard
+                </StyledButton>
+              </Link>
             </WrapperButton>
           )
           : null}

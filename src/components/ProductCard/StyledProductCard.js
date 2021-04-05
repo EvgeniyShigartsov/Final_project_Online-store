@@ -18,10 +18,6 @@ export const CardItem = styled.div`
               0 16px 16px rgba(0,0,0,0.12);
 
   }
-  
-  ${(props) => props.hideBorder && css`
-    border: none;
-  `}
 
   @media(min-width: ${forTablet.minWidth}px) {
     padding: 10px 15px;
@@ -92,25 +88,20 @@ export const PurchaseGroup = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
-
-  @media(min-width: ${forDesktop.minWidth}px) {
-    flex-direction: row;
-    align-items: center;
-  }
 `
 export const PriceBox = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  margin-bottom: 5px;
 `
 
 export const CardLastPrice = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   text-decoration-line: line-through;
   color: #666666;
+  margin: auto 5px auto 0;
 
   @media(min-width: ${forTablet.minWidth}px){
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 
@@ -118,6 +109,11 @@ export const CardCurrentPrice = styled.div`
   font-size: 14px;
   font-weight: 600;
   color: black;
+  padding: 2px;
+  ${(props) => props.promotionalProduct && css`
+    background-color: #f8ff26;
+    border-radius: 4px;
+  `}
 
   @media(min-width: ${forTablet.minWidth}px){
     font-size: 18px;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { DOMAIN, getHeaders } from '../../utils/constants';
 import {
   setProducts,
   addProduct,
@@ -8,7 +9,6 @@ import {
   cleanCatalogProducts,
   setSearchProducts
 } from './actionCreator';
-import { DOMAIN, getHeaders } from '../general'
 
 const BASE_ENDPOINT = `${DOMAIN}/products`
 
@@ -64,27 +64,18 @@ export const getFilteredProducts = (param, actionCreator) => (dispatch) => {
     }
     return paramStr += `&${key}=${param[key]}`
   })
-  
   const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
     .then((res) => {
       if (res.status === 200) dispatch(actionCreator(res.data.products))
       return res
     })
-    .catch((error) => error)
+    .catch((error) => error.response)
   return res
 }
 
 export const getProductsToCatalog = (param) => (dispatch) => {
   dispatch(cleanCatalogProducts())
-  let paramStr = ''
-  Object.keys(param).forEach((key, index) => {
-    if (index === 0) {
-      return paramStr += `${key}=${param[key].toString()}`
-    }
-    return paramStr += `&${key}=${param[key].toString()}`
-  })
-
-  const res = axios.get(`${BASE_ENDPOINT}/filter?${paramStr}`)
+  const res = axios.get(`${BASE_ENDPOINT}/filter${param}`)
     .then((res) => {
       if (res.status === 200) {
         dispatch(setProductsToCatalog(res.data.products))

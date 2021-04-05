@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DOMAIN } from '../../store/general';
+import { DOMAIN } from '../../utils/constants';
 
 function SortArr(arr) {
   return arr.sort((a, b) => {
@@ -29,7 +29,7 @@ export const categories = SortArr([
   },
   {
     value: 'desctops',
-    title: 'Desctops'
+    title: 'Desktops'
   }
 ])
 
@@ -90,16 +90,19 @@ export const brands = SortArr([
 
 export const checkFilterConfig = async (param) => {
   let paramStr = ''
+  const {
+    perPage, sort, startPage, ...refParam
+  } = param
   const menuConfig = {
     brand: [],
   }
-  Object.keys(param).forEach((key, index) => {
+  Object.keys(refParam).forEach((key, index) => {
     if (index === 0) {
-      return paramStr += `${key}=${param[key].toString()}`
+      return paramStr += `${key}=${refParam[key].toString()}`
     }
-    return paramStr += `&${key}=${param[key].toString()}`
+    return paramStr += `&${key}=${refParam[key].toString()}`
   })
-    
+
   await axios.get(`${DOMAIN}/products/filter?${paramStr}`)
     .then(({data: {products}}) => {
       const refBrand = new Set()
@@ -108,9 +111,9 @@ export const checkFilterConfig = async (param) => {
         if (product.brand) refBrand.add(product.brand)
       })
 
-      if (param.categories) {
+      if (param.categories.length) {
         brands.forEach(((brand) => {
-          if (refBrand.has(brand.value) || param.brand.includes(brand.value)) {
+          if (refBrand.has(brand.value) || param?.brand?.includes(brand.value)) {
             menuConfig.brand.push(brand)
           }
         }))
