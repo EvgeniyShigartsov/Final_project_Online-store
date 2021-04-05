@@ -1,12 +1,9 @@
 import axios from 'axios'
 import { message } from 'antd';
-import { DOMAIN } from '../general'
 import { clearRefreshTimer, logIn, logOut } from './actionCreator'
 import updateWishlistCreator from '../wishlist/actionCreator'
-import { initialState as wishlistInitialState} from '../wishlist/reducer'
 import { clearCart } from '../cart/middleware'
-// import { setCart } from '../cart/actionCreator'
-// import { getCartLS } from '../../utils/cartLS'
+import { DOMAIN } from '../../utils/constants';
 
 const BASE_ENDPOINT = '/customers'
 
@@ -30,7 +27,7 @@ export const authLogOut = () => (dispatch) => {
   localStorage.removeItem('wishlist')
   dispatch(clearRefreshTimer())
   dispatch(logOut())
-  dispatch(updateWishlistCreator(wishlistInitialState))
+  dispatch(updateWishlistCreator([]))
   dispatch(clearCart())
   message.success('You have been logged out from your account')
 }
