@@ -51,7 +51,6 @@ export const ContentBlock = styled.div`
   }
 
   @media(min-width: ${forDesktop.minWidth}px){
-    max-width: 1400px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
