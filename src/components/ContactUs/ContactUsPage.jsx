@@ -20,8 +20,7 @@ import {
 import { Container } from '../common/Container'
 import { getCustomer } from '../../store/customer/middleware'
 import { selectIsLogin } from '../../store/auth/reducer'
-import formTrimStringValidator from '../../utils/formTrimStringValidator'
-import { validTelephone } from '../../utils/constants'
+import { validTelephone, validName } from '../../utils/constants'
 
 const mapStateToProps = (state) => ({ isLogin: selectIsLogin(state) })
 
@@ -54,7 +53,7 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
     },
     {
       name: 'phone',
-      value: userInfo.telephone || ''
+      value: userInfo.telephone || '380'
     }
   ]
 
@@ -88,15 +87,14 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                     message: 'Please input your name!',
                   },
                   {
-                    pattern: /^[a-zа-яіїё\s]+$/i,
+                    pattern: validName,
                     message: 'Allowed characters is a-z, а-я.'
                   },
                   {
                     min: 2,
                     max: 25,
-                    message: 'Name must be beetwen 2 and 25 characters.'
+                    message: 'Name must be between 2 and 25 characters.'
                   },
-                  formTrimStringValidator('Name should not contain just a spaces.')
                 ]}
               >
                 <StyledInput placeholder="Your name" />
@@ -128,6 +126,11 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                   {
                     pattern: validTelephone,
                     message: 'Allowed characters is 0-9.'
+                  },
+                  {
+                    min: 12,
+                    max: 12,
+                    message: 'Phone number must be 12 symbols, and start with "380".'
                   }
                 ]}
               >
