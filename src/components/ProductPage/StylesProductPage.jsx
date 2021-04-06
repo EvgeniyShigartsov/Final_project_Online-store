@@ -85,8 +85,7 @@ export const CurrentPrice = styled.span`
     font-size: 24px;
     
     ${(props) => props.promotionalProduct && css`
-    background-color: #f8ff26;
-    border-radius: 4px;
+        color: #f84147;
   `}
 
     span {
