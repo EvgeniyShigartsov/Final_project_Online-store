@@ -8,7 +8,7 @@ import Router from './components/Router/Router'
 import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
-import { getMainCatalogProducts } from './store/mainCatalog/middleware'
+import { getMainCatalogProducts } from './store/productsPreview/middleware'
 
 const App = connect(null, { setWishlist, getCart, getMainCatalogProducts })((
   {

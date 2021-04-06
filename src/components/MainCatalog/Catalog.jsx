@@ -2,7 +2,7 @@ import React from 'react'
 
 // Redux
 import { connect } from 'react-redux'
-import { selectCatalog, selectIsLoading } from '../../store/mainCatalog/reducer'
+import { selectCatalog, selectIsLoading } from '../../store/productsPreview/reducer'
 
 // Components
 import { CatalogBillboard } from './CatalogBillboard/CatalogBillboard'
