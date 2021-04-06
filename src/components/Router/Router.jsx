@@ -20,6 +20,7 @@ import DashBoard from '../DashBoard/DashBoard'
 import ReviewSlider from '../ReviewSlider/ReviewSlider'
 import Description from '../Description/Description'
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import OnlyNotAuthRoute from '../OnlyNotAuthRoute/OnlyNotAuthRoute'
 
 const Router = () => (
   <Switch>
@@ -32,12 +33,12 @@ const Router = () => (
       <HomepageFollowUs />
       <ReviewSlider />
     </Route>
-    <Route exact path="/signin">
+    <OnlyNotAuthRoute exact path="/signin">
       <LogIn />
-    </Route>
-    <Route exact path="/signup">
+    </OnlyNotAuthRoute>
+    <OnlyNotAuthRoute exact path="/signup">
       <CreateCustomerPage />
-    </Route>
+    </OnlyNotAuthRoute>
     <Route exact path="/aboutus">
       <AboutUsPage />
       <ReviewSlider />
