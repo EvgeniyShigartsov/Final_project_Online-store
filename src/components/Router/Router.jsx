@@ -19,6 +19,7 @@ import NoMatchPage from '../NoMatchPage/NoMatchPage'
 import DashBoard from '../DashBoard/DashBoard'
 import ReviewSlider from '../ReviewSlider/ReviewSlider'
 import Description from '../Description/Description'
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 
 const Router = () => (
   <Switch>
@@ -62,9 +63,9 @@ const Router = () => (
     <Route exact path="/catalog">
       <CatalogPage />
     </Route>
-    <Route exact path="/dashboard">
+    <PrivateRoute exact path="/dashboard">
       <DashBoard />
-    </Route>
+    </PrivateRoute>
     <Route>
       <NoMatchPage />
     </Route>
