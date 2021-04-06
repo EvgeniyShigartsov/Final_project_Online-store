@@ -57,7 +57,7 @@ export const ProductCard = connect(null, { addToCart, showSubscribeModal })((
   return (
     <CardItem className="hidden">
 
-      <Link to={`products/${itemNo}`} onClick={() => window.scrollTo(0, 0)}>
+      <Link to={`products/${itemNo}`}>
         <ImageWrapper>
           <CardImage src={imageUrls[0]} />
         </ImageWrapper>
@@ -80,7 +80,7 @@ export const ProductCard = connect(null, { addToCart, showSubscribeModal })((
       </ReviewsBox>
       {isAvilable ? <InStock /> : <ProductSoldOut /> }
 
-      <Link to={`products/${itemNo}`} onClick={() => window.scrollTo(0, 0)}>
+      <Link to={`products/${itemNo}`}>
         <CardTitle>
           {verifiedTitle}
         </CardTitle>

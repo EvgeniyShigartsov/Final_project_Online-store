@@ -45,7 +45,8 @@ const ProductSubscribeModal = connect(mapStateToProps, { hideSubscribeModal })((
       visible={isOpen}
       okText="Subscribe"
       onCancel={onCancel}
-      okButtonProps={{htmlType: 'submit', form: 'subscribeOnProductsForm'}}
+      okButtonProps={{htmlType: 'submit', form: 'subscribeOnProductsForm', shape: 'round'}}
+      cancelButtonProps={{shape: 'round'}}
     >
       <Form name="subscribeOnProductsForm" onFinish={onSubmit} form={form} fields={fields}>
         <Form.Item
