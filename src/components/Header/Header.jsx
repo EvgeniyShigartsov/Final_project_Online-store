@@ -81,7 +81,7 @@ const Header = () => {
           </ContactUsCall>
           <CallBackAsk>
             <h5>
-              <a href="tel: +(00) 1234 5678" style={{ color: 'white' }}>
+              <a href="tel: +(00) 1234 5678" style={{ color: 'white', outline: 'none' }}>
                 Call Us: (00) 1234 5678
               </a>
             </h5>

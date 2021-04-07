@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container } from '../common/Container'
@@ -9,7 +8,7 @@ import {
   AccountInfo, MyDash, WrapperBlocks, RowBlocks,
   StyledSpin
 } from './StyledDashBoard';
-import PasswordInfoChange from './PasswordInfoChange';
+import PasswordInfoChange from './PasswordInfoChange/PasswordInfoChange';
 import Orders from './Orders/Orders';
 import { selectCustomerInfo } from '../../store/customer/reducer'
 
@@ -28,7 +27,6 @@ const DashBoard = connect(mapStateToProps, { getCustomer })(({customerInfo, getC
   if (Object.keys(customerInfo).length === 0) return <StyledSpin size="large" tip="Loading..." />
   return (
     <Container>
-      <p>HEllo</p>
       <MyDash>
         <p>My Dashboard</p>
       </MyDash>

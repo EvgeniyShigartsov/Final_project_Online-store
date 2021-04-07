@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setShowModal } from '../../store/dashBoardModal/middleware';
-import { BlockInfo, TextInfo } from './StyledDashBoard';
-import Modal from './DashBoardModal/DashBoardModal';
+import { setShowModal } from '../../../store/dashBoardModal/middleware';
+import { BlockInfo, TextInfo } from '../StyledDashBoard';
+import Modal from '../DashBoardModal/DashBoardModal';
 
 const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info }) => (
   <BlockInfo>
