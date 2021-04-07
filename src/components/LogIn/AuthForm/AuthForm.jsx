@@ -11,11 +11,10 @@ import { connect } from 'react-redux';
 import {authLogIn} from '../../../store/auth/middleware';
 import { compareLSItemsAndDBItems } from '../../../store/wishlist/middleware'
 import {addLSToServer, getCart} from '../../../store/cart/middleware'
-import {setRefreshTimer} from '../../../store/auth/actionCreator'
+import { validPassword } from '../../../utils/constants'
 
 const AuthForm = connect(null, {
   authLogIn,
-  setRefreshTimer,
   compareLSItemsAndDBItems,
   addLSToServer,
   getCart
@@ -23,30 +22,24 @@ const AuthForm = connect(null, {
   {
     authLogIn,
     compareLSItemsAndDBItems,
-    setRefreshTimer,
     addLSToServer,
-    getCart
+    getCart,
+    finishCallback
   }
 ) => {
-  const startInterval = () => (
-    setInterval(() => {
-      authLogIn(JSON.parse(localStorage.getItem('credentials')))
-    }, 1800000)
-  )
-
   const formLayout = 'vertical'
   const [error, setError] = useState({})
   const history = useHistory()
 
   const onFinish = async (values) => {
     const {status, data} = await authLogIn(values)
-
+    
     if (status === 200) {
-      setRefreshTimer(startInterval())
       addLSToServer()
       getCart()
-      history.push('/')
       compareLSItemsAndDBItems()
+      // eslint-disable-next-line no-unused-expressions
+      typeof finishCallback === 'function' ? finishCallback() : history.push('/')
     }
 
     if (status === 400) {
@@ -104,13 +97,14 @@ const AuthForm = connect(null, {
             message: 'Please input your password!',
           },
           {
-            pattern: /^[a-zа0-9]+$/i,
+            pattern: validPassword,
             message: 'Allowed characters is a-z, 0-9'
           },
           {
             min: 8,
-            message: 'Password length must be at least 8 symbols.',
-          },
+            max: 30,
+            message: 'Password must be between 8 and 30 characters'
+          }
         ]}
       >
         <Input.Password placeholder="Your password" size="large" />

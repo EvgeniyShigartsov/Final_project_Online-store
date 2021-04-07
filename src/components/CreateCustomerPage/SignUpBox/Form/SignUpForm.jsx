@@ -6,6 +6,7 @@ import { Input } from 'antd';
 import StyledFrom from './StylesSignUpForm'
 import { createCustomer } from '../../../../store/customer/middleware'
 import StyledButton from '../../../common/Buttons/StyledButton'
+import { validName, validLogin, validPassword } from '../../../../utils/constants'
 
 const SignUpForm = () => {
   const history = useHistory()
@@ -18,6 +19,7 @@ const SignUpForm = () => {
       return acc
     }, {})
     credentials.isAdmin = true
+    credentials.ratedProducts = []
 
     createCustomer(credentials, history)
   };
@@ -67,14 +69,14 @@ const SignUpForm = () => {
             message: 'Please input your name.',
           },
           {
-            pattern: /^[a-zа-яіїё]+$/i,
+            pattern: validName,
             message: 'Allowed characters is a-z, а-я.'
           },
           {
             min: 2,
             max: 25,
             message: 'First Name must be beetwen 2 and 25 characters.'
-          }
+          },
         ]}
       >
         <Input />
@@ -86,17 +88,17 @@ const SignUpForm = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your Surename.',
+            message: 'Please input your last name.',
           },
           {
-            pattern: /^[a-zа-яіїё]+$/i,
+            pattern: validName,
             message: 'Allowed characters is a-z, а-я.'
           },
           {
             min: 2,
             max: 25,
             message: 'Last Name must be beetwen 2 and 25 characters.'
-          }
+          },
         ]}
       >
         <Input />
@@ -112,14 +114,11 @@ const SignUpForm = () => {
           },
           {
             min: 3,
+            max: 10,
             message: 'Login must be between 3 and 10 characters.',
           },
           {
-            max: 10,
-            message: 'Login must be between 3 and 10 characters.'
-          },
-          {
-            pattern: /^[a-z0-9]+$/i,
+            pattern: validLogin,
             message: 'Allowed characters is a-z, 0-9.'
           },
         ]}
@@ -154,14 +153,11 @@ const SignUpForm = () => {
           },
           {
             min: 8,
-            message: 'Password must be between 8 and 30 characters'
-          },
-          {
             max: 30,
             message: 'Password must be between 8 and 30 characters'
           },
           {
-            pattern: /^[a-z0-9]+$/i,
+            pattern: validPassword,
             message: 'Allowed characters is a-z, 0-9.'
           },
         ]}
