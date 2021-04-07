@@ -27,6 +27,7 @@ import FavoriteIcon from '../FavotiteIcon/FavoriteIcon'
 import { forDesktop } from '../../styles/mediaBreakPoints'
 
 const ProductPage = () => {
+  window.scrollTo(0, 0)
   const [isLoading, setIsLoading] = useState(true)
   const [product, setProduct] = useState(null)
   const { itemNo } = useParams()
@@ -79,14 +80,14 @@ const ProductPage = () => {
             <PreviousPrice>
               {product.previousPrice}
               <span>
-                ₴.
+                ₴
               </span>
             </PreviousPrice>
             )}
             <CurrentPrice promotionalProduct={promotionalProduct}>
               {product.currentPrice}
               <span>
-                ₴.
+                ₴
               </span>
             </CurrentPrice>
             

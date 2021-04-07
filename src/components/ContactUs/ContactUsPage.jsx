@@ -25,6 +25,8 @@ import { validTelephone, validName } from '../../utils/constants'
 const mapStateToProps = (state) => ({ isLogin: selectIsLogin(state) })
 
 const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
+  window.scrollTo(0, 0)
+
   const [userInfo, setUserInfo] = useState({email: '', firstName: ''})
   const history = useHistory()
 
