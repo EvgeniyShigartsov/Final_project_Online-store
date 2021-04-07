@@ -6,7 +6,9 @@ import { Input } from 'antd';
 import StyledFrom from './StylesSignUpForm'
 import { createCustomer } from '../../../../store/customer/middleware'
 import StyledButton from '../../../common/Buttons/StyledButton'
-import { validName, validLogin, validPassword } from '../../../../utils/constants'
+import {
+  validName, validLogin, validPassword, validTelephone
+} from '../../../../utils/constants'
 
 const SignUpForm = () => {
   const history = useHistory()
@@ -79,7 +81,7 @@ const SignUpForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="Your name" />
       </StyledFrom.Item>
 
       <StyledFrom.Item
@@ -101,7 +103,7 @@ const SignUpForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="Your last name" />
       </StyledFrom.Item>
 
       <StyledFrom.Item
@@ -123,7 +125,7 @@ const SignUpForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="Your login" />
       </StyledFrom.Item>
       
       <StyledFrom.Item
@@ -140,7 +142,7 @@ const SignUpForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="mail@mail.com" />
       </StyledFrom.Item>
 
       <StyledFrom.Item
@@ -154,7 +156,7 @@ const SignUpForm = () => {
           {
             min: 8,
             max: 30,
-            message: 'Password must be between 8 and 30 characters'
+            message: 'Password must be between 8 and 30 characters.'
           },
           {
             pattern: validPassword,
@@ -162,7 +164,7 @@ const SignUpForm = () => {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password placeholder="Password" />
       </StyledFrom.Item>
 
       <StyledFrom.Item
@@ -176,7 +178,25 @@ const SignUpForm = () => {
           passwordMatchValidator,
         ]}
       >
-        <Input.Password />
+        <Input.Password placeholder="Confrim password" />
+      </StyledFrom.Item>
+
+      <StyledFrom.Item
+        label="Phone number"
+        name="telephone"
+        rules={[
+          {
+            pattern: validTelephone,
+            message: 'Phone number must start with "+380", allowed characters is 0-9.'
+          },
+          {
+            min: 13,
+            max: 13,
+            message: 'Phone number must contain 12 numbers.'
+          }
+        ]}
+      >
+        <Input placeholder="Phone number 380 XX XXX XXXXX" />
       </StyledFrom.Item>
 
       <StyledFrom.Item {...tailLayout}>

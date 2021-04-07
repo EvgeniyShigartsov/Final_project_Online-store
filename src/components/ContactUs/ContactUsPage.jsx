@@ -55,7 +55,7 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
     },
     {
       name: 'phone',
-      value: userInfo.telephone || '380'
+      value: userInfo.telephone || '+380'
     }
   ]
 
@@ -127,12 +127,7 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                   },
                   {
                     pattern: validTelephone,
-                    message: 'Allowed characters is 0-9.'
-                  },
-                  {
-                    min: 12,
-                    max: 12,
-                    message: 'Phone number must be 12 symbols, and start with "380".'
+                    message: 'Phone number must contain 12 numbers, and start with "+380".'
                   }
                 ]}
               >
