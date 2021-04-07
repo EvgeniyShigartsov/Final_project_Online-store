@@ -32,7 +32,9 @@ const PopUpList = ({
           Tech Store
         </NavLinkStyled>
       </TechTag>
-      <LogoBurger backToDefaulOpen={backToDefaulOpen} />
+      <NavLink to="/" style={{outline: 'none'}}>
+        <LogoBurger backToDefaulOpen={backToDefaulOpen} />
+      </NavLink>
       <CloseOutlinedStyled onClick={() => openCloseMenu()} />
       <Line />
     </HeaderOfPopUp>

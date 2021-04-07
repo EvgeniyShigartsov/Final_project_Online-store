@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { updateCustomer } from '../../../store/customer/middleware';
 import { setHideModal } from '../../../store/dashBoardModal/middleware';
 import { selectCustomerInfo } from '../../../store/customer/reducer'
-import { validName } from '../../../utils/constants'
+import { validName, validTelephone } from '../../../utils/constants'
 
 const mapStateToProps = (state) => ({
   info: selectCustomerInfo(state)
@@ -19,7 +19,14 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    updateCustomer(values, 'Your contact information has been changed');
+    let results = values
+    if (values.telephone) {
+      results = {
+        ...values,
+        telephone: `+${values.telephone}`
+      }
+    }
+    updateCustomer(results, 'Your contact information has been changed');
     setHideModal();
     form.resetFields()
   }
@@ -30,7 +37,6 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
         label="First name"
         rules={[
           {
-            required: true,
             message: 'Please input your name.',
           },
           {
@@ -52,7 +58,6 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
         label="Last name"
         rules={[
           {
-            required: true,
             message: 'Please input your last name.',
           },
           {
@@ -68,6 +73,24 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
       >
         <Input />
       </Form.Item>
+      <Form.Item
+        name="telephone"
+        label="New Phone"
+        rules={[
+          {
+            type: 'string',
+            pattern: validTelephone,
+            message: 'Enter correct Phone'
+          },
+          {
+            min: 12,
+            max: 12,
+            message: 'Phone must be 12 characters',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit">
           Submit
@@ -77,6 +100,9 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
   );
 })
 FormInfoChange.propTypes = {
-  setHideModal: PropTypes.func.isRequired,
+  setHideModal: PropTypes.func,
+}
+FormInfoChange.defaultProps = {
+  setHideModal: () => null,
 }
 export default FormInfoChange;

@@ -1,8 +1,7 @@
 /* eslint-disable consistent-return */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Container } from '../common/Container'
-import { getCustomer } from '../../store/customer/middleware';
 import Subscribe from './Subscribed/Subscribe';
 import {
   AccountInfo, MyDash, WrapperBlocks, RowBlocks,
@@ -10,22 +9,20 @@ import {
 import PasswordInfoChange from './PasswordInfoChange/PasswordInfoChange';
 import StyledSpinner from '../StyledSpinner/StyledSpinner'
 import Orders from './Orders/Orders';
-import { selectCustomerInfo } from '../../store/customer/reducer'
+import { selectCustomerInfo, selectIsLoading } from '../../store/customer/reducer'
 
 const mapStateToProps = (state) => ({
-  customerInfo: selectCustomerInfo(state)
+  customerInfo: selectCustomerInfo(state),
+  isLoading: selectIsLoading(state)
 })
 
-const DashBoard = connect(mapStateToProps, { getCustomer })(({customerInfo, getCustomer}) => {
+const DashBoard = connect(mapStateToProps, null)(({
+  customerInfo,
+  isLoading
+}) => {
   window.scrollTo(0, 0);
-  useEffect(() => {
-    if (Object.keys(customerInfo).length !== 0) {
-      return customerInfo
-    }
-    getCustomer()
-  }, [getCustomer, customerInfo])
 
-  if (Object.keys(customerInfo).length === 0) return <StyledSpinner size="large" tip="Loading..." />
+  if (isLoading) return <StyledSpinner size="large" tip="Loading..." />
   return (
     <Container>
       <MyDash>

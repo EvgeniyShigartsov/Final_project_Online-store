@@ -1,7 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import { SET_CUSTOMER_INFO, SET_ORDERS } from './actionType';
+import {
+  SET_CUSTOMER_INFO, SET_ORDERS, START_LOADING, STOP_LOADING
+} from './actionType';
 
 export const setCustomerInfo = (payload) => ({
   type: SET_CUSTOMER_INFO,
@@ -11,4 +13,12 @@ export const setCustomerInfo = (payload) => ({
 export const setOrders = (payload) => ({
   type: SET_ORDERS,
   payload
+})
+
+export const startLoading = () => ({
+  type: START_LOADING
+})
+
+export const stopLoading = () => ({
+  type: STOP_LOADING
 })

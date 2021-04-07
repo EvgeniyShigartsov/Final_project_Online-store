@@ -42,13 +42,6 @@ const PasswordInfoChange = connect(null, {setShowModal})(({ setShowModal, info }
         >
           Change Password
         </button>
-        <button
-          type="submit"
-          id="setPhone"
-          onClick={(e) => setShowModal(e.target.id)}
-        >
-          Change Phone
-        </button>
         <Modal title />
 
       </div>

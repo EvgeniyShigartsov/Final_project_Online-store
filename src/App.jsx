@@ -8,31 +8,38 @@ import Router from './components/Router/Router'
 import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
-import { headerHeight } from './utils/constants'
 import { getMainCatalogProducts } from './store/productsPreview/middleware'
+import StyledAppWrapper from './components/AppWrapper/StyledAppWrapper'
+import { getCustomer, getOrders } from './store/customer/middleware'
 
-const App = connect(null, { setWishlist, getCart, getMainCatalogProducts })((
+const App = connect(null, {
+  setWishlist, getCart, getMainCatalogProducts, getCustomer, getOrders
+})((
   {
     setWishlist,
     getCart,
-    getMainCatalogProducts
+    getMainCatalogProducts,
+    getCustomer,
+    getOrders
   }
 ) => {
   useEffect(() => {
     getMainCatalogProducts()
     getCart()
     setWishlist()
-  }, [getCart, getMainCatalogProducts, setWishlist])
+    getCustomer()
+    getOrders()
+  }, [getCart, getCustomer, getMainCatalogProducts, getOrders, setWishlist])
 
   return (
-    <div style={{marginTop: headerHeight}}>
+    <StyledAppWrapper>
       <Header />
       <ProductSubscribeModal />
       <AuthModal />
       <Router />
       <ServiceSection />
       <Footer />
-    </div>
+    </StyledAppWrapper>
   );
 })
 

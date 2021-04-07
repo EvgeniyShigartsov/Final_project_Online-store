@@ -5,7 +5,6 @@ import { setHideModal } from '../../../store/dashBoardModal/middleware';
 import PasswordChange from '../FormPasswordChange/FormPasswordChange';
 import FormInfoChange from '../FormInfoChange/FormInfoChange';
 import StyledAntModal from './DashBoardModalStyled';
-import PhoneChange from '../FormPhoneChange/PhoneChange'
 
 const mapStateToProps = (state) => ({
   show: state.dashBoardModal.show,
@@ -27,12 +26,6 @@ const Modal = connect(mapStateToProps, { setHideModal })(({
           title: 'Change your password',
           form: <PasswordChange />
         }
-      case 'setPhone':
-        return {
-          title: 'Change your Phone',
-          form: <PhoneChange />
-        }
-
       default:
         return ''
     }

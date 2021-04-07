@@ -41,6 +41,9 @@ const Subscribe = ({ email }) => {
   );
 }
 Subscribe.propTypes = {
-  email: PropTypes.string.isRequired
+  email: PropTypes.string
+}
+Subscribe.defaultProps = {
+  email: '',
 }
 export default Subscribe;
