@@ -36,9 +36,6 @@ const SignUpForm = () => {
     },
     
   }
-  const tailLayout = {
-    wrapperCol: { offset: 10 },
-  };
   
   const passwordMatchValidator = ({ getFieldValue }) => {
     const isPasswordsMatch = (_, value) => {
@@ -199,7 +196,7 @@ const SignUpForm = () => {
         <Input placeholder="Phone number 380 XX XXX XXXXX" />
       </StyledFrom.Item>
 
-      <StyledFrom.Item {...tailLayout}>
+      <StyledFrom.Item style={{ textAlign: 'right' }}>
         <StyledButton size="lg" shape="round" htmlType="submit">Submit</StyledButton>
       </StyledFrom.Item>
 
