@@ -9,19 +9,28 @@ import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
 import { getMainCatalogProducts } from './store/productsPreview/middleware'
+import { getFilteredProducts } from './store/products/middleware'
+import { getNewProductsCreator } from './store/products/actionCreator'
 
-const App = connect(null, { setWishlist, getCart, getMainCatalogProducts })((
+const App = connect(null, {
+  setWishlist,
+  getCart,
+  getMainCatalogProducts,
+  getFilteredProducts
+})((
   {
     setWishlist,
     getCart,
-    getMainCatalogProducts
+    getMainCatalogProducts,
+    getFilteredProducts
   }
 ) => {
   useEffect(() => {
+    getFilteredProducts({newProduct: 'yes'}, getNewProductsCreator)
     getMainCatalogProducts()
     getCart()
     setWishlist()
-  }, [getCart, getMainCatalogProducts, setWishlist])
+  }, [getCart, getFilteredProducts, getMainCatalogProducts, setWishlist])
 
   return (
     <div style={{marginTop: '120px'}}>
