@@ -5,32 +5,24 @@ import Header from './components/Header/Header';
 import { setWishlist } from './store/wishlist/middleware'
 import ProductSubscribeModal from './components/ProductSubscribeModal/ProductSubscribeModal'
 import Router from './components/Router/Router'
-import {authLogIn} from './store/auth/middleware'
-import { setRefreshTimer } from './store/auth/actionCreator'
 import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
 import { headerHeight } from './utils/constants'
+import { getMainCatalogProducts } from './store/productsPreview/middleware'
 
-const App = connect(null, {
-  authLogIn, setRefreshTimer, setWishlist, getCart
-})(({
-  authLogIn,
-  setWishlist,
-  setRefreshTimer,
-  getCart
-}) => {
+const App = connect(null, { setWishlist, getCart, getMainCatalogProducts })((
+  {
+    setWishlist,
+    getCart,
+    getMainCatalogProducts
+  }
+) => {
   useEffect(() => {
-    setWishlist()
+    getMainCatalogProducts()
     getCart()
-
-    if (localStorage.getItem('credentials')) {
-      authLogIn(JSON.parse(localStorage.getItem('credentials')))
-      setRefreshTimer(setInterval(() => {
-        authLogIn(JSON.parse(localStorage.getItem('credentials')))
-      }, 1800000))
-    }
-  }, [authLogIn, getCart, setRefreshTimer, setWishlist])
+    setWishlist()
+  }, [getCart, getMainCatalogProducts, setWishlist])
 
   return (
     <div style={{marginTop: headerHeight}}>

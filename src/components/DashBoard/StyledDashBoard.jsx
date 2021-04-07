@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Spin } from 'antd'
 import { forTablet, forDesktop, forMobile } from '../../styles/mediaBreakPoints';
 
 export const AccountInfo = styled.div`
@@ -79,8 +78,4 @@ export const TextInfo = styled.div`
   p{
     padding: 5px;
   }
-`;
-export const StyledSpin = styled(Spin)`
-    margin: 50px auto;
-    width: 100%;
 `;

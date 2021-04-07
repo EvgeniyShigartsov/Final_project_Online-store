@@ -15,9 +15,9 @@ export const createCustomer = (credentials, history) => {
       }
     })
     .catch((error) => {
-      if (error.response) {
-        const requestMessage = error.response.data.message
-        message.error(`Error: ${requestMessage}`)
+      const { message } = error.response.data
+      if (message) {
+        message.error(`Error: ${message}`)
       }
     })
 }

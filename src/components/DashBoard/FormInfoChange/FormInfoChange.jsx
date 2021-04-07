@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Form, Input, Button
 } from 'antd';
@@ -7,16 +6,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateCustomer } from '../../../store/customer/middleware';
 import { setHideModal } from '../../../store/dashBoardModal/middleware';
-import { selectModalState } from '../../../store/dashBoardModal/reducer'
 import { selectCustomerInfo } from '../../../store/customer/reducer'
+import { validName } from '../../../utils/constants'
 
 const mapStateToProps = (state) => ({
-  show: selectModalState(state),
   info: selectCustomerInfo(state)
 })
 
 const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer })(({
-  setHideModal, show, updateCustomer
+  setHideModal, updateCustomer
 }) => {
   const [form] = Form.useForm();
 
@@ -25,22 +23,26 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
     setHideModal();
     form.resetFields()
   }
-  useEffect(() => {
-    if (!show) {
-      form.resetFields()
-    }
-  }, [form, show])
   return (
     <Form name="nest" form={form} onFinish={onFinish} datatest-id="ModalFormInfo">
       <Form.Item
         name="firstName"
         label="First name"
-        rules={[{
-          required: true,
-          type: 'string',
-          pattern: /^[a-zA-ZА-Яа-я]+$/,
-          message: 'Enter correct First name'
-        }]}
+        rules={[
+          {
+            required: true,
+            message: 'Please input your name.',
+          },
+          {
+            pattern: validName,
+            message: 'Allowed characters is a-z, а-я.'
+          },
+          {
+            min: 2,
+            max: 25,
+            message: 'First name must be beetwen 2 and 25 characters.'
+          },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -48,12 +50,21 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
         style={{paddingBottom: '0px'}}
         name="lastName"
         label="Last name"
-        rules={[{
-          required: true,
-          type: 'string',
-          pattern: /^[a-zA-ZА-Яа-я]+$/,
-          message: 'Enter correct Last name'
-        }]}
+        rules={[
+          {
+            required: true,
+            message: 'Please input your last name.',
+          },
+          {
+            pattern: validName,
+            message: 'Allowed characters is a-z, а-я.'
+          },
+          {
+            min: 2,
+            max: 25,
+            message: 'Last Name must be beetwen 2 and 25 characters.'
+          },
+        ]}
       >
         <Input />
       </Form.Item>

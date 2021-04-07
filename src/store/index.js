@@ -8,10 +8,11 @@ import { MODULE_NAME as dashBoardModal, reducer as dashBoardModalReducer } from 
 import { MODULE_NAME as cart, cartReducer } from './cart/reducer'
 import { MODULE_NAME as productsModule, reducer as productsReducer } from './products/reducer';
 import { MODULE_NAME as wishlistModule, reducer as wishlistReducer } from './wishlist/reducer'
-import { MODULE_NAME as mainCatalog, mainCatalogReducer} from './mainCatalog/reducer';
+import { MODULE_NAME as mainCatalog, mainCatalogReducer} from './productsPreview/reducer';
 import { MODULE_NAME as subscribeModalModule, reducer as subscribeModalReducer } from './subscriceOnProductModal/reducer'
 import { MODULE_NAME as authModal, reducer as authModalReducer } from './authModal/reducer';
 import { MODULE_NAME as customerInfo, reducer as customerReducer } from './customer/reducer';
+import { MODULE_NAME as catalogModule, reducer as catalogReducer} from './catalog/reducer'
 
 const persistConfig = {
   key: 'authLS',
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
   [mainCatalog]: mainCatalogReducer,
   [subscribeModalModule]: subscribeModalReducer,
   [authModal]: authModalReducer,
-  [customerInfo]: customerReducer
+  [customerInfo]: customerReducer,
+  [catalogModule]: catalogReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

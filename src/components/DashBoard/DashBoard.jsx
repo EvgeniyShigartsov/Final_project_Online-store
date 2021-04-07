@@ -6,9 +6,9 @@ import { getCustomer } from '../../store/customer/middleware';
 import Subscribe from './Subscribed/Subscribe';
 import {
   AccountInfo, MyDash, WrapperBlocks, RowBlocks,
-  StyledSpin
 } from './StyledDashBoard';
 import PasswordInfoChange from './PasswordInfoChange/PasswordInfoChange';
+import StyledSpinner from '../StyledSpinner/StyledSpinner'
 import Orders from './Orders/Orders';
 import { selectCustomerInfo } from '../../store/customer/reducer'
 
@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
 })
 
 const DashBoard = connect(mapStateToProps, { getCustomer })(({customerInfo, getCustomer}) => {
+  window.scrollTo(0, 0);
   useEffect(() => {
     if (Object.keys(customerInfo).length !== 0) {
       return customerInfo
@@ -24,7 +25,7 @@ const DashBoard = connect(mapStateToProps, { getCustomer })(({customerInfo, getC
     getCustomer()
   }, [getCustomer, customerInfo])
 
-  if (Object.keys(customerInfo).length === 0) return <StyledSpin size="large" tip="Loading..." />
+  if (Object.keys(customerInfo).length === 0) return <StyledSpinner size="large" tip="Loading..." />
   return (
     <Container>
       <MyDash>

@@ -7,7 +7,9 @@ export const getHeaders = () => ({
 
 export const headerHeight = '120px';
 
-export const validName = /^[a-zа-яіїё\s]+$/i;
+export const validName = /^[a-zа-яіїё]+$/i;
+export const validLogin = /^[a-z0-9]+$/i;
+export const validPassword = /^[a-z0-9]+$/i;
 export const validTelephone = /^[0-9]+$/;
 
 export const letterSubjectSubscribe = 'Good day! Dear customer';
