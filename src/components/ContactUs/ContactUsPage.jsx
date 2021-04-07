@@ -127,7 +127,12 @@ const ContactUsPage = connect(mapStateToProps, null)(({ isLogin }) => {
                   },
                   {
                     pattern: validTelephone,
-                    message: 'Phone number must contain 12 numbers, and start with "+380".'
+                    message: 'Phone number must start with "+380", allowed characters is 0-9.'
+                  },
+                  {
+                    min: 13,
+                    max: 13,
+                    message: 'Phone number must contain 12 numbers.'
                   }
                 ]}
               >
