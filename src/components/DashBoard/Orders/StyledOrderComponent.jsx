@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {
   Menu
 } from 'antd';
+
 import { forTablet } from '../../../styles/mediaBreakPoints'
 
 export const ContainerOrder = styled.div`
@@ -19,6 +20,20 @@ export const ShowListStyled = styled.span`
   text-decoration-line: underline;
   color: #0156FF;
   cursor: pointer;
+  .ant-btn {
+    margin-top: 0px;
+    background-color: #0854fc;
+    color: white;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    &:hover {
+      background: transparent;
+      border: 1px solid #3eabff;
+      color: #3eabff;
+      font-weight: 400;
+    }
+  }
 `;
 export const StyledMenu = styled(Menu)`
   

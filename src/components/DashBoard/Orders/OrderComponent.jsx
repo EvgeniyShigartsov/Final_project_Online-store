@@ -41,7 +41,7 @@ const OrderComponent = ({orders}) => {
       >
         <Descriptions.Item label="Order Date:">{orders.date.substr(0, 10)}</Descriptions.Item>
         <Descriptions.Item label="Payment type:">{orders.paymentInfo}</Descriptions.Item>
-        <Descriptions.Item label="Products:">
+        <Descriptions.Item label="Products:" style={{padding: '8px'}}>
           <ShowListStyled>
             <Dropdown overlay={menu} placement="bottomCenter">
               <Button>Show</Button>
