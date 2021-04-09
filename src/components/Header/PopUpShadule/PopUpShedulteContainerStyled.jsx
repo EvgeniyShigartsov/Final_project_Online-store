@@ -107,9 +107,10 @@ export const BlackEP = styled.div`
   align-items: center;
   h6{
     padding: 5px;
-    span{
+    a{
       display: inline-block;
       color: #2596be;
+      outline: none;
     }
   }
 `;

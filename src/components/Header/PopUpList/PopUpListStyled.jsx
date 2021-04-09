@@ -4,7 +4,7 @@ import {
 } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { forDesktop, forMobile } from '../../../styles/mediaBreakPoints';
 
 export const PopUpContainer = styled(motion.div)`
@@ -131,7 +131,7 @@ export const Listnavigation = styled.ul`
     outline: none;
   }
 `;
-export const NavLinkStyled = styled(NavLink)`
+export const LinkStyled = styled(Link)`
   outline: none;
   color: #0157fe;
   &:hover {

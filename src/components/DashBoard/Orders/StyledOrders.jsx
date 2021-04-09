@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DirectionChange = styled.div`
+const OrderWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -14,4 +14,4 @@ const DirectionChange = styled.div`
     }
   }
 `;
-export default DirectionChange;
+export default OrderWrapper;

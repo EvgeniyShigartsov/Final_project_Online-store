@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { headerHeight } from '../../utils/constants'
 
-const AppWrepper = styled.div`
-  margin-top: 120px;
+const AppWrapper = styled.div`
+  margin-top: ${headerHeight};
 `;
 
-export default AppWrepper;
+export default AppWrapper;

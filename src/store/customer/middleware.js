@@ -55,10 +55,12 @@ export const getCustomer = () => (dispatch, getState) => {
       .then((data) => {
         if (data.status === 200) {
           dispatch(setCustomerInfo(data.data))
-          dispatch(stopLoading())
         }
       })
       .catch((error) => error.response)
+      .finally(() => {
+        dispatch(stopLoading)
+      })
   }
 }
 
@@ -85,10 +87,12 @@ export const getOrders = () => (dispatch, getState) => {
       .then((data) => {
         if (data.status === 200) {
           dispatch(setOrders(data.data))
-          dispatch(stopLoading())
         }
       })
       .catch((error) => error.response)
+      .finally(() => {
+        dispatch(stopLoading())
+      })
   }
 }
 export default getOrders;

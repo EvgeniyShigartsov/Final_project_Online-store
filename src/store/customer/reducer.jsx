@@ -26,10 +26,15 @@ export const reducer = (state = initialState, {type, payload}) => {
         orders: payload
       }
     case START_LOADING:
+      return {
+        ...state,
+        isLoading: true
+      }
+
     case STOP_LOADING:
       return {
         ...state,
-        isLoading: !state.isLoading
+        isLoading: false
       }
     default:
       return state

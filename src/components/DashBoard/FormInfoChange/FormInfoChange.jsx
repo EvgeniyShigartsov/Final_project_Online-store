@@ -19,7 +19,14 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    let results = values
+    let results = values;
+
+    if (Object.values(results).every((elem) => elem === undefined)) {
+      setHideModal();
+      form.resetFields();
+      return
+    }
+
     if (values.telephone) {
       results = {
         ...values,
@@ -36,9 +43,6 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
         name="firstName"
         label="First name"
         rules={[
-          {
-            message: 'Please input your name.',
-          },
           {
             pattern: validName,
             message: 'Allowed characters is a-z, а-я.'

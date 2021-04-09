@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import {
   PopUpContainer, HeaderOfPopUp, Line,
   RightOutlinedStyled, CloseOutlinedStyled,
-  Listnavigation, ExceptionLi, TechTag, NavLinkStyled
+  Listnavigation, ExceptionLi, TechTag, LinkStyled
 } from './PopUpListStyled';
 import LogoBurger from '../Utils/LogoDesktop';
 
@@ -25,45 +24,45 @@ const PopUpList = ({
   >
     <HeaderOfPopUp>
       <TechTag>
-        <NavLinkStyled
+        <LinkStyled
           to="/"
           onClick={backToDefaulOpen}
         >
           Tech Store
-        </NavLinkStyled>
+        </LinkStyled>
       </TechTag>
-      <NavLink to="/" style={{outline: 'none'}}>
+      <LinkStyled to="/" style={{outline: 'none'}}>
         <LogoBurger backToDefaulOpen={backToDefaulOpen} />
-      </NavLink>
+      </LinkStyled>
       <CloseOutlinedStyled onClick={() => openCloseMenu()} />
       <Line />
     </HeaderOfPopUp>
     <Listnavigation onClick={(e) => checkForLinkOpen(e)}>
-      <NavLink
+      <LinkStyled
         to="/catalog?categories=desctops"
       >
         <ExceptionLi>
           <h5>Desktops</h5>
           <RightOutlinedStyled />
         </ExceptionLi>
-      </NavLink>
-      <NavLink
+      </LinkStyled>
+      <LinkStyled
         to="/catalog?categories=gamingMonitors"
       >
         <li>
           <h5>Gaming Monitors</h5>
           <RightOutlinedStyled />
         </li>
-      </NavLink>
-      <NavLink
+      </LinkStyled>
+      <LinkStyled
         to="/catalog?categories=laptops"
       >
         <li>
           <h5>Laptops</h5>
           <RightOutlinedStyled />
         </li>
-      </NavLink>
-      <NavLink
+      </LinkStyled>
+      <LinkStyled
         to="/catalog?categories=tablets"
       >
         <li>
@@ -72,15 +71,15 @@ const PopUpList = ({
           </h5>
           <RightOutlinedStyled />
         </li>
-      </NavLink>
-      <NavLink
+      </LinkStyled>
+      <LinkStyled
         to="/catalog"
       >
         <li>
           <h5>Catalog</h5>
           <RightOutlinedStyled />
         </li>
-      </NavLink>
+      </LinkStyled>
     </Listnavigation>
   </PopUpContainer>
 )

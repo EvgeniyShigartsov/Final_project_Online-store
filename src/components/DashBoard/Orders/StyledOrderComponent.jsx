@@ -6,7 +6,7 @@ import {
 import { forTablet } from '../../../styles/mediaBreakPoints'
 
 export const ContainerOrder = styled.div`
-  padding-top: 30px;
+  padding-top: 0px !important;
   border-top: 1px solid rgba(0,0,0,0.1);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 2px;
   .ant-descriptions-item-label {
@@ -36,6 +36,7 @@ export const ShowListStyled = styled.span`
   }
 `;
 export const StyledMenu = styled(Menu)`
+    width: 90%;
   
   .ant-dropdown-menu {
     width: 90% !important;

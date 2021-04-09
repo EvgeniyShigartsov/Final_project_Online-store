@@ -87,12 +87,12 @@ const PopUpShedulteContainer = ({isOpenSheduleMenu, setisOpenSheduleMenu}) => {
           <h6>
             Phones:
             {' '}
-            <span>(00) 1234 5678</span>
+            <a href="tel: +(00) 1234 5678">(00) 1234 5678</a>
           </h6>
           <h6>
             E-mail:
             {' '}
-            <span>shop@email.com</span>
+            <a href="mailto: shop@email.com">shop@email.com</a>
           </h6>
         </BlackEP>
       </ContactsContainer>

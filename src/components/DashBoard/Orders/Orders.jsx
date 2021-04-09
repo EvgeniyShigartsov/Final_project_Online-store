@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import OrderComponent from './OrderComponent';
-import DirectionChange from './StyledOrders';
+import OrderWrapper from './StyledOrders';
 import { selectOrders } from '../../../store/customer/reducer'
 
 const mapStateToProps = (state) => ({
@@ -21,16 +21,14 @@ const Orders = connect(mapStateToProps, null)(({orders}) => (
         My Orders
       </h5>
     </div>
-    <DirectionChange>
-      {orders !== null ? (
-        orders.map((item, i) => (
-          <OrderComponent
-            key={item.orderNo}
-            orders={orders[i]}
-          />
-        ))
-      ) : (' ')}
-    </DirectionChange>
+    <OrderWrapper>
+      {orders.map((item) => (
+        <OrderComponent
+          key={item.orderNo}
+          order={item}
+        />
+      ))}
+    </OrderWrapper>
   </div>
 ))
 
