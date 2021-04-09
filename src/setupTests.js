@@ -12,6 +12,13 @@ configure({ adapter: new Adapter() });
 
 window.scrollTo = jest.fn()
 
+window.matchMedia = window.matchMedia || function () {
+  return {
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+  };
+};
+
 React.useLayoutEffect = React.useEffect
 
 console.error = (message) => {
