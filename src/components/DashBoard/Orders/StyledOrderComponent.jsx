@@ -56,7 +56,7 @@ export const StyledMenu = styled(Menu)`
   }
 `;
 export const ImgContainer = styled.div`
-  padding: 0.7px;
+  padding: 2px;
   position: absolute;
   top: 0px;
   width: 60px;
