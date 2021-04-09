@@ -7,12 +7,11 @@ import { store } from '../../store/index'
 import HomePage from './HomePage'
 
 test('should render HomePage component', () => {
-  const component = shallow(
+  render(
     <Provider store={store}>
       <Router>
         <HomePage />
       </Router>
     </Provider>
   )
-  render(component)
 })
