@@ -1,4 +1,3 @@
-import { shallow } from 'enzyme'
 import render from 'enzyme/build/render'
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
