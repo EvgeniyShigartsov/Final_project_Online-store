@@ -11,7 +11,9 @@ import StyledSpinner from '../StyledSpinner/StyledSpinner'
 import Orders from './Orders/Orders';
 
 const DashBoard = connect(null, { getCustomer })(() => {
-  window.scrollTo(0, 0)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const [info, setInfo] = useState({})
 
   useEffect(() => {
