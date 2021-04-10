@@ -9,20 +9,21 @@ import { getCart } from './store/cart/middleware'
 import ServiceSection from './components/ServiceSection/ServiceSection'
 import AuthModal from './components/AuthModal/AuthModal'
 import { getMainCatalogProducts } from './store/productsPreview/middleware'
-import { getFilteredProducts } from './store/products/middleware'
+import StyledAppWrapper from './components/AppWrapper/StyledAppWrapper'
+import { getCustomer, getOrders } from './store/customer/middleware'
 import { getNewProductsCreator } from './store/products/actionCreator'
+import { getFilteredProducts } from './store/products/middleware'
 
 const App = connect(null, {
-  setWishlist,
-  getCart,
-  getMainCatalogProducts,
-  getFilteredProducts
+  setWishlist, getCart, getMainCatalogProducts, getCustomer, getOrders, getFilteredProducts
 })((
   {
     setWishlist,
     getCart,
     getMainCatalogProducts,
-    getFilteredProducts
+    getFilteredProducts,
+    getCustomer,
+    getOrders
   }
 ) => {
   useEffect(() => {
@@ -30,17 +31,19 @@ const App = connect(null, {
     getMainCatalogProducts()
     getCart()
     setWishlist()
-  }, [getCart, getFilteredProducts, getMainCatalogProducts, setWishlist])
+    getCustomer()
+    getOrders()
+  }, [getCart, getCustomer, getFilteredProducts, getMainCatalogProducts, getOrders, setWishlist])
 
   return (
-    <div style={{marginTop: '120px'}}>
+    <StyledAppWrapper>
       <Header />
       <ProductSubscribeModal />
       <AuthModal />
       <Router />
       <ServiceSection />
       <Footer />
-    </div>
+    </StyledAppWrapper>
   );
 })
 
