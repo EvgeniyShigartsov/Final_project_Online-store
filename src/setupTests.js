@@ -27,6 +27,8 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+// https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
+
 React.useLayoutEffect = React.useEffect
 
 console.error = (message) => {
