@@ -2,14 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-<<<<<<< HEAD:src/components/DashBoard/PasswordInfoChange/PasswordInfoChange.test.jsx
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16'
-import { store } from '../../../store/index';
-=======
 import { shallow } from 'enzyme';
-import { store } from '../../store/index';
->>>>>>> 15851fbf4c7e93355ce76acf0299d54af0c91506:src/components/DashBoard/PasswordInfoChange.test.jsx
+import { store } from '../../../store/index';
 import PasswordInfoChange from './PasswordInfoChange';
 
 describe('Test for PasswordInfoChange component', () => {

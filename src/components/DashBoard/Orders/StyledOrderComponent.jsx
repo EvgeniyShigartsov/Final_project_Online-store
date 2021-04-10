@@ -40,6 +40,9 @@ export const StyledMenu = styled(Menu)`
   
   .ant-dropdown-menu {
     width: 90% !important;
+    &::first-child{
+      background-color: red !important;
+    }
   }
   .ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title {
     white-space: pre-wrap;
@@ -63,6 +66,7 @@ export const ImgContainer = styled.div`
   height: 100%;
   left: -60px;
   background-color: white;
+
 `;
 
 export const ImgDash = styled.img`

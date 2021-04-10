@@ -62,9 +62,6 @@ const FormInfoChange = connect(mapStateToProps, { setHideModal, updateCustomer }
         label="Last name"
         rules={[
           {
-            message: 'Please input your last name.',
-          },
-          {
             pattern: validName,
             message: 'Allowed characters is a-z, а-я.'
           },

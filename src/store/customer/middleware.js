@@ -59,7 +59,7 @@ export const getCustomer = () => (dispatch, getState) => {
       })
       .catch((error) => error.response)
       .finally(() => {
-        dispatch(stopLoading)
+        dispatch(stopLoading())
       })
   }
 }
