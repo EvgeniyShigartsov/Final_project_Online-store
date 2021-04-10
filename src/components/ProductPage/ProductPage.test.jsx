@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable padded-blocks */
 import React from 'react'
 import { Provider } from 'react-redux'
