@@ -25,10 +25,11 @@ const BASE_ENDPOINT = `${DOMAIN}/cart`
 export const addToCart = (product, quantity) => (dispatch, getStore) => {
   const { cart: { products }, auth: {isLogin} } = getStore()
   const productId = product._id
-  let updatedCart = []
-  const itemInCartAndLS = products ? products.find((el) => el.product._id === productId) : null
+  const updatedCart = []
+
+  const itemInCartAndLS = products.find((el) => el.product._id === productId)
   if (itemInCartAndLS) {
-    updatedCart = products.map((el) => {
+    const checked = products.map((el) => {
       if (el.product._id === itemInCartAndLS.product._id) {
         if (el.cartQuantity + quantity > el.product.quantity) {
           message.warning('The quantity has been automatically adjusted to the stock quantity')
@@ -44,14 +45,15 @@ export const addToCart = (product, quantity) => (dispatch, getStore) => {
       }
       return el
     })
+    updatedCart.push(...checked)
   } else {
-    updatedCart = [
+    updatedCart.push(
       ...products,
       {
         product: productId,
         cartQuantity: quantity,
       }
-    ]
+    )
   }
   if (isLogin) {
     const headers = getHeaders()
