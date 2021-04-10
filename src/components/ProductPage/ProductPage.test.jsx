@@ -8,6 +8,7 @@ import { store } from '../../store/index'
 import ProductPage from './ProductPage'
 import upperCaseFirstLetter from '../../utils/upperCaseFirstLetter'
 import rateCalculator from '../../utils/rateCalculator'
+import { getOneProduct } from '../../store/products/middleware'
 
 describe('All tests for Product page', () => {
 
@@ -33,7 +34,7 @@ describe('All tests for Product page', () => {
     expect(result.find('div')).toBeDefined()
   })
 
-  test('Check is some children extist after componentDidMount', () => {
+  test('Check is getProduct func has been called after componentDidMount', () => {
     const result = shallow(
       <Provider store={store}>
         <Router>
@@ -42,33 +43,45 @@ describe('All tests for Product page', () => {
       </Provider>,
       true
     )
-    expect(result.text().includes('About product')).toBeDefined()
+    expect(getOneProduct).toHaveBeenCalled()
   })
 
-  test('Check is product image exist after componentDidMount', () => {
-    const result = shallow(
-      <Provider store={store}>
-        <Router>
-          <ProductPage />
-        </Router>
-      </Provider>,
-      true
-    )
-    expect(result.find('[alt="Product image"]')).toBeDefined()
-  })
+  // test('Check is some children extist after componentDidMount', () => {
+  //   const result = shallow(
+  //     <Provider store={store}>
+  //       <Router>
+  //         <ProductPage />
+  //       </Router>
+  //     </Provider>,
+  //     true
+  //   )
+  //   expect(result.text().includes('About product')).toBeDefined()
+  // })
 
-  test('Check is product has a description list', () => {
-    const result = shallow(
-      <Provider store={store}>
-        <Router>
-          <ProductPage />
-        </Router>
-      </Provider>,
-      true
-    ).dive()
-    expect(result.find('ul')).toBeDefined()
-    expect(result.find('li')).toBeDefined()
-  })
+  // test('Check is product image exist after componentDidMount', () => {
+  //   const result = shallow(
+  //     <Provider store={store}>
+  //       <Router>
+  //         <ProductPage />
+  //       </Router>
+  //     </Provider>,
+  //     true
+  //   )
+  //   expect(result.find('[alt="Product image"]')).toBeDefined()
+  // })
+
+  // test('Check is product has a description list', () => {
+  //   const result = shallow(
+  //     <Provider store={store}>
+  //       <Router>
+  //         <ProductPage />
+  //       </Router>
+  //     </Provider>,
+  //     true
+  //   ).dive()
+  //   expect(result.find('ul')).toBeDefined()
+  //   expect(result.find('li')).toBeDefined()
+  // })
 
   test('check is upperCaseFunction works correct', () => {
     expect(upperCaseFirstLetter('test string') === 'Test string').toBe(true)
