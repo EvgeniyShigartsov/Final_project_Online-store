@@ -84,7 +84,7 @@ const ProductPage = () => {
             
           </PriceBox>
           <div style={{ marginBottom: '6px' }}>
-            Product number:
+            Product №:
             {' '}
             {product.itemNo}
           </div>
