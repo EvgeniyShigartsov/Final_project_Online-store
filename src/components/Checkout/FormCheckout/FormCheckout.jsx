@@ -193,9 +193,9 @@ const FormCheckout = connect(mapStateToProps, {getCity, getShippingCost, PlaceOr
         rules={[
           {
             required: true,
-            message: 'Please input your phone number 380 XX XXX XXXX',
-            min: 12,
-            max: 12,
+            message: 'Please input your phone number +380 XX XXX XXXX',
+            min: 13,
+            max: 13,
           },
           {
             pattern: validTelephone,
