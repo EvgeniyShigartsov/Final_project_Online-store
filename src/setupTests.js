@@ -11,6 +11,7 @@ import React from 'react'
 configure({ adapter: new Adapter() });
 
 window.scrollTo = jest.fn()
+jest.mock('axios')
 
 window.matchMedia = window.matchMedia || function () {
   return {

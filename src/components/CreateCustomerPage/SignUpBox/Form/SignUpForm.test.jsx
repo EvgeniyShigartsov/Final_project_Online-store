@@ -13,7 +13,7 @@ describe('All test for Sign Up Form', () => {
     )
   })
   
-  test('Check is form found dy id', () => {
+  test('Check is form found by id', () => {
     const result = shallow(
       <Router>
         <SignUpForm />
