@@ -62,6 +62,7 @@ export const ImgContainer = styled.div`
   width: 60px;
   height: 100%;
   left: -60px;
+  background-color: white;
 `;
 
 export const ImgDash = styled.img`
