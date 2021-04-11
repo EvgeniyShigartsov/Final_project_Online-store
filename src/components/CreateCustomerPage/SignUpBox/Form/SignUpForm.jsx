@@ -1,4 +1,3 @@
-/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import { useHistory } from 'react-router-dom';
@@ -7,46 +6,22 @@ import StyledFrom from './StylesSignUpForm'
 import { createCustomer } from '../../../../store/customer/middleware'
 import StyledButton from '../../../common/Buttons/StyledButton'
 import {
-  validName, validLogin, validPassword, validTelephone
+  validName,
+  validLogin,
+  validPassword,
+  validTelephone
 } from '../../../../utils/constants'
+import {
+  formLayout,
+  passwordMatchValidator,
+  getCredentials
+} from './utils'
 
 const SignUpForm = () => {
   const history = useHistory()
   const onSubmit = (values) => {
-    const credentials = Object.entries(values).reduce((acc, [key, value]) => {
-      if (key !== 'confrimPassword' && value !== undefined) {
-        acc[key] = value
-        return acc
-      }
-      return acc
-    }, {})
-    credentials.ratedProducts = []
-
-    createCustomer(credentials, history)
+    createCustomer(getCredentials(values), history)
   };
-  
-  const formLayout = {
-    labelCol: {
-      span: 10,
-      offset: 0
-    },
-    wrapperCol: {
-      span: 14,
-    },
-    
-  }
-  
-  const passwordMatchValidator = ({ getFieldValue }) => {
-    const isPasswordsMatch = (_, value) => {
-      if (getFieldValue('password') !== value) {
-        return Promise.reject('Passwords is not match.')
-      }
-      return Promise.resolve()
-    }
-    return {
-      validator: isPasswordsMatch
-    }
-  }
 
   return (
     <StyledFrom
@@ -195,7 +170,7 @@ const SignUpForm = () => {
         <Input placeholder="Phone number 380 XX XXX XXXXX" />
       </StyledFrom.Item>
 
-      <StyledFrom.Item style={{ textAlign: 'right' }}>
+      <StyledFrom.Item>
         <StyledButton size="lg" shape="round" htmlType="submit">Submit</StyledButton>
       </StyledFrom.Item>
 
