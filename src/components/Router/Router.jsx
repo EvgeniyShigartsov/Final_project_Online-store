@@ -7,7 +7,7 @@ import ProductPage from '../ProductPage/ProductPage'
 import CatalogPage from '../CatalogPage/CatalogPage'
 import LogIn from '../LogIn/LogIn'
 import Checkout from '../Checkout/Checkout'
-import WishlistPage from '../WishlistPage/WishlistPage'
+import Wishlist from '../WishlistPage/WishlistPage'
 import CartPage from '../CartPage/CartPage'
 import OrderPage from '../OrderPage/OrderPage'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
@@ -48,7 +48,7 @@ const Router = () => (
       <ProductPage />
     </Route>
     <Route exact path="/wishlist">
-      <WishlistPage />
+      <Wishlist />
     </Route>
     <Route exact path="/catalog">
       <CatalogPage />
