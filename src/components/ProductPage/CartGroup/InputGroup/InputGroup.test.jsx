@@ -5,14 +5,15 @@ import InputGroup from './InputGroup'
 
 describe('All test for input group', () => {
   const props = {
-    inputHandler: () => 'do something',
-    decreaseHandler: () => 'do something',
-    increaseHandler: () => 'do something',
+    inputHandler: () => jest.fn(),
+    decreaseHandler: () => jest.fn(),
+    increaseHandler: () => jest.fn(),
     quantity: 10
   }
 
-  test('InputGroup render test', () => {
-    render(<InputGroup {...props} />)
+  test('InputGroup shapshot test', () => {
+    const { asFragment } = render(<InputGroup {...props} />)
+    expect(asFragment()).toMatchSnapshot()
   })
 
   test('check the props value in the input', () => {

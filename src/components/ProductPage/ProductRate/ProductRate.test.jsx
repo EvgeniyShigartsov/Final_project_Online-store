@@ -2,7 +2,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { render } from '@testing-library/react'
-import axios from 'axios'
 import ProductRate from './ProductRate'
 import { store } from '../../../store/index'
 import { checkIsCustomerRatedProduct } from './utils/checkIsCustomerRateProduct'
