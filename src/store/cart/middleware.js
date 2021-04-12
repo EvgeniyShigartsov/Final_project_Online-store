@@ -229,9 +229,11 @@ export const placeOrder = (
       dispatch(getOrderCreator(newOrder.data.order))
       dispatch(clearCart())
       dispatch(getOrders())
-      dispatch(stopLoading())
     })
     .catch((err) => err.response)
+    .finally(() => {
+      dispatch(stopLoading())
+    })
 }
 
 export const getCartServer = async () => {

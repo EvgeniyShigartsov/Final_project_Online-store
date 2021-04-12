@@ -36,6 +36,7 @@ export const productsMock = [
 ];
 
 export const productMock = {
+  _id: '604ffa554e7ef500153393f9',
   name: 'Monitor 27" AOC C27G2ZU/BK',
   enabled: true,
   currentPrice: 10600,

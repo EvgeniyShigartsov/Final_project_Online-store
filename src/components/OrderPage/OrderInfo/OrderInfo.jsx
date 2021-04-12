@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Alert, Spin } from 'antd';
+import { Redirect } from 'react-router-dom';
 import StyledOrderInfo from './StyledOrderInfo';
 import { selectCities, selectOrder, selectIsLoading } from '../../../store/cart/reducer';
 
@@ -64,6 +65,8 @@ export const OrderInfoComponent = ({order, cities, isLoading}) => {
       </h2>
     </div>
   )
+  const isOrder = Boolean(Object.keys(order).length === 0)
+  if (isOrder && !isLoading) return <Redirect to="/" />
   return (
     <StyledOrderInfo>
       {isLoading

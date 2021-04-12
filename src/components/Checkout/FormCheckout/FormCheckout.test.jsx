@@ -35,7 +35,6 @@ describe('FormCheckoutComponent', () => {
       placeOrder={() => {}}
       getShippingCost={() => {}}
     />)
-
     expect(asFragment()).toMatchSnapshot()
   });
 
@@ -50,7 +49,6 @@ describe('FormCheckoutComponent', () => {
       placeOrder={() => {}}
       getShippingCost={() => {}}
     />)
-
     expect(screen.getByLabelText(/email/i).value).toBe('')
     expect(screen.getByLabelText(/first name/i).value).toBe('')
     expect(screen.getByLabelText(/last name/i).value).toBe('')
@@ -84,7 +82,6 @@ describe('FormCheckoutComponent', () => {
     await waitFor(() => screen.getByTitle('Kyiv'))
 
     fireEvent.click(screen.getByTitle('Kyiv'))
-
     expect(getBranches).toBeCalledWith('8d5a980d-391c-11dd-90d9-001a92567626')
   });
 
@@ -180,7 +177,7 @@ describe('FormCheckoutComponent', () => {
     fireEvent.click(screen.getByRole('button', {name: /place order/i}))
    
     await waitFor(() => expect(placeOrder).toBeCalled())
-
+    
     expect(placeOrder.mock.calls[0]).toEqual([
       productsMock,
       {
@@ -205,7 +202,7 @@ describe('FormCheckoutComponent', () => {
       121,
       'Payment at the time of receipt of the goods',
     ])
-
+    
     expect(history.location.pathname).toBe('/order')
   });
 })
