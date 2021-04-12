@@ -35,7 +35,7 @@ describe('All test for input group', () => {
 
   test('check is increaseHandler works', () => {
     let quantity = 10
-    const increaseHandler = () => quantity += 1
+    const increaseHandler = jest.fn().mockImplementation(() => quantity += 1)
     const inputHandler = jest.fn()
     const decreaseHandler = jest.fn()
     
@@ -49,12 +49,13 @@ describe('All test for input group', () => {
 
     expect(quantity).toBe(10)
     fireEvent.click(arrowTop)
+    expect(increaseHandler).toHaveBeenCalled()
     expect(quantity).toBe(11)
   })
 
   test('check is decreaseHandler works', () => {
     let quantity = 10
-    const decreaseHandler = () => quantity -= 1
+    const decreaseHandler = jest.fn().mockImplementation(() => quantity -= 1)
     const increaseHandler = jest.fn()
     const inputHandler = jest.fn()
     
@@ -65,9 +66,9 @@ describe('All test for input group', () => {
       decreaseHandler={decreaseHandler}
     />)
     const arrowDown = getByDisplayValue(startQuantity).nextElementSibling.children[1]
-
     expect(quantity).toBe(10)
     fireEvent.click(arrowDown)
+    expect(decreaseHandler).toHaveBeenCalled()
     expect(quantity).toBe(9)
   })
 })
