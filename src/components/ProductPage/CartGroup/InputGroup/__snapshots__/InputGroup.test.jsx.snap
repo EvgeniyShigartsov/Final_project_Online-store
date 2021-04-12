@@ -14,7 +14,6 @@ exports[`All test for input group InputGroup shapshot test 1`] = `
     >
       <div
         class="sc-hKgILt bLNjfg"
-        data-testid="topArrow"
         id="topArrow"
       >
         <svg

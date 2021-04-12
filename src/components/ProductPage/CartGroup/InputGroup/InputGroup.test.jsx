@@ -33,24 +33,6 @@ describe('All test for input group', () => {
     expect(props.inputHandler).toHaveBeenCalledTimes(2)
   })
 
-  // test('check is increaseHandler works', () => {
-  //   let quantity = 10
-  //   const increaseHandler = () => quantity += 1
-  //   const inputHandler = jest.fn()
-  //   const decreaseHandler = jest.fn()
-    
-  //   const { getByTestId } = render(<InputGroup
-  //     quantity={quantity}
-  //     inputHandler={inputHandler}
-  //     increaseHandler={increaseHandler}
-  //     decreaseHandler={decreaseHandler}
-  //   />)
-    
-  //   expect(quantity).toBe(10)
-  //   fireEvent.click(getByTestId('topArrow'))
-  //   expect(quantity).toBe(11)
-  // })
-
   test('check is increaseHandler works', () => {
     let quantity = 10
     const increaseHandler = () => quantity += 1
@@ -63,11 +45,29 @@ describe('All test for input group', () => {
       increaseHandler={increaseHandler}
       decreaseHandler={decreaseHandler}
     />)
-    // There a choice to set data-testid or this way.
-    const arrow = getByDisplayValue(startQuantity).nextElementSibling.children[0]
+    const arrowTop = getByDisplayValue(startQuantity).nextElementSibling.children[0]
 
     expect(quantity).toBe(10)
-    fireEvent.click(arrow)
+    fireEvent.click(arrowTop)
     expect(quantity).toBe(11)
+  })
+
+  test('check is decreaseHandler works', () => {
+    let quantity = 10
+    const decreaseHandler = () => quantity -= 1
+    const increaseHandler = jest.fn()
+    const inputHandler = jest.fn()
+    
+    const { getByDisplayValue } = render(<InputGroup
+      quantity={quantity}
+      inputHandler={inputHandler}
+      increaseHandler={increaseHandler}
+      decreaseHandler={decreaseHandler}
+    />)
+    const arrowDown = getByDisplayValue(startQuantity).nextElementSibling.children[1]
+
+    expect(quantity).toBe(10)
+    fireEvent.click(arrowDown)
+    expect(quantity).toBe(9)
   })
 })

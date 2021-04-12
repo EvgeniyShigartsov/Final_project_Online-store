@@ -13,7 +13,6 @@ const InputGroup = ({
       <ArrowBox
         id="topArrow"
         onClick={increaseHandler}
-        data-testid="topArrow"
       >
         <svg width="6" height="5" viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 3.8999L3 1.8999L5 3.8999" stroke="#8C8C8C" strokeWidth="1.6" strokeLinecap="round" />
