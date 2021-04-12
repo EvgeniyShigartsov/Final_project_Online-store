@@ -21,6 +21,10 @@ const mapStateToProps = (state) => ({
 export const Catalog = connect(mapStateToProps, null)(({
   catalogProduct, isLoading
 }) => {
+  const {
+    gamingMonitorList, desktopList, laptopList, tabletList
+  } = catalogProduct
+
   if (isLoading) return <StyledSpinner size="large" tip="Loading..." margin="200px auto" />
   
   return (
@@ -35,7 +39,7 @@ export const Catalog = connect(mapStateToProps, null)(({
           }}
         />
         <CatalogCardWrapper
-          productsList={catalogProduct.gamingMonitorList}
+          productsList={gamingMonitorList}
         />
       </StyledCatalogWrapper>
 
@@ -49,7 +53,7 @@ export const Catalog = connect(mapStateToProps, null)(({
           }}
         />
         <CatalogCardWrapper
-          productsList={catalogProduct.desktopList}
+          productsList={desktopList}
         />
       </StyledCatalogWrapper>
 
@@ -63,7 +67,7 @@ export const Catalog = connect(mapStateToProps, null)(({
           }}
         />
         <CatalogCardWrapper
-          productsList={catalogProduct.laptopList}
+          productsList={laptopList}
         />
       </StyledCatalogWrapper>
 
@@ -77,7 +81,7 @@ export const Catalog = connect(mapStateToProps, null)(({
           }}
         />
         <CatalogCardWrapper
-          productsList={catalogProduct.tabletList}
+          productsList={tabletList}
         />
       </StyledCatalogWrapper>
     </StyledContainer>
