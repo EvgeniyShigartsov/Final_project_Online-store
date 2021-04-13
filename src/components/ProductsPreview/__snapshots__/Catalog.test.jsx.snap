@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Catalog component should render Catalog component 1`] = `
+exports[`should render Catalog component 1`] = `
 <DocumentFragment>
   <div
     class="ant-spin ant-spin-lg ant-spin-spinning ant-spin-show-text sc-iwyYcG bSRqYb"
