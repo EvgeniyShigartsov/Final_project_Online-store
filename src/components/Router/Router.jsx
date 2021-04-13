@@ -13,8 +13,8 @@ import OrderPage from '../OrderPage/OrderPage'
 import NoMatchPage from '../NoMatchPage/NoMatchPage'
 import DashBoard from '../DashBoard/DashBoard'
 import ReviewSlider from '../ReviewSlider/ReviewSlider'
-import PrivateRoute from '../../PrivateRoute/PrivateRoute'
-import OnlyNotAuthRoute from '../OnlyNotAuthRoute/OnlyNotAuthRoute'
+import PrivateRoute from './PrivateRoute/PrivateRoute'
+import OnlyNotAuthRoute from './OnlyNotAuthRoute/OnlyNotAuthRoute'
 import HomePage from '../HomePage/HomePage'
 
 const Router = () => (
