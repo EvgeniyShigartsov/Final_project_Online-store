@@ -4,7 +4,6 @@ exports[`FormInfoChangeComponent render 1`] = `
 <DocumentFragment>
   <form
     class="ant-form ant-form-horizontal"
-    data-testid="ModalFormInfo"
     id="nest"
   >
     <div

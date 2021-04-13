@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render DashBoard component render 1`] = `
+exports[`Render DashBoard component shaphot test 1`] = `
 <DocumentFragment>
   <div
     class="sc-bdfBwQ dydVzA"

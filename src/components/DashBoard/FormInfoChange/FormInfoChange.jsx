@@ -27,7 +27,7 @@ export const FormInfoChangeComponent = ({setHideModal, updateCustomer}) => {
     form.resetFields()
   }
   return (
-    <Form name="nest" form={form} onFinish={onFinish} data-testid="ModalFormInfo">
+    <Form name="nest" form={form} onFinish={onFinish}>
       <Form.Item
         name="firstName"
         label="First name"

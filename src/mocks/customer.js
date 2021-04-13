@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const mockCustomer = {
   customerNo: '82724063',
   date: '2021-02-19T17:12:50.176+00:00',

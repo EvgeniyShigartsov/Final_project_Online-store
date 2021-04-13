@@ -12,15 +12,7 @@ describe('Render DashBoard component', () => {
   beforeEach(() => {
     machMedia()
   })
-  test('DashBoard', () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <DashBoard />
-        </Router>
-      </Provider>
-    )
-  })
+
   test('Check if animation renders', () => {
     const results = shallow(
       <Provider store={store}>
@@ -30,10 +22,10 @@ describe('Render DashBoard component', () => {
       </Provider>,
       false
     )
-    expect(results.find('div')).toBeDefined()
+    expect(results.find('svg')).toBeDefined()
   })
-  test('render', () => {
-    const {asFragment} = render(
+  test('shaphot test', () => {
+    const { asFragment } = render(
       <Provider store={store}>
         <DashBoard
           customerInfo={mockCustomer}
