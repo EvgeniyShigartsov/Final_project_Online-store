@@ -978,31 +978,6 @@ exports[`App render 1`] = `
           class="sc-iWRGeL hCQgvS"
         >
           <div
-            class="ant-spin ant-spin-lg ant-spin-spinning ant-spin-show-text sc-edoZmE eJqVoD"
-          >
-            <span
-              class="ant-spin-dot ant-spin-dot-spin"
-            >
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-              <i
-                class="ant-spin-dot-item"
-              />
-            </span>
-            <div
-              class="ant-spin-text"
-            >
-              Loading...
-            </div>
-          </div>
-          <div
             class="ant-carousel"
           >
             <div
@@ -1238,7 +1213,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1264,7 +1239,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1290,7 +1265,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1316,7 +1291,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1342,7 +1317,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1368,7 +1343,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1394,7 +1369,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1420,7 +1395,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
             <div
@@ -1446,7 +1421,7 @@ exports[`App render 1`] = `
               <p
                 class="sc-lhuSvW eBRNuE"
               >
-                4/13/2021
+                13.04.2021
               </p>
             </div>
           </div>
