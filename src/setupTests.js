@@ -13,6 +13,6 @@ configure({ adapter: new Adapter() });
 
 React.useLayoutEffect = jest.fn().mockImplementation(() => React.useLayoutEffect)
 
-window.scrollTo = () => {}
+window.scrollTo = () => null
 
 jest.mock('axios')
