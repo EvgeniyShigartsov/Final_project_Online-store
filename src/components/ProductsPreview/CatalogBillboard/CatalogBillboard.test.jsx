@@ -15,11 +15,9 @@ describe('CatalogBillboard component', () => {
     category: 'gaming monitors'
   }
 
-  const setUp = () => shallow(<CatalogBillboard billboardInfo={billBoardProps} />)
-
   let component;
   beforeEach(() => {
-    component = setUp()
+    component = shallow(<CatalogBillboard billboardInfo={billBoardProps} />)
   })
 
   test('should render CatalogBillboard component', () => {

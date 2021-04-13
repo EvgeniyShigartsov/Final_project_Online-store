@@ -31,11 +31,9 @@ describe('CatalogCardWrapper component', () => {
     },
   ]
 
-  const setUp = () => shallow(<CatalogCardWrapper productsList={productsListProps} />)
-
   let component;
   beforeEach(() => {
-    component = setUp()
+    component = shallow(<CatalogCardWrapper productsList={productsListProps} />)
   })
 
   test('should render CatalogCardWrapper component', () => {

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Redux
 import { connect } from 'react-redux'
@@ -18,12 +19,12 @@ const mapStateToProps = (state) => ({
   isLoading: selectIsLoading(state)
 })
 
-export const Catalog = connect(mapStateToProps, null)(({
-  catalogProduct, isLoading
-}) => {
+export const CatalogComponent = ({ catalogProduct }) => {
   const {
-    gamingMonitorList, desktopList, laptopList, tabletList
+    gamingMonitorList, desktopList, laptopList, tabletList, isLoading
   } = catalogProduct
+
+  console.log(catalogProduct)
 
   if (isLoading) return <StyledSpinner size="large" tip="Loading..." margin="200px auto" />
   
@@ -86,6 +87,17 @@ export const Catalog = connect(mapStateToProps, null)(({
       </StyledCatalogWrapper>
     </StyledContainer>
   )
-})
+}
+
+export const Catalog = connect(mapStateToProps, null)(CatalogComponent)
+
+CatalogComponent.propTypes = {
+  catalogProduct: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.object),
+      PropTypes.bool
+    ])
+  ).isRequired,
+}
 
 export default Catalog

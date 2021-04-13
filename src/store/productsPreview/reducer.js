@@ -44,16 +44,19 @@ export const mainCatalogReducer = (state = initialState, { type, payload }) => {
         ...state,
         tabletList: payload
       }
+      
     case START_LOADING:
       return {
         ...state,
         isLoading: true
       }
+      
     case STOP_LOADING:
       return {
         ...state,
         isLoading: false
       }
+
     default:
       return {
         ...state

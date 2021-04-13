@@ -3,7 +3,7 @@
 exports[`CatalogCardWrapper component should render CatalogCardWrapper component 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bqyKva fdDwVg"
+    class="sc-bqyKva eedFii"
   >
     <div
       class="sc-dlfnbm igBMBv hidden"
@@ -184,7 +184,7 @@ exports[`CatalogCardWrapper component should render CatalogCardWrapper component
         href="#/products/item number"
       >
         <h3
-          class="sc-fubCfw kxdzsU"
+          class="sc-fubCfw gzMKWB"
         >
           Name device
         </h3>
@@ -395,7 +395,7 @@ exports[`CatalogCardWrapper component should render CatalogCardWrapper component
         href="#/products/item2 number"
       >
         <h3
-          class="sc-fubCfw kxdzsU"
+          class="sc-fubCfw gzMKWB"
         >
           Name device 2
         </h3>
