@@ -15,7 +15,7 @@ describe('FormCheckoutComponent', () => {
   beforeEach(() => {
     machMedia()
   })
-  test('render', () => {
+  test('render', async () => {
     const {asFragment} = render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
@@ -38,7 +38,7 @@ describe('FormCheckoutComponent', () => {
     expect(asFragment()).toMatchSnapshot()
   });
 
-  test('render with empty customer', () => {
+  test('render with empty customer', async () => {
     render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
@@ -57,7 +57,7 @@ describe('FormCheckoutComponent', () => {
 
   it('handle city change', async () => {
     const getBranches = jest.fn();
-    render(<FormCheckoutComponent
+    const {unmount} = render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
       customer={{
@@ -83,11 +83,13 @@ describe('FormCheckoutComponent', () => {
 
     fireEvent.click(screen.getByTitle('Kyiv'))
     expect(getBranches).toBeCalledWith('8d5a980d-391c-11dd-90d9-001a92567626')
+    unmount()
+    await waitFor(() => {})
   });
 
   it('handle branch change', async () => {
     const getShippingCost = jest.fn();
-    render(<FormCheckoutComponent
+    const {unmount} = render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
       customer={{
@@ -130,13 +132,15 @@ describe('FormCheckoutComponent', () => {
         }
       }
     })
+    unmount()
+    await waitFor(() => {})
   });
 
   it('handle put order', async () => {
     const placeOrder = jest.fn();
     const history = createMemoryHistory();
 
-    render(
+    const {unmount} = render(
       <Router history={history}>
         <FormCheckoutComponent
           products={productsMock}
@@ -159,25 +163,16 @@ describe('FormCheckoutComponent', () => {
         />
       </Router>
     )
-
     fireEvent.mouseDown(screen.getByLabelText(/city/i))
-
     let cityEl;
     await waitFor(() => cityEl = screen.getByTitle('Kyiv'))
-
     fireEvent.click(cityEl)
-
     fireEvent.mouseDown(screen.getByLabelText(/№ branch/i))
-
     let branchEl;
     await waitFor(() => branchEl = screen.getByTitle('Branch name'))
-
     fireEvent.click(branchEl)
-
     fireEvent.click(screen.getByRole('button', {name: /place order/i}))
-   
     await waitFor(() => expect(placeOrder).toBeCalled())
-    
     expect(placeOrder.mock.calls[0]).toEqual([
       productsMock,
       {
@@ -204,5 +199,7 @@ describe('FormCheckoutComponent', () => {
     ])
     
     expect(history.location.pathname).toBe('/order')
+    unmount()
+    await waitFor(() => {})
   });
 })
