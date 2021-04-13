@@ -1,21 +1,43 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { Provider } from 'react-redux'
+import { shallow } from 'enzyme';
+import { HashRouter as Router } from 'react-router-dom';
 import { machMedia } from '../../mocks/matchMedia.mock';
 import DashBoard from './DashBoard'
-import { productsMock } from '../../mocks/customer';
+import { mockCustomer } from '../../mocks/customer';
 import { store } from '../../store/index'
 
-describe('DashBoardComponent', () => {
+describe('Render DashBoard component', () => {
   beforeEach(() => {
     machMedia()
+  })
+  test('DashBoard', () => {
+    render(
+      <Provider store={store}>
+        <Router>
+          <DashBoard />
+        </Router>
+      </Provider>
+    )
+  })
+  test('Check if animation renders', () => {
+    const results = shallow(
+      <Provider store={store}>
+        <Router>
+          <DashBoard />
+        </Router>
+      </Provider>,
+      false
+    )
+    expect(results.find('div')).toBeDefined()
   })
   test('render', () => {
     const {asFragment} = render(
       <Provider store={store}>
         <DashBoard
-          customerInfo={productsMock}
-          isLoading={() => {}}
+          customerInfo={mockCustomer}
+          isLoading={false}
         />
       </Provider>
     )
