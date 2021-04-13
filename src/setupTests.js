@@ -7,8 +7,11 @@
 import '@testing-library/jest-dom';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import React from 'react'
 
 configure({ adapter: new Adapter() });
+
+React.useLayoutEffect = jest.fn().mockImplementation(() => React.useLayoutEffect)
 
 window.scrollTo = () => {}
 
