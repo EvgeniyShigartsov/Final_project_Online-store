@@ -113,11 +113,7 @@ exports[`CartItemComponent render 1`] = `
         class="ant-col subtotal ant-col-xs-9 ant-col-md-6 ant-col-lg-3"
       >
         <span>
-<<<<<<< HEAD
           10600₴
-=======
-          10500₴
->>>>>>> 37a340d18df719787a3aa11455e1bd01a2cb746d
         </span>
       </div>
       <div

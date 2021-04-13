@@ -73,7 +73,6 @@ describe('CartItemComponent', () => {
     const removeFromCart = jest.fn()
     const history = createMemoryHistory()
     render(
-      // <Provider store={store}>
       <Router history={history}>
         <CartItemComponent
           product={productMock}
@@ -83,7 +82,6 @@ describe('CartItemComponent', () => {
           removeFromCart={removeFromCart}
         />
       </Router>
-      // </Provider>
     )
     fireEvent.click(screen.getByRole('button', {name: /close/i}))
     await waitFor(() => expect(removeFromCart).toBeCalled())
