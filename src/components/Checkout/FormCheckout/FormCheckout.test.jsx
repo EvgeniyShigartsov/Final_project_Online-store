@@ -15,7 +15,7 @@ describe('FormCheckoutComponent', () => {
   beforeEach(() => {
     machMedia()
   })
-  test('render', async () => {
+  test('render', () => {
     const {asFragment} = render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
@@ -38,7 +38,7 @@ describe('FormCheckoutComponent', () => {
     expect(asFragment()).toMatchSnapshot()
   });
 
-  test('render with empty customer', async () => {
+  test('render with empty customer', () => {
     render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
