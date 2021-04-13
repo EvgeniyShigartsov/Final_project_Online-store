@@ -1,4 +1,3 @@
-/* eslint-disable jest/valid-expect */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
@@ -31,7 +30,7 @@ describe('SummaryComponents', () => {
 
   test('handle show message', () => {
     const onClick = jest.fn()
-    render(
+    const {getByText} = render(
       <SummaryComponent
         summary={0}
         onClick={onClick}
@@ -39,6 +38,6 @@ describe('SummaryComponents', () => {
     )
     fireEvent.click(screen.getByRole('button', {name: /proceed to checkout/i}))
 
-    expect(screen.getByText('Your shopping cart is empty. Please add items to your shopping cart'))
+    expect(getByText('Your shopping cart is empty. Please add items to your shopping cart')).toBeDefined()
   })
 })

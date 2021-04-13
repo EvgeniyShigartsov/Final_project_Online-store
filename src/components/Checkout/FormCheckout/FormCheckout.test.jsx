@@ -84,7 +84,7 @@ describe('FormCheckoutComponent', () => {
     fireEvent.click(screen.getByTitle('Kyiv'))
     expect(getBranches).toBeCalledWith('8d5a980d-391c-11dd-90d9-001a92567626')
     unmount()
-    await waitFor(() => {})
+    await waitFor(() => 'getBranches')
   });
 
   it('handle branch change', async () => {
@@ -133,7 +133,7 @@ describe('FormCheckoutComponent', () => {
       }
     })
     unmount()
-    await waitFor(() => {})
+    await waitFor(() => 'getShippingCost')
   });
 
   it('handle put order', async () => {
@@ -200,6 +200,6 @@ describe('FormCheckoutComponent', () => {
     
     expect(history.location.pathname).toBe('/order')
     unmount()
-    await waitFor(() => {})
+    await waitFor(() => 'placeOrder')
   });
 })

@@ -10,8 +10,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
 configure({ adapter: new Adapter() });
-
 window.scrollTo = jest.fn()
 jest.mock('axios')
-
 React.useLayoutEffect = React.useEffect
