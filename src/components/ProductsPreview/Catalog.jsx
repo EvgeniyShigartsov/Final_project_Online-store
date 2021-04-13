@@ -94,7 +94,7 @@ export const Catalog = connect(mapStateToProps, null)(CatalogComponent)
 CatalogComponent.propTypes = {
   catalogProduct: PropTypes.objectOf(
     PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.object),
+      PropTypes.array,
       PropTypes.bool
     ])
   ).isRequired,
