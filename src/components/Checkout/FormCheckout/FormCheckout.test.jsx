@@ -57,7 +57,7 @@ describe('FormCheckoutComponent', () => {
 
   it('handle city change', async () => {
     const getBranches = jest.fn();
-    const {unmount} = render(<FormCheckoutComponent
+    render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
       customer={{
@@ -82,14 +82,13 @@ describe('FormCheckoutComponent', () => {
     await waitFor(() => screen.getByTitle('Kyiv'))
 
     fireEvent.click(screen.getByTitle('Kyiv'))
+
     expect(getBranches).toBeCalledWith('8d5a980d-391c-11dd-90d9-001a92567626')
-    unmount()
-    await waitFor(() => 'getBranches')
   });
 
   it('handle branch change', async () => {
     const getShippingCost = jest.fn();
-    const {unmount} = render(<FormCheckoutComponent
+    render(<FormCheckoutComponent
       products={productsMock}
       shippingCost={121}
       customer={{
@@ -132,15 +131,13 @@ describe('FormCheckoutComponent', () => {
         }
       }
     })
-    unmount()
-    await waitFor(() => 'getShippingCost')
   });
 
   it('handle put order', async () => {
     const placeOrder = jest.fn();
     const history = createMemoryHistory();
 
-    const {unmount} = render(
+    render(
       <Router history={history}>
         <FormCheckoutComponent
           products={productsMock}
@@ -197,9 +194,7 @@ describe('FormCheckoutComponent', () => {
       121,
       'Payment at the time of receipt of the goods',
     ])
-    
+
     expect(history.location.pathname).toBe('/order')
-    unmount()
-    await waitFor(() => 'placeOrder')
   });
 })
