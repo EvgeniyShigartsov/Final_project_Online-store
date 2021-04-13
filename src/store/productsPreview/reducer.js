@@ -8,7 +8,11 @@ import {
 } from './actionTypes'
 
 export const MODULE_NAME = 'mainCatalog'
-export const selectCatalog = (state) => state[MODULE_NAME]
+export const selectGamingMonitorList = (state) => state[MODULE_NAME].gamingMonitorList
+export const selectDesktopList = (state) => state[MODULE_NAME].desktopList
+export const selectLaptopList = (state) => state[MODULE_NAME].laptopList
+export const selectTabletList = (state) => state[MODULE_NAME].tabletList
+
 export const selectIsLoading = (state) => state[MODULE_NAME].isLoading
 
 const initialState = {

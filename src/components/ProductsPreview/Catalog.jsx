@@ -3,7 +3,13 @@ import PropTypes from 'prop-types'
 
 // Redux
 import { connect } from 'react-redux'
-import { selectCatalog, selectIsLoading } from '../../store/productsPreview/reducer'
+import {
+  selectGamingMonitorList,
+  selectDesktopList,
+  selectLaptopList,
+  selectTabletList,
+  selectIsLoading
+} from '../../store/productsPreview/reducer'
 
 // Components
 import { CatalogBillboard } from './CatalogBillboard/CatalogBillboard'
@@ -15,17 +21,20 @@ import { StyledCatalogWrapper, StyledContainer } from './StyledCatalog'
 
 // Redux maps
 const mapStateToProps = (state) => ({
-  catalogProduct: selectCatalog(state),
+  gamingMonitorList: selectGamingMonitorList(state),
+  desktopList: selectDesktopList(state),
+  laptopList: selectLaptopList(state),
+  tabletList: selectTabletList(state),
   isLoading: selectIsLoading(state)
 })
 
-export const CatalogComponent = ({ catalogProduct }) => {
-  const {
-    gamingMonitorList, desktopList, laptopList, tabletList, isLoading
-  } = catalogProduct
-
-  console.log(catalogProduct)
-
+export const CatalogComponent = ({
+  gamingMonitorList,
+  desktopList,
+  laptopList,
+  tabletList,
+  isLoading
+}) => {
   if (isLoading) return <StyledSpinner size="large" tip="Loading..." margin="200px auto" />
   
   return (
@@ -92,12 +101,11 @@ export const CatalogComponent = ({ catalogProduct }) => {
 export const Catalog = connect(mapStateToProps, null)(CatalogComponent)
 
 CatalogComponent.propTypes = {
-  catalogProduct: PropTypes.objectOf(
-    PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.bool
-    ])
-  ).isRequired,
+  gamingMonitorList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  desktopList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  laptopList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tabletList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isLoading: PropTypes.bool.isRequired
 }
 
 export default Catalog

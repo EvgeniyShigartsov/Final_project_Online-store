@@ -6,24 +6,18 @@ import { render } from '@testing-library/react'
 
 import {CatalogBillboard} from './CatalogBillboard';
 import { CatalogBillboardWrapper, CatalogBillboardLink, CatalogBillboardTitle } from './StyledCatalogBillboard';
+import { billboardMock } from '../../../mocks/billboard';
 
 describe('CatalogBillboard component', () => {
-  const billBoardProps = {
-    title: 'gaming monitors',
-    img: 'https://fuzzmusic.ru/wp-content/uploads/2020/08/pesni-iz-igry-kiberpank-2077-1.jpg',
-    url: '/catalog?categories=gamingMonitors',
-    category: 'gaming monitors'
-  }
-
   let component;
   beforeEach(() => {
-    component = shallow(<CatalogBillboard billboardInfo={billBoardProps} />)
+    component = shallow(<CatalogBillboard billboardInfo={billboardMock} />)
   })
 
   test('should render CatalogBillboard component', () => {
     const { asFragment } = render(
       <Router>
-        <CatalogBillboard billboardInfo={billBoardProps} />
+        <CatalogBillboard billboardInfo={billboardMock} />
       </Router>
     )
     expect(asFragment()).toMatchSnapshot()

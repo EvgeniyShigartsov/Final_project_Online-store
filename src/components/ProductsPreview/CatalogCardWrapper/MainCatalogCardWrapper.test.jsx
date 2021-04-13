@@ -8,39 +8,19 @@ import { store } from '../../../store/index'
 
 import { CatalogCardWrapper } from './MainCatalogCardWrapper'
 import { ProductCard } from '../../ProductCard/ProductCard';
+import { productsMock } from '../../../mocks/products';
 
 describe('CatalogCardWrapper component', () => {
-  const productsListProps = [
-    {
-      name: 'Name device',
-      imageUrls: ['img 1 url', 'img 2 url'],
-      reviews: [1, 2, 3, 4],
-      quantity: 3,
-      previousPrice: 1999,
-      currentPrice: 1899,
-      itemNo: 'item number'
-    },
-    {
-      name: 'Name device 2',
-      imageUrls: ['img 1 url', 'img 2 url', 'img 3 url'],
-      reviews: [1, 2, 3, 4, 4],
-      quantity: 4,
-      previousPrice: 19990,
-      currentPrice: 18990,
-      itemNo: 'item2 number'
-    },
-  ]
-
   let component;
   beforeEach(() => {
-    component = shallow(<CatalogCardWrapper productsList={productsListProps} />)
+    component = shallow(<CatalogCardWrapper productsList={productsMock} />)
   })
 
   test('should render CatalogCardWrapper component', () => {
     const { asFragment } = render(
       <Provider store={store}>
         <Router>
-          <CatalogCardWrapper productsList={productsListProps} />
+          <CatalogCardWrapper productsList={productsMock} />
         </Router>
       </Provider>
     )
